@@ -1,0 +1,93 @@
+specificationVersion: '0.1'
+name: Felt Plans and Pricing
+description: >
+  Felt offers three subscription tiers: Personal (free), Professional (team
+  use with a 7-day trial), and Enterprise (custom pricing with full REST API
+  and JavaScript SDK access). All paid plans are annual contracts; no
+  month-to-month billing is offered. Verified nonprofits receive 30% off and
+  classrooms/students receive free access.
+url: https://felt.com/pricing
+plans:
+  - name: Personal
+    description: >
+      Free tier for non-commercial individual use. Provides unlimited maps and
+      sharing but prohibits data file uploads (Shapefile, GeoTIFF, CSV, GeoJSON,
+      KML) and business use.
+    price: 0
+    currency: USD
+    period: month
+    features:
+      - Unlimited maps
+      - Unlimited sharing
+      - Non-commercial use only
+      - No data file uploads
+    apiAccess: false
+    rateLimits: []
+
+  - name: Professional
+    description: >
+      Team-oriented plan with 10 full seats included, unlimited viewers,
+      25 GB of data processing per month, and 100,000 map views per month.
+      Includes vector/raster file support, Google Sheets sync, ArcGIS import,
+      QGIS plugin, dashboards, field app, embedded maps, and real-time
+      collaboration. 7-day free trial available. REST API and JavaScript SDK
+      are NOT included.
+    price: null
+    currency: USD
+    period: year
+    features:
+      - 10 full seats included
+      - Unlimited free viewers
+      - 25 GB data processing per month
+      - 100,000 map views per month
+      - Vector and raster file support
+      - Google Sheets sync
+      - ArcGIS import
+      - QGIS plugin
+      - Dashboards
+      - Field app
+      - Embedded maps
+      - Real-time collaboration
+      - Priority email and chat support
+      - 1-hour onboarding session
+      - 7-day free trial (no credit card)
+    apiAccess: false
+    notes: >
+      Additional full seats at $50/user/month. No REST API or SDK access.
+      Contact sales for pricing.
+
+  - name: Enterprise
+    description: >
+      Full-featured enterprise plan with custom pricing, live cloud data
+      sources, REST API and JavaScript SDK access, MCP server integration,
+      advanced SQL analysis, regional hosting, VPC deployment, SSO/SAML,
+      and dedicated support.
+    price: null
+    currency: USD
+    period: year
+    features:
+      - Everything in Professional
+      - REST API access
+      - JavaScript SDK access
+      - MCP server (Claude, ChatGPT, Gemini integration)
+      - Live cloud sources (Postgres, Snowflake, BigQuery, Databricks, S3)
+      - Advanced SQL analysis
+      - Raster streaming (satellite/drone imagery)
+      - Regional hosting (EU, Australia, Canada)
+      - VPC deployment
+      - SSO/SAML authentication
+      - Unlimited Felt Server instances
+      - Cloud source caching to avoid warehouse bill spikes
+      - Dedicated support
+    apiAccess: true
+    notes: >
+      Custom pricing requires sales engagement. Annual contract only.
+      Contact sales at https://felt.com/sales.
+
+discounts:
+  - name: Nonprofit Discount
+    description: 30% discount for verified U.S. 501(c)(3) nonprofits
+    percentage: 30
+  - name: Education
+    description: Free access for classrooms and verified students
+    percentage: 100

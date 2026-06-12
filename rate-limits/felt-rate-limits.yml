@@ -1,0 +1,58 @@
+specificationVersion: '0.1'
+name: Felt API Rate Limits
+description: >
+  Felt's REST API returns HTTP 429 status codes when rate limits are exceeded.
+  Specific numeric thresholds are not publicly documented. The API is available
+  exclusively on the Enterprise plan. The Professional plan includes usage
+  caps of 25 GB of data processing per month and 100,000 map views per month,
+  with a no-auto-bill overage policy — Felt contacts customers before
+  escalating tier.
+url: https://developers.felt.com/rest-api/getting-started
+limits:
+  - name: API Rate Limit
+    description: >
+      The REST API enforces rate limits indicated by HTTP 429 responses.
+      Specific request-per-minute or request-per-day thresholds are not
+      publicly disclosed. Customers should contact Felt support or their
+      account team for enterprise-specific rate limit details.
+    scope: account
+    httpStatusOnExceed: 429
+    documented: false
+    notes: >
+      Rate limit details are not published in public documentation as of
+      2026-06-12. Enterprise plan customers can contact their account
+      representative for applicable limits.
+
+  - name: Data Processing Cap (Professional)
+    description: >
+      Professional plan accounts may process up to 25 GB of data per month.
+      This applies to layer uploads and data ingestion operations.
+    scope: workspace
+    period: month
+    quota: 25
+    unit: GB
+    httpStatusOnExceed: null
+    overagePolicy: >
+      Felt will contact the customer to discuss whether upgrading to the next
+      tier makes sense. Overages are not auto-billed.
+    documented: true
+
+  - name: Map Views Cap (Professional)
+    description: >
+      Professional plan accounts are allocated 100,000 map views per month.
+      Additional full seats cost $50/user/month.
+    scope: workspace
+    period: month
+    quota: 100000
+    unit: map_views
+    httpStatusOnExceed: null
+    overagePolicy: >
+      Felt will contact the customer to discuss whether upgrading to the next
+      tier makes sense. Overages are not auto-billed.
+    documented: true
+
+headers:
+  - name: Authorization
+    description: Bearer token for API authentication
+    format: 'Authorization: Bearer <API_TOKEN>'
+    required: true

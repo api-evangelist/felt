@@ -1,0 +1,115 @@
+aid: felt
+name: Felt
+description: >
+  Felt is a collaborative mapping platform with a REST API for creating and
+  managing maps, layers, elements, and sharing settings programmatically.
+  The Enterprise-tier REST API and JavaScript SDK enable developers to build
+  custom mapping applications, automate geospatial workflows, embed maps, and
+  integrate with data pipelines using Bearer token authentication against the
+  https://felt.com/api/v2 base URL.
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+url: https://raw.githubusercontent.com/api-evangelist/felt/refs/heads/main/apis.yml
+type: Index
+created: '2026-06-12'
+modified: '2026-06-12'
+specificationVersion: '0.19'
+tags:
+  - Maps
+  - GIS
+  - Geospatial
+  - Collaborative
+  - Mapping
+  - Layers
+  - Embedding
+apis:
+  - aid: felt:felt-rest-api
+    name: Felt REST API
+    description: >
+      REST API for programmatically creating and managing maps, layers, layer
+      groups, elements/annotations, embed tokens, and workspace projects on the
+      Felt collaborative mapping platform.
+    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    humanURL: https://developers.felt.com/rest-api/getting-started
+    baseURL: https://felt.com/api/v2
+    tags:
+      - Maps
+      - Layers
+      - Elements
+      - Annotations
+      - Embed
+      - GIS
+      - Geospatial
+    properties:
+      - type: Documentation
+        url: https://developers.felt.com/rest-api/getting-started
+      - type: OpenAPI
+        url: https://developers.felt.com/rest-api/api-reference/maps
+
+  - aid: felt:felt-javascript-sdk
+    name: Felt JavaScript SDK
+    description: >
+      JavaScript SDK for embedding, controlling, and extending Felt maps in
+      external web applications. Supports two integration modes: Extensions
+      (custom code inside Felt) and Embed (Felt maps inside external apps).
+      Includes Element API, Draw API, and live layer support.
+    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    humanURL: https://developers.felt.com/js-sdk/getting-started
+    baseURL: https://felt.com
+    tags:
+      - JavaScript
+      - SDK
+      - Embed
+      - Maps
+      - Elements
+    properties:
+      - type: Documentation
+        url: https://developers.felt.com/js-sdk/getting-started
+      - type: SDK
+        url: https://github.com/felt/js-sdk
+
+  - aid: felt:felt-python-sdk
+    name: Felt Python SDK
+    description: >
+      Official Python client for the Felt REST API providing convenient wrappers
+      for map creation, file and DataFrame uploads, layer styling and refreshing,
+      and element management. Supports Pandas and GeoPandas integration.
+    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    humanURL: https://github.com/felt/felt-python
+    baseURL: https://felt.com/api/v2
+    tags:
+      - Python
+      - SDK
+      - GeoJSON
+      - Pandas
+      - GeoPandas
+    properties:
+      - type: Documentation
+        url: https://github.com/felt/felt-python
+      - type: SDK
+        url: https://github.com/felt/felt-python
+
+common:
+  - type: Website
+    url: https://felt.com
+  - type: Documentation
+    url: https://developers.felt.com/
+  - type: GitHub
+    url: https://github.com/felt
+  - type: LinkedIn
+    url: https://www.linkedin.com/company/feltmaps
+  - type: Blog
+    url: https://felt.com/blog
+  - type: Pricing
+    url: https://felt.com/pricing
+  - type: X
+    url: https://x.com/felt
+  - type: Plans
+    url: plans/felt-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/felt-rate-limits.yml
+  - type: FinOps
+    url: finops/felt-finops.yml
+
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

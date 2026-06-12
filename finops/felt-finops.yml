@@ -1,0 +1,104 @@
+specificationVersion: '1.0'
+name: Felt FinOps Framework
+description: >
+  FinOps considerations for Felt API and platform consumption aligned with
+  the FinOps Foundation FOCUS specification. Felt uses a flat-rate annual
+  contract model with no credit packs or surprise overage invoices, making
+  cost forecasting straightforward. API access is gated to the Enterprise
+  tier, which requires custom pricing negotiated with sales.
+url: https://felt.com/pricing
+
+costModel:
+  type: flat-rate-annual
+  description: >
+    Felt sells annual contracts at a flat rate per tier. There are no per-API-
+    call charges, no credit consumption models, and no auto-billed overages.
+    When usage caps (data processing, map views) are approached, Felt proactively
+    contacts the customer rather than charging overages automatically.
+  billingPeriod: annual
+  currency: USD
+  overage: contact-sales
+  noAutoOverageBilling: true
+
+tiers:
+  - tier: Personal
+    monthlyCost: 0
+    apiAccess: false
+    usageLimits:
+      mapViews: unlimited
+      dataProcessingGB: 0
+    notes: Non-commercial use only; no data file uploads permitted.
+
+  - tier: Professional
+    monthlyCost: null
+    apiAccess: false
+    usageLimits:
+      seats: 10
+      additionalSeatCostPerMonth: 50
+      mapViews: 100000
+      dataProcessingGB: 25
+    notes: >
+      7-day free trial available. Annual contract only. Price requires
+      sales contact. No REST API or SDK access included.
+
+  - tier: Enterprise
+    monthlyCost: null
+    apiAccess: true
+    usageLimits:
+      seats: 10
+      dataProcessingGB: custom
+      mapViews: custom
+    notes: >
+      Custom pricing via sales. Includes REST API, JavaScript SDK, MCP
+      server, live cloud sources, VPC deployment, and regional hosting.
+      Cloud source caching prevents warehouse bill spikes from Postgres,
+      Snowflake, BigQuery, and Databricks integrations.
+
+costOptimization:
+  - practice: Use data caching for cloud sources
+    description: >
+      Enterprise cloud data source connections include caching to reduce
+      repeated queries to Postgres, Snowflake, BigQuery, Databricks, and S3,
+      directly lowering warehouse compute costs.
+    applicableTiers:
+      - Enterprise
+
+  - practice: Monitor data processing monthly quota
+    description: >
+      Professional plan includes 25 GB of data processing per month. Monitoring
+      upload volumes helps avoid unplanned tier escalation conversations.
+    applicableTiers:
+      - Professional
+
+  - practice: Leverage nonprofit and education discounts
+    description: >
+      Verified U.S. 501(c)(3) nonprofits receive 30% off. Verified students
+      and classrooms receive free access, enabling significant cost avoidance.
+    applicableTiers:
+      - Professional
+      - Enterprise
+
+  - practice: Evaluate viewer vs. full seat allocation
+    description: >
+      Viewers are free and unlimited on paid plans. Only users who need to
+      edit maps require full seats. Keeping editor seats minimal reduces
+      incremental per-seat costs ($50/user/month on Professional).
+    applicableTiers:
+      - Professional
+      - Enterprise
+
+discounts:
+  - type: nonprofit
+    description: 30% discount for verified U.S. 501(c)(3) nonprofits
+    percentage: 30
+  - type: education
+    description: Free access for classrooms and verified students
+    percentage: 100
+
+paymentTerms:
+  billingCycle: annual
+  monthlyBilling: false
+  trialAvailable: true
+  trialDuration: 7 days
+  trialCreditCardRequired: false
+  contactSales: https://felt.com/sales
