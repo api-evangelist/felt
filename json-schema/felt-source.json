@@ -1,0 +1,106 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Source",
+  "additionalProperties": false,
+  "properties": {
+    "automatic_sync": {
+      "enum": [
+        "enabled",
+        "paused"
+      ],
+      "type": "string"
+    },
+    "connection": {
+      "nullable": true,
+      "oneOf": [
+        {
+          "$ref": "#/components/schemas/SourceConnection-ABSBucket"
+        },
+        {
+          "$ref": "#/components/schemas/SourceConnection-Google-BigQuery"
+        },
+        {
+          "$ref": "#/components/schemas/SourceConnection-Databricks"
+        },
+        {
+          "$ref": "#/components/schemas/SourceConnection-ESRI-FeatureServer"
+        },
+        {
+          "$ref": "#/components/schemas/SourceConnection-GCSBucket"
+        },
+        {
+          "$ref": "#/components/schemas/SourceConnection-Microsoft-SQL"
+        },
+        {
+          "$ref": "#/components/schemas/SourceConnection-Postgres"
+        },
+        {
+          "$ref": "#/components/schemas/SourceConnection-Amazon-Redshift"
+        },
+        {
+          "$ref": "#/components/schemas/SourceConnection-S3Bucket"
+        },
+        {
+          "$ref": "#/components/schemas/SourceConnection-Snowflake"
+        },
+        {
+          "$ref": "#/components/schemas/SourceConnection-STAC"
+        },
+        {
+          "$ref": "#/components/schemas/SourceConnection-WFS"
+        },
+        {
+          "$ref": "#/components/schemas/SourceConnection-WMS-WMTS"
+        }
+      ]
+    },
+    "created_at": {
+      "nullable": true,
+      "type": "integer"
+    },
+    "datasets": {
+      "items": {
+        "$ref": "#/components/schemas/SourceDataset"
+      },
+      "type": "array"
+    },
+    "id": {
+      "$ref": "#/components/schemas/FeltID"
+    },
+    "last_synced_at": {
+      "nullable": true,
+      "type": "integer"
+    },
+    "name": {
+      "type": "string"
+    },
+    "owner_id": {
+      "$ref": "#/components/schemas/FeltID"
+    },
+    "permissions": {
+      "$ref": "#/components/schemas/SourcePermissions"
+    },
+    "sync_status": {
+      "enum": [
+        "syncing",
+        "completed",
+        "failed"
+      ],
+      "type": "string"
+    },
+    "type": {
+      "enum": [
+        "source"
+      ],
+      "type": "string"
+    },
+    "updated_at": {
+      "nullable": true,
+      "type": "integer"
+    },
+    "workspace_id": {
+      "$ref": "#/components/schemas/FeltID"
+    }
+  },
+  "type": "object"
+}

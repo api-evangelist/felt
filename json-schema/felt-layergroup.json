@@ -1,0 +1,79 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "LayerGroup",
+  "additionalProperties": false,
+  "properties": {
+    "caption": {
+      "nullable": true,
+      "type": "string"
+    },
+    "id": {
+      "$ref": "#/components/schemas/FeltID"
+    },
+    "layers": {
+      "items": {
+        "$ref": "#/components/schemas/Layer"
+      },
+      "type": "array"
+    },
+    "legend_visibility": {
+      "description": "Controls how the layer group is displayed in the legend. Defaults to \"show\".",
+      "enum": [
+        "hide",
+        "show"
+      ],
+      "nullable": true,
+      "type": "string"
+    },
+    "links": {
+      "properties": {
+        "self": {
+          "example": "https://felt.com/api/v2/maps/V0dnOMOuTd9B9BOsL9C0UjmqC/layer_groups/v13k4Ae9BRjCHHdPP5Fcm6D",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "name": {
+      "nullable": false,
+      "type": "string"
+    },
+    "ordering_key": {
+      "description": "A sort order key used for ordering layers and layer groups in the legend",
+      "nullable": false,
+      "type": "integer"
+    },
+    "subtitle": {
+      "deprecated": true,
+      "description": "Deprecated: use `caption` instead.",
+      "nullable": true,
+      "type": "string"
+    },
+    "type": {
+      "enum": [
+        "layer_group"
+      ],
+      "type": "string"
+    },
+    "visibility_interaction": {
+      "description": "Controls how the layer group is displayed in the legend. Defaults to `\"default\"`.",
+      "enum": [
+        "default",
+        "slider",
+        "select",
+        "multi_select"
+      ],
+      "nullable": false,
+      "type": "string"
+    }
+  },
+  "required": [
+    "id",
+    "type",
+    "name",
+    "caption",
+    "visibility_interaction",
+    "layers"
+  ],
+  "type": "object"
+}

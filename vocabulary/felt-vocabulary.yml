@@ -1,0 +1,117 @@
+vocabulary:
+  name: Felt API Vocabulary
+  description: Key domain terms used across the Felt REST API and JavaScript SDK
+  version: '1.0'
+  created: '2026-06-12'
+  source: https://felt.com/api/v2/openapi.json
+
+terms:
+  - term: Map
+    definition: >
+      A collaborative mapping workspace in Felt that can contain layers, elements,
+      and annotations. Maps have sharing settings, embed tokens, and are identified
+      by a unique FeltID.
+    properties:
+      - id
+      - title
+      - url
+      - thumbnail_url
+      - created_at
+      - updated_at
+
+  - term: Layer
+    definition: >
+      A data layer within a Felt map that visualizes geospatial data. Layers can
+      be uploaded files, database connections, or live data sources. They support
+      styling, refreshing, and publishing to the workspace library.
+    properties:
+      - id
+      - name
+      - type
+      - style
+      - status
+      - created_at
+
+  - term: LayerGroup
+    definition: >
+      A named grouping of layers within a map that organizes related layers in
+      the layer legend panel. Layer groups can be nested and toggled as a unit.
+    properties:
+      - id
+      - name
+      - layers
+
+  - term: Element
+    definition: >
+      A geographic annotation or shape drawn on a map, such as markers, lines,
+      polygons, or text notes. Elements are grouped into ElementGroups and encoded
+      as GeoJSON features.
+    properties:
+      - id
+      - type
+      - geometry
+      - properties
+
+  - term: EmbedToken
+    definition: >
+      A scoped authentication token granting read-only or interactive access to
+      embed a Felt map within an external application without requiring a Felt
+      account.
+    properties:
+      - token
+      - map_id
+      - expires_at
+
+  - term: Source
+    definition: >
+      A live data connection from Felt to an external data system such as a cloud
+      database, S3 bucket, or spatial service (WFS/WMS/ESRI). Sources back
+      dynamic layers that can be refreshed on schedule.
+    properties:
+      - id
+      - type
+      - name
+      - connection
+
+  - term: Project
+    definition: >
+      A workspace container in Felt that organizes a collection of maps for a team
+      or use case. Projects have visibility settings and membership controls.
+    properties:
+      - id
+      - name
+      - visibility
+      - map_count
+
+  - term: FeltID
+    definition: >
+      The unique identifier format used for Felt resources (maps, layers, elements,
+      users). Typically a short alphanumeric string.
+
+  - term: BearerToken
+    definition: >
+      The API authentication mechanism for Felt. Users generate a personal API key
+      from their Felt account settings and pass it as a Bearer token in the
+      Authorization header.
+
+  - term: GeoJSON
+    definition: >
+      The standard geospatial data format (RFC 7946) used by Felt for element
+      geometry and layer data exchange. Felt supports FeatureCollection and
+      Feature types.
+
+  - term: LayerUpload
+    definition: >
+      The two-step process for uploading file-based layer data to Felt: first
+      creating an upload presigned URL, then posting the file bytes and completing
+      the upload to trigger processing.
+
+  - term: WMS
+    definition: >
+      Web Map Service — an OGC standard for serving georeferenced map images over
+      HTTP. Felt can connect to WMS/WMTS endpoints as live data sources.
+
+  - term: WFS
+    definition: >
+      Web Feature Service — an OGC standard for serving vector geospatial data.
+      Felt can query WFS endpoints as live layer sources.

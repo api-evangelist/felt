@@ -1,0 +1,52 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Project",
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "$ref": "#/components/schemas/FeltID"
+    },
+    "maps": {
+      "items": {
+        "$ref": "#/components/schemas/MapReference"
+      },
+      "type": "array"
+    },
+    "max_inherited_permission": {
+      "description": "The maximum permission level workspace members inherit on team-visible projects.",
+      "enum": [
+        "view_only",
+        "view_and_contribute",
+        "view_and_edit"
+      ],
+      "example": "view_only",
+      "nullable": false,
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "type": {
+      "enum": [
+        "project"
+      ],
+      "type": "string"
+    },
+    "visibility": {
+      "enum": [
+        "workspace",
+        "private"
+      ],
+      "type": "string"
+    }
+  },
+  "required": [
+    "id",
+    "type",
+    "name",
+    "visibility",
+    "max_inherited_permission",
+    "maps"
+  ],
+  "type": "object"
+}

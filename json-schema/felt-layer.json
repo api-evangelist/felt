@@ -1,0 +1,195 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Layer",
+  "additionalProperties": false,
+  "properties": {
+    "attributes": {
+      "description": "List of the attributes on the layer",
+      "items": {
+        "properties": {
+          "name": {
+            "description": "The name of the attribute",
+            "type": "string"
+          },
+          "type": {
+            "description": "The type of the attribute",
+            "enum": [
+              "INTEGER",
+              "REAL",
+              "TEXT",
+              "BOOLEAN",
+              "DATE",
+              "DATETIME",
+              "GEOMETRY"
+            ],
+            "type": "string"
+          }
+        },
+        "required": [
+          "name"
+        ],
+        "type": "object"
+      },
+      "nullable": true,
+      "type": "array"
+    },
+    "caption": {
+      "nullable": true,
+      "type": "string"
+    },
+    "geometry_type": {
+      "enum": [
+        "Line",
+        "Point",
+        "Polygon",
+        "Raster"
+      ],
+      "nullable": true,
+      "type": "string"
+    },
+    "hide_from_legend": {
+      "nullable": false,
+      "type": "boolean"
+    },
+    "id": {
+      "$ref": "#/components/schemas/FeltID"
+    },
+    "is_spreadsheet": {
+      "nullable": true,
+      "type": "boolean"
+    },
+    "last_refreshed_at": {
+      "description": "ISO 8601 timestamp of when the layer's data was last updated. This includes scheduled refreshes, manual refreshes, and direct feature edits.",
+      "format": "date-time",
+      "nullable": true,
+      "type": "string"
+    },
+    "legend_display": {
+      "description": "Controls how the layer is displayed in the legend.",
+      "enum": [
+        "default",
+        "name_only"
+      ],
+      "nullable": true,
+      "type": "string"
+    },
+    "legend_visibility": {
+      "description": "Controls whether or not the layer is displayed in the legend. Defaults to \"show\".",
+      "enum": [
+        "hide",
+        "show"
+      ],
+      "nullable": true,
+      "type": "string"
+    },
+    "links": {
+      "properties": {
+        "self": {
+          "example": "https://felt.com/api/v2/maps/V0dnOMOuTd9B9BOsL9C0UjmqC/layers/k441enUxQUOnZqc1ZvNsDA",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "metadata": {
+      "$ref": "#/components/schemas/LayerMetadata"
+    },
+    "name": {
+      "nullable": false,
+      "type": "string"
+    },
+    "next_refresh_at": {
+      "description": "ISO 8601 timestamp of when the next scheduled refresh will occur. Null if refresh is disabled or paused.",
+      "format": "date-time",
+      "nullable": true,
+      "type": "string"
+    },
+    "ordering_key": {
+      "description": "A sort order key used for ordering layers and layer groups in the legend",
+      "nullable": true,
+      "type": "integer"
+    },
+    "paused_reason": {
+      "description": "Why the layer's refresh is paused. Null when not paused.",
+      "enum": [
+        "consecutive_failures"
+      ],
+      "nullable": true,
+      "type": "string"
+    },
+    "progress": {
+      "format": "float",
+      "nullable": false,
+      "type": "number"
+    },
+    "refresh_period": {
+      "enum": [
+        "15 min",
+        "30 min",
+        "hour",
+        "3 hours",
+        "6 hours",
+        "12 hours",
+        "day",
+        "week",
+        "month",
+        "disabled"
+      ],
+      "type": "string"
+    },
+    "refresh_status": {
+      "description": "Whether scheduled refresh is active, paused (due to failures), or disabled",
+      "enum": [
+        "active",
+        "paused",
+        "disabled"
+      ],
+      "type": "string"
+    },
+    "status": {
+      "enum": [
+        "uploading",
+        "processing",
+        "failed",
+        "completed"
+      ],
+      "nullable": false,
+      "type": "string"
+    },
+    "style": {
+      "description": "The Felt Style Language style for the layer",
+      "type": "object"
+    },
+    "subtitle": {
+      "deprecated": true,
+      "description": "Deprecated: use `caption` instead.",
+      "nullable": true,
+      "type": "string"
+    },
+    "tile_url": {
+      "description": "The tile URL for this layer",
+      "nullable": true,
+      "type": "string"
+    },
+    "type": {
+      "enum": [
+        "layer"
+      ],
+      "type": "string"
+    }
+  },
+  "required": [
+    "id",
+    "type",
+    "hide_from_legend",
+    "status",
+    "caption",
+    "name",
+    "progress",
+    "geometry_type",
+    "style",
+    "refresh_period",
+    "refresh_status"
+  ],
+  "type": "object"
+}

@@ -43,7 +43,23 @@ apis:
       - type: Documentation
         url: https://developers.felt.com/rest-api/getting-started
       - type: OpenAPI
-        url: https://developers.felt.com/rest-api/api-reference/maps
+        url: openapi/felt-felt-rest-api-openapi.yml
+      - type: JSONSchema
+        url: json-schema/felt-map.json
+      - type: JSONSchema
+        url: json-schema/felt-layer.json
+      - type: JSONSchema
+        url: json-schema/felt-layergroup.json
+      - type: JSONSchema
+        url: json-schema/felt-element.json
+      - type: JSONSchema
+        url: json-schema/felt-project.json
+      - type: JSONSchema
+        url: json-schema/felt-source.json
+      - type: JSONSchema
+        url: json-schema/felt-embedtoken.json
+      - type: Examples
+        url: examples/felt-api-examples.json
 
   - aid: felt:felt-javascript-sdk
     name: Felt JavaScript SDK
@@ -109,6 +125,14 @@ common:
     url: rate-limits/felt-rate-limits.yml
   - type: FinOps
     url: finops/felt-finops.yml
+  - type: Vocabulary
+    url: vocabulary/felt-vocabulary.yml
+  - type: JSONLDContext
+    url: json-ld/felt-context.jsonld
+  - type: BlogRSS
+    url: https://felt.com/blog/rss.xml
+  - type: Blogs
+    url: blogs/blogs.json
 
 maintainers:
   - FN: Kin Lane

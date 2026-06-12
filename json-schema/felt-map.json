@@ -1,0 +1,121 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Map",
+  "additionalProperties": false,
+  "properties": {
+    "basemap": {
+      "type": "string"
+    },
+    "created_at": {
+      "example": "2024-05-25T15:51:34",
+      "format": "date_time",
+      "type": "string"
+    },
+    "element_groups": {
+      "items": {
+        "properties": {
+          "elements": {
+            "$ref": "#/components/schemas/GeoJSON"
+          },
+          "id": {
+            "$ref": "#/components/schemas/FeltID"
+          },
+          "name": {
+            "nullable": true,
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "elements": {
+      "$ref": "#/components/schemas/GeoJSON"
+    },
+    "folder_id": {
+      "nullable": true,
+      "type": "string"
+    },
+    "id": {
+      "$ref": "#/components/schemas/FeltID"
+    },
+    "layer_groups": {
+      "items": {
+        "$ref": "#/components/schemas/LayerGroup"
+      },
+      "type": "array"
+    },
+    "layers": {
+      "items": {
+        "$ref": "#/components/schemas/Layer"
+      },
+      "type": "array"
+    },
+    "links": {
+      "properties": {
+        "self": {
+          "example": "https://felt.com/api/v2/maps/V0dnOMOuTd9B9BOsL9C0UjmqC",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "project_id": {
+      "nullable": false,
+      "type": "string"
+    },
+    "public_access": {
+      "enum": [
+        "private",
+        "view_only",
+        "view_and_comment",
+        "view_comment_and_edit"
+      ],
+      "type": "string"
+    },
+    "table_settings": {
+      "$ref": "#/components/schemas/MapTableSettings"
+    },
+    "thumbnail_url": {
+      "description": "A static thumbnail image of the map",
+      "nullable": true,
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "type": {
+      "enum": [
+        "map"
+      ],
+      "type": "string"
+    },
+    "url": {
+      "type": "string"
+    },
+    "viewer_permissions": {
+      "$ref": "#/components/schemas/MapViewerPermissions"
+    },
+    "visited_at": {
+      "format": "date_time",
+      "nullable": true,
+      "type": "string"
+    }
+  },
+  "required": [
+    "id",
+    "type",
+    "url",
+    "title",
+    "thumbnail_url",
+    "created_at",
+    "visited_at",
+    "layers",
+    "layer_groups",
+    "elements",
+    "element_groups",
+    "project_id",
+    "public_access"
+  ],
+  "type": "object"
+}

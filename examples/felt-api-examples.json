@@ -1,0 +1,463 @@
+{
+  "felt_api_operations": [
+    {
+      "operation": "delete_map_layer_group",
+      "summary": "Delete map layer group",
+      "method": "DELETE",
+      "path": "/api/v2/maps/{map_id}/layer_groups/{layer_group_id}",
+      "tags": [
+        "Layers"
+      ]
+    },
+    {
+      "operation": "show_map_layer_group",
+      "summary": "Get map layer group",
+      "method": "GET",
+      "path": "/api/v2/maps/{map_id}/layer_groups/{layer_group_id}",
+      "tags": [
+        "Layers"
+      ]
+    },
+    {
+      "operation": "update_map_layer_group",
+      "summary": "Update map layer group",
+      "method": "POST",
+      "path": "/api/v2/maps/{map_id}/layer_groups/{layer_group_id}",
+      "tags": [
+        "Layers"
+      ]
+    },
+    {
+      "operation": "publish_map_layer",
+      "summary": "Publish map layer",
+      "method": "POST",
+      "path": "/api/v2/maps/{map_id}/layers/{layer_id}/publish",
+      "tags": [
+        "Layer Library"
+      ]
+    },
+    {
+      "operation": "update_source",
+      "summary": "Update source",
+      "method": "POST",
+      "path": "/api/v2/sources/{source_id}/update",
+      "tags": [
+        "Sources"
+      ]
+    },
+    {
+      "operation": "delete_map_element",
+      "summary": "Delete map element",
+      "method": "DELETE",
+      "path": "/api/v2/maps/{map_id}/elements/{element_id}",
+      "tags": [
+        "Elements"
+      ]
+    },
+    {
+      "operation": "list_projects",
+      "summary": "List projects",
+      "method": "GET",
+      "path": "/api/v2/projects",
+      "tags": [
+        "Projects"
+      ]
+    },
+    {
+      "operation": "create_project",
+      "summary": "Create project",
+      "method": "POST",
+      "path": "/api/v2/projects",
+      "tags": [
+        "Projects"
+      ]
+    },
+    {
+      "operation": "export_map_comments",
+      "summary": "Export map comments",
+      "method": "GET",
+      "path": "/api/v2/maps/{map_id}/comments/export",
+      "tags": [
+        "Comments"
+      ]
+    },
+    {
+      "operation": "list_sources",
+      "summary": "List sources",
+      "method": "GET",
+      "path": "/api/v2/sources",
+      "tags": [
+        "Sources"
+      ]
+    },
+    {
+      "operation": "create_source",
+      "summary": "Create source",
+      "method": "POST",
+      "path": "/api/v2/sources",
+      "tags": [
+        "Sources"
+      ]
+    },
+    {
+      "operation": "add_map_layer_from_source",
+      "summary": "Add layer from data source",
+      "method": "POST",
+      "path": "/api/v2/maps/{map_id}/add_source_layer",
+      "tags": [
+        "Layer Uploads"
+      ]
+    },
+    {
+      "operation": "sync_source",
+      "summary": "Sync source",
+      "method": "POST",
+      "path": "/api/v2/sources/{source_id}/sync",
+      "tags": [
+        "Sources"
+      ]
+    },
+    {
+      "operation": "refresh_map_layer",
+      "summary": "Refresh map layer",
+      "method": "POST",
+      "path": "/api/v2/maps/{map_id}/layers/{layer_id}/refresh",
+      "tags": [
+        "Layer Uploads"
+      ]
+    },
+    {
+      "operation": "delete_source",
+      "summary": "Delete source",
+      "method": "DELETE",
+      "path": "/api/v2/sources/{source_id}",
+      "tags": [
+        "Sources"
+      ]
+    },
+    {
+      "operation": "show_source",
+      "summary": "Get source",
+      "method": "GET",
+      "path": "/api/v2/sources/{source_id}",
+      "tags": [
+        "Sources"
+      ]
+    },
+    {
+      "operation": "list_map_layers",
+      "summary": "List map layers",
+      "method": "GET",
+      "path": "/api/v2/maps/{map_id}/layers",
+      "tags": [
+        "Layers"
+      ]
+    },
+    {
+      "operation": "update_map_layer",
+      "summary": "Update map layer",
+      "method": "POST",
+      "path": "/api/v2/maps/{map_id}/layers",
+      "tags": [
+        "Layers"
+      ]
+    },
+    {
+      "operation": "upload_map_layer",
+      "summary": "Upload map layer",
+      "method": "POST",
+      "path": "/api/v2/maps/{map_id}/upload",
+      "tags": [
+        "Layer Uploads"
+      ]
+    },
+    {
+      "operation": "create_map_layer_export_link",
+      "summary": "Create layer export link",
+      "method": "GET",
+      "path": "/api/v2/maps/{map_id}/layers/{layer_id}/get_export_link",
+      "tags": [
+        "Layer Exports"
+      ]
+    },
+    {
+      "operation": "poll_map_layer_custom_export",
+      "summary": "Check custom export status",
+      "method": "GET",
+      "path": "/api/v2/maps/{map_id}/layers/{layer_id}/custom_exports/{export_id}",
+      "tags": [
+        "Layer Exports"
+      ]
+    },
+    {
+      "operation": "list_map_layer_groups",
+      "summary": "List map layer groups",
+      "method": "GET",
+      "path": "/api/v2/maps/{map_id}/layer_groups",
+      "tags": [
+        "Layers"
+      ]
+    },
+    {
+      "operation": "update_map_layer_groups",
+      "summary": "Update map layer groups",
+      "method": "POST",
+      "path": "/api/v2/maps/{map_id}/layer_groups",
+      "tags": [
+        "Layers"
+      ]
+    },
+    {
+      "operation": "resolve_map_comment",
+      "summary": "Resolve map comment",
+      "method": "POST",
+      "path": "/api/v2/maps/{map_id}/comments/{comment_id}/resolve",
+      "tags": [
+        "Comments"
+      ]
+    },
+    {
+      "operation": "update_map_layer_style",
+      "summary": "Update layer style",
+      "method": "POST",
+      "path": "/api/v2/maps/{map_id}/layers/{layer_id}/update_style",
+      "tags": [
+        "Layers"
+      ]
+    },
+    {
+      "operation": "create_source_credential",
+      "summary": "Create source credential",
+      "method": "POST",
+      "path": "/api/v2/sources/{source_id}/credentials",
+      "tags": [
+        "Sources"
+      ]
+    },
+    {
+      "operation": "move_map",
+      "summary": "Move map",
+      "method": "POST",
+      "path": "/api/v2/maps/{map_id}/move",
+      "tags": [
+        "Maps"
+      ]
+    },
+    {
+      "operation": "duplicate_map",
+      "summary": "Duplicate map",
+      "method": "POST",
+      "path": "/api/v2/maps/{map_id}/duplicate",
+      "tags": [
+        "Maps"
+      ]
+    },
+    {
+      "operation": "create_map",
+      "summary": "Create map",
+      "method": "POST",
+      "path": "/api/v2/maps",
+      "tags": [
+        "Maps"
+      ]
+    },
+    {
+      "operation": "list_map_elements",
+      "summary": "List map elements",
+      "method": "GET",
+      "path": "/api/v2/maps/{map_id}/elements",
+      "tags": [
+        "Elements"
+      ]
+    },
+    {
+      "operation": "upsert_map_elements",
+      "summary": "Create or update map elements",
+      "method": "POST",
+      "path": "/api/v2/maps/{map_id}/elements",
+      "tags": [
+        "Elements"
+      ]
+    },
+    {
+      "operation": "create_map_embed_token",
+      "summary": "Create an Embed Token",
+      "method": "POST",
+      "path": "/api/v2/maps/{map_id}/embed_token",
+      "tags": [
+        "Embed Tokens"
+      ]
+    },
+    {
+      "operation": "update_map",
+      "summary": "Update map",
+      "method": "POST",
+      "path": "/api/v2/maps/{map_id}/update",
+      "tags": [
+        "Maps"
+      ]
+    },
+    {
+      "operation": "publish_map_layer_group",
+      "summary": "Publish map layer group",
+      "method": "POST",
+      "path": "/api/v2/maps/{map_id}/layer_groups/{layer_group_id}/publish",
+      "tags": [
+        "Layer Library"
+      ]
+    },
+    {
+      "operation": "delete_project",
+      "summary": "Delete project",
+      "method": "DELETE",
+      "path": "/api/v2/projects/{project_id}",
+      "tags": [
+        "Projects"
+      ]
+    },
+    {
+      "operation": "show_project",
+      "summary": "Get project",
+      "method": "GET",
+      "path": "/api/v2/projects/{project_id}",
+      "tags": [
+        "Projects"
+      ]
+    },
+    {
+      "operation": "delete_map_layer",
+      "summary": "Delete map layer",
+      "method": "DELETE",
+      "path": "/api/v2/maps/{map_id}/layers/{layer_id}",
+      "tags": [
+        "Layers"
+      ]
+    },
+    {
+      "operation": "show_map_layer",
+      "summary": "Get map layer",
+      "method": "GET",
+      "path": "/api/v2/maps/{map_id}/layers/{layer_id}",
+      "tags": [
+        "Layers"
+      ]
+    },
+    {
+      "operation": "update_project",
+      "summary": "Update project",
+      "method": "POST",
+      "path": "/api/v2/projects/{project_id}/update",
+      "tags": [
+        "Projects"
+      ]
+    },
+    {
+      "operation": "update_source_credential",
+      "summary": "Update source credential",
+      "method": "POST",
+      "path": "/api/v2/sources/{source_id}/credentials/{credential_id}/update",
+      "tags": [
+        "Sources"
+      ]
+    },
+    {
+      "operation": "delete_source_credential",
+      "summary": "Delete source credential",
+      "method": "DELETE",
+      "path": "/api/v2/sources/{source_id}/credentials/{credential_id}",
+      "tags": [
+        "Sources"
+      ]
+    },
+    {
+      "operation": "show_map_element_group",
+      "summary": "Get map element group",
+      "method": "GET",
+      "path": "/api/v2/maps/{map_id}/element_groups/{group_id}",
+      "tags": [
+        "Elements"
+      ]
+    },
+    {
+      "operation": "list_library_layers",
+      "summary": "List library layers",
+      "method": "GET",
+      "path": "/api/v2/library",
+      "tags": [
+        "Layer Library"
+      ]
+    },
+    {
+      "operation": "delete_map",
+      "summary": "Delete map",
+      "method": "DELETE",
+      "path": "/api/v2/maps/{map_id}",
+      "tags": [
+        "Maps"
+      ]
+    },
+    {
+      "operation": "show_map",
+      "summary": "Get map",
+      "method": "GET",
+      "path": "/api/v2/maps/{map_id}",
+      "tags": [
+        "Maps"
+      ]
+    },
+    {
+      "operation": "list_map_element_groups",
+      "summary": "List map element groups",
+      "method": "GET",
+      "path": "/api/v2/maps/{map_id}/element_groups",
+      "tags": [
+        "Elements"
+      ]
+    },
+    {
+      "operation": "upsert_map_element_groups",
+      "summary": "Create or update map element groups",
+      "method": "POST",
+      "path": "/api/v2/maps/{map_id}/element_groups",
+      "tags": [
+        "Elements"
+      ]
+    },
+    {
+      "operation": "create_map_layer_custom_export",
+      "summary": "Create custom layer export",
+      "method": "POST",
+      "path": "/api/v2/maps/{map_id}/layers/{layer_id}/custom_export",
+      "tags": [
+        "Layer Exports"
+      ]
+    },
+    {
+      "operation": "delete_map_comment",
+      "summary": "Delete map comment",
+      "method": "DELETE",
+      "path": "/api/v2/maps/{map_id}/comments/{comment_id}",
+      "tags": [
+        "Comments"
+      ]
+    },
+    {
+      "operation": "show_current_user",
+      "summary": "Get current user",
+      "method": "GET",
+      "path": "/api/v2/user",
+      "tags": [
+        "Users"
+      ]
+    },
+    {
+      "operation": "duplicate_map_layers",
+      "summary": "Duplicate map layers",
+      "method": "POST",
+      "path": "/api/v2/duplicate_layers",
+      "tags": [
+        "Layers"
+      ]
+    }
+  ]
+}

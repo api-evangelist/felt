@@ -1,0 +1,126 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "felt": "https://felt.com/ns/",
+    "schema": "https://schema.org/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos#",
+    "geojson": "https://purl.org/geojson/vocab#",
+
+    "Map": "felt:Map",
+    "Layer": "felt:Layer",
+    "LayerGroup": "felt:LayerGroup",
+    "Element": "felt:Element",
+    "EmbedToken": "felt:EmbedToken",
+    "Source": "felt:Source",
+    "Project": "felt:Project",
+    "User": "felt:User",
+
+    "id": "@id",
+    "type": "@type",
+
+    "name": "schema:name",
+    "title": "schema:headline",
+    "description": "schema:description",
+    "url": "schema:url",
+    "thumbnailUrl": "schema:thumbnailUrl",
+    "createdAt": {
+      "@id": "schema:dateCreated",
+      "@type": "xsd:dateTime"
+    },
+    "updatedAt": {
+      "@id": "schema:dateModified",
+      "@type": "xsd:dateTime"
+    },
+    "email": "schema:email",
+
+    "layers": {
+      "@id": "felt:hasLayer",
+      "@type": "@id",
+      "@container": "@set"
+    },
+    "layerGroups": {
+      "@id": "felt:hasLayerGroup",
+      "@type": "@id",
+      "@container": "@set"
+    },
+    "elements": {
+      "@id": "felt:hasElement",
+      "@type": "@id",
+      "@container": "@set"
+    },
+
+    "geometry": "geojson:geometry",
+    "coordinates": "geojson:coordinates",
+    "properties": "geojson:properties",
+
+    "status": "felt:status",
+    "style": "felt:style",
+    "visibility": "felt:visibility",
+    "mapId": {
+      "@id": "felt:mapId",
+      "@type": "@id"
+    },
+    "token": "felt:token",
+    "expiresAt": {
+      "@id": "felt:expiresAt",
+      "@type": "xsd:dateTime"
+    },
+
+    "latitude": {
+      "@id": "geo:lat",
+      "@type": "xsd:decimal"
+    },
+    "longitude": {
+      "@id": "geo:long",
+      "@type": "xsd:decimal"
+    },
+
+    "sourceType": "felt:sourceType",
+    "connection": "felt:connection"
+  },
+  "@graph": [
+    {
+      "@id": "felt:Map",
+      "@type": "schema:CreativeWork",
+      "schema:name": "Felt Map",
+      "schema:description": "A collaborative mapping workspace in the Felt platform"
+    },
+    {
+      "@id": "felt:Layer",
+      "@type": "schema:Dataset",
+      "schema:name": "Felt Layer",
+      "schema:description": "A geospatial data layer within a Felt map"
+    },
+    {
+      "@id": "felt:LayerGroup",
+      "@type": "schema:ItemList",
+      "schema:name": "Felt Layer Group",
+      "schema:description": "A named grouping of related layers within a Felt map"
+    },
+    {
+      "@id": "felt:Element",
+      "@type": "schema:Place",
+      "schema:name": "Felt Element",
+      "schema:description": "A geographic annotation or drawn shape on a Felt map"
+    },
+    {
+      "@id": "felt:EmbedToken",
+      "@type": "schema:DigitalDocument",
+      "schema:name": "Felt Embed Token",
+      "schema:description": "A scoped token for embedding Felt maps in external applications"
+    },
+    {
+      "@id": "felt:Source",
+      "@type": "schema:DataFeed",
+      "schema:name": "Felt Source",
+      "schema:description": "A live data connection backing a dynamic Felt layer"
+    },
+    {
+      "@id": "felt:Project",
+      "@type": "schema:Project",
+      "schema:name": "Felt Project",
+      "schema:description": "A workspace container organizing a collection of Felt maps"
+    }
+  ]
+}
