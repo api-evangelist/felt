@@ -7,7 +7,7 @@ description: >
   custom mapping applications, automate geospatial workflows, embed maps, and
   integrate with data pipelines using Bearer token authentication against the
   https://felt.com/api/v2 base URL.
-image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 url: https://raw.githubusercontent.com/api-evangelist/felt/refs/heads/main/apis.yml
 type: Index
 created: '2026-06-12'
@@ -28,7 +28,7 @@ apis:
       REST API for programmatically creating and managing maps, layers, layer
       groups, elements/annotations, embed tokens, and workspace projects on the
       Felt collaborative mapping platform.
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://developers.felt.com/rest-api/getting-started
     baseURL: https://felt.com/api/v2
     tags:
@@ -68,7 +68,7 @@ apis:
       external web applications. Supports two integration modes: Extensions
       (custom code inside Felt) and Embed (Felt maps inside external apps).
       Includes Element API, Draw API, and live layer support.
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://developers.felt.com/js-sdk/getting-started
     baseURL: https://felt.com
     tags:
@@ -89,7 +89,7 @@ apis:
       Official Python client for the Felt REST API providing convenient wrappers
       for map creation, file and DataFrame uploads, layer styling and refreshing,
       and element management. Supports Pandas and GeoPandas integration.
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://github.com/felt/felt-python
     baseURL: https://felt.com/api/v2
     tags:
