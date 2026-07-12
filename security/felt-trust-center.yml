@@ -1,0 +1,14 @@
+generated: '2026-07-11'
+method: searched
+probe: true
+source: https://felt.com/security
+url: https://felt.com/security
+certifications:
+- SOC 2
+- GDPR
+evidence:
+- source: https://felt.com/security
+  keywords:
+  - soc 2
+  - soc2
+  - gdpr
