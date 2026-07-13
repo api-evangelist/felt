@@ -11,17 +11,14 @@
       "source": "https://felt.com/blog/rss.xml",
       "feed_url": "https://felt.com/blog/rss.xml",
       "title": "",
-      "saved": 60,
+      "saved": 1,
       "method": "feed"
     },
     {
       "source": "https://www.linkedin.com/company/feltmaps",
-      "feed_url": "https://www.linkedin.com/company/feltmaps",
-      "title": "",
-      "saved": 0,
-      "method": "none"
+      "error": "HTTPError"
     }
   ],
-  "post_count": 160,
-  "fetched": "2026-06-27T12:03:07Z"
+  "post_count": 168,
+  "fetched": "2026-07-11T11:50:51Z"
 }
