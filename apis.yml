@@ -105,6 +105,8 @@ apis:
         url: https://github.com/felt/felt-python
 
 common:
+  - type: AgenticAccess
+    url: agentic-access/felt-agentic-access.yml
   - type: TrustCenter
     url: security/felt-trust-center.yml
   - type: VulnerabilityDisclosure
