@@ -1,0 +1,216 @@
+openapi: 3.0.0
+info:
+  description: Felt REST API v2.0
+  title: Felt Comments Embed Tokens API
+  version: '2.0'
+servers:
+- url: https://felt.com
+  variables: {}
+security: []
+tags:
+- description: 'Embed tokens enable safely sharing your private maps.
+
+
+    With these APIs, you can generate secure tokens for embedding maps.
+
+    '
+  name: Embed Tokens
+  x-page-description: APIs to share maps securely
+  x-page-icon: code
+paths:
+  /api/v2/maps/{map_id}/embed_token:
+    post:
+      callbacks: {}
+      description: 'Creates a short-lived (15 minutes) token for authenticating a visitor to view a private embedded map view without being logged into Felt. You must provide a `user_email` to associate the token with the end user that will be viewing the map.
+
+        Each end user should be a member of your Felt workspace with a viewer, editor, or admin role assigned.
+
+        ### Usage
+
+        * Generate a token by making a call to this API from your server
+
+        * Securely pass the token to your frontend client
+
+        * Include the token as a query parameter on the Embed URL in an iframe
+
+
+        ```html
+
+        <iframe src="https://felt.com/embed/map/{mapId}?token={token}"></iframe>
+
+        ```
+
+
+        #### Enabling Layer Export
+
+
+        You can allow EmbedToken based page views to export layer data.
+
+
+        * Turn on "Viewer permissions: Export data" in Map settings
+
+        '
+      operationId: create_map_embed_token
+      parameters:
+      - description: ''
+        in: path
+        name: map_id
+        required: true
+        schema:
+          type: string
+      - description: Each token must be associated with the email address of the user who will use it.
+        in: query
+        name: user_email
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmbedToken'
+          description: EmbedToken
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'
+          description: UnauthorizedError
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'
+          description: UnauthorizedError
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundError'
+          description: NotFoundError
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JsonErrorResponse'
+          description: Unprocessable Entity
+        '429':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JsonErrorResponse'
+          description: Unprocessable Entity
+        '500':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerError'
+          description: InternalServerError
+      security:
+      - bearerAuth: []
+      summary: Create an Embed Token
+      tags:
+      - Embed Tokens
+components:
+  schemas:
+    InternalServerError:
+      properties:
+        errors:
+          items:
+            properties:
+              detail:
+                type: string
+              source:
+                properties:
+                  parameter:
+                    type: string
+                type: object
+              title:
+                type: string
+            type: object
+          type: array
+      title: InternalServerError
+      type: object
+    UnauthorizedError:
+      properties:
+        errors:
+          items:
+            properties:
+              detail:
+                type: string
+              source:
+                properties:
+                  header:
+                    enum:
+                    - authorization
+                    type: string
+                type: object
+              title:
+                type: string
+            type: object
+          type: array
+      title: UnauthorizedError
+      type: object
+    EmbedToken:
+      properties:
+        expires_at:
+          example: '2024-05-25T15:51:34'
+          format: date_time
+          type: string
+        token:
+          type: string
+      title: EmbedToken
+      type: object
+    NotFoundError:
+      properties:
+        errors:
+          items:
+            properties:
+              detail:
+                type: string
+              source:
+                properties:
+                  parameter:
+                    type: string
+                type: object
+              title:
+                type: string
+            type: object
+          type: array
+      title: NotFoundError
+      type: object
+    JsonErrorResponse:
+      properties:
+        errors:
+          items:
+            properties:
+              detail:
+                example: null value where string expected
+                type: string
+              source:
+                properties:
+                  pointer:
+                    example: /data/attributes/petName
+                    type: string
+                required:
+                - pointer
+                type: object
+              title:
+                example: Invalid value
+                type: string
+            required:
+            - title
+            - source
+            - detail
+            type: object
+          type: array
+      required:
+      - errors
+      title: JsonErrorResponse
+      type: object
+  securitySchemes:
+    bearerAuth:
+      bearerFormat: YOUR_API_KEY
+      scheme: bearer
+      type: http

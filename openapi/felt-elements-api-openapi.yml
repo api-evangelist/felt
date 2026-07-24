@@ -1,0 +1,622 @@
+openapi: 3.0.0
+info:
+  description: Felt REST API v2.0
+  title: Felt Comments Elements API
+  version: '2.0'
+servers:
+- url: https://felt.com
+  variables: {}
+security: []
+tags:
+- description: 'Elements enable you to annotate maps with custom shapes, text, and markers.
+
+
+    With these APIs, you can create, update, and delete map elements.
+
+    '
+  name: Elements
+  x-page-description: APIs for drawing spatially
+  x-page-icon: shapes
+paths:
+  /api/v2/maps/{map_id}/elements/{element_id}:
+    delete:
+      callbacks: {}
+      description: 'Permanently delete an element from a map.
+
+
+        {% hint style="warning" %}
+
+        This action cannot be undone. The element will be permanently removed from the map.
+
+        {% endhint %}
+
+        '
+      operationId: delete_map_element
+      parameters:
+      - description: The ID of the map to delete the element from.
+        in: path
+        name: map_id
+        required: true
+        schema:
+          type: string
+      - description: The ID of the element to delete.
+        in: path
+        name: element_id
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: No Content
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'
+          description: UnauthorizedError
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'
+          description: UnauthorizedError
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundError'
+          description: NotFoundError
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JsonErrorResponse'
+          description: Unprocessable Entity
+        '429':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JsonErrorResponse'
+          description: Unprocessable Entity
+        '500':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerError'
+          description: InternalServerError
+      security:
+      - bearerAuth: []
+      summary: Delete map element
+      tags:
+      - Elements
+  /api/v2/maps/{map_id}/elements:
+    get:
+      callbacks: {}
+      description: Returns a GeoJSON `FeatureCollection` containing all the elements in a map that are not in an element group.
+      operationId: list_map_elements
+      parameters:
+      - description: The ID of the map to list elements from.
+        in: path
+        name: map_id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GeoJSON'
+          description: GeoJSON
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'
+          description: UnauthorizedError
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'
+          description: UnauthorizedError
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundError'
+          description: NotFoundError
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JsonErrorResponse'
+          description: Unprocessable Entity
+        '429':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JsonErrorResponse'
+          description: Unprocessable Entity
+        '500':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerError'
+          description: InternalServerError
+      security:
+      - bearerAuth: []
+      summary: List map elements
+      tags:
+      - Elements
+      x-sort-order: 0
+    post:
+      callbacks: {}
+      description: 'Create new elements or update existing ones on a map using GeoJSON data.
+
+        Each element is represented by a feature in the `POST`''ed GeoJSON Feature Collection.
+
+        For each feature, including an existing element `id` will result in the element being updated on the map. If no element `id` is provided (or a non-existent one), a new element will be created.
+
+
+        {% hint style="info" %}
+
+        The maximum payload size for any `POST` to the Felt API is 1MB. Additionally, complex element geometry may be automatically simplified. If you require large, complex geometries, consider uploading your data as a Data Layer.&#x20;
+
+        {% endhint %}
+
+        '
+      operationId: upsert_map_elements
+      parameters:
+      - description: The ID of the map to create the elements in
+        in: path
+        name: map_id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GeoJSON'
+        description: Upsert element parameters
+        required: false
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GeoJSON'
+          description: GeoJSON
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'
+          description: UnauthorizedError
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'
+          description: UnauthorizedError
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundError'
+          description: NotFoundError
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JsonErrorResponse'
+          description: Unprocessable Entity
+        '429':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JsonErrorResponse'
+          description: Unprocessable Entity
+        '500':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerError'
+          description: InternalServerError
+      security:
+      - bearerAuth: []
+      summary: Create or update map elements
+      tags:
+      - Elements
+  /api/v2/maps/{map_id}/element_groups/{group_id}:
+    get:
+      callbacks: {}
+      description: Retrieve all elements from a specific group as GeoJSON.
+      operationId: show_map_element_group
+      parameters:
+      - description: The ID of the map.
+        in: path
+        name: map_id
+        required: true
+        schema:
+          type: string
+      - description: The ID of the element group.
+        in: path
+        name: group_id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GeoJSON'
+          description: GeoJSON
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'
+          description: UnauthorizedError
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'
+          description: UnauthorizedError
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundError'
+          description: NotFoundError
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JsonErrorResponse'
+          description: Unprocessable Entity
+        '429':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JsonErrorResponse'
+          description: Unprocessable Entity
+        '500':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerError'
+          description: InternalServerError
+      security:
+      - bearerAuth: []
+      summary: Get map element group
+      tags:
+      - Elements
+  /api/v2/maps/{map_id}/element_groups:
+    get:
+      callbacks: {}
+      description: Returns a list of GeoJSON `FeatureCollection`s, one for each element group in the map.
+      operationId: list_map_element_groups
+      parameters:
+      - description: The ID of the map to list groups from.
+        in: path
+        name: map_id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ElementGroupList'
+          description: ElementGroupList
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'
+          description: UnauthorizedError
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'
+          description: UnauthorizedError
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundError'
+          description: NotFoundError
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JsonErrorResponse'
+          description: Unprocessable Entity
+        '429':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JsonErrorResponse'
+          description: Unprocessable Entity
+        '500':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerError'
+          description: InternalServerError
+      security:
+      - bearerAuth: []
+      summary: List map element groups
+      tags:
+      - Elements
+    post:
+      callbacks: {}
+      description: 'Create new element groups or update existing ones.
+
+
+        For each Element Group, including an existing Element Group `id` will result in the Element Group being updated. If no `id` is provided, a new Element Group will be created.
+
+
+
+        {% hint style="info" %}
+
+        The maximum payload size for any `POST` to the Felt API is 1MB. Additionally, complex element geometry may be automatically simplified. If you require large, complex geometries, consider uploading your data as a Data Layer.&#x20;
+
+        {% endhint %}
+
+        '
+      operationId: upsert_map_element_groups
+      parameters:
+      - description: The ID of the map to create the group in
+        in: path
+        name: map_id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ElementGroupParamsList'
+        description: Upsert element groups parameters
+        required: false
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ElementGroupList'
+          description: Element group list
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'
+          description: UnauthorizedError
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'
+          description: UnauthorizedError
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundError'
+          description: NotFoundError
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JsonErrorResponse'
+          description: Unprocessable Entity
+        '429':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JsonErrorResponse'
+          description: Unprocessable Entity
+        '500':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerError'
+          description: InternalServerError
+      security:
+      - bearerAuth: []
+      summary: Create or update map element groups
+      tags:
+      - Elements
+components:
+  schemas:
+    GeoJSON:
+      properties:
+        features:
+          items:
+            properties:
+              geometry:
+                properties:
+                  felt:id:
+                    $ref: '#/components/schemas/FeltID'
+                  felt:parentId:
+                    example: luCHyMruTQ6ozGk3gPJfEB
+                    format: felt_id
+                    nullable: true
+                    type: string
+                type: object
+              properties:
+                type: object
+              type:
+                enum:
+                - Feature
+                type: string
+            type: object
+          type: array
+        type:
+          enum:
+          - FeatureCollection
+          type: string
+      required:
+      - type
+      - features
+      title: GeoJSON
+      type: object
+    FeltID:
+      example: luCHyMruTQ6ozGk3gPJfEB
+      format: felt_id
+      nullable: false
+      title: FeltID
+      type: string
+    ElementGroupParams:
+      additionalProperties: false
+      properties:
+        color:
+          default: '#C93535'
+          type: string
+        id:
+          $ref: '#/components/schemas/FeltID'
+        name:
+          example: My Element Group
+          type: string
+        symbol:
+          default: dot
+          type: string
+      required:
+      - name
+      title: ElementGroupParams
+      type: object
+    InternalServerError:
+      properties:
+        errors:
+          items:
+            properties:
+              detail:
+                type: string
+              source:
+                properties:
+                  parameter:
+                    type: string
+                type: object
+              title:
+                type: string
+            type: object
+          type: array
+      title: InternalServerError
+      type: object
+    UnauthorizedError:
+      properties:
+        errors:
+          items:
+            properties:
+              detail:
+                type: string
+              source:
+                properties:
+                  header:
+                    enum:
+                    - authorization
+                    type: string
+                type: object
+              title:
+                type: string
+            type: object
+          type: array
+      title: UnauthorizedError
+      type: object
+    ElementGroupList:
+      items:
+        $ref: '#/components/schemas/ElementGroup'
+      title: ElementGroupList
+      type: array
+    ElementGroup:
+      additionalProperties: false
+      properties:
+        color:
+          description: The color of the element group symbol.
+          nullable: false
+          type: string
+        elements:
+          $ref: '#/components/schemas/GeoJSON'
+        id:
+          description: The ID of the element group.
+          type: string
+        name:
+          description: The name of the element group.
+          nullable: true
+          type: string
+        symbol:
+          description: The symbol used to represent the element group.
+          nullable: true
+          type: string
+      required:
+      - id
+      - color
+      - name
+      - symbol
+      - elements
+      title: ElementGroup
+      type: object
+    NotFoundError:
+      properties:
+        errors:
+          items:
+            properties:
+              detail:
+                type: string
+              source:
+                properties:
+                  parameter:
+                    type: string
+                type: object
+              title:
+                type: string
+            type: object
+          type: array
+      title: NotFoundError
+      type: object
+    ElementGroupParamsList:
+      items:
+        $ref: '#/components/schemas/ElementGroupParams'
+      title: ElementGroupParamsList
+      type: array
+    JsonErrorResponse:
+      properties:
+        errors:
+          items:
+            properties:
+              detail:
+                example: null value where string expected
+                type: string
+              source:
+                properties:
+                  pointer:
+                    example: /data/attributes/petName
+                    type: string
+                required:
+                - pointer
+                type: object
+              title:
+                example: Invalid value
+                type: string
+            required:
+            - title
+            - source
+            - detail
+            type: object
+          type: array
+      required:
+      - errors
+      title: JsonErrorResponse
+      type: object
+  securitySchemes:
+    bearerAuth:
+      bearerFormat: YOUR_API_KEY
+      scheme: bearer
+      type: http

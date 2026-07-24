@@ -1,0 +1,182 @@
+openapi: 3.0.0
+info:
+  description: Felt REST API v2.0
+  title: Felt Comments Users API
+  version: '2.0'
+servers:
+- url: https://felt.com
+  variables: {}
+security: []
+tags:
+- description: 'Users represent the people in your workspace.
+
+
+    With these APIs, you can retrieve user profile information.
+
+    '
+  name: Users
+  x-page-description: APIs for user information
+  x-page-icon: user
+paths:
+  /api/v2/user:
+    get:
+      callbacks: {}
+      description: Retrieve profile information and settings for the authenticated user.
+      operationId: show_current_user
+      parameters: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+          description: User
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'
+          description: UnauthorizedError
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'
+          description: UnauthorizedError
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundError'
+          description: NotFoundError
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JsonErrorResponse'
+          description: Unprocessable Entity
+        '429':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JsonErrorResponse'
+          description: Unprocessable Entity
+        '500':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerError'
+          description: InternalServerError
+      security:
+      - bearerAuth: []
+      summary: Get current user
+      tags:
+      - Users
+components:
+  schemas:
+    FeltID:
+      example: luCHyMruTQ6ozGk3gPJfEB
+      format: felt_id
+      nullable: false
+      title: FeltID
+      type: string
+    InternalServerError:
+      properties:
+        errors:
+          items:
+            properties:
+              detail:
+                type: string
+              source:
+                properties:
+                  parameter:
+                    type: string
+                type: object
+              title:
+                type: string
+            type: object
+          type: array
+      title: InternalServerError
+      type: object
+    UnauthorizedError:
+      properties:
+        errors:
+          items:
+            properties:
+              detail:
+                type: string
+              source:
+                properties:
+                  header:
+                    enum:
+                    - authorization
+                    type: string
+                type: object
+              title:
+                type: string
+            type: object
+          type: array
+      title: UnauthorizedError
+      type: object
+    User:
+      properties:
+        email:
+          type: string
+        id:
+          $ref: '#/components/schemas/FeltID'
+        name:
+          type: string
+      title: User
+      type: object
+    NotFoundError:
+      properties:
+        errors:
+          items:
+            properties:
+              detail:
+                type: string
+              source:
+                properties:
+                  parameter:
+                    type: string
+                type: object
+              title:
+                type: string
+            type: object
+          type: array
+      title: NotFoundError
+      type: object
+    JsonErrorResponse:
+      properties:
+        errors:
+          items:
+            properties:
+              detail:
+                example: null value where string expected
+                type: string
+              source:
+                properties:
+                  pointer:
+                    example: /data/attributes/petName
+                    type: string
+                required:
+                - pointer
+                type: object
+              title:
+                example: Invalid value
+                type: string
+            required:
+            - title
+            - source
+            - detail
+            type: object
+          type: array
+      required:
+      - errors
+      title: JsonErrorResponse
+      type: object
+  securitySchemes:
+    bearerAuth:
+      bearerFormat: YOUR_API_KEY
+      scheme: bearer
+      type: http

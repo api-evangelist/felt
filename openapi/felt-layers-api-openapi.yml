@@ -1,0 +1,1247 @@
+openapi: 3.0.0
+info:
+  description: Felt REST API v2.0
+  title: Felt Comments Layers API
+  version: '2.0'
+servers:
+- url: https://felt.com
+  variables: {}
+security: []
+tags:
+- description: 'Layers enable you to visualize, style and interact with your spatial data.
+
+
+    With these APIs, you can upload data, manage layer styling, publish and refresh live data layers.
+
+    '
+  name: Layers
+  x-page-description: APIs to visualize spatial data
+  x-page-icon: layer-group
+paths:
+  /api/v2/maps/{map_id}/layer_groups/{layer_group_id}:
+    delete:
+      callbacks: {}
+      description: 'Permanently remove a layer group and all its contained layers from a map.
+
+
+        {% hint style="warning" %}
+
+        This action cannot be undone. The layer group and all its contained layers will be permanently removed from the map.
+
+        {% endhint %}
+
+        '
+      operationId: delete_map_layer_group
+      parameters:
+      - description: The ID of the map to delete the layer group from
+        in: path
+        name: map_id
+        required: true
+        schema:
+          type: string
+      - description: The ID of the layer group to delete
+        in: path
+        name: layer_group_id
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: No Content
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'
+          description: UnauthorizedError
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'
+          description: UnauthorizedError
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundError'
+          description: NotFoundError
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JsonErrorResponse'
+          description: Unprocessable Entity
+        '429':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JsonErrorResponse'
+          description: Unprocessable Entity
+        '500':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerError'
+          description: InternalServerError
+      security:
+      - bearerAuth: []
+      summary: Delete map layer group
+      tags:
+      - Layers
+    get:
+      callbacks: {}
+      description: Retrieve detailed information about a specific layer group including its layers and configuration.
+      operationId: show_map_layer_group
+      parameters:
+      - description: ''
+        in: path
+        name: map_id
+        required: true
+        schema:
+          type: string
+      - description: ''
+        in: path
+        name: layer_group_id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LayerGroup'
+          description: Layer Group
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'
+          description: UnauthorizedError
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'
+          description: UnauthorizedError
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundError'
+          description: NotFoundError
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JsonErrorResponse'
+          description: Unprocessable Entity
+        '429':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JsonErrorResponse'
+          description: Unprocessable Entity
+        '500':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerError'
+          description: InternalServerError
+      security:
+      - bearerAuth: []
+      summary: Get map layer group
+      tags:
+      - Layers
+    post:
+      callbacks: {}
+      description: Update layer group properties including name, visibility, and organization settings.
+      operationId: update_map_layer_group
+      parameters:
+      - description: ''
+        in: path
+        name: map_id
+        required: true
+        schema:
+          type: string
+      - description: ''
+        in: path
+        name: layer_group_id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LayerGroupUpdateParams'
+        description: LayerGroup parameters
+        required: false
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LayerGroup'
+          description: LayerGroup
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'
+          description: UnauthorizedError
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'
+          description: UnauthorizedError
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundError'
+          description: NotFoundError
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JsonErrorResponse'
+          description: Unprocessable Entity
+        '429':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JsonErrorResponse'
+          description: Unprocessable Entity
+        '500':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerError'
+          description: InternalServerError
+      security:
+      - bearerAuth: []
+      summary: Update map layer group
+      tags:
+      - Layers
+  /api/v2/maps/{map_id}/layers:
+    get:
+      callbacks: {}
+      description: Retrieve all layers from a map, including uploaded files and connected data sources.
+      operationId: list_map_layers
+      parameters:
+      - description: ''
+        in: path
+        name: map_id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LayerList'
+          description: Layers list
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'
+          description: UnauthorizedError
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundError'
+          description: NotFoundError
+        '500':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerError'
+          description: InternalServerError
+      security:
+      - bearerAuth: []
+      summary: List map layers
+      tags:
+      - Layers
+    post:
+      callbacks: {}
+      description: Update layer properties including styling, visibility, grouping, and other configuration options.
+      operationId: update_map_layer
+      parameters:
+      - description: ''
+        in: path
+        name: map_id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LayerUpdateParamsList'
+        description: Layer params list
+        required: false
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LayerList'
+          description: Layer list
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'
+          description: UnauthorizedError
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'
+          description: UnauthorizedError
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundError'
+          description: NotFoundError
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JsonErrorResponse'
+          description: Unprocessable Entity
+        '429':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JsonErrorResponse'
+          description: Unprocessable Entity
+        '500':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerError'
+          description: InternalServerError
+      security:
+      - bearerAuth: []
+      summary: Update map layer
+      tags:
+      - Layers
+  /api/v2/maps/{map_id}/layer_groups:
+    get:
+      callbacks: {}
+      description: Retrieve all layer groups from a map to see how layers are organized.
+      operationId: list_map_layer_groups
+      parameters:
+      - description: ''
+        in: path
+        name: map_id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LayerGroupList'
+          description: Layers Groups
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'
+          description: UnauthorizedError
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'
+          description: UnauthorizedError
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundError'
+          description: NotFoundError
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JsonErrorResponse'
+          description: Unprocessable Entity
+        '429':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JsonErrorResponse'
+          description: Unprocessable Entity
+        '500':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerError'
+          description: InternalServerError
+      security:
+      - bearerAuth: []
+      summary: List map layer groups
+      tags:
+      - Layers
+    post:
+      callbacks: {}
+      description: Update properties for multiple layer groups in a single request for efficient bulk operations.
+      operationId: update_map_layer_groups
+      parameters:
+      - description: ''
+        in: path
+        name: map_id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LayerGroupParamsList'
+        description: LayerGroup parameters list
+        required: false
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LayerGroupList'
+          description: LayerGroup list
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'
+          description: UnauthorizedError
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'
+          description: UnauthorizedError
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundError'
+          description: NotFoundError
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JsonErrorResponse'
+          description: Unprocessable Entity
+        '429':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JsonErrorResponse'
+          description: Unprocessable Entity
+        '500':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerError'
+          description: InternalServerError
+      security:
+      - bearerAuth: []
+      summary: Update map layer groups
+      tags:
+      - Layers
+  /api/v2/maps/{map_id}/layers/{layer_id}/update_style:
+    post:
+      callbacks: {}
+      description: Update the visual styling properties of a layer including colors, symbols, and rendering options.
+      operationId: update_map_layer_style
+      parameters:
+      - description: The ID of the map where the layer is located
+        in: path
+        name: map_id
+        required: true
+        schema:
+          type: string
+      - description: The ID of the layer to update the style of
+        in: path
+        name: layer_id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LayerUpdateStyleParams'
+        description: Layer style parameters
+        required: false
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Layer'
+          description: Layer
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'
+          description: UnauthorizedError
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'
+          description: UnauthorizedError
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundError'
+          description: NotFoundError
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JsonErrorResponse'
+          description: Unprocessable Entity
+        '429':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JsonErrorResponse'
+          description: Unprocessable Entity
+        '500':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerError'
+          description: InternalServerError
+      security:
+      - bearerAuth: []
+      summary: Update layer style
+      tags:
+      - Layers
+  /api/v2/maps/{map_id}/layers/{layer_id}:
+    delete:
+      callbacks: {}
+      description: 'Permanently remove a layer from a map.
+
+
+        {% hint style="warning" %}
+
+        This action cannot be undone. The layer and all its data will be permanently removed from the map.
+
+        {% endhint %}
+
+        '
+      operationId: delete_map_layer
+      parameters:
+      - description: The ID of the map to delete the layer from
+        in: path
+        name: map_id
+        required: true
+        schema:
+          type: string
+      - description: The ID of the layer to delete
+        in: path
+        name: layer_id
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: No Content
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'
+          description: UnauthorizedError
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'
+          description: UnauthorizedError
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundError'
+          description: NotFoundError
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JsonErrorResponse'
+          description: Unprocessable Entity
+        '429':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JsonErrorResponse'
+          description: Unprocessable Entity
+        '500':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerError'
+          description: InternalServerError
+      security:
+      - bearerAuth: []
+      summary: Delete map layer
+      tags:
+      - Layers
+    get:
+      callbacks: {}
+      description: Retrieve detailed information about a specific layer including data source, styling, and configuration.
+      operationId: show_map_layer
+      parameters:
+      - description: ''
+        in: path
+        name: map_id
+        required: true
+        schema:
+          type: string
+      - description: ''
+        in: path
+        name: layer_id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Layer'
+          description: Layer
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'
+          description: UnauthorizedError
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundError'
+          description: NotFoundError
+        '500':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerError'
+          description: InternalServerError
+      security:
+      - bearerAuth: []
+      summary: Get map layer
+      tags:
+      - Layers
+      x-sort-order: 0
+  /api/v2/duplicate_layers:
+    post:
+      callbacks: {}
+      description: Copy layers or layer groups to other maps, preserving styling and configuration.
+      operationId: duplicate_map_layers
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DuplicateLayersParams'
+        description: Duplicate Layers Params
+        required: false
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DuplicateLayersResponse'
+          description: Duplicate Layers Response
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'
+          description: UnauthorizedError
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'
+          description: UnauthorizedError
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundError'
+          description: NotFoundError
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JsonErrorResponse'
+          description: Unprocessable Entity
+        '429':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JsonErrorResponse'
+          description: Unprocessable Entity
+        '500':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerError'
+          description: InternalServerError
+      security:
+      - bearerAuth: []
+      summary: Duplicate map layers
+      tags:
+      - Layers
+components:
+  schemas:
+    LayerGroupParams:
+      additionalProperties: false
+      properties:
+        caption:
+          example: A very interesting group
+          type: string
+        id:
+          $ref: '#/components/schemas/FeltID'
+        legend_visibility:
+          description: Controls how the layer group is displayed in the legend
+          enum:
+          - hide
+          - show
+          type: string
+        name:
+          example: My Layer Group
+          type: string
+        ordering_key:
+          type: integer
+        subtitle:
+          deprecated: true
+          description: 'Deprecated: use `caption` instead.'
+          type: string
+        visibility_interaction:
+          description: Controls how the layer group is displayed in the legend. Defaults to `"default"`.
+          enum:
+          - default
+          - slider
+          - select
+          - multi_select
+          nullable: true
+          type: string
+      required:
+      - name
+      title: LayerGroupParams
+      type: object
+    DuplicateLayersParams:
+      items:
+        oneOf:
+        - properties:
+            destination_map_id:
+              $ref: '#/components/schemas/FeltID'
+            source_layer_id:
+              $ref: '#/components/schemas/FeltID'
+          required:
+          - source_layer_id
+          - destination_map_id
+          title: DuplicateLayersParams-Layer
+          type: object
+        - properties:
+            destination_map_id:
+              $ref: '#/components/schemas/FeltID'
+            source_layer_group_id:
+              $ref: '#/components/schemas/FeltID'
+          required:
+          - source_layer_group_id
+          - destination_map_id
+          title: DuplicateLayersParams-LayerGroup
+          type: object
+      title: DuplicateLayersParams
+      type: array
+    FeltID:
+      example: luCHyMruTQ6ozGk3gPJfEB
+      format: felt_id
+      nullable: false
+      title: FeltID
+      type: string
+    LayerGroupParamsList:
+      items:
+        $ref: '#/components/schemas/LayerGroupParams'
+      title: LayerGroupParamsList
+      type: array
+    DuplicateLayersResponse:
+      properties:
+        layer_groups:
+          items:
+            $ref: '#/components/schemas/LayerGroup'
+          type: array
+        layers:
+          items:
+            $ref: '#/components/schemas/Layer'
+          type: array
+      required:
+      - layers
+      - layer_groups
+      title: DuplicateLayersResponse
+      type: object
+    LayerList:
+      items:
+        $ref: '#/components/schemas/Layer'
+      title: LayerList
+      type: array
+    LayerGroupList:
+      items:
+        $ref: '#/components/schemas/LayerGroup'
+      title: LayerGroupList
+      type: array
+    InternalServerError:
+      properties:
+        errors:
+          items:
+            properties:
+              detail:
+                type: string
+              source:
+                properties:
+                  parameter:
+                    type: string
+                type: object
+              title:
+                type: string
+            type: object
+          type: array
+      title: InternalServerError
+      type: object
+    UnauthorizedError:
+      properties:
+        errors:
+          items:
+            properties:
+              detail:
+                type: string
+              source:
+                properties:
+                  header:
+                    enum:
+                    - authorization
+                    type: string
+                type: object
+              title:
+                type: string
+            type: object
+          type: array
+      title: UnauthorizedError
+      type: object
+    LayerUpdateParamsList:
+      items:
+        $ref: '#/components/schemas/LayerUpdateParams'
+      title: LayerUpdateParamsList
+      type: array
+    LayerMetadata:
+      additionalProperties: false
+      properties:
+        attribution_text:
+          nullable: true
+          type: string
+        attribution_url:
+          nullable: true
+          type: string
+        description:
+          nullable: true
+          type: string
+        license:
+          nullable: true
+          type: string
+        source_abbreviation:
+          nullable: true
+          type: string
+        source_name:
+          nullable: true
+          type: string
+        source_url:
+          nullable: true
+          type: string
+        updated_at:
+          example: '2025-03-24'
+          format: date
+          nullable: true
+          type: string
+      title: LayerMetadata
+      type: object
+    LayerGroupUpdateParams:
+      additionalProperties: false
+      properties:
+        caption:
+          example: A very interesting group
+          type: string
+        id:
+          $ref: '#/components/schemas/FeltID'
+        legend_visibility:
+          description: Controls how the layer group is displayed in the legend
+          enum:
+          - hide
+          - show
+          type: string
+        name:
+          example: My Layer Group
+          type: string
+        ordering_key:
+          type: integer
+        subtitle:
+          deprecated: true
+          description: 'Deprecated: use `caption` instead.'
+          type: string
+        visibility_interaction:
+          description: Controls how the layer group is displayed in the legend. Defaults to `"default"`.
+          enum:
+          - default
+          - slider
+          - select
+          - multi_select
+          nullable: true
+          type: string
+      title: LayerGroupUpdateParams
+      type: object
+    Layer:
+      additionalProperties: false
+      properties:
+        attributes:
+          description: List of the attributes on the layer
+          items:
+            properties:
+              name:
+                description: The name of the attribute
+                type: string
+              type:
+                description: The type of the attribute
+                enum:
+                - INTEGER
+                - REAL
+                - TEXT
+                - BOOLEAN
+                - DATE
+                - DATETIME
+                - GEOMETRY
+                type: string
+            required:
+            - name
+            type: object
+          nullable: true
+          type: array
+        caption:
+          nullable: true
+          type: string
+        geometry_type:
+          enum:
+          - Line
+          - Point
+          - Polygon
+          - Raster
+          nullable: true
+          type: string
+        hide_from_legend:
+          nullable: false
+          type: boolean
+        id:
+          $ref: '#/components/schemas/FeltID'
+        is_spreadsheet:
+          nullable: true
+          type: boolean
+        last_refreshed_at:
+          description: ISO 8601 timestamp of when the layer's data was last updated. This includes scheduled refreshes, manual refreshes, and direct feature edits.
+          format: date-time
+          nullable: true
+          type: string
+        legend_display:
+          description: Controls how the layer is displayed in the legend.
+          enum:
+          - default
+          - name_only
+          nullable: true
+          type: string
+        legend_visibility:
+          description: Controls whether or not the layer is displayed in the legend. Defaults to "show".
+          enum:
+          - hide
+          - show
+          nullable: true
+          type: string
+        links:
+          properties:
+            self:
+              example: https://felt.com/api/v2/maps/V0dnOMOuTd9B9BOsL9C0UjmqC/layers/k441enUxQUOnZqc1ZvNsDA
+              type: string
+          type: object
+        metadata:
+          $ref: '#/components/schemas/LayerMetadata'
+        name:
+          nullable: false
+          type: string
+        next_refresh_at:
+          description: ISO 8601 timestamp of when the next scheduled refresh will occur. Null if refresh is disabled or paused.
+          format: date-time
+          nullable: true
+          type: string
+        ordering_key:
+          description: A sort order key used for ordering layers and layer groups in the legend
+          nullable: true
+          type: integer
+        paused_reason:
+          description: Why the layer's refresh is paused. Null when not paused.
+          enum:
+          - consecutive_failures
+          nullable: true
+          type: string
+        progress:
+          format: float
+          nullable: false
+          type: number
+        refresh_period:
+          enum:
+          - 15 min
+          - 30 min
+          - hour
+          - 3 hours
+          - 6 hours
+          - 12 hours
+          - day
+          - week
+          - month
+          - disabled
+          type: string
+        refresh_status:
+          description: Whether scheduled refresh is active, paused (due to failures), or disabled
+          enum:
+          - active
+          - paused
+          - disabled
+          type: string
+        status:
+          enum:
+          - uploading
+          - processing
+          - failed
+          - completed
+          nullable: false
+          type: string
+        style:
+          description: The Felt Style Language style for the layer
+          type: object
+        subtitle:
+          deprecated: true
+          description: 'Deprecated: use `caption` instead.'
+          nullable: true
+          type: string
+        tile_url:
+          description: The tile URL for this layer
+          nullable: true
+          type: string
+        type:
+          enum:
+          - layer
+          type: string
+      required:
+      - id
+      - type
+      - hide_from_legend
+      - status
+      - caption
+      - name
+      - progress
+      - geometry_type
+      - style
+      - refresh_period
+      - refresh_status
+      title: Layer
+      type: object
+    NotFoundError:
+      properties:
+        errors:
+          items:
+            properties:
+              detail:
+                type: string
+              source:
+                properties:
+                  parameter:
+                    type: string
+                type: object
+              title:
+                type: string
+            type: object
+          type: array
+      title: NotFoundError
+      type: object
+    LayerUpdateParams:
+      additionalProperties: false
+      properties:
+        caption:
+          example: A very interesting dataset
+          type: string
+        id:
+          $ref: '#/components/schemas/FeltID'
+        layer_group_id:
+          example: luCHyMruTQ6ozGk3gPJfEB
+          format: felt_id
+          nullable: true
+          type: string
+        legend_display:
+          description: Controls how the layer is displayed in the legend.
+          enum:
+          - default
+          - name_only
+          type: string
+        legend_visibility:
+          description: Controls whether or not the layer is displayed in the legend.
+          enum:
+          - hide
+          - show
+          type: string
+        metadata:
+          $ref: '#/components/schemas/LayerMetadata'
+        name:
+          example: My Layer
+          type: string
+        ordering_key:
+          type: integer
+        refresh_period:
+          enum:
+          - 15 min
+          - 30 min
+          - hour
+          - 3 hours
+          - 6 hours
+          - 12 hours
+          - day
+          - week
+          - month
+          - disabled
+          type: string
+        subtitle:
+          deprecated: true
+          description: 'Deprecated: use `caption` instead.'
+          type: string
+      required:
+      - id
+      title: LayerUpdateParams
+      type: object
+    LayerUpdateStyleParams:
+      properties:
+        style:
+          description: The new layer style, specified in Felt Style Language format
+          type: object
+      required:
+      - style
+      title: LayerUpdateStyleParams
+      type: object
+    JsonErrorResponse:
+      properties:
+        errors:
+          items:
+            properties:
+              detail:
+                example: null value where string expected
+                type: string
+              source:
+                properties:
+                  pointer:
+                    example: /data/attributes/petName
+                    type: string
+                required:
+                - pointer
+                type: object
+              title:
+                example: Invalid value
+                type: string
+            required:
+            - title
+            - source
+            - detail
+            type: object
+          type: array
+      required:
+      - errors
+      title: JsonErrorResponse
+      type: object
+    LayerGroup:
+      additionalProperties: false
+      properties:
+        caption:
+          nullable: true
+          type: string
+        id:
+          $ref: '#/components/schemas/FeltID'
+        layers:
+          items:
+            $ref: '#/components/schemas/Layer'
+          type: array
+        legend_visibility:
+          description: Controls how the layer group is displayed in the legend. Defaults to "show".
+          enum:
+          - hide
+          - show
+          nullable: true
+          type: string
+        links:
+          properties:
+            self:
+              example: https://felt.com/api/v2/maps/V0dnOMOuTd9B9BOsL9C0UjmqC/layer_groups/v13k4Ae9BRjCHHdPP5Fcm6D
+              type: string
+          type: object
+        name:
+          nullable: false
+          type: string
+        ordering_key:
+          description: A sort order key used for ordering layers and layer groups in the legend
+          nullable: false
+          type: integer
+        subtitle:
+          deprecated: true
+          description: 'Deprecated: use `caption` instead.'
+          nullable: true
+          type: string
+        type:
+          enum:
+          - layer_group
+          type: string
+        visibility_interaction:
+          description: Controls how the layer group is displayed in the legend. Defaults to `"default"`.
+          enum:
+          - default
+          - slider
+          - select
+          - multi_select
+          nullable: false
+          type: string
+      required:
+      - id
+      - type
+      - name
+      - caption
+      - visibility_interaction
+      - layers
+      title: LayerGroup
+      type: object
+  securitySchemes:
+    bearerAuth:
+      bearerFormat: YOUR_API_KEY
+      scheme: bearer
+      type: http

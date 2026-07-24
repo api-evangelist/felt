@@ -1,0 +1,2324 @@
+openapi: 3.0.0
+info:
+  description: Felt REST API v2.0
+  title: Felt Comments Sources API
+  version: '2.0'
+servers:
+- url: https://felt.com
+  variables: {}
+security: []
+tags:
+- description: 'Sources connect your databases to Felt.
+
+
+    With these APIs, you can configure data source connections, credentials, and sync settings to create live maps.
+
+    '
+  name: Sources
+  x-page-description: APIs to connect your data
+  x-page-icon: database
+paths:
+  /api/v2/sources/{source_id}/update:
+    post:
+      callbacks: {}
+      description: 'Update data source connection settings, access permissions, or configuration details.
+
+
+        Connecting the Source and inspecting its datasets will happen asynchronously after the API response is returned. To determine when the inspection process has completed, poll the Show Source endpoint and check for `sync_status: completed`.
+
+        '
+      operationId: update_source
+      parameters:
+      - description: The ID of the source to update
+        in: path
+        name: source_id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SourceUpdateParams'
+        description: Source update params
+        required: false
+      responses:
+        '202':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SourceReference'
+          description: Source reference
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'
+          description: UnauthorizedError
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'
+          description: UnauthorizedError
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundError'
+          description: NotFoundError
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JsonErrorResponse'
+          description: Unprocessable Entity
+        '429':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JsonErrorResponse'
+          description: Unprocessable Entity
+        '500':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerError'
+          description: InternalServerError
+      security:
+      - bearerAuth: []
+      summary: Update source
+      tags:
+      - Sources
+  /api/v2/sources:
+    get:
+      callbacks: {}
+      description: Retrieve all data sources accessible to the authenticated user within the workspace.
+      operationId: list_sources
+      parameters:
+      - description: Only needed when using the API as part of a plugin
+        in: query
+        name: workspace_id
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SourceReferenceList'
+          description: Source references
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'
+          description: UnauthorizedError
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'
+          description: UnauthorizedError
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundError'
+          description: NotFoundError
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JsonErrorResponse'
+          description: Unprocessable Entity
+        '429':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JsonErrorResponse'
+          description: Unprocessable Entity
+        '500':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerError'
+          description: InternalServerError
+      security:
+      - bearerAuth: []
+      summary: List sources
+      tags:
+      - Sources
+      x-sort-order: 0
+    post:
+      callbacks: {}
+      description: 'Create a new data source connection with authentication credentials and access permissions.
+
+
+        Connecting the Source and inspecting its datasets will happen asynchronously after the API response is returned. To determine when the inspection process has completed, poll the Show Source endpoint and check for `sync_status: completed`.
+
+        '
+      operationId: create_source
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SourceCreateParams'
+        description: Source create params
+        required: false
+      responses:
+        '202':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SourceReference'
+          description: Source reference
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'
+          description: UnauthorizedError
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'
+          description: UnauthorizedError
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundError'
+          description: NotFoundError
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JsonErrorResponse'
+          description: Unprocessable Entity
+        '429':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JsonErrorResponse'
+          description: Unprocessable Entity
+        '500':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerError'
+          description: InternalServerError
+      security:
+      - bearerAuth: []
+      summary: Create source
+      tags:
+      - Sources
+  /api/v2/sources/{source_id}/sync:
+    post:
+      callbacks: {}
+      description: 'Trigger a full data synchronization from the source to update all connected layers with latest data.
+
+
+        Syncing will happen asynchronously after the API response is returned. To determine when the inspection process has completed, poll the Show Source endpoint and check for `sync_status: completed`.
+
+        '
+      operationId: sync_source
+      parameters:
+      - description: The ID of the source to sync
+        in: path
+        name: source_id
+        required: true
+        schema:
+          type: string
+      responses:
+        '202':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SourceReference'
+          description: Source reference
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'
+          description: UnauthorizedError
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'
+          description: UnauthorizedError
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundError'
+          description: NotFoundError
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JsonErrorResponse'
+          description: Unprocessable Entity
+        '429':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JsonErrorResponse'
+          description: Unprocessable Entity
+        '500':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerError'
+          description: InternalServerError
+      security:
+      - bearerAuth: []
+      summary: Sync source
+      tags:
+      - Sources
+  /api/v2/sources/{source_id}:
+    delete:
+      callbacks: {}
+      description: 'Permanently delete a data source connection and all its associated layers and data.
+
+
+        {% hint style="warning" %}
+
+        Any layers created from the Source will remain after it is deleted, but they will no longer be refreshed.
+
+        {% endhint %}
+
+        '
+      operationId: delete_source
+      parameters:
+      - description: The ID of the source to delete
+        in: path
+        name: source_id
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: No Content
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'
+          description: UnauthorizedError
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'
+          description: UnauthorizedError
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundError'
+          description: NotFoundError
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JsonErrorResponse'
+          description: Unprocessable Entity
+        '429':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JsonErrorResponse'
+          description: Unprocessable Entity
+        '500':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerError'
+          description: InternalServerError
+      security:
+      - bearerAuth: []
+      summary: Delete source
+      tags:
+      - Sources
+    get:
+      callbacks: {}
+      description: Retrieve detailed configuration and connection information for a specific data source.
+      operationId: show_source
+      parameters:
+      - description: The ID of the source to show
+        in: path
+        name: source_id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Source'
+          description: Source
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'
+          description: UnauthorizedError
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'
+          description: UnauthorizedError
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundError'
+          description: NotFoundError
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JsonErrorResponse'
+          description: Unprocessable Entity
+        '429':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JsonErrorResponse'
+          description: Unprocessable Entity
+        '500':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerError'
+          description: InternalServerError
+      security:
+      - bearerAuth: []
+      summary: Get source
+      tags:
+      - Sources
+  /api/v2/sources/{source_id}/credentials:
+    post:
+      callbacks: {}
+      description: 'Add authentication credentials to an existing data source for secure access.
+
+
+        Some sources may need to be configured with additional credentials to work with Felt. Access to S3 Buckets, for example, may be protected by IAM policies. Adding a `SourceCredential-AwsAssumeRole` credential to your S3 Bucket source allows Felt to connect to a private source.
+
+
+        Sensitive fields in credentials, like `SourceCredential-KeyPair.private_key`, will be returned as `felt:redacted`.
+
+        '
+      operationId: create_source_credential
+      parameters:
+      - description: The ID of the source to attach the credential
+        in: path
+        name: source_id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SourceCredentialCreateParams'
+        description: Source create credential params
+        required: false
+      responses:
+        '202':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SourceCredential'
+          description: Source credential created
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'
+          description: UnauthorizedError
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'
+          description: UnauthorizedError
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundError'
+          description: NotFoundError
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JsonErrorResponse'
+          description: Unprocessable Entity
+        '429':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JsonErrorResponse'
+          description: Unprocessable Entity
+        '500':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerError'
+          description: InternalServerError
+      security:
+      - bearerAuth: []
+      summary: Create source credential
+      tags:
+      - Sources
+  /api/v2/sources/{source_id}/credentials/{credential_id}/update:
+    post:
+      callbacks: {}
+      description: 'Update existing authentication credentials for a data source connection.
+
+
+        Sensitive fields in credentials, like `SourceCredential-KeyPair.private_key`, will be returned as `felt:redacted`.
+
+        '
+      operationId: update_source_credential
+      parameters:
+      - description: The ID of the source that the credential belongs to
+        in: path
+        name: source_id
+        required: true
+        schema:
+          type: string
+      - description: The ID of the credential
+        in: path
+        name: credential_id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SourceCredentialUpdateParams'
+        description: Source credential update params
+        required: false
+      responses:
+        '202':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SourceCredential'
+          description: Source credential updated
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'
+          description: UnauthorizedError
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'
+          description: UnauthorizedError
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundError'
+          description: NotFoundError
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JsonErrorResponse'
+          description: Unprocessable Entity
+        '429':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JsonErrorResponse'
+          description: Unprocessable Entity
+        '500':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerError'
+          description: InternalServerError
+      security:
+      - bearerAuth: []
+      summary: Update source credential
+      tags:
+      - Sources
+  /api/v2/sources/{source_id}/credentials/{credential_id}:
+    delete:
+      callbacks: {}
+      description: Remove authentication credentials from a data source connection.
+      operationId: delete_source_credential
+      parameters:
+      - description: The ID of the source that the credential belongs to
+        in: path
+        name: source_id
+        required: true
+        schema:
+          type: string
+      - description: The ID of the credential to delete
+        in: path
+        name: credential_id
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: No Content
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'
+          description: UnauthorizedError
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'
+          description: UnauthorizedError
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundError'
+          description: NotFoundError
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JsonErrorResponse'
+          description: Unprocessable Entity
+        '429':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JsonErrorResponse'
+          description: Unprocessable Entity
+        '500':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerError'
+          description: InternalServerError
+      security:
+      - bearerAuth: []
+      summary: Delete source credential
+      tags:
+      - Sources
+components:
+  schemas:
+    SourceConnection-ABSBucket:
+      additionalProperties: false
+      description: Microsoft Azure Blob Storage
+      properties:
+        blob_storage_url:
+          type: string
+        credentials:
+          items:
+            properties:
+              created_at:
+                nullable: true
+                type: integer
+              credential:
+                oneOf:
+                - $ref: '#/components/schemas/SourceCredential-AzureStorageString'
+                type: object
+              id:
+                $ref: '#/components/schemas/FeltID'
+              name:
+                type: string
+              source_id:
+                $ref: '#/components/schemas/FeltID'
+              updated_at:
+                nullable: true
+                type: integer
+              use_case:
+                enum:
+                - source_authentication
+                type: string
+            type: object
+          type: array
+        type:
+          enum:
+          - abs_bucket
+          type: string
+      title: SourceConnection-ABSBucket
+      type: object
+    SourceCredentialUpdate-SnowflakePAT:
+      additionalProperties: false
+      description: Authenticate to Snowflake with a programmatic access token (PAT)
+      properties:
+        token:
+          type: string
+        type:
+          enum:
+          - snowflake_pat
+          type: string
+      required:
+      - type
+      title: SourceCredentialUpdate-SnowflakePAT
+      type: object
+    SourceConnection-STAC:
+      additionalProperties: false
+      description: SpatioTemporal Asset Catalogs
+      properties:
+        credentials:
+          items:
+            properties:
+              created_at:
+                nullable: true
+                type: integer
+              credential:
+                oneOf:
+                - $ref: '#/components/schemas/SourceCredential-GcpServiceAccountJson'
+                - $ref: '#/components/schemas/SourceCredential-AzureStorageString'
+                - $ref: '#/components/schemas/SourceCredential-AwsAssumeRole'
+                - $ref: '#/components/schemas/SourceCredential-CustomHeaders'
+                type: object
+              id:
+                $ref: '#/components/schemas/FeltID'
+              name:
+                type: string
+              source_id:
+                $ref: '#/components/schemas/FeltID'
+              updated_at:
+                nullable: true
+                type: integer
+              use_case:
+                enum:
+                - stac_api_authentication
+                - stac_asset_fetching
+                type: string
+            type: object
+          type: array
+        type:
+          enum:
+          - stac
+          type: string
+        url:
+          type: string
+      title: SourceConnection-STAC
+      type: object
+    FeltID:
+      example: luCHyMruTQ6ozGk3gPJfEB
+      format: felt_id
+      nullable: false
+      title: FeltID
+      type: string
+    SourceCredential-CustomHeaders:
+      additionalProperties: false
+      description: Authenticate to an API using headers
+      properties:
+        headers:
+          items:
+            properties:
+              name:
+                description: The header name
+                type: string
+              sensitive:
+                description: Whether or not the header is sensitive. If it is marked as sensitive, then `felt:redacted` will be returned when viewing this header
+                type: boolean
+              value:
+                description: The header value
+                type: string
+            required:
+            - name
+            - value
+            - sensitive
+            type: object
+          type: array
+        type:
+          enum:
+          - custom_headers
+          type: string
+      required:
+      - type
+      - headers
+      title: SourceCredential-CustomHeaders
+      type: object
+    SourceConnection-Postgres:
+      additionalProperties: false
+      description: Postgres / PostGIS
+      properties:
+        database:
+          type: string
+        host:
+          type: string
+        port:
+          nullable: true
+          type: integer
+        schema:
+          nullable: true
+          type: string
+        type:
+          enum:
+          - postgresql
+          type: string
+        user:
+          type: string
+      title: SourceConnection-Postgres
+      type: object
+    SourceCredential-SnowflakePAT:
+      additionalProperties: false
+      description: Authenticate to Snowflake with a programmatic access token (PAT)
+      properties:
+        token:
+          type: string
+        type:
+          enum:
+          - snowflake_pat
+          type: string
+      required:
+      - type
+      - token
+      title: SourceCredential-SnowflakePAT
+      type: object
+    SourceConnection-Databricks:
+      additionalProperties: false
+      properties:
+        catalog:
+          nullable: true
+          type: string
+        credentials:
+          items:
+            properties:
+              created_at:
+                nullable: true
+                type: integer
+              credential:
+                oneOf:
+                - $ref: '#/components/schemas/SourceCredential-OAuthM2M'
+                - $ref: '#/components/schemas/SourceCredential-DatabricksPAT'
+                type: object
+              id:
+                $ref: '#/components/schemas/FeltID'
+              name:
+                type: string
+              source_id:
+                $ref: '#/components/schemas/FeltID'
+              updated_at:
+                nullable: true
+                type: integer
+              use_case:
+                enum:
+                - source_authentication
+                type: string
+            type: object
+          type: array
+        http_path:
+          type: string
+        schema:
+          nullable: true
+          type: string
+        server_hostname:
+          type: string
+        type:
+          enum:
+          - databricks
+          type: string
+      title: SourceConnection-Databricks
+      type: object
+    SourceCreateParams:
+      additionalProperties: false
+      properties:
+        connection:
+          $ref: '#/components/schemas/SourceCreateConnectionParams'
+        name:
+          type: string
+        permissions:
+          $ref: '#/components/schemas/SourcePermissions'
+      required:
+      - name
+      - connection
+      title: SourceCreateParams
+      type: object
+    SourceConnection-GCSBucket:
+      additionalProperties: false
+      description: Google Cloud Storage
+      properties:
+        credentials:
+          items:
+            properties:
+              created_at:
+                nullable: true
+                type: integer
+              credential:
+                oneOf:
+                - $ref: '#/components/schemas/SourceCredential-GcpServiceAccountJson'
+                type: object
+              id:
+                $ref: '#/components/schemas/FeltID'
+              name:
+                type: string
+              source_id:
+                $ref: '#/components/schemas/FeltID'
+              updated_at:
+                nullable: true
+                type: integer
+              use_case:
+                enum:
+                - source_authentication
+                type: string
+            type: object
+          type: array
+        gs_uri:
+          type: string
+        type:
+          enum:
+          - gcs_bucket
+          type: string
+      title: SourceConnection-GCSBucket
+      type: object
+    Source:
+      additionalProperties: false
+      properties:
+        automatic_sync:
+          enum:
+          - enabled
+          - paused
+          type: string
+        connection:
+          nullable: true
+          oneOf:
+          - $ref: '#/components/schemas/SourceConnection-ABSBucket'
+          - $ref: '#/components/schemas/SourceConnection-Google-BigQuery'
+          - $ref: '#/components/schemas/SourceConnection-Databricks'
+          - $ref: '#/components/schemas/SourceConnection-ESRI-FeatureServer'
+          - $ref: '#/components/schemas/SourceConnection-GCSBucket'
+          - $ref: '#/components/schemas/SourceConnection-Microsoft-SQL'
+          - $ref: '#/components/schemas/SourceConnection-Postgres'
+          - $ref: '#/components/schemas/SourceConnection-Amazon-Redshift'
+          - $ref: '#/components/schemas/SourceConnection-S3Bucket'
+          - $ref: '#/components/schemas/SourceConnection-Snowflake'
+          - $ref: '#/components/schemas/SourceConnection-STAC'
+          - $ref: '#/components/schemas/SourceConnection-WFS'
+          - $ref: '#/components/schemas/SourceConnection-WMS-WMTS'
+        created_at:
+          nullable: true
+          type: integer
+        datasets:
+          items:
+            $ref: '#/components/schemas/SourceDataset'
+          type: array
+        id:
+          $ref: '#/components/schemas/FeltID'
+        last_synced_at:
+          nullable: true
+          type: integer
+        name:
+          type: string
+        owner_id:
+          $ref: '#/components/schemas/FeltID'
+        permissions:
+          $ref: '#/components/schemas/SourcePermissions'
+        sync_status:
+          enum:
+          - syncing
+          - completed
+          - failed
+          type: string
+        type:
+          enum:
+          - source
+          type: string
+        updated_at:
+          nullable: true
+          type: integer
+        workspace_id:
+          $ref: '#/components/schemas/FeltID'
+      title: Source
+      type: object
+    SourceCredential-AzureStorageString:
+      additionalProperties: false
+      description: Authenticate to Azure Blob Storage
+      properties:
+        connection_string:
+          type: string
+        type:
+          enum:
+          - azure_storage_connection_string
+          type: string
+      required:
+      - type
+      - connection_string
+      title: SourceCredential-AzureStorageString
+      type: object
+    InternalServerError:
+      properties:
+        errors:
+          items:
+            properties:
+              detail:
+                type: string
+              source:
+                properties:
+                  parameter:
+                    type: string
+                type: object
+              title:
+                type: string
+            type: object
+          type: array
+      title: InternalServerError
+      type: object
+    UnauthorizedError:
+      properties:
+        errors:
+          items:
+            properties:
+              detail:
+                type: string
+              source:
+                properties:
+                  header:
+                    enum:
+                    - authorization
+                    type: string
+                type: object
+              title:
+                type: string
+            type: object
+          type: array
+      title: UnauthorizedError
+      type: object
+    SourceCredentialUpdateParams:
+      additionalProperties: false
+      properties:
+        credential:
+          oneOf:
+          - $ref: '#/components/schemas/SourceCredentialUpdate-AwsAssumeRole'
+          - $ref: '#/components/schemas/SourceCredentialUpdate-AzureStorageString'
+          - $ref: '#/components/schemas/SourceCredentialUpdate-CustomHeaders'
+          - $ref: '#/components/schemas/SourceCredentialUpdate-GcpServiceAccountJson'
+          - $ref: '#/components/schemas/SourceCredentialUpdate-KeyPair'
+          - $ref: '#/components/schemas/SourceCredentialUpdate-SnowflakePAT'
+          type: object
+        name:
+          type: string
+        use_case:
+          enum:
+          - stac_api_authentication
+          - stac_asset_fetching
+          - source_authentication
+          type: string
+      title: SourceCredentialUpdateParams
+      type: object
+    SourceConnection-Amazon-Redshift:
+      additionalProperties: false
+      properties:
+        database:
+          type: string
+        host:
+          type: string
+        port:
+          nullable: true
+          type: integer
+        type:
+          enum:
+          - redshift
+          type: string
+        user:
+          type: string
+      title: SourceConnection-Amazon-Redshift
+      type: object
+    SourceCredentialCreateParams:
+      additionalProperties: false
+      properties:
+        credential:
+          oneOf:
+          - $ref: '#/components/schemas/SourceCredential-AwsAssumeRole'
+          - $ref: '#/components/schemas/SourceCredential-AzureStorageString'
+          - $ref: '#/components/schemas/SourceCredential-CustomHeaders'
+          - $ref: '#/components/schemas/SourceCredential-GcpServiceAccountJson'
+          - $ref: '#/components/schemas/SourceCredential-KeyPair'
+          - $ref: '#/components/schemas/SourceCredential-SnowflakePAT'
+          type: object
+        name:
+          type: string
+        use_case:
+          enum:
+          - stac_api_authentication
+          - stac_asset_fetching
+          - source_authentication
+          type: string
+      required:
+      - name
+      - use_case
+      - credential
+      title: SourceCredentialCreateParams
+      type: object
+    SourceUpdateConnectionParams:
+      oneOf:
+      - additionalProperties: false
+        properties:
+          blob_storage_url:
+            description: ABS blob storage URL
+            type: string
+          type:
+            enum:
+            - abs_bucket
+            type: string
+        required:
+        - type
+        title: SourceUpdateConnectionParams-ABS
+        type: object
+      - additionalProperties: false
+        properties:
+          base64_encoded_service_account:
+            description: BigQuery credentials - Base 64 encoded Service account JSON
+            nullable: true
+            type: string
+          dataset:
+            description: BigQuery dataset
+            nullable: true
+            type: string
+          project:
+            description: BigQuery project
+            type: string
+          type:
+            enum:
+            - bigquery
+            type: string
+        required:
+        - type
+        title: SourceUpdateConnectionParams-GoogleBigQuery
+        type: object
+      - additionalProperties: false
+        properties:
+          catalog:
+            description: Databricks catalog
+            nullable: true
+            type: string
+          http_path:
+            description: Databricks server HTTP path
+            type: string
+          schema:
+            description: Databricks schema
+            nullable: true
+            type: string
+          server_hostname:
+            description: Databricks server hostname
+            type: string
+          type:
+            enum:
+            - databricks
+            type: string
+        required:
+        - type
+        title: SourceUpdateConnectionParams-Databricks
+        type: object
+      - additionalProperties: false
+        properties:
+          token:
+            description: Feature Server token
+            nullable: true
+            type: string
+          type:
+            enum:
+            - feature_server
+            type: string
+          url:
+            description: Feature Server URL
+            type: string
+        required:
+        - type
+        title: SourceUpdateConnectionParams-ESRIFeatureServer
+        type: object
+      - additionalProperties: false
+        properties:
+          gs_uri:
+            description: GCS URI
+            type: string
+          type:
+            enum:
+            - gcs_bucket
+            type: string
+        required:
+        - type
+        title: SourceUpdateConnectionParams-GCS
+        type: object
+      - additionalProperties: false
+        properties:
+          database:
+            description: MSSQL database name
+            type: string
+          host:
+            description: MSSQL host
+            type: string
+          password:
+            description: MSSQL password
+            type: string
+          port:
+            description: MSSQL port
+            nullable: true
+            type: integer
+          type:
+            enum:
+            - mssql
+            type: string
+          user:
+            description: MSSQL user name
+            type: string
+        required:
+        - type
+        title: SourceUpdateConnectionParams-MicrosoftSQL
+        type: object
+      - additionalProperties: false
+        description: Postgres / PostGIS
+        properties:
+          database:
+            description: Postgres database name
+            type: string
+          host:
+            description: Postgres host
+            type: string
+          password:
+            description: Postgres password
+            type: string
+          port:
+            description: Postgres port
+            nullable: true
+            type: integer
+          schema:
+            description: Postgres schema
+            type: string
+          type:
+            enum:
+            - postgresql
+            type: string
+          user:
+            description: Postgres user name
+            type: string
+        required:
+        - type
+        title: SourceUpdateConnectionParams-Postgres
+        type: object
+      - additionalProperties: false
+        properties:
+          database:
+            description: Redshift database name
+            type: string
+          host:
+            description: Redshift host
+            type: string
+          password:
+            description: Redshift password
+            type: string
+          port:
+            description: Redshift port
+            nullable: true
+            type: integer
+          type:
+            enum:
+            - redshift
+            type: string
+          user:
+            description: Redshift user name
+            type: string
+        required:
+        - type
+        title: SourceUpdateConnectionParams-AmazonRedshift
+        type: object
+      - additionalProperties: false
+        properties:
+          s3_uri:
+            description: S3 URI
+            type: string
+          type:
+            enum:
+            - s3_bucket
+            type: string
+        required:
+        - type
+        title: SourceUpdateConnectionParams-S3
+        type: object
+      - additionalProperties: false
+        properties:
+          account_id:
+            description: Snowflake account ID
+            type: string
+          database:
+            description: Snowflake database name
+            type: string
+          password:
+            description: Snowflake password
+            type: string
+          role:
+            description: Snowflake role
+            nullable: true
+            type: string
+          schema:
+            description: Snowflake database schema
+            nullable: true
+            type: string
+          type:
+            enum:
+            - snowflake
+            type: string
+          user:
+            description: Snowflake user name
+            type: string
+          warehouse:
+            description: Snowflake warehouse
+            nullable: true
+            type: string
+        required:
+        - type
+        title: SourceUpdateConnectionParams-Snowflake
+        type: object
+      - additionalProperties: false
+        description: SpatioTemporal Asset Catalogs
+        properties:
+          token:
+            description: STAC token
+            nullable: true
+            type: string
+          type:
+            enum:
+            - stac
+            type: string
+          url:
+            description: STAC server / asset URL
+            type: string
+        required:
+        - type
+        title: SourceUpdateConnectionParams-STAC
+        type: object
+      - additionalProperties: false
+        description: Web Feature Server
+        properties:
+          type:
+            enum:
+            - wfs
+            type: string
+          url:
+            description: WFS URL
+            type: string
+        required:
+        - type
+        title: SourceUpdateConnectionParams-WFS
+        type: object
+      - additionalProperties: false
+        description: Web Map Service / Web Map Tile Service
+        properties:
+          type:
+            enum:
+            - wms_wmts
+            type: string
+          url:
+            description: WMS/WMTS URL
+            type: string
+        required:
+        - type
+        title: SourceUpdateConnectionParams-WMS-WMTS
+        type: object
+      title: SourceUpdateConnectionParams
+    SourceConnection-ESRI-FeatureServer:
+      additionalProperties: false
+      properties:
+        type:
+          enum:
+          - feature_server
+          type: string
+        url:
+          type: string
+      title: SourceConnection-ESRI-FeatureServer
+      type: object
+    SourcePermissions:
+      oneOf:
+      - additionalProperties: false
+        properties:
+          type:
+            enum:
+            - workspace_editors
+            type: string
+        required:
+        - type
+        title: SourcePermissions-WorkspaceEditors
+        type: object
+      - additionalProperties: false
+        properties:
+          type:
+            enum:
+            - source_owner
+            type: string
+        required:
+        - type
+        title: SourcePermissions-SourceOwner
+        type: object
+      - additionalProperties: false
+        properties:
+          project_ids:
+            items:
+              $ref: '#/components/schemas/FeltID'
+            type: array
+          type:
+            enum:
+            - project_editors
+            type: string
+        required:
+        - type
+        - project_ids
+        title: SourcePermissions-ProjectEditors
+        type: object
+      title: SourcePermissions
+    SourceConnection-WFS:
+      additionalProperties: false
+      description: Web Feature Server
+      properties:
+        type:
+          enum:
+          - wfs
+          type: string
+        url:
+          type: string
+      title: SourceConnection-WFS
+      type: object
+    SourceConnection-Google-BigQuery:
+      additionalProperties: false
+      properties:
+        dataset:
+          description: BigQuery dataset to index. If omitted all datasets will be indexed
+          nullable: true
+          type: string
+        project:
+          description: BigQuery project to index
+          type: string
+        type:
+          enum:
+          - bigquery
+          type: string
+      title: SourceConnection-Google-BigQuery
+      type: object
+    SourceCredential-DatabricksPAT:
+      additionalProperties: false
+      description: Authenticate to Databricks using a Personal Access Token (PAT)
+      properties:
+        token:
+          type: string
+        type:
+          enum:
+          - databricks_pat
+          type: string
+      required:
+      - type
+      - token
+      title: SourceCredential-DatabricksPAT
+      type: object
+    JsonErrorResponse:
+      properties:
+        errors:
+          items:
+            properties:
+              detail:
+                example: null value where string expected
+                type: string
+              source:
+                properties:
+                  pointer:
+                    example: /data/attributes/petName
+                    type: string
+                required:
+                - pointer
+                type: object
+              title:
+                example: Invalid value
+                type: string
+            required:
+            - title
+            - source
+            - detail
+            type: object
+          type: array
+      required:
+      - errors
+      title: JsonErrorResponse
+      type: object
+    SourceCredential-KeyPair:
+      additionalProperties: false
+      description: Authenticate using key pair authentication
+      properties:
+        private_key:
+          type: string
+        private_key_name:
+          type: string
+        private_key_passphrase:
+          type: string
+        type:
+          enum:
+          - key_pair
+          type: string
+      required:
+      - type
+      - private_key
+      - private_key_name
+      title: SourceCredential-KeyPair
+      type: object
+    SourceCreateConnectionParams:
+      oneOf:
+      - additionalProperties: false
+        properties:
+          blob_storage_url:
+            description: ABS blob storage URL
+            type: string
+          credentials:
+            items:
+              properties:
+                credential:
+                  $ref: '#/components/schemas/SourceCredential-AzureStorageString'
+                name:
+                  type: string
+                use_case:
+                  enum:
+                  - source_authentication
+                  type: string
+              required:
+              - credential
+              - use_case
+              - name
+              type: object
+            maxItems: 1
+            type: array
+          type:
+            enum:
+            - abs_bucket
+            type: string
+        required:
+        - type
+        - blob_storage_url
+        title: SourceCreateConnectionParams-ABS
+        type: object
+      - additionalProperties: false
+        properties:
+          base64_encoded_service_account:
+            description: BigQuery credentials - Base 64 encoded Service account JSON
+            nullable: true
+            type: string
+          dataset:
+            description: BigQuery dataset
+            nullable: true
+            type: string
+          project:
+            description: BigQuery project
+            type: string
+          type:
+            enum:
+            - bigquery
+            type: string
+        required:
+        - type
+        - project
+        title: SourceCreateConnectionParams-GoogleBigQuery
+        type: object
+      - additionalProperties: false
+        properties:
+          catalog:
+            description: Databricks catalog
+            nullable: true
+            type: string
+          credentials:
+            items:
+              properties:
+                credential:
+                  oneOf:
+                  - $ref: '#/components/schemas/SourceCredential-DatabricksPAT'
+                  - $ref: '#/components/schemas/SourceCredential-OAuthM2M'
+                  type: object
+                name:
+                  type: string
+                use_case:
+                  enum:
+                  - source_authentication
+                  type: string
+              required:
+              - credential
+              - use_case
+              - name
+              type: object
+            maxItems: 1
+            type: array
+          http_path:
+            description: Databricks server HTTP path
+            type: string
+          schema:
+            description: Databricks schema
+            nullable: true
+            type: string
+          server_hostname:
+            description: Databricks server hostname
+            type: string
+          type:
+            enum:
+            - databricks
+            type: string
+        required:
+        - type
+        - server_hostname
+        - http_path
+        title: SourceCreateConnectionParams-Databricks
+        type: object
+      - additionalProperties: false
+        properties:
+          token:
+            description: Feature Server token
+            nullable: true
+            type: string
+          type:
+            enum:
+            - feature_server
+            type: string
+          url:
+            description: Feature Server URL
+            type: string
+        required:
+        - type
+        - url
+        title: SourceCreateConnectionParams-ESRIFeatureServer
+        type: object
+      - additionalProperties: false
+        properties:
+          credentials:
+            items:
+              properties:
+                credential:
+                  $ref: '#/components/schemas/SourceCredential-GcpServiceAccountJson'
+                name:
+                  type: string
+                use_case:
+                  enum:
+                  - source_authentication
+                  type: string
+              required:
+              - credential
+              - use_case
+              - name
+              type: object
+            maxItems: 1
+            type: array
+          gs_uri:
+            description: GCS URI
+            type: string
+          type:
+            enum:
+            - gcs_bucket
+            type: string
+        required:
+        - type
+        - gs_uri
+        title: SourceCreateConnectionParams-GCS
+        type: object
+      - additionalProperties: false
+        properties:
+          database:
+            description: MSSQL database name
+            type: string
+          host:
+            description: MSSQL host
+            type: string
+          password:
+            description: MSSQL password
+            type: string
+          port:
+            description: MSSQL port
+            nullable: true
+            type: integer
+          type:
+            enum:
+            - mssql
+            type: string
+          user:
+            description: MSSQL user name
+            type: string
+        required:
+        - type
+        - host
+        - database
+        - user
+        - password
+        title: SourceCreateConnectionParams-MicrosoftSQL
+        type: object
+      - additionalProperties: false
+        description: Postgres / PostGIS
+        properties:
+          database:
+            description: Postgres database name
+            type: string
+          host:
+            description: Postgres host
+            type: string
+          password:
+            description: Postgres password
+            type: string
+          port:
+            description: Postgres port
+            nullable: true
+            type: integer
+          schema:
+            description: Postgres schema
+            type: string
+          type:
+            enum:
+            - postgresql
+            type: string
+          user:
+            description: Postgres user name
+            type: string
+        required:
+        - type
+        - host
+        - database
+        - user
+        - password
+        title: SourceCreateConnectionParams-Postgres
+        type: object
+      - additionalProperties: false
+        properties:
+          database:
+            description: Redshift database name
+            type: string
+          host:
+            description: Redshift host
+            type: string
+          password:
+            description: Redshift password
+            type: string
+          port:
+            description: Redshift port
+            nullable: true
+            type: integer
+          type:
+            enum:
+            - redshift
+            type: string
+          user:
+            description: Redshift user name
+            type: string
+        required:
+        - type
+        - host
+        - database
+        - user
+        - password
+        title: SourceCreateConnectionParams-AmazonRedshift
+        type: object
+      - additionalProperties: false
+        properties:
+          credentials:
+            items:
+              properties:
+                credential:
+                  $ref: '#/components/schemas/SourceCredential-AwsAssumeRole'
+                name:
+                  type: string
+                use_case:
+                  enum:
+                  - source_authentication
+                  type: string
+              required:
+              - credential
+              - use_case
+              - name
+              type: object
+            maxItems: 1
+            type: array
+          s3_uri:
+            description: S3 URI
+            type: string
+          type:
+            enum:
+            - s3_bucket
+            type: string
+        required:
+        - type
+        - s3_uri
+        title: SourceCreateConnectionParams-S3
+        type: object
+      - additionalProperties: false
+        properties:
+          account_id:
+            description: Snowflake account ID
+            type: string
+          credentials:
+            items:
+              properties:
+                credential:
+                  oneOf:
+                  - $ref: '#/components/schemas/SourceCredential-KeyPair'
+                  - $ref: '#/components/schemas/SourceCredential-SnowflakePAT'
+                  type: object
+                name:
+                  type: string
+                use_case:
+                  enum:
+                  - source_authentication
+                  type: string
+              required:
+              - credential
+              - use_case
+              - name
+              type: object
+            maxItems: 1
+            type: array
+          database:
+            description: Snowflake database name
+            type: string
+          password:
+            description: Snowflake password
+            type: string
+          role:
+            description: Snowflake role
+            nullable: true
+            type: string
+          schema:
+            description: Snowflake database schema
+            nullable: true
+            type: string
+          type:
+            enum:
+            - snowflake
+            type: string
+          user:
+            description: Snowflake user name
+            type: string
+          warehouse:
+            description: Snowflake warehouse
+            nullable: true
+            type: string
+        required:
+        - type
+        - database
+        - account_id
+        - user
+        title: SourceCreateConnectionParams-Snowflake
+        type: object
+      - additionalProperties: false
+        description: SpatioTemporal Asset Catalogs
+        properties:
+          credentials:
+            items:
+              properties:
+                credential:
+                  oneOf:
+                  - $ref: '#/components/schemas/SourceCredential-AwsAssumeRole'
+                  - $ref: '#/components/schemas/SourceCredential-AzureStorageString'
+                  - $ref: '#/components/schemas/SourceCredential-GcpServiceAccountJson'
+                  - $ref: '#/components/schemas/SourceCredential-CustomHeaders'
+                  type: object
+                name:
+                  type: string
+                use_case:
+                  enum:
+                  - stac_api_authentication
+                  - stac_asset_fetching
+                  type: string
+              required:
+              - name
+              - use_case
+              - credential
+              type: object
+            type: array
+          token:
+            description: STAC token
+            nullable: true
+            type: string
+          type:
+            enum:
+            - stac
+            type: string
+          url:
+            description: STAC server / asset URL
+            type: string
+        required:
+        - type
+        - url
+        title: SourceCreateConnectionParams-STAC
+        type: object
+      - additionalProperties: false
+        description: Web Feature Server
+        properties:
+          type:
+            enum:
+            - wfs
+            type: string
+          url:
+            description: WFS URL
+            type: string
+        required:
+        - type
+        - url
+        title: SourceCreateConnectionParams-WFS
+        type: object
+      - additionalProperties: false
+        description: Web Map Service / Web Map Tile Service
+        properties:
+          type:
+            enum:
+            - wms_wmts
+            type: string
+          url:
+            description: WMS/WMTS URL
+            type: string
+        required:
+        - type
+        - url
+        title: SourceCreateConnectionParams-WMSWMTS
+        type: object
+      title: SourceCreateConnectionParams
+    SourceCredentialUpdate-GcpServiceAccountJson:
+      additionalProperties: false
+      properties:
+        service_account_filename:
+          type: string
+        service_account_json:
+          oneOf:
+          - type: object
+          - type: string
+        type:
+          enum:
+          - gcp_service_account_json
+          type: string
+      required:
+      - type
+      title: SourceCredentialUpdate-GcpServiceAccountJson
+      type: object
+    SourceConnection-WMS-WMTS:
+      additionalProperties: false
+      description: Web Map Service / Web Map Tile Service
+      properties:
+        type:
+          enum:
+          - wms_wmts
+          type: string
+        url:
+          type: string
+      title: SourceConnection-WMS-WMTS
+      type: object
+    SourceUpdateParams:
+      additionalProperties: false
+      properties:
+        connection:
+          $ref: '#/components/schemas/SourceUpdateConnectionParams'
+        name:
+          type: string
+        permissions:
+          $ref: '#/components/schemas/SourcePermissions'
+      title: SourceUpdateParams
+      type: object
+    SourceCredentialUpdate-CustomHeaders:
+      additionalProperties: false
+      description: Authenticate to an API using headers
+      properties:
+        headers:
+          items:
+            properties:
+              name:
+                description: The header name
+                type: string
+              sensitive:
+                description: Whether or not the header is sensitive. If it is marked as sensitive, then `felt:redacted` will be returned when viewing this header
+                type: boolean
+              value:
+                description: The header value
+                type: string
+            required:
+            - name
+            - value
+            - sensitive
+            type: object
+          type: array
+        type:
+          enum:
+          - custom_headers
+          type: string
+      required:
+      - type
+      title: SourceCredentialUpdate-CustomHeaders
+      type: object
+    SourceCredential-AwsAssumeRole:
+      additionalProperties: false
+      description: Authenticate to AWS S3
+      properties:
+        role_arn:
+          type: string
+        role_session_name:
+          type: string
+        type:
+          enum:
+          - aws_assume_role
+          type: string
+      required:
+      - type
+      - role_arn
+      - role_session_name
+      title: SourceCredential-AwsAssumeRole
+      type: object
+    SourceCredential-OAuthM2M:
+      additionalProperties: false
+      description: Authenticate to your source using Machine-to-Machine (M2M) OAuth
+      properties:
+        client_id:
+          type: string
+        client_secret:
+          type: string
+        type:
+          enum:
+          - oauth_m2m
+          type: string
+      required:
+      - type
+      - client_id
+      - client_secret
+      title: SourceCredential-OAuthM2M
+      type: object
+    SourceCredentialUpdate-AwsAssumeRole:
+      additionalProperties: false
+      description: Authenticate to AWS S3
+      properties:
+        role_arn:
+          type: string
+        role_session_name:
+          type: string
+        type:
+          enum:
+          - aws_assume_role
+          type: string
+      required:
+      - type
+      title: SourceCredentialUpdate-AwsAssumeRole
+      type: object
+    SourceConnection-S3Bucket:
+      additionalProperties: false
+      description: AWS S3
+      properties:
+        credentials:
+          items:
+            properties:
+              created_at:
+                nullable: true
+                type: integer
+              credential:
+                oneOf:
+                - $ref: '#/components/schemas/SourceCredential-AwsAssumeRole'
+                type: object
+              id:
+                $ref: '#/components/schemas/FeltID'
+              name:
+                type: string
+              source_id:
+                $ref: '#/components/schemas/FeltID'
+              updated_at:
+                nullable: true
+                type: integer
+              use_case:
+                enum:
+                - source_authentication
+                type: string
+            type: object
+          type: array
+        s3_uri:
+          type: string
+        type:
+          enum:
+          - s3_bucket
+          type: string
+      title: SourceConnection-S3Bucket
+      type: object
+    SourceCredentialUpdate-KeyPair:
+      additionalProperties: false
+      description: Authenticate using key pair authentication
+      properties:
+        private_key:
+          type: string
+        private_key_name:
+          type: string
+        private_key_passphrase:
+          type: string
+        type:
+          enum:
+          - key_pair
+          type: string
+      required:
+      - type
+      title: SourceCredentialUpdate-KeyPair
+      type: object
+    SourceReference:
+      additionalProperties: false
+      properties:
+        automatic_sync:
+          enum:
+          - enabled
+          - paused
+          type: string
+        connection_type:
+          enum:
+          - abs_bucket
+          - bigquery
+          - databricks
+          - feature_server
+          - gcs_bucket
+          - lightning_server
+          - mssql
+          - postgresql
+          - redshift
+          - s3_bucket
+          - snowflake
+          - stac
+          - wfs
+          - wherobots
+          - wms_wmts
+          type: string
+        created_at:
+          nullable: true
+          type: integer
+        id:
+          $ref: '#/components/schemas/FeltID'
+        last_synced_at:
+          nullable: true
+          type: integer
+        links:
+          properties:
+            self:
+              example: https://felt.com/api/v2/sources/V0dnOMOuTd9B9BOsL9C0UjmqC
+              type: string
+          type: object
+        name:
+          type: string
+        owner_id:
+          $ref: '#/components/schemas/FeltID'
+        permissions:
+          $ref: '#/components/schemas/SourcePermissions'
+        sync_status:
+          enum:
+          - syncing
+          - completed
+          - failed
+          type: string
+        type:
+          enum:
+          - source_reference
+          type: string
+        updated_at:
+          nullable: true
+          type: integer
+        workspace_id:
+          $ref: '#/components/schemas/FeltID'
+      title: SourceReference
+      type: object
+    SourceDataset:
+      additionalProperties: false
+      description: A Dataset found when inspecting a Source, e.g. a database table.
+      properties:
+        created_at:
+          type: integer
+        description:
+          nullable: true
+          type: string
+        geometry_type:
+          enum:
+          - polygon
+          - line
+          - point
+          - raster
+          - none
+          type: string
+        id:
+          $ref: '#/components/schemas/FeltID'
+        inspection_status:
+          enum:
+          - completed
+          - failed
+          type: string
+        name:
+          type: string
+        type:
+          enum:
+          - dataset
+          type: string
+        updated_at:
+          type: integer
+      title: SourceDataset
+      type: object
+    SourceCredential-GcpServiceAccountJson:
+      additionalProperties: false
+      properties:
+        service_account_filename:
+          type: string
+        service_account_json:
+          oneOf:
+          - type: object
+          - type: string
+        type:
+          enum:
+          - gcp_service_account_json
+          type: string
+      required:
+      - type
+      - service_account_filename
+      - service_account_json
+      title: SourceCredential-GcpServiceAccountJson
+      type: object
+    SourceCredentialUpdate-AzureStorageString:
+      additionalProperties: false
+      description: Authenticate to Azure Blob Storage
+      properties:
+        connection_string:
+          type: string
+        type:
+          enum:
+          - azure_storage_connection_string
+          type: string
+      required:
+      - type
+      title: SourceCredentialUpdate-AzureStorageString
+      type: object
+    NotFoundError:
+      properties:
+        errors:
+          items:
+            properties:
+              detail:
+                type: string
+              source:
+                properties:
+                  parameter:
+                    type: string
+                type: object
+              title:
+                type: string
+            type: object
+          type: array
+      title: NotFoundError
+      type: object
+    SourceConnection-Microsoft-SQL:
+      additionalProperties: false
+      properties:
+        database:
+          type: string
+        host:
+          type: string
+        port:
+          nullable: true
+          type: integer
+        type:
+          enum:
+          - mssql
+          type: string
+        user:
+          type: string
+      title: SourceConnection-Microsoft-SQL
+      type: object
+    SourceConnection-Snowflake:
+      additionalProperties: false
+      properties:
+        account_id:
+          type: string
+        credentials:
+          items:
+            properties:
+              created_at:
+                nullable: true
+                type: integer
+              credential:
+                oneOf:
+                - $ref: '#/components/schemas/SourceCredential-SnowflakePAT'
+                - $ref: '#/components/schemas/SourceCredential-KeyPair'
+                type: object
+              id:
+                $ref: '#/components/schemas/FeltID'
+              name:
+                type: string
+              source_id:
+                $ref: '#/components/schemas/FeltID'
+              updated_at:
+                nullable: true
+                type: integer
+              use_case:
+                enum:
+                - source_authentication
+                type: string
+            type: object
+          type: array
+        database:
+          type: string
+        role:
+          nullable: true
+          type: string
+        schema:
+          nullable: true
+          type: string
+        type:
+          enum:
+          - snowflake
+          type: string
+        user:
+          type: string
+        warehouse:
+          nullable: true
+          type: string
+      title: SourceConnection-Snowflake
+      type: object
+    SourceCredential:
+      additionalProperties: false
+      properties:
+        created_at:
+          nullable: true
+          type: integer
+        credential:
+          oneOf:
+          - $ref: '#/components/schemas/SourceCredential-AwsAssumeRole'
+          - $ref: '#/components/schemas/SourceCredential-AzureStorageString'
+          - $ref: '#/components/schemas/SourceCredential-CustomHeaders'
+          - $ref: '#/components/schemas/SourceCredential-GcpServiceAccountJson'
+          - $ref: '#/components/schemas/SourceCredential-KeyPair'
+          - $ref: '#/components/schemas/SourceCredential-SnowflakePAT'
+          type: object
+        id:
+          $ref: '#/components/schemas/FeltID'
+        name:
+          type: string
+        source_id:
+          $ref: '#/components/schemas/FeltID'
+        updated_at:
+          nullable: true
+          type: integer
+        use_case:
+          enum:
+          - stac_api_authentication
+          - stac_asset_fetching
+          - source_authentication
+          type: string
+      required:
+      - id
+      - source_id
+      - name
+      - use_case
+      - created_at
+      - updated_at
+      - credential
+      title: SourceCredential
+      type: object
+    SourceReferenceList:
+      items:
+        $ref: '#/components/schemas/SourceReference'
+      title: SourceReferenceList
+      type: array
+  securitySchemes:
+    bearerAuth:
+      bearerFormat: YOUR_API_KEY
+      scheme: bearer
+      type: http

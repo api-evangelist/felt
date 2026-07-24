@@ -1,0 +1,332 @@
+openapi: 3.0.0
+info:
+  description: Felt REST API v2.0
+  title: Felt Comments API
+  version: '2.0'
+servers:
+- url: https://felt.com
+  variables: {}
+security: []
+tags:
+- description: 'Comments bring conversations to mapping.
+
+
+    With these APIs, you can export, resolve, and delete map comments and collaboration threads.
+
+    '
+  name: Comments
+  x-page-description: APIs for programatic collaboration
+  x-page-icon: comment
+paths:
+  /api/v2/maps/{map_id}/comments/export:
+    get:
+      callbacks: {}
+      description: Export all comments and replies from a map in `CSV`, `JSON`, or `GeoJSON` format.
+      operationId: export_map_comments
+      parameters:
+      - description: The ID of the map to export comments from.
+        in: path
+        name: map_id
+        required: true
+        schema:
+          type: string
+      - description: 'The format to export the comments in: ''csv'', ''json'' (default), or ''geojson'''
+        in: query
+        name: format
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommentExport'
+          description: Comment export response
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'
+          description: UnauthorizedError
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'
+          description: UnauthorizedError
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundError'
+          description: NotFoundError
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JsonErrorResponse'
+          description: Unprocessable Entity
+        '429':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JsonErrorResponse'
+          description: Unprocessable Entity
+        '500':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerError'
+          description: InternalServerError
+      security:
+      - bearerAuth: []
+      summary: Export map comments
+      tags:
+      - Comments
+  /api/v2/maps/{map_id}/comments/{comment_id}/resolve:
+    post:
+      callbacks: {}
+      description: Mark a comment thread as resolved.
+      operationId: resolve_map_comment
+      parameters:
+      - description: The ID of the map that contains the comment.
+        in: path
+        name: map_id
+        required: true
+        schema:
+          type: string
+      - description: The ID of the comment to resolve.
+        in: path
+        name: comment_id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommentResolved'
+          description: Comment resolved response
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'
+          description: UnauthorizedError
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'
+          description: UnauthorizedError
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundError'
+          description: NotFoundError
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JsonErrorResponse'
+          description: Unprocessable Entity
+        '429':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JsonErrorResponse'
+          description: Unprocessable Entity
+        '500':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerError'
+          description: InternalServerError
+      security:
+      - bearerAuth: []
+      summary: Resolve map comment
+      tags:
+      - Comments
+  /api/v2/maps/{map_id}/comments/{comment_id}:
+    delete:
+      callbacks: {}
+      description: 'Permanently delete a comment or reply from the map.
+
+
+        {% hint style="warning" %}
+
+        This action cannot be undone. The comment or reply will be permanently removed from the map.
+
+        {% endhint %}
+
+        '
+      operationId: delete_map_comment
+      parameters:
+      - description: The ID of the map that contains the comment.
+        in: path
+        name: map_id
+        required: true
+        schema:
+          type: string
+      - description: The ID of the comment to delete.
+        in: path
+        name: comment_id
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: No Content
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'
+          description: UnauthorizedError
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'
+          description: UnauthorizedError
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundError'
+          description: NotFoundError
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JsonErrorResponse'
+          description: Unprocessable Entity
+        '429':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JsonErrorResponse'
+          description: Unprocessable Entity
+        '500':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerError'
+          description: InternalServerError
+      security:
+      - bearerAuth: []
+      summary: Delete map comment
+      tags:
+      - Comments
+components:
+  schemas:
+    FeltID:
+      example: luCHyMruTQ6ozGk3gPJfEB
+      format: felt_id
+      nullable: false
+      title: FeltID
+      type: string
+    CommentExport:
+      items:
+        description: Comment Thread
+      title: CommentExport
+      type: array
+    InternalServerError:
+      properties:
+        errors:
+          items:
+            properties:
+              detail:
+                type: string
+              source:
+                properties:
+                  parameter:
+                    type: string
+                type: object
+              title:
+                type: string
+            type: object
+          type: array
+      title: InternalServerError
+      type: object
+    UnauthorizedError:
+      properties:
+        errors:
+          items:
+            properties:
+              detail:
+                type: string
+              source:
+                properties:
+                  header:
+                    enum:
+                    - authorization
+                    type: string
+                type: object
+              title:
+                type: string
+            type: object
+          type: array
+      title: UnauthorizedError
+      type: object
+    CommentResolved:
+      properties:
+        comment_id:
+          $ref: '#/components/schemas/FeltID'
+      title: CommentResolved
+      type: object
+    NotFoundError:
+      properties:
+        errors:
+          items:
+            properties:
+              detail:
+                type: string
+              source:
+                properties:
+                  parameter:
+                    type: string
+                type: object
+              title:
+                type: string
+            type: object
+          type: array
+      title: NotFoundError
+      type: object
+    JsonErrorResponse:
+      properties:
+        errors:
+          items:
+            properties:
+              detail:
+                example: null value where string expected
+                type: string
+              source:
+                properties:
+                  pointer:
+                    example: /data/attributes/petName
+                    type: string
+                required:
+                - pointer
+                type: object
+              title:
+                example: Invalid value
+                type: string
+            required:
+            - title
+            - source
+            - detail
+            type: object
+          type: array
+      required:
+      - errors
+      title: JsonErrorResponse
+      type: object
+  securitySchemes:
+    bearerAuth:
+      bearerFormat: YOUR_API_KEY
+      scheme: bearer
+      type: http

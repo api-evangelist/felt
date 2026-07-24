@@ -1,0 +1,617 @@
+openapi: 3.0.0
+info:
+  description: Felt REST API v2.0
+  title: Felt Comments Projects API
+  version: '2.0'
+servers:
+- url: https://felt.com
+  variables: {}
+security: []
+tags:
+- description: 'Projects help you organize maps and manage team permissions.
+
+
+    With these APIs, you can manage the projects in your workspace.
+
+    '
+  name: Projects
+  x-page-description: APIs to organize maps
+  x-page-icon: folder
+paths:
+  /api/v2/projects:
+    get:
+      callbacks: {}
+      description: Retrieve all projects accessible to the authenticated user within the workspace.
+      operationId: list_projects
+      parameters:
+      - description: Only needed when using the API as part of a plugin
+        in: query
+        name: workspace_id
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProjectReferenceList'
+          description: Projects
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'
+          description: UnauthorizedError
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'
+          description: UnauthorizedError
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundError'
+          description: NotFoundError
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JsonErrorResponse'
+          description: Unprocessable Entity
+        '429':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JsonErrorResponse'
+          description: Unprocessable Entity
+        '500':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerError'
+          description: InternalServerError
+      security:
+      - bearerAuth: []
+      summary: List projects
+      tags:
+      - Projects
+    post:
+      callbacks: {}
+      description: Create a new project with specified name and visibility settings within the workspace.
+      operationId: create_project
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProjectCreateParams'
+        description: Project create params
+        required: false
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Project'
+          description: Project
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'
+          description: UnauthorizedError
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'
+          description: UnauthorizedError
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundError'
+          description: NotFoundError
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JsonErrorResponse'
+          description: Unprocessable Entity
+        '429':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JsonErrorResponse'
+          description: Unprocessable Entity
+        '500':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerError'
+          description: InternalServerError
+      security:
+      - bearerAuth: []
+      summary: Create project
+      tags:
+      - Projects
+  /api/v2/projects/{project_id}:
+    delete:
+      callbacks: {}
+      description: 'Permanently delete a project and all its contained maps and folders.
+
+
+        {% hint style="danger" %}
+
+        Caution: Deleting a project deletes all of the folders and maps inside!
+
+        {% endhint %}
+
+        '
+      operationId: delete_project
+      parameters:
+      - description: 'The ID of the Project to delete. Note: This will delete all Folders and Maps inside the project!'
+        in: path
+        name: project_id
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: No Content
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'
+          description: UnauthorizedError
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'
+          description: UnauthorizedError
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundError'
+          description: NotFoundError
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JsonErrorResponse'
+          description: Unprocessable Entity
+        '429':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JsonErrorResponse'
+          description: Unprocessable Entity
+        '500':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerError'
+          description: InternalServerError
+      security:
+      - bearerAuth: []
+      summary: Delete project
+      tags:
+      - Projects
+    get:
+      callbacks: {}
+      description: Retrieve detailed information about a specific project including metadata, permissions, and references to the maps in the project.
+      operationId: show_project
+      parameters:
+      - description: ''
+        in: path
+        name: project_id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Project'
+          description: Project
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'
+          description: UnauthorizedError
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'
+          description: UnauthorizedError
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundError'
+          description: NotFoundError
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JsonErrorResponse'
+          description: Unprocessable Entity
+        '429':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JsonErrorResponse'
+          description: Unprocessable Entity
+        '500':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerError'
+          description: InternalServerError
+      security:
+      - bearerAuth: []
+      summary: Get project
+      tags:
+      - Projects
+  /api/v2/projects/{project_id}/update:
+    post:
+      callbacks: {}
+      description: Update project properties including name and visibility settings.
+      operationId: update_project
+      parameters:
+      - description: The ID of the project to update
+        in: path
+        name: project_id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProjectUpdateParams'
+        description: Project update params
+        required: false
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Project'
+          description: Project
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'
+          description: UnauthorizedError
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'
+          description: UnauthorizedError
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundError'
+          description: NotFoundError
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JsonErrorResponse'
+          description: Unprocessable Entity
+        '429':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JsonErrorResponse'
+          description: Unprocessable Entity
+        '500':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerError'
+          description: InternalServerError
+      security:
+      - bearerAuth: []
+      summary: Update project
+      tags:
+      - Projects
+components:
+  schemas:
+    ProjectUpdateParams:
+      additionalProperties: false
+      properties:
+        max_inherited_permission:
+          description: The maximum permission level workspace members inherit on team-visible projects. Only applicable when visibility is "workspace".
+          enum:
+          - view_only
+          - view_and_contribute
+          - view_and_edit
+          example: view_only
+          nullable: false
+          type: string
+        name:
+          description: The name to be used for the Project
+          type: string
+        visibility:
+          description: Either viewable by all members of the workspace, or private to users who are invited.
+          enum:
+          - workspace
+          - private
+          type: string
+      title: ProjectUpdateParams
+      type: object
+    ProjectReferenceList:
+      items:
+        $ref: '#/components/schemas/ProjectReference'
+      title: ProjectReferenceList
+      type: array
+    FeltID:
+      example: luCHyMruTQ6ozGk3gPJfEB
+      format: felt_id
+      nullable: false
+      title: FeltID
+      type: string
+    ProjectReference:
+      additionalProperties: false
+      properties:
+        id:
+          $ref: '#/components/schemas/FeltID'
+        links:
+          properties:
+            self:
+              example: https://felt.com/api/v2/projects/V0dnOMOuTd9B9BOsL9C0UjmqC
+              type: string
+          type: object
+        max_inherited_permission:
+          description: The maximum permission level workspace members inherit on team-visible projects.
+          enum:
+          - view_only
+          - view_and_contribute
+          - view_and_edit
+          example: view_only
+          nullable: false
+          type: string
+        name:
+          type: string
+        type:
+          enum:
+          - project_reference
+          type: string
+        visibility:
+          enum:
+          - workspace
+          - private
+          type: string
+      required:
+      - id
+      - type
+      - name
+      - visibility
+      - max_inherited_permission
+      title: ProjectReference
+      type: object
+    ProjectCreateParams:
+      additionalProperties: false
+      properties:
+        max_inherited_permission:
+          description: The maximum permission level workspace members inherit on team-visible projects. Only applicable when visibility is "workspace".
+          enum:
+          - view_only
+          - view_and_contribute
+          - view_and_edit
+          example: view_only
+          nullable: false
+          type: string
+        name:
+          description: The name to be used for the Project
+          type: string
+        visibility:
+          description: Either viewable by all members of the workspace, or private to users who are invited.
+          enum:
+          - workspace
+          - private
+          type: string
+      required:
+      - name
+      - visibility
+      title: ProjectCreateParams
+      type: object
+    UnauthorizedError:
+      properties:
+        errors:
+          items:
+            properties:
+              detail:
+                type: string
+              source:
+                properties:
+                  header:
+                    enum:
+                    - authorization
+                    type: string
+                type: object
+              title:
+                type: string
+            type: object
+          type: array
+      title: UnauthorizedError
+      type: object
+    InternalServerError:
+      properties:
+        errors:
+          items:
+            properties:
+              detail:
+                type: string
+              source:
+                properties:
+                  parameter:
+                    type: string
+                type: object
+              title:
+                type: string
+            type: object
+          type: array
+      title: InternalServerError
+      type: object
+    Project:
+      additionalProperties: false
+      properties:
+        id:
+          $ref: '#/components/schemas/FeltID'
+        maps:
+          items:
+            $ref: '#/components/schemas/MapReference'
+          type: array
+        max_inherited_permission:
+          description: The maximum permission level workspace members inherit on team-visible projects.
+          enum:
+          - view_only
+          - view_and_contribute
+          - view_and_edit
+          example: view_only
+          nullable: false
+          type: string
+        name:
+          type: string
+        type:
+          enum:
+          - project
+          type: string
+        visibility:
+          enum:
+          - workspace
+          - private
+          type: string
+      required:
+      - id
+      - type
+      - name
+      - visibility
+      - max_inherited_permission
+      - maps
+      title: Project
+      type: object
+    NotFoundError:
+      properties:
+        errors:
+          items:
+            properties:
+              detail:
+                type: string
+              source:
+                properties:
+                  parameter:
+                    type: string
+                type: object
+              title:
+                type: string
+            type: object
+          type: array
+      title: NotFoundError
+      type: object
+    MapReference:
+      additionalProperties: false
+      properties:
+        created_at:
+          example: '2024-05-25T15:51:34'
+          format: date_time
+          type: string
+        folder_id:
+          nullable: true
+          type: string
+        id:
+          $ref: '#/components/schemas/FeltID'
+        links:
+          properties:
+            self:
+              example: https://felt.com/api/v2/maps/V0dnOMOuTd9B9BOsL9C0UjmqC
+              type: string
+          type: object
+        project_id:
+          nullable: false
+          type: string
+        public_access:
+          enum:
+          - private
+          - view_only
+          - view_and_comment
+          - view_comment_and_edit
+          type: string
+        thumbnail_url:
+          description: A static thumbnail image of the map
+          nullable: true
+          type: string
+        title:
+          type: string
+        type:
+          enum:
+          - map_reference
+          type: string
+        url:
+          type: string
+        visited_at:
+          format: date_time
+          nullable: true
+          type: string
+      required:
+      - id
+      - type
+      - url
+      - title
+      - thumbnail_url
+      - created_at
+      - visited_at
+      - project_id
+      - folder_id
+      - public_access
+      title: MapReference
+      type: object
+    JsonErrorResponse:
+      properties:
+        errors:
+          items:
+            properties:
+              detail:
+                example: null value where string expected
+                type: string
+              source:
+                properties:
+                  pointer:
+                    example: /data/attributes/petName
+                    type: string
+                required:
+                - pointer
+                type: object
+              title:
+                example: Invalid value
+                type: string
+            required:
+            - title
+            - source
+            - detail
+            type: object
+          type: array
+      required:
+      - errors
+      title: JsonErrorResponse
+      type: object
+  securitySchemes:
+    bearerAuth:
+      bearerFormat: YOUR_API_KEY
+      scheme: bearer
+      type: http

@@ -1,0 +1,829 @@
+openapi: 3.0.0
+info:
+  description: Felt REST API v2.0
+  title: Felt Comments Layer Uploads API
+  version: '2.0'
+servers:
+- url: https://felt.com
+  variables: {}
+security: []
+tags:
+- description: 'With these APIs, you can upload your data to create new layers.
+
+    '
+  name: Layer Uploads
+  x-page-description: APIs to upload data
+  x-page-icon: layer-group
+  x-parent: Layers
+paths:
+  /api/v2/maps/{map_id}/add_source_layer:
+    post:
+      callbacks: {}
+      description: Create a new layer from an existing data source connection (database, API, or file).
+      operationId: add_map_layer_from_source
+      parameters:
+      - description: ''
+        in: path
+        name: map_id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AddSourceLayerParams'
+        description: AddSourceLayerParams
+        required: false
+      responses:
+        '202':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AddSourceLayerAccepted'
+          description: AddSourceLayerAccepted
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'
+          description: UnauthorizedError
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'
+          description: UnauthorizedError
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundError'
+          description: NotFoundError
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JsonErrorResponse'
+          description: Unprocessable Entity
+        '429':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JsonErrorResponse'
+          description: Unprocessable Entity
+        '500':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerError'
+          description: InternalServerError
+      security:
+      - bearerAuth: []
+      summary: Add layer from data source
+      tags:
+      - Layer Uploads
+  /api/v2/maps/{map_id}/layers/{layer_id}/refresh:
+    post:
+      callbacks: {}
+      description: 'Trigger a data refresh for a layer from its original data source to pull in the latest updates.
+
+
+        After uploading a file or URL, you may want to update the resulting layer with new data. The process is quite similar to the upload:
+
+
+        * For URL uploads, simply making a single `POST` request to the refresh endpoint is enough
+
+        * For file refreshes, the response of the initial `POST` request will include a URL and some pre-signed attributes, which will be used to upload the new file to Amazon S3.
+
+
+        {% hint style="info" %}
+
+        With the `felt_python` library, you can refresh a layer with a simple function call:
+
+        {% endhint %}
+
+
+        ```python
+
+        from felt_python import (refresh_file_layer, refresh_url_layer)
+
+
+        refresh_file_layer(map_id, layer_id, file_name="features.geojson")
+
+        refresh_url_layer(map_id, layer_id)
+
+        ```
+
+        '
+      operationId: refresh_map_layer
+      parameters:
+      - description: The ID of the map hosting the layer to refresh
+        in: path
+        name: map_id
+        required: true
+        schema:
+          type: string
+      - description: The ID of the layer to refresh
+        in: path
+        name: layer_id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UploadResponse'
+          description: Refresh response
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'
+          description: UnauthorizedError
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'
+          description: UnauthorizedError
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundError'
+          description: NotFoundError
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JsonErrorResponse'
+          description: Unprocessable Entity
+        '429':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JsonErrorResponse'
+          description: Unprocessable Entity
+        '500':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerError'
+          description: InternalServerError
+      security:
+      - bearerAuth: []
+      summary: Refresh map layer
+      tags:
+      - Layer Uploads
+  /api/v2/maps/{map_id}/upload:
+    post:
+      callbacks: {}
+      description: 'Upload a file or import data from a URL to create a new layer on the map.
+
+
+        The `/upload` endpoint can be used for both URL and file uploads:
+
+
+        * For URL uploads, simply making a single `POST` request to the upload endpoint is enough
+
+        * For file uploads, the response of the initial `POST` request contain information you will use to upload the file to Amazon S3
+
+
+        Check our [Upload Anything](https://help.felt.com/upload-anything) docs to see what URLs are supported.
+
+
+        #### **Uploading the file to Amazon S3**
+
+
+        Layer files aren''t uploaded directly to the Felt API. Instead, they are uploaded to an S3 bucket.
+
+
+        The response to this API request will include a URL and pre-signed params for you to use to upload your file. Only a single file may be uploaded — if you wish to upload several files at once, consider wrapping them in a zip file.
+
+
+        To upload the file, you must perform a multipart upload, and include the file contents in the `file` field.
+
+
+        {% hint style="info" %}
+
+        With the `felt_python` library, you can upload a file with a simple function call:
+
+        {% endhint %}
+
+
+        ```python
+
+        from felt_python import upload_file
+
+
+        upload_file(map_id, file_name="features.geojson", layer_name="My new layer")
+
+        ```
+
+        '
+      operationId: upload_map_layer
+      parameters:
+      - description: The ID of the map to upload the layer to.
+        in: path
+        name: map_id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UploadLayerParams'
+        description: Upload layer params
+        required: false
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UploadResponse'
+          description: Upload layer response
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'
+          description: UnauthorizedError
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedError'
+          description: UnauthorizedError
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundError'
+          description: NotFoundError
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JsonErrorResponse'
+          description: Unprocessable Entity
+        '429':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JsonErrorResponse'
+          description: Unprocessable Entity
+        '500':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerError'
+          description: InternalServerError
+      security:
+      - bearerAuth: []
+      summary: Upload map layer
+      tags:
+      - Layer Uploads
+      x-sort-order: 0
+components:
+  schemas:
+    UploadLayerParams:
+      properties:
+        hints:
+          description: A list of hints for interpreting the data in the upload.
+          items:
+            $ref: '#/components/schemas/UploadInterpretationHint'
+          type: array
+        import_url:
+          description: A public URL containing geodata to import, in place of uploading a file.
+          type: string
+        lat:
+          description: (Image uploads only) The latitude of the image center.
+          type: number
+        lng:
+          description: (Image uploads only) The longitude of the image center.
+          type: number
+        metadata:
+          $ref: '#/components/schemas/LayerMetadata'
+        name:
+          description: The display name for the new layer.
+          type: string
+        zoom:
+          description: (Image uploads only) The zoom level of the image.
+          type: number
+      required:
+      - name
+      title: UploadLayerParams
+      type: object
+    FeltID:
+      example: luCHyMruTQ6ozGk3gPJfEB
+      format: felt_id
+      nullable: false
+      title: FeltID
+      type: string
+    UploadResponse:
+      properties:
+        layer_group_id:
+          $ref: '#/components/schemas/FeltID'
+        layer_id:
+          description: The ID of the layer created by this upload. If multiple layers are included in the upload, this is the ID of the first layer in the layer group.
+          example: luCHyMruTQ6ozGk3gPJfEB
+          format: felt_id
+          nullable: false
+          type: string
+        presigned_attributes:
+          description: If provided, the presigned attributes to attach to the post request
+          nullable: true
+          type: object
+        type:
+          enum:
+          - upload_response
+          type: string
+        url:
+          description: If provided, the URL to post the file to
+          nullable: true
+          type: string
+      title: UploadResponse
+      type: object
+    InternalServerError:
+      properties:
+        errors:
+          items:
+            properties:
+              detail:
+                type: string
+              source:
+                properties:
+                  parameter:
+                    type: string
+                type: object
+              title:
+                type: string
+            type: object
+          type: array
+      title: InternalServerError
+      type: object
+    UnauthorizedError:
+      properties:
+        errors:
+          items:
+            properties:
+              detail:
+                type: string
+              source:
+                properties:
+                  header:
+                    enum:
+                    - authorization
+                    type: string
+                type: object
+              title:
+                type: string
+            type: object
+          type: array
+      title: UnauthorizedError
+      type: object
+    AddSourceLayerAccepted:
+      additionalProperties: false
+      properties:
+        links:
+          additionalProperties: false
+          properties:
+            layer_group:
+              example: https://felt.com/api/v2/maps/V0dnOMOuTd9B9BOsL9C0UjmqC/layer_groups/KFFhKAbvS4anD3wxtwNEpD
+              type: string
+            self:
+              example: https://felt.com/api/v2/maps/V0dnOMOuTd9B9BOsL9C0UjmqC
+              type: string
+          type: object
+        status:
+          enum:
+          - accepted
+          type: string
+      title: AddSourceLayerAccepted
+      type: object
+    LayerMetadata:
+      additionalProperties: false
+      properties:
+        attribution_text:
+          nullable: true
+          type: string
+        attribution_url:
+          nullable: true
+          type: string
+        description:
+          nullable: true
+          type: string
+        license:
+          nullable: true
+          type: string
+        source_abbreviation:
+          nullable: true
+          type: string
+        source_name:
+          nullable: true
+          type: string
+        source_url:
+          nullable: true
+          type: string
+        updated_at:
+          example: '2025-03-24'
+          format: date
+          nullable: true
+          type: string
+      title: LayerMetadata
+      type: object
+    AddSourceLayerParams:
+      oneOf:
+      - properties:
+          dataset_id:
+            $ref: '#/components/schemas/FeltID'
+          from:
+            enum:
+            - dataset
+            type: string
+        required:
+        - from
+        - dataset_id
+        title: AddSourceLayer-Dataset-Params
+        type: object
+      - properties:
+          from:
+            enum:
+            - sql
+            type: string
+          query:
+            type: string
+          source_id:
+            $ref: '#/components/schemas/FeltID'
+        required:
+        - from
+        - source_id
+        - query
+        title: AddSourceLayer-SQL-Params
+        type: object
+      - properties:
+          from:
+            enum:
+            - stac
+            type: string
+          source_id:
+            $ref: '#/components/schemas/FeltID'
+          stac_asset_url:
+            type: string
+        required:
+        - from
+        - source_id
+        - stac_asset_url
+        title: AddSourceLayer-STAC-Params
+        type: object
+      title: AddSourceLayerParams
+      type: object
+    NotFoundError:
+      properties:
+        errors:
+          items:
+            properties:
+              detail:
+                type: string
+              source:
+                properties:
+                  parameter:
+                    type: string
+                type: object
+              title:
+                type: string
+            type: object
+          type: array
+      title: NotFoundError
+      type: object
+    UploadInterpretationHint:
+      oneOf:
+      - description: A hint that the data contains Latitude and Longitude in two individual attributes.
+        properties:
+          attributes:
+            additionalProperties: false
+            properties:
+              lat:
+                type: string
+              lng:
+                type: string
+            required:
+            - lat
+            - lng
+            type: object
+        required:
+        - attributes
+        title: UploadInterpretationHint-AttributeHint-LatitudeAndLongitude
+        type: object
+      - description: A hint that the data contains Latitude and Longitude combined in a single attribute.
+        properties:
+          attribute:
+            additionalProperties: false
+            properties:
+              lat_lng:
+                type: string
+            required:
+            - lat_lng
+            type: object
+        required:
+        - attribute
+        title: UploadInterpretationHint-AttributeHint-LatitudeAndLongitudeCombined
+        type: object
+      - description: A hint that the data contains a full Address contained in a single attribute.
+        properties:
+          attribute:
+            properties:
+              full_address:
+                type: string
+            required:
+            - full_address
+            type: object
+        required:
+        - attribute
+        title: UploadInterpretationHint-AttributeHint-FullAddress
+        type: object
+      - description: A hint that the data contains an Address spread out over multiple attributes.
+        properties:
+          attributes:
+            additionalProperties: false
+            properties:
+              country:
+                description: 'ex: USA'
+                type: string
+              locality:
+                description: 'ex: Oakland'
+                type: string
+              postal_code:
+                description: 'ex: 94612'
+                type: string
+              region:
+                description: 'ex: California'
+                type: string
+              street_address:
+                description: 'ex: 1904 Franklin St'
+                type: string
+            required:
+            - street_address
+            type: object
+        required:
+        - attributes
+        title: UploadInterpretationHint-AttributeHint-PartialAddress
+        type: object
+      - description: A hint that the data contains a Locality spread out over multiple attributes.
+        properties:
+          attributes:
+            additionalProperties: false
+            properties:
+              country:
+                description: 'ex: USA'
+                type: string
+              locality:
+                description: 'ex: Oakland'
+                type: string
+              region:
+                description: 'ex: California'
+                type: string
+            required:
+            - locality
+            type: object
+        required:
+        - attributes
+        title: UploadInterpretationHint-AttributeHint-Locality
+        type: object
+      - description: A hint that the data contains a WKT/WKB Literal attribute
+        properties:
+          attribute:
+            additionalProperties: false
+            properties:
+              wkt_wkb_literal:
+                type: string
+            required:
+            - wkt_wkb_literal
+            type: object
+        required:
+        - attribute
+        title: UploadInterpretationHint-AttributeHint-WKT_WKB_Literal
+        type: object
+      - description: A hint that the data contains a US Census Tract (Census 2020) attribute. https://www.census.gov/geographies/reference-maps/2020/geo/2020pl-maps/2020-census-tract.html
+        properties:
+          attribute:
+            additionalProperties: false
+            properties:
+              us_census_tract_2020:
+                type: string
+            required:
+            - us_census_tract_2020
+            type: object
+        required:
+        - attribute
+        title: UploadInterpretationHint-AttributeHint-US_Census_Tract2020
+        type: object
+      - description: 'A hint that the data contains a US Core-based statistical area (Census 2020) attribute: https://www.census.gov/geographies/reference-maps/2020/geo/cbsa.html'
+        properties:
+          attribute:
+            additionalProperties: false
+            properties:
+              us_cbsa_2020:
+                type: string
+            required:
+            - us_cbsa_2020
+            type: object
+        required:
+        - attribute
+        title: UploadInterpretationHint-AttributeHint-US_CBSA_2020
+        type: object
+      - description: A hint that the data contains a US State (Census 2020) attribute.
+        properties:
+          attribute:
+            properties:
+              us_state_2020:
+                type: string
+            required:
+            - us_state_2020
+            type: object
+        required:
+        - attribute
+        title: UploadInterpretationHint-AttributeHint-US_State_2020
+        type: object
+      - description: A hint that the data contains a US County (Census 2020) attribute.
+        properties:
+          attribute:
+            properties:
+              us_county_2020:
+                type: string
+            required:
+            - us_county_2020
+            type: object
+        required:
+        - attribute
+        title: UploadInterpretationHint-AttributeHint-US_County_2020
+        type: object
+      - description: A hint that the data contains US Zip Code (2022) attribute.
+        properties:
+          attribute:
+            properties:
+              us_zip_code_2022:
+                type: string
+            required:
+            - us_zip_code_2022
+            type: object
+        required:
+        - attribute
+        title: UploadInterpretationHint-AttributeHint-US_Zip_Code_2022
+        type: object
+      - description: A hint that the data contains a Eurostat LAU (2021) attribute. https://ec.europa.eu/eurostat/web/nuts/local-administrative-units
+        properties:
+          attribute:
+            properties:
+              eu_lau_2021:
+                type: string
+            required:
+            - eu_lau_2021
+            type: object
+        required:
+        - attribute
+        title: UploadInterpretationHint-AttributeHint-EuropeanUnion_LAU_2021
+        type: object
+      - description: A hint that the data contains a Eurostat NUTS Level 1 (2021) attribute. https://ec.europa.eu/eurostat/web/gisco/geodata/statistical-units/territorial-units-statistics
+        properties:
+          attribute:
+            properties:
+              eu_nuts_1_2021:
+                type: string
+            required:
+            - eu_nuts_1_2021
+            type: object
+        required:
+        - attribute
+        title: UploadInterpretationHint-AttributeHint-European_Union_NUTS_1_2021
+        type: object
+      - description: A hint that the data contains a Eurostat NUTS 2 (2021) attribute. https://ec.europa.eu/eurostat/web/gisco/geodata/statistical-units/territorial-units-statistics
+        properties:
+          attribute:
+            properties:
+              eu_nuts_2_2021:
+                type: string
+            required:
+            - eu_nuts_2_2021
+            type: object
+        required:
+        - attribute
+        title: UploadInterpretationHint-AttributeHint-European_Union_NUTS_2_2021
+        type: object
+      - description: A hint that the data contains a Eurostat NUTS 3 (2021) attribute. https://ec.europa.eu/eurostat/web/gisco/geodata/statistical-units/territorial-units-statistics
+        properties:
+          attribute:
+            properties:
+              eu_nuts_3_2021:
+                type: string
+            required:
+            - eu_nuts_3_2021
+            type: object
+        required:
+        - attribute
+        title: UploadInterpretationHint-AttributeHint-European_Union_NUTS_3_2021
+        type: object
+      - description: A hint that the data contains a Australian ABS postal area (2021) attribute. https://www.abs.gov.au/statistics/standards/australian-statistical-geography-standard-asgs-edition-3/jul2021-jun2026/non-abs-structures/postal-areas
+        properties:
+          attribute:
+            properties:
+              aus_postal_area_2021:
+                type: string
+            required:
+            - aus_postal_area_2021
+            type: object
+        required:
+        - attribute
+        title: UploadInterpretationHint-AttributeHint-Australian_ABS_Postal_Area_2021
+        type: object
+      - description: A hint that the data contains an Administrative Level 0 (Country) attribute. https://en.wikipedia.org/wiki/List_of_administrative_divisions_by_country
+        properties:
+          attribute:
+            properties:
+              admin_0:
+                type: string
+            required:
+            - admin_0
+            type: object
+        required:
+        - attribute
+        title: UploadInterpretationHint-AttributeHint-Admin0
+        type: object
+      - description: A hint that the data contains an Administrative Level 1 (Region) attribute. https://en.wikipedia.org/wiki/List_of_administrative_divisions_by_country
+        properties:
+          attribute:
+            properties:
+              admin_1:
+                type: string
+            required:
+            - admin_1
+            type: object
+        required:
+        - attribute
+        title: UploadInterpretationHint-AttributeHint-Admin1
+        type: object
+      - description: A hint that the data contains a Timezone attribute.
+        properties:
+          attribute:
+            properties:
+              timezone:
+                type: string
+            required:
+            - timezone
+            type: object
+        required:
+        - attribute
+        title: UploadInterpretationHint-AttributeHint-Timezone
+        type: object
+      - description: A hint that the data contains H3 attribute.
+        properties:
+          attribute:
+            properties:
+              h3:
+                type: string
+            required:
+            - h3
+            type: object
+        required:
+        - attribute
+        title: UploadInterpretationHint-AttributeHint-H3
+        type: object
+      title: UploadInterpretationHint
+    JsonErrorResponse:
+      properties:
+        errors:
+          items:
+            properties:
+              detail:
+                example: null value where string expected
+                type: string
+              source:
+                properties:
+                  pointer:
+                    example: /data/attributes/petName
+                    type: string
+                required:
+                - pointer
+                type: object
+              title:
+                example: Invalid value
+                type: string
+            required:
+            - title
+            - source
+            - detail
+            type: object
+          type: array
+      required:
+      - errors
+      title: JsonErrorResponse
+      type: object
+  securitySchemes:
+    bearerAuth:
+      bearerFormat: YOUR_API_KEY
+      scheme: bearer
+      type: http
