@@ -7,7 +7,20 @@ description: >
   custom mapping applications, automate geospatial workflows, embed maps, and
   integrate with data pipelines using Bearer token authentication against the
   https://felt.com/api/v2 base URL.
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: true
+  try_now: true
+  public: false
+  label: Freemium (free trial) · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/felt.png
 url: https://raw.githubusercontent.com/api-evangelist/felt/refs/heads/main/apis.yml
 type: Index
 created: '2026-06-12'
@@ -22,88 +35,387 @@ tags:
   - Layers
   - Embedding
 apis:
-  - aid: felt:felt-rest-api
-    name: Felt REST API
-    description: >
-      REST API for programmatically creating and managing maps, layers, layer
-      groups, elements/annotations, embed tokens, and workspace projects on the
-      Felt collaborative mapping platform.
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    humanURL: https://developers.felt.com/rest-api/getting-started
-    baseURL: https://felt.com/api/v2
-    tags:
-      - Maps
-      - Layers
-      - Elements
-      - Annotations
-      - Embed
-      - GIS
-      - Geospatial
-    properties:
-      - type: Documentation
-        url: https://developers.felt.com/rest-api/getting-started
-      - type: OpenAPI
-        url: openapi/felt-felt-rest-api-openapi.yml
-      - type: JSONSchema
-        url: json-schema/felt-map.json
-      - type: JSONSchema
-        url: json-schema/felt-layer.json
-      - type: JSONSchema
-        url: json-schema/felt-layergroup.json
-      - type: JSONSchema
-        url: json-schema/felt-element.json
-      - type: JSONSchema
-        url: json-schema/felt-project.json
-      - type: JSONSchema
-        url: json-schema/felt-source.json
-      - type: JSONSchema
-        url: json-schema/felt-embedtoken.json
-      - type: Examples
-        url: examples/felt-api-examples.json
+- aid: felt:felt-javascript-sdk
+  name: Felt JavaScript SDK
+  description: >
+    JavaScript SDK for embedding, controlling, and extending Felt maps in external web applications. Supports
+    two integration modes: Extensions (custom code inside Felt) and Embed (Felt maps inside external apps).
+    Includes Element API, Draw API, and live layer support.
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://developers.felt.com/js-sdk/getting-started
+  baseURL: https://felt.com
+  tags:
+  - JavaScript
+  - SDK
+  - Embed
+  - Maps
+  - Elements
+  properties:
+  - type: Documentation
+    url: https://developers.felt.com/js-sdk/getting-started
+  - type: SDKs
+    url: https://github.com/felt/js-sdk
+- aid: felt:felt-python-sdk
+  name: Felt Python SDK
+  description: >
+    Official Python client for the Felt REST API providing convenient wrappers for map creation, file
+    and DataFrame uploads, layer styling and refreshing, and element management. Supports Pandas and GeoPandas
+    integration.
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://github.com/felt/felt-python
+  baseURL: https://felt.com/api/v2
+  tags:
+  - Python
+  - SDK
+  - GeoJSON
+  - Pandas
+  - GeoPandas
+  properties:
+  - type: Documentation
+    url: https://github.com/felt/felt-python
+  - type: SDKs
+    url: https://github.com/felt/felt-python
+- aid: felt:felt-comments-api
+  name: Felt Comments API
+  description: >-
+    Comments bring conversations to mapping.
 
-  - aid: felt:felt-javascript-sdk
-    name: Felt JavaScript SDK
-    description: >
-      JavaScript SDK for embedding, controlling, and extending Felt maps in
-      external web applications. Supports two integration modes: Extensions
-      (custom code inside Felt) and Embed (Felt maps inside external apps).
-      Includes Element API, Draw API, and live layer support.
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    humanURL: https://developers.felt.com/js-sdk/getting-started
-    baseURL: https://felt.com
-    tags:
-      - JavaScript
-      - SDK
-      - Embed
-      - Maps
-      - Elements
-    properties:
-      - type: Documentation
-        url: https://developers.felt.com/js-sdk/getting-started
-      - type: SDKs
-        url: https://github.com/felt/js-sdk
 
-  - aid: felt:felt-python-sdk
-    name: Felt Python SDK
-    description: >
-      Official Python client for the Felt REST API providing convenient wrappers
-      for map creation, file and DataFrame uploads, layer styling and refreshing,
-      and element management. Supports Pandas and GeoPandas integration.
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    humanURL: https://github.com/felt/felt-python
-    baseURL: https://felt.com/api/v2
-    tags:
-      - Python
-      - SDK
-      - GeoJSON
-      - Pandas
-      - GeoPandas
-    properties:
-      - type: Documentation
-        url: https://github.com/felt/felt-python
-      - type: SDKs
-        url: https://github.com/felt/felt-python
+    With these APIs, you can export, resolve, and delete map comments and collaboration threads.
+  humanURL: https://developers.felt.com/rest-api/getting-started
+  baseURL: https://felt.com/api/v2
+  tags:
+  - Comments
+  properties:
+  - type: OpenAPI
+    url: openapi/felt-comments-api-openapi.yml
+  - type: Documentation
+    url: https://developers.felt.com/rest-api/getting-started
+  - type: JSONSchema
+    url: json-schema/felt-map.json
+  - type: JSONSchema
+    url: json-schema/felt-layer.json
+  - type: JSONSchema
+    url: json-schema/felt-layergroup.json
+  - type: JSONSchema
+    url: json-schema/felt-element.json
+  - type: JSONSchema
+    url: json-schema/felt-project.json
+  - type: JSONSchema
+    url: json-schema/felt-source.json
+  - type: JSONSchema
+    url: json-schema/felt-embedtoken.json
+  - type: Examples
+    url: examples/felt-api-examples.json
+- aid: felt:felt-elements-api
+  name: Felt Elements API
+  description: >-
+    Elements enable you to annotate maps with custom shapes, text, and markers.
 
+
+    With these APIs, you can create, update, and delete map elements.
+  humanURL: https://developers.felt.com/rest-api/getting-started
+  baseURL: https://felt.com/api/v2
+  tags:
+  - Elements
+  properties:
+  - type: OpenAPI
+    url: openapi/felt-elements-api-openapi.yml
+  - type: Documentation
+    url: https://developers.felt.com/rest-api/getting-started
+  - type: JSONSchema
+    url: json-schema/felt-map.json
+  - type: JSONSchema
+    url: json-schema/felt-layer.json
+  - type: JSONSchema
+    url: json-schema/felt-layergroup.json
+  - type: JSONSchema
+    url: json-schema/felt-element.json
+  - type: JSONSchema
+    url: json-schema/felt-project.json
+  - type: JSONSchema
+    url: json-schema/felt-source.json
+  - type: JSONSchema
+    url: json-schema/felt-embedtoken.json
+  - type: Examples
+    url: examples/felt-api-examples.json
+- aid: felt:felt-embed-tokens-api
+  name: Felt Embed Tokens API
+  description: >-
+    Embed tokens enable safely sharing your private maps.
+
+
+    With these APIs, you can generate secure tokens for embedding maps.
+  humanURL: https://developers.felt.com/rest-api/getting-started
+  baseURL: https://felt.com/api/v2
+  tags:
+  - Embed Tokens
+  properties:
+  - type: OpenAPI
+    url: openapi/felt-embed-tokens-api-openapi.yml
+  - type: Documentation
+    url: https://developers.felt.com/rest-api/getting-started
+  - type: JSONSchema
+    url: json-schema/felt-map.json
+  - type: JSONSchema
+    url: json-schema/felt-layer.json
+  - type: JSONSchema
+    url: json-schema/felt-layergroup.json
+  - type: JSONSchema
+    url: json-schema/felt-element.json
+  - type: JSONSchema
+    url: json-schema/felt-project.json
+  - type: JSONSchema
+    url: json-schema/felt-source.json
+  - type: JSONSchema
+    url: json-schema/felt-embedtoken.json
+  - type: Examples
+    url: examples/felt-api-examples.json
+- aid: felt:felt-layer-exports-api
+  name: Felt Layer Exports API
+  description: With these APIs, you can export data to CSV, GeoJSON, and other formats.
+  humanURL: https://developers.felt.com/rest-api/getting-started
+  baseURL: https://felt.com/api/v2
+  tags:
+  - Layer Exports
+  properties:
+  - type: OpenAPI
+    url: openapi/felt-layer-exports-api-openapi.yml
+  - type: Documentation
+    url: https://developers.felt.com/rest-api/getting-started
+  - type: JSONSchema
+    url: json-schema/felt-map.json
+  - type: JSONSchema
+    url: json-schema/felt-layer.json
+  - type: JSONSchema
+    url: json-schema/felt-layergroup.json
+  - type: JSONSchema
+    url: json-schema/felt-element.json
+  - type: JSONSchema
+    url: json-schema/felt-project.json
+  - type: JSONSchema
+    url: json-schema/felt-source.json
+  - type: JSONSchema
+    url: json-schema/felt-embedtoken.json
+  - type: Examples
+    url: examples/felt-api-examples.json
+- aid: felt:felt-layer-library-api
+  name: Felt Layer Library API
+  description: With these APIs, you can publish your layers to your workspace library.
+  humanURL: https://developers.felt.com/rest-api/getting-started
+  baseURL: https://felt.com/api/v2
+  tags:
+  - Layer Library
+  properties:
+  - type: OpenAPI
+    url: openapi/felt-layer-library-api-openapi.yml
+  - type: Documentation
+    url: https://developers.felt.com/rest-api/getting-started
+  - type: JSONSchema
+    url: json-schema/felt-map.json
+  - type: JSONSchema
+    url: json-schema/felt-layer.json
+  - type: JSONSchema
+    url: json-schema/felt-layergroup.json
+  - type: JSONSchema
+    url: json-schema/felt-element.json
+  - type: JSONSchema
+    url: json-schema/felt-project.json
+  - type: JSONSchema
+    url: json-schema/felt-source.json
+  - type: JSONSchema
+    url: json-schema/felt-embedtoken.json
+  - type: Examples
+    url: examples/felt-api-examples.json
+- aid: felt:felt-layer-uploads-api
+  name: Felt Layer Uploads API
+  description: With these APIs, you can upload your data to create new layers.
+  humanURL: https://developers.felt.com/rest-api/getting-started
+  baseURL: https://felt.com/api/v2
+  tags:
+  - Layer Uploads
+  properties:
+  - type: OpenAPI
+    url: openapi/felt-layer-uploads-api-openapi.yml
+  - type: Documentation
+    url: https://developers.felt.com/rest-api/getting-started
+  - type: JSONSchema
+    url: json-schema/felt-map.json
+  - type: JSONSchema
+    url: json-schema/felt-layer.json
+  - type: JSONSchema
+    url: json-schema/felt-layergroup.json
+  - type: JSONSchema
+    url: json-schema/felt-element.json
+  - type: JSONSchema
+    url: json-schema/felt-project.json
+  - type: JSONSchema
+    url: json-schema/felt-source.json
+  - type: JSONSchema
+    url: json-schema/felt-embedtoken.json
+  - type: Examples
+    url: examples/felt-api-examples.json
+- aid: felt:felt-layers-api
+  name: Felt Layers API
+  description: >-
+    Layers enable you to visualize, style and interact with your spatial data.
+
+
+    With these APIs, you can upload data, manage layer styling, publish and refresh live data layers.
+  humanURL: https://developers.felt.com/rest-api/getting-started
+  baseURL: https://felt.com/api/v2
+  tags:
+  - Layers
+  properties:
+  - type: OpenAPI
+    url: openapi/felt-layers-api-openapi.yml
+  - type: Documentation
+    url: https://developers.felt.com/rest-api/getting-started
+  - type: JSONSchema
+    url: json-schema/felt-map.json
+  - type: JSONSchema
+    url: json-schema/felt-layer.json
+  - type: JSONSchema
+    url: json-schema/felt-layergroup.json
+  - type: JSONSchema
+    url: json-schema/felt-element.json
+  - type: JSONSchema
+    url: json-schema/felt-project.json
+  - type: JSONSchema
+    url: json-schema/felt-source.json
+  - type: JSONSchema
+    url: json-schema/felt-embedtoken.json
+  - type: Examples
+    url: examples/felt-api-examples.json
+- aid: felt:felt-maps-api
+  name: Felt Maps API
+  description: >-
+    Maps are the centerpiece of Felt.
+
+
+    With these APIs, you can create, retrieve, update, delete, move, and duplicate maps programmatically.
+  humanURL: https://developers.felt.com/rest-api/getting-started
+  baseURL: https://felt.com/api/v2
+  tags:
+  - Maps
+  properties:
+  - type: OpenAPI
+    url: openapi/felt-maps-api-openapi.yml
+  - type: Documentation
+    url: https://developers.felt.com/rest-api/getting-started
+  - type: JSONSchema
+    url: json-schema/felt-map.json
+  - type: JSONSchema
+    url: json-schema/felt-layer.json
+  - type: JSONSchema
+    url: json-schema/felt-layergroup.json
+  - type: JSONSchema
+    url: json-schema/felt-element.json
+  - type: JSONSchema
+    url: json-schema/felt-project.json
+  - type: JSONSchema
+    url: json-schema/felt-source.json
+  - type: JSONSchema
+    url: json-schema/felt-embedtoken.json
+  - type: Examples
+    url: examples/felt-api-examples.json
+- aid: felt:felt-projects-api
+  name: Felt Projects API
+  description: >-
+    Projects help you organize maps and manage team permissions.
+
+
+    With these APIs, you can manage the projects in your workspace.
+  humanURL: https://developers.felt.com/rest-api/getting-started
+  baseURL: https://felt.com/api/v2
+  tags:
+  - Projects
+  properties:
+  - type: OpenAPI
+    url: openapi/felt-projects-api-openapi.yml
+  - type: Documentation
+    url: https://developers.felt.com/rest-api/getting-started
+  - type: JSONSchema
+    url: json-schema/felt-map.json
+  - type: JSONSchema
+    url: json-schema/felt-layer.json
+  - type: JSONSchema
+    url: json-schema/felt-layergroup.json
+  - type: JSONSchema
+    url: json-schema/felt-element.json
+  - type: JSONSchema
+    url: json-schema/felt-project.json
+  - type: JSONSchema
+    url: json-schema/felt-source.json
+  - type: JSONSchema
+    url: json-schema/felt-embedtoken.json
+  - type: Examples
+    url: examples/felt-api-examples.json
+- aid: felt:felt-sources-api
+  name: Felt Sources API
+  description: >-
+    Sources connect your databases to Felt.
+
+
+    With these APIs, you can configure data source connections, credentials, and sync settings to create
+    live maps.
+  humanURL: https://developers.felt.com/rest-api/getting-started
+  baseURL: https://felt.com/api/v2
+  tags:
+  - Sources
+  properties:
+  - type: OpenAPI
+    url: openapi/felt-sources-api-openapi.yml
+  - type: Documentation
+    url: https://developers.felt.com/rest-api/getting-started
+  - type: JSONSchema
+    url: json-schema/felt-map.json
+  - type: JSONSchema
+    url: json-schema/felt-layer.json
+  - type: JSONSchema
+    url: json-schema/felt-layergroup.json
+  - type: JSONSchema
+    url: json-schema/felt-element.json
+  - type: JSONSchema
+    url: json-schema/felt-project.json
+  - type: JSONSchema
+    url: json-schema/felt-source.json
+  - type: JSONSchema
+    url: json-schema/felt-embedtoken.json
+  - type: Examples
+    url: examples/felt-api-examples.json
+- aid: felt:felt-users-api
+  name: Felt Users API
+  description: >-
+    Users represent the people in your workspace.
+
+
+    With these APIs, you can retrieve user profile information.
+  humanURL: https://developers.felt.com/rest-api/getting-started
+  baseURL: https://felt.com/api/v2
+  tags:
+  - Users
+  properties:
+  - type: OpenAPI
+    url: openapi/felt-users-api-openapi.yml
+  - type: Documentation
+    url: https://developers.felt.com/rest-api/getting-started
+  - type: JSONSchema
+    url: json-schema/felt-map.json
+  - type: JSONSchema
+    url: json-schema/felt-layer.json
+  - type: JSONSchema
+    url: json-schema/felt-layergroup.json
+  - type: JSONSchema
+    url: json-schema/felt-element.json
+  - type: JSONSchema
+    url: json-schema/felt-project.json
+  - type: JSONSchema
+    url: json-schema/felt-source.json
+  - type: JSONSchema
+    url: json-schema/felt-embedtoken.json
+  - type: Examples
+    url: examples/felt-api-examples.json
 common:
   - type: AgenticAccess
     url: agentic-access/felt-agentic-access.yml
