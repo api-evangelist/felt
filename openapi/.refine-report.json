@@ -1,0 +1,34 @@
+{
+  "provider": "felt",
+  "sources": [
+    "felt-comments-api-openapi.yml",
+    "felt-elements-api-openapi.yml",
+    "felt-embed-tokens-api-openapi.yml",
+    "felt-layer-exports-api-openapi.yml",
+    "felt-layer-library-api-openapi.yml",
+    "felt-layer-uploads-api-openapi.yml",
+    "felt-layers-api-openapi.yml",
+    "felt-maps-api-openapi.yml",
+    "felt-projects-api-openapi.yml",
+    "felt-sources-api-openapi.yml",
+    "felt-users-api-openapi.yml"
+  ],
+  "outputs": [
+    "felt-comments-api-openapi.yml",
+    "felt-elements-api-openapi.yml",
+    "felt-embed-tokens-api-openapi.yml",
+    "felt-layer-exports-api-openapi.yml",
+    "felt-layer-library-api-openapi.yml",
+    "felt-layer-uploads-api-openapi.yml",
+    "felt-layers-api-openapi.yml",
+    "felt-maps-api-openapi.yml",
+    "felt-projects-api-openapi.yml",
+    "felt-sources-api-openapi.yml",
+    "felt-users-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
