@@ -98,8 +98,6 @@ apis:
   - type: JSONSchema
     url: json-schema/felt-layergroup.json
   - type: JSONSchema
-    url: json-schema/felt-element.json
-  - type: JSONSchema
     url: json-schema/felt-project.json
   - type: JSONSchema
     url: json-schema/felt-source.json
@@ -129,8 +127,6 @@ apis:
     url: json-schema/felt-layer.json
   - type: JSONSchema
     url: json-schema/felt-layergroup.json
-  - type: JSONSchema
-    url: json-schema/felt-element.json
   - type: JSONSchema
     url: json-schema/felt-project.json
   - type: JSONSchema
@@ -162,8 +158,6 @@ apis:
   - type: JSONSchema
     url: json-schema/felt-layergroup.json
   - type: JSONSchema
-    url: json-schema/felt-element.json
-  - type: JSONSchema
     url: json-schema/felt-project.json
   - type: JSONSchema
     url: json-schema/felt-source.json
@@ -189,8 +183,6 @@ apis:
     url: json-schema/felt-layer.json
   - type: JSONSchema
     url: json-schema/felt-layergroup.json
-  - type: JSONSchema
-    url: json-schema/felt-element.json
   - type: JSONSchema
     url: json-schema/felt-project.json
   - type: JSONSchema
@@ -218,8 +210,6 @@ apis:
   - type: JSONSchema
     url: json-schema/felt-layergroup.json
   - type: JSONSchema
-    url: json-schema/felt-element.json
-  - type: JSONSchema
     url: json-schema/felt-project.json
   - type: JSONSchema
     url: json-schema/felt-source.json
@@ -245,8 +235,6 @@ apis:
     url: json-schema/felt-layer.json
   - type: JSONSchema
     url: json-schema/felt-layergroup.json
-  - type: JSONSchema
-    url: json-schema/felt-element.json
   - type: JSONSchema
     url: json-schema/felt-project.json
   - type: JSONSchema
@@ -278,8 +266,6 @@ apis:
   - type: JSONSchema
     url: json-schema/felt-layergroup.json
   - type: JSONSchema
-    url: json-schema/felt-element.json
-  - type: JSONSchema
     url: json-schema/felt-project.json
   - type: JSONSchema
     url: json-schema/felt-source.json
@@ -310,8 +296,6 @@ apis:
   - type: JSONSchema
     url: json-schema/felt-layergroup.json
   - type: JSONSchema
-    url: json-schema/felt-element.json
-  - type: JSONSchema
     url: json-schema/felt-project.json
   - type: JSONSchema
     url: json-schema/felt-source.json
@@ -341,8 +325,6 @@ apis:
     url: json-schema/felt-layer.json
   - type: JSONSchema
     url: json-schema/felt-layergroup.json
-  - type: JSONSchema
-    url: json-schema/felt-element.json
   - type: JSONSchema
     url: json-schema/felt-project.json
   - type: JSONSchema
@@ -375,8 +357,6 @@ apis:
   - type: JSONSchema
     url: json-schema/felt-layergroup.json
   - type: JSONSchema
-    url: json-schema/felt-element.json
-  - type: JSONSchema
     url: json-schema/felt-project.json
   - type: JSONSchema
     url: json-schema/felt-source.json
@@ -406,8 +386,6 @@ apis:
     url: json-schema/felt-layer.json
   - type: JSONSchema
     url: json-schema/felt-layergroup.json
-  - type: JSONSchema
-    url: json-schema/felt-element.json
   - type: JSONSchema
     url: json-schema/felt-project.json
   - type: JSONSchema
