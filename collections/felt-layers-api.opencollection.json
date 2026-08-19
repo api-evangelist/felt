@@ -1,0 +1,309 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Felt Comments Layers API",
+    "version": "2.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Layers",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get map layer group",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://felt.com/api/v2/maps/:map_id/layer_groups/:layer_group_id",
+            "params": [
+              {
+                "name": "map_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "layer_group_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Retrieve detailed information about a specific layer group including its layers and configuration."
+        },
+        {
+          "info": {
+            "name": "Update map layer group",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://felt.com/api/v2/maps/:map_id/layer_groups/:layer_group_id",
+            "params": [
+              {
+                "name": "map_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "layer_group_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Update layer group properties including name, visibility, and organization settings."
+        },
+        {
+          "info": {
+            "name": "Delete map layer group",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://felt.com/api/v2/maps/:map_id/layer_groups/:layer_group_id",
+            "params": [
+              {
+                "name": "map_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the map to delete the layer group from"
+              },
+              {
+                "name": "layer_group_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the layer group to delete"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Permanently remove a layer group and all its contained layers from a map.\n\n{% hint style=\"warning\" %}\nThis action cannot be undone. The layer group and all its contained layers will be permanently removed from the map.\n{% endhint %}\n"
+        },
+        {
+          "info": {
+            "name": "List map layers",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://felt.com/api/v2/maps/:map_id/layers",
+            "params": [
+              {
+                "name": "map_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Retrieve all layers from a map, including uploaded files and connected data sources."
+        },
+        {
+          "info": {
+            "name": "Update map layer",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://felt.com/api/v2/maps/:map_id/layers",
+            "params": [
+              {
+                "name": "map_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Update layer properties including styling, visibility, grouping, and other configuration options."
+        },
+        {
+          "info": {
+            "name": "List map layer groups",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://felt.com/api/v2/maps/:map_id/layer_groups",
+            "params": [
+              {
+                "name": "map_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Retrieve all layer groups from a map to see how layers are organized."
+        },
+        {
+          "info": {
+            "name": "Update map layer groups",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://felt.com/api/v2/maps/:map_id/layer_groups",
+            "params": [
+              {
+                "name": "map_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Update properties for multiple layer groups in a single request for efficient bulk operations."
+        },
+        {
+          "info": {
+            "name": "Update layer style",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://felt.com/api/v2/maps/:map_id/layers/:layer_id/update_style",
+            "params": [
+              {
+                "name": "map_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the map where the layer is located"
+              },
+              {
+                "name": "layer_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the layer to update the style of"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Update the visual styling properties of a layer including colors, symbols, and rendering options."
+        },
+        {
+          "info": {
+            "name": "Get map layer",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://felt.com/api/v2/maps/:map_id/layers/:layer_id",
+            "params": [
+              {
+                "name": "map_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "layer_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Retrieve detailed information about a specific layer including data source, styling, and configuration."
+        },
+        {
+          "info": {
+            "name": "Delete map layer",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://felt.com/api/v2/maps/:map_id/layers/:layer_id",
+            "params": [
+              {
+                "name": "map_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the map to delete the layer from"
+              },
+              {
+                "name": "layer_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the layer to delete"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Permanently remove a layer from a map.\n\n{% hint style=\"warning\" %}\nThis action cannot be undone. The layer and all its data will be permanently removed from the map.\n{% endhint %}\n"
+        },
+        {
+          "info": {
+            "name": "Duplicate map layers",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://felt.com/api/v2/duplicate_layers",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Copy layers or layer groups to other maps, preserving styling and configuration."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

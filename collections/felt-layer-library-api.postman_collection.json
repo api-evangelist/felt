@@ -1,0 +1,1595 @@
+{
+  "item": [
+    {
+      "id": "ec0f995e-a571-4959-97dd-c81bd4a65d88",
+      "name": "Layer Library",
+      "description": {
+        "content": "With these APIs, you can publish your layers to your workspace library.\n",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "cced4f3f-1455-46c5-a0e5-2085764505fd",
+          "name": "Publish map layer",
+          "request": {
+            "name": "Publish map layer",
+            "description": {
+              "content": "Make a layer available in the workspace library for reuse by team members.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "maps",
+                ":map_id",
+                "layers",
+                ":layer_id",
+                "publish"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "map_id",
+                  "description": "(Required) The ID of the map where the layer is located"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "layer_id",
+                  "description": "(Required) The ID of the layer to publish"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "209da81b-5116-4a52-9677-cd472ce35ee8",
+              "name": "Publish layer response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "maps",
+                    ":map_id",
+                    "layers",
+                    ":layer_id",
+                    "publish"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "map_id",
+                      "description": "(Required) The ID of the map where the layer is located"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "layer_id",
+                      "description": "(Required) The ID of the layer to publish"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"My Layer\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"luCHyMruTQ6ozGk3gPJfEB\",\n  \"type\": \"layer\",\n  \"hide_from_legend\": false,\n  \"status\": \"failed\",\n  \"caption\": \"string\",\n  \"name\": \"string\",\n  \"progress\": 6119.188294070685,\n  \"geometry_type\": \"Line\",\n  \"style\": {},\n  \"refresh_period\": \"3 hours\",\n  \"refresh_status\": \"disabled\",\n  \"attributes\": [\n    {\n      \"name\": \"string\",\n      \"type\": \"DATE\"\n    },\n    {\n      \"name\": \"string\",\n      \"type\": \"BOOLEAN\"\n    }\n  ],\n  \"is_spreadsheet\": true,\n  \"last_refreshed_at\": \"1969-07-17T15:59:56.583Z\",\n  \"legend_display\": \"default\",\n  \"legend_visibility\": \"show\",\n  \"links\": {\n    \"self\": \"https://felt.com/api/v2/maps/V0dnOMOuTd9B9BOsL9C0UjmqC/layers/k441enUxQUOnZqc1ZvNsDA\"\n  },\n  \"metadata\": {\n    \"attribution_text\": \"string\",\n    \"attribution_url\": \"string\",\n    \"description\": \"string\",\n    \"license\": \"string\",\n    \"source_abbreviation\": \"string\",\n    \"source_name\": \"string\",\n    \"source_url\": \"string\",\n    \"updated_at\": \"2025-03-24\"\n  },\n  \"next_refresh_at\": \"2014-10-14T05:49:48.796Z\",\n  \"ordering_key\": 7943,\n  \"paused_reason\": \"consecutive_failures\",\n  \"subtitle\": \"string\",\n  \"tile_url\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cd9114b9-21b2-4c75-89bc-0764ee6ce092",
+              "name": "UnauthorizedError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "maps",
+                    ":map_id",
+                    "layers",
+                    ":layer_id",
+                    "publish"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "map_id",
+                      "description": "(Required) The ID of the map where the layer is located"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "layer_id",
+                      "description": "(Required) The ID of the layer to publish"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"My Layer\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"detail\": \"string\",\n      \"source\": {\n        \"header\": \"authorization\"\n      },\n      \"title\": \"string\"\n    },\n    {\n      \"detail\": \"string\",\n      \"source\": {\n        \"header\": \"authorization\"\n      },\n      \"title\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4e1d332f-4d41-43a7-a9a3-ceb524f1a9c7",
+              "name": "UnauthorizedError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "maps",
+                    ":map_id",
+                    "layers",
+                    ":layer_id",
+                    "publish"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "map_id",
+                      "description": "(Required) The ID of the map where the layer is located"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "layer_id",
+                      "description": "(Required) The ID of the layer to publish"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"My Layer\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"detail\": \"string\",\n      \"source\": {\n        \"header\": \"authorization\"\n      },\n      \"title\": \"string\"\n    },\n    {\n      \"detail\": \"string\",\n      \"source\": {\n        \"header\": \"authorization\"\n      },\n      \"title\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8b609142-6a46-4c07-a5d5-2092b19f313b",
+              "name": "NotFoundError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "maps",
+                    ":map_id",
+                    "layers",
+                    ":layer_id",
+                    "publish"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "map_id",
+                      "description": "(Required) The ID of the map where the layer is located"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "layer_id",
+                      "description": "(Required) The ID of the layer to publish"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"My Layer\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"detail\": \"string\",\n      \"source\": {\n        \"parameter\": \"string\"\n      },\n      \"title\": \"string\"\n    },\n    {\n      \"detail\": \"string\",\n      \"source\": {\n        \"parameter\": \"string\"\n      },\n      \"title\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3696fe3e-4fd2-429c-9325-b46af4c21e80",
+              "name": "Unprocessable Entity",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "maps",
+                    ":map_id",
+                    "layers",
+                    ":layer_id",
+                    "publish"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "map_id",
+                      "description": "(Required) The ID of the map where the layer is located"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "layer_id",
+                      "description": "(Required) The ID of the layer to publish"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"My Layer\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"title\": \"Invalid value\",\n      \"source\": {\n        \"pointer\": \"/data/attributes/petName\"\n      },\n      \"detail\": \"null value where string expected\"\n    },\n    {\n      \"title\": \"Invalid value\",\n      \"source\": {\n        \"pointer\": \"/data/attributes/petName\"\n      },\n      \"detail\": \"null value where string expected\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fdf875ef-ff53-46c5-b3cf-3be9e37bf0c8",
+              "name": "Unprocessable Entity",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "maps",
+                    ":map_id",
+                    "layers",
+                    ":layer_id",
+                    "publish"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "map_id",
+                      "description": "(Required) The ID of the map where the layer is located"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "layer_id",
+                      "description": "(Required) The ID of the layer to publish"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"My Layer\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"title\": \"Invalid value\",\n      \"source\": {\n        \"pointer\": \"/data/attributes/petName\"\n      },\n      \"detail\": \"null value where string expected\"\n    },\n    {\n      \"title\": \"Invalid value\",\n      \"source\": {\n        \"pointer\": \"/data/attributes/petName\"\n      },\n      \"detail\": \"null value where string expected\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2a9bc8c0-7f56-4c23-892c-e64a427d0ea1",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "maps",
+                    ":map_id",
+                    "layers",
+                    ":layer_id",
+                    "publish"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "map_id",
+                      "description": "(Required) The ID of the map where the layer is located"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "layer_id",
+                      "description": "(Required) The ID of the layer to publish"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"My Layer\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"detail\": \"string\",\n      \"source\": {\n        \"parameter\": \"string\"\n      },\n      \"title\": \"string\"\n    },\n    {\n      \"detail\": \"string\",\n      \"source\": {\n        \"parameter\": \"string\"\n      },\n      \"title\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "02cff10b-ffa1-4b7d-b5c0-fd0cc9e7eb39",
+          "name": "Publish map layer group",
+          "request": {
+            "name": "Publish map layer group",
+            "description": {
+              "content": "Make a layer group available in the workspace library for reuse by team members.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "maps",
+                ":map_id",
+                "layer_groups",
+                ":layer_group_id",
+                "publish"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "map_id",
+                  "description": "(Required) The ID of the map where the layer group is located"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "layer_group_id",
+                  "description": "(Required) The ID of the layer group to publish"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "3e5c21ef-ff1d-4b59-92b5-984e18d3d8b0",
+              "name": "Publish layer group response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "maps",
+                    ":map_id",
+                    "layer_groups",
+                    ":layer_group_id",
+                    "publish"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "map_id",
+                      "description": "(Required) The ID of the map where the layer group is located"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "layer_group_id",
+                      "description": "(Required) The ID of the layer group to publish"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"My Layer\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"luCHyMruTQ6ozGk3gPJfEB\",\n  \"type\": \"layer_group\",\n  \"name\": \"string\",\n  \"caption\": \"string\",\n  \"visibility_interaction\": \"multi_select\",\n  \"layers\": [\n    {\n      \"id\": \"luCHyMruTQ6ozGk3gPJfEB\",\n      \"type\": \"layer\",\n      \"hide_from_legend\": true,\n      \"status\": \"failed\",\n      \"caption\": \"string\",\n      \"name\": \"string\",\n      \"progress\": 880.0745865922277,\n      \"geometry_type\": \"Raster\",\n      \"style\": {},\n      \"refresh_period\": \"month\",\n      \"refresh_status\": \"paused\",\n      \"attributes\": [\n        {\n          \"name\": \"string\",\n          \"type\": \"BOOLEAN\"\n        },\n        {\n          \"name\": \"string\",\n          \"type\": \"DATE\"\n        }\n      ],\n      \"is_spreadsheet\": true,\n      \"last_refreshed_at\": \"2005-07-22T05:38:24.864Z\",\n      \"legend_display\": \"name_only\",\n      \"legend_visibility\": \"show\",\n      \"links\": {\n        \"self\": \"https://felt.com/api/v2/maps/V0dnOMOuTd9B9BOsL9C0UjmqC/layers/k441enUxQUOnZqc1ZvNsDA\"\n      },\n      \"metadata\": {\n        \"attribution_text\": \"string\",\n        \"attribution_url\": \"string\",\n        \"description\": \"string\",\n        \"license\": \"string\",\n        \"source_abbreviation\": \"string\",\n        \"source_name\": \"string\",\n        \"source_url\": \"string\",\n        \"updated_at\": \"2025-03-24\"\n      },\n      \"next_refresh_at\": \"2016-01-23T14:16:18.114Z\",\n      \"ordering_key\": 3537,\n      \"paused_reason\": \"consecutive_failures\",\n      \"subtitle\": \"string\",\n      \"tile_url\": \"string\"\n    },\n    {\n      \"id\": \"luCHyMruTQ6ozGk3gPJfEB\",\n      \"type\": \"layer\",\n      \"hide_from_legend\": false,\n      \"status\": \"uploading\",\n      \"caption\": \"string\",\n      \"name\": \"string\",\n      \"progress\": 314.89314160730754,\n      \"geometry_type\": \"Raster\",\n      \"style\": {},\n      \"refresh_period\": \"disabled\",\n      \"refresh_status\": \"disabled\",\n      \"attributes\": [\n        {\n          \"name\": \"string\",\n          \"type\": \"TEXT\"\n        },\n        {\n          \"name\": \"string\",\n          \"type\": \"DATETIME\"\n        }\n      ],\n      \"is_spreadsheet\": true,\n      \"last_refreshed_at\": \"1976-04-09T14:23:10.941Z\",\n      \"legend_display\": \"name_only\",\n      \"legend_visibility\": \"show\",\n      \"links\": {\n        \"self\": \"https://felt.com/api/v2/maps/V0dnOMOuTd9B9BOsL9C0UjmqC/layers/k441enUxQUOnZqc1ZvNsDA\"\n      },\n      \"metadata\": {\n        \"attribution_text\": \"string\",\n        \"attribution_url\": \"string\",\n        \"description\": \"string\",\n        \"license\": \"string\",\n        \"source_abbreviation\": \"string\",\n        \"source_name\": \"string\",\n        \"source_url\": \"string\",\n        \"updated_at\": \"2025-03-24\"\n      },\n      \"next_refresh_at\": \"1978-01-04T02:17:00.997Z\",\n      \"ordering_key\": 4562,\n      \"paused_reason\": \"consecutive_failures\",\n      \"subtitle\": \"string\",\n      \"tile_url\": \"string\"\n    }\n  ],\n  \"legend_visibility\": \"hide\",\n  \"links\": {\n    \"self\": \"https://felt.com/api/v2/maps/V0dnOMOuTd9B9BOsL9C0UjmqC/layer_groups/v13k4Ae9BRjCHHdPP5Fcm6D\"\n  },\n  \"ordering_key\": 4457,\n  \"subtitle\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f42993fe-1070-435b-9584-a80252e90bb8",
+              "name": "UnauthorizedError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "maps",
+                    ":map_id",
+                    "layer_groups",
+                    ":layer_group_id",
+                    "publish"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "map_id",
+                      "description": "(Required) The ID of the map where the layer group is located"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "layer_group_id",
+                      "description": "(Required) The ID of the layer group to publish"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"My Layer\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"detail\": \"string\",\n      \"source\": {\n        \"header\": \"authorization\"\n      },\n      \"title\": \"string\"\n    },\n    {\n      \"detail\": \"string\",\n      \"source\": {\n        \"header\": \"authorization\"\n      },\n      \"title\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cb3fe81e-fe95-40ff-a8d9-1896ded3f012",
+              "name": "UnauthorizedError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "maps",
+                    ":map_id",
+                    "layer_groups",
+                    ":layer_group_id",
+                    "publish"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "map_id",
+                      "description": "(Required) The ID of the map where the layer group is located"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "layer_group_id",
+                      "description": "(Required) The ID of the layer group to publish"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"My Layer\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"detail\": \"string\",\n      \"source\": {\n        \"header\": \"authorization\"\n      },\n      \"title\": \"string\"\n    },\n    {\n      \"detail\": \"string\",\n      \"source\": {\n        \"header\": \"authorization\"\n      },\n      \"title\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "99b43da9-fd6b-4758-9ce4-a6e54add95ae",
+              "name": "NotFoundError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "maps",
+                    ":map_id",
+                    "layer_groups",
+                    ":layer_group_id",
+                    "publish"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "map_id",
+                      "description": "(Required) The ID of the map where the layer group is located"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "layer_group_id",
+                      "description": "(Required) The ID of the layer group to publish"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"My Layer\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"detail\": \"string\",\n      \"source\": {\n        \"parameter\": \"string\"\n      },\n      \"title\": \"string\"\n    },\n    {\n      \"detail\": \"string\",\n      \"source\": {\n        \"parameter\": \"string\"\n      },\n      \"title\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2bf38428-8327-4b5e-b3af-c45f008bcbfb",
+              "name": "Unprocessable Entity",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "maps",
+                    ":map_id",
+                    "layer_groups",
+                    ":layer_group_id",
+                    "publish"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "map_id",
+                      "description": "(Required) The ID of the map where the layer group is located"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "layer_group_id",
+                      "description": "(Required) The ID of the layer group to publish"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"My Layer\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"title\": \"Invalid value\",\n      \"source\": {\n        \"pointer\": \"/data/attributes/petName\"\n      },\n      \"detail\": \"null value where string expected\"\n    },\n    {\n      \"title\": \"Invalid value\",\n      \"source\": {\n        \"pointer\": \"/data/attributes/petName\"\n      },\n      \"detail\": \"null value where string expected\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "32bdb1e4-1d5e-4368-98b7-abae9ab4d830",
+              "name": "Unprocessable Entity",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "maps",
+                    ":map_id",
+                    "layer_groups",
+                    ":layer_group_id",
+                    "publish"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "map_id",
+                      "description": "(Required) The ID of the map where the layer group is located"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "layer_group_id",
+                      "description": "(Required) The ID of the layer group to publish"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"My Layer\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"title\": \"Invalid value\",\n      \"source\": {\n        \"pointer\": \"/data/attributes/petName\"\n      },\n      \"detail\": \"null value where string expected\"\n    },\n    {\n      \"title\": \"Invalid value\",\n      \"source\": {\n        \"pointer\": \"/data/attributes/petName\"\n      },\n      \"detail\": \"null value where string expected\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f073f102-1a74-4a35-bd07-91578b321476",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "maps",
+                    ":map_id",
+                    "layer_groups",
+                    ":layer_group_id",
+                    "publish"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "map_id",
+                      "description": "(Required) The ID of the map where the layer group is located"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "layer_group_id",
+                      "description": "(Required) The ID of the layer group to publish"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"My Layer\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"detail\": \"string\",\n      \"source\": {\n        \"parameter\": \"string\"\n      },\n      \"title\": \"string\"\n    },\n    {\n      \"detail\": \"string\",\n      \"source\": {\n        \"parameter\": \"string\"\n      },\n      \"title\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5b1c5d0c-f537-419b-a54f-4d93f8aabddb",
+          "name": "List library layers",
+          "request": {
+            "name": "List library layers",
+            "description": {
+              "content": "List all layers in your workspace's library, or the felt layer library.\n\nYou can add a layer from the library to a map by using the \"Duplicate layers\" API endpoint (`POST /api/v2/duplicate_layers`) and the layer `id` provided by this endpoint.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "library"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "source",
+                  "value": "workspace"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "59c8872e-ef39-4862-bfbe-3703fb97f17b",
+              "name": "LayerLibrary",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "library"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "source",
+                      "value": "workspace"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"layer_library\",\n  \"layers\": [\n    {\n      \"id\": \"luCHyMruTQ6ozGk3gPJfEB\",\n      \"type\": \"layer\",\n      \"hide_from_legend\": true,\n      \"status\": \"uploading\",\n      \"caption\": \"string\",\n      \"name\": \"string\",\n      \"progress\": 3529.559293185405,\n      \"geometry_type\": \"Point\",\n      \"style\": {},\n      \"refresh_period\": \"day\",\n      \"refresh_status\": \"disabled\",\n      \"attributes\": [\n        {\n          \"name\": \"string\",\n          \"type\": \"TEXT\"\n        },\n        {\n          \"name\": \"string\",\n          \"type\": \"DATE\"\n        }\n      ],\n      \"is_spreadsheet\": false,\n      \"last_refreshed_at\": \"1964-12-16T06:25:10.270Z\",\n      \"legend_display\": \"name_only\",\n      \"legend_visibility\": \"hide\",\n      \"links\": {\n        \"self\": \"https://felt.com/api/v2/maps/V0dnOMOuTd9B9BOsL9C0UjmqC/layers/k441enUxQUOnZqc1ZvNsDA\"\n      },\n      \"metadata\": {\n        \"attribution_text\": \"string\",\n        \"attribution_url\": \"string\",\n        \"description\": \"string\",\n        \"license\": \"string\",\n        \"source_abbreviation\": \"string\",\n        \"source_name\": \"string\",\n        \"source_url\": \"string\",\n        \"updated_at\": \"2025-03-24\"\n      },\n      \"next_refresh_at\": \"2003-08-31T19:41:27.688Z\",\n      \"ordering_key\": 1809,\n      \"paused_reason\": \"consecutive_failures\",\n      \"subtitle\": \"string\",\n      \"tile_url\": \"string\"\n    },\n    {\n      \"id\": \"luCHyMruTQ6ozGk3gPJfEB\",\n      \"type\": \"layer\",\n      \"hide_from_legend\": true,\n      \"status\": \"failed\",\n      \"caption\": \"string\",\n      \"name\": \"string\",\n      \"progress\": 9504.172800103051,\n      \"geometry_type\": \"Raster\",\n      \"style\": {},\n      \"refresh_period\": \"month\",\n      \"refresh_status\": \"paused\",\n      \"attributes\": [\n        {\n          \"name\": \"string\",\n          \"type\": \"BOOLEAN\"\n        },\n        {\n          \"name\": \"string\",\n          \"type\": \"REAL\"\n        }\n      ],\n      \"is_spreadsheet\": false,\n      \"last_refreshed_at\": \"1980-03-29T07:45:27.049Z\",\n      \"legend_display\": \"default\",\n      \"legend_visibility\": \"show\",\n      \"links\": {\n        \"self\": \"https://felt.com/api/v2/maps/V0dnOMOuTd9B9BOsL9C0UjmqC/layers/k441enUxQUOnZqc1ZvNsDA\"\n      },\n      \"metadata\": {\n        \"attribution_text\": \"string\",\n        \"attribution_url\": \"string\",\n        \"description\": \"string\",\n        \"license\": \"string\",\n        \"source_abbreviation\": \"string\",\n        \"source_name\": \"string\",\n        \"source_url\": \"string\",\n        \"updated_at\": \"2025-03-24\"\n      },\n      \"next_refresh_at\": \"2006-11-18T18:29:38.156Z\",\n      \"ordering_key\": 4663,\n      \"paused_reason\": \"consecutive_failures\",\n      \"subtitle\": \"string\",\n      \"tile_url\": \"string\"\n    }\n  ],\n  \"layer_groups\": [\n    {\n      \"id\": \"luCHyMruTQ6ozGk3gPJfEB\",\n      \"type\": \"layer_group\",\n      \"name\": \"string\",\n      \"caption\": \"string\",\n      \"visibility_interaction\": \"multi_select\",\n      \"layers\": [\n        {\n          \"id\": \"luCHyMruTQ6ozGk3gPJfEB\",\n          \"type\": \"layer\",\n          \"hide_from_legend\": false,\n          \"status\": \"processing\",\n          \"caption\": \"string\",\n          \"name\": \"string\",\n          \"progress\": 137.46254607486352,\n          \"geometry_type\": \"Raster\",\n          \"style\": {},\n          \"refresh_period\": \"hour\",\n          \"refresh_status\": \"disabled\",\n          \"attributes\": [\n            {\n              \"name\": \"string\",\n              \"type\": \"BOOLEAN\"\n            },\n            {\n              \"name\": \"string\",\n              \"type\": \"BOOLEAN\"\n            }\n          ],\n          \"is_spreadsheet\": true,\n          \"last_refreshed_at\": \"2010-11-07T23:49:36.454Z\",\n          \"legend_display\": \"name_only\",\n          \"legend_visibility\": \"hide\",\n          \"links\": {\n            \"self\": \"https://felt.com/api/v2/maps/V0dnOMOuTd9B9BOsL9C0UjmqC/layers/k441enUxQUOnZqc1ZvNsDA\"\n          },\n          \"metadata\": {\n            \"attribution_text\": \"string\",\n            \"attribution_url\": \"string\",\n            \"description\": \"string\",\n            \"license\": \"string\",\n            \"source_abbreviation\": \"string\",\n            \"source_name\": \"string\",\n            \"source_url\": \"string\",\n            \"updated_at\": \"2025-03-24\"\n          },\n          \"next_refresh_at\": \"1961-08-30T10:41:15.867Z\",\n          \"ordering_key\": 1570,\n          \"paused_reason\": \"consecutive_failures\",\n          \"subtitle\": \"string\",\n          \"tile_url\": \"string\"\n        },\n        {\n          \"id\": \"luCHyMruTQ6ozGk3gPJfEB\",\n          \"type\": \"layer\",\n          \"hide_from_legend\": false,\n          \"status\": \"completed\",\n          \"caption\": \"string\",\n          \"name\": \"string\",\n          \"progress\": 3431.7325597460326,\n          \"geometry_type\": \"Polygon\",\n          \"style\": {},\n          \"refresh_period\": \"week\",\n          \"refresh_status\": \"disabled\",\n          \"attributes\": [\n            {\n              \"name\": \"string\",\n              \"type\": \"GEOMETRY\"\n            },\n            {\n              \"name\": \"string\",\n              \"type\": \"DATE\"\n            }\n          ],\n          \"is_spreadsheet\": true,\n          \"last_refreshed_at\": \"1962-06-26T06:55:46.720Z\",\n          \"legend_display\": \"name_only\",\n          \"legend_visibility\": \"show\",\n          \"links\": {\n            \"self\": \"https://felt.com/api/v2/maps/V0dnOMOuTd9B9BOsL9C0UjmqC/layers/k441enUxQUOnZqc1ZvNsDA\"\n          },\n          \"metadata\": {\n            \"attribution_text\": \"string\",\n            \"attribution_url\": \"string\",\n            \"description\": \"string\",\n            \"license\": \"string\",\n            \"source_abbreviation\": \"string\",\n            \"source_name\": \"string\",\n            \"source_url\": \"string\",\n            \"updated_at\": \"2025-03-24\"\n          },\n          \"next_refresh_at\": \"1976-12-28T06:54:35.728Z\",\n          \"ordering_key\": 8752,\n          \"paused_reason\": \"consecutive_failures\",\n          \"subtitle\": \"string\",\n          \"tile_url\": \"string\"\n        }\n      ],\n      \"legend_visibility\": \"hide\",\n      \"links\": {\n        \"self\": \"https://felt.com/api/v2/maps/V0dnOMOuTd9B9BOsL9C0UjmqC/layer_groups/v13k4Ae9BRjCHHdPP5Fcm6D\"\n      },\n      \"ordering_key\": 7978,\n      \"subtitle\": \"string\"\n    },\n    {\n      \"id\": \"luCHyMruTQ6ozGk3gPJfEB\",\n      \"type\": \"layer_group\",\n      \"name\": \"string\",\n      \"caption\": \"string\",\n      \"visibility_interaction\": \"multi_select\",\n      \"layers\": [\n        {\n          \"id\": \"luCHyMruTQ6ozGk3gPJfEB\",\n          \"type\": \"layer\",\n          \"hide_from_legend\": true,\n          \"status\": \"failed\",\n          \"caption\": \"string\",\n          \"name\": \"string\",\n          \"progress\": 8308.099761269998,\n          \"geometry_type\": \"Polygon\",\n          \"style\": {},\n          \"refresh_period\": \"15 min\",\n          \"refresh_status\": \"disabled\",\n          \"attributes\": [\n            {\n              \"name\": \"string\",\n              \"type\": \"GEOMETRY\"\n            },\n            {\n              \"name\": \"string\",\n              \"type\": \"REAL\"\n            }\n          ],\n          \"is_spreadsheet\": true,\n          \"last_refreshed_at\": \"1946-11-06T11:22:34.740Z\",\n          \"legend_display\": \"default\",\n          \"legend_visibility\": \"show\",\n          \"links\": {\n            \"self\": \"https://felt.com/api/v2/maps/V0dnOMOuTd9B9BOsL9C0UjmqC/layers/k441enUxQUOnZqc1ZvNsDA\"\n          },\n          \"metadata\": {\n            \"attribution_text\": \"string\",\n            \"attribution_url\": \"string\",\n            \"description\": \"string\",\n            \"license\": \"string\",\n            \"source_abbreviation\": \"string\",\n            \"source_name\": \"string\",\n            \"source_url\": \"string\",\n            \"updated_at\": \"2025-03-24\"\n          },\n          \"next_refresh_at\": \"1973-07-07T03:12:18.566Z\",\n          \"ordering_key\": 4388,\n          \"paused_reason\": \"consecutive_failures\",\n          \"subtitle\": \"string\",\n          \"tile_url\": \"string\"\n        },\n        {\n          \"id\": \"luCHyMruTQ6ozGk3gPJfEB\",\n          \"type\": \"layer\",\n          \"hide_from_legend\": true,\n          \"status\": \"uploading\",\n          \"caption\": \"string\",\n          \"name\": \"string\",\n          \"progress\": 6586.914729891749,\n          \"geometry_type\": \"Line\",\n          \"style\": {},\n          \"refresh_period\": \"week\",\n          \"refresh_status\": \"paused\",\n          \"attributes\": [\n            {\n              \"name\": \"string\",\n              \"type\": \"DATETIME\"\n            },\n            {\n              \"name\": \"string\",\n              \"type\": \"REAL\"\n            }\n          ],\n          \"is_spreadsheet\": true,\n          \"last_refreshed_at\": \"2003-01-26T17:50:59.284Z\",\n          \"legend_display\": \"default\",\n          \"legend_visibility\": \"show\",\n          \"links\": {\n            \"self\": \"https://felt.com/api/v2/maps/V0dnOMOuTd9B9BOsL9C0UjmqC/layers/k441enUxQUOnZqc1ZvNsDA\"\n          },\n          \"metadata\": {\n            \"attribution_text\": \"string\",\n            \"attribution_url\": \"string\",\n            \"description\": \"string\",\n            \"license\": \"string\",\n            \"source_abbreviation\": \"string\",\n            \"source_name\": \"string\",\n            \"source_url\": \"string\",\n            \"updated_at\": \"2025-03-24\"\n          },\n          \"next_refresh_at\": \"1980-07-28T11:19:11.724Z\",\n          \"ordering_key\": 8792,\n          \"paused_reason\": \"consecutive_failures\",\n          \"subtitle\": \"string\",\n          \"tile_url\": \"string\"\n        }\n      ],\n      \"legend_visibility\": \"show\",\n      \"links\": {\n        \"self\": \"https://felt.com/api/v2/maps/V0dnOMOuTd9B9BOsL9C0UjmqC/layer_groups/v13k4Ae9BRjCHHdPP5Fcm6D\"\n      },\n      \"ordering_key\": 7564,\n      \"subtitle\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b2614c64-4f18-4ecc-825e-1a44b4cce7bc",
+              "name": "UnauthorizedError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "library"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "source",
+                      "value": "workspace"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"detail\": \"string\",\n      \"source\": {\n        \"header\": \"authorization\"\n      },\n      \"title\": \"string\"\n    },\n    {\n      \"detail\": \"string\",\n      \"source\": {\n        \"header\": \"authorization\"\n      },\n      \"title\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "77d8b78d-6044-4cd6-af5e-22ed5e7556fa",
+              "name": "UnauthorizedError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "library"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "source",
+                      "value": "workspace"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"detail\": \"string\",\n      \"source\": {\n        \"header\": \"authorization\"\n      },\n      \"title\": \"string\"\n    },\n    {\n      \"detail\": \"string\",\n      \"source\": {\n        \"header\": \"authorization\"\n      },\n      \"title\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9e93c385-2964-413c-8e55-5fd3c66a7d95",
+              "name": "NotFoundError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "library"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "source",
+                      "value": "workspace"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"detail\": \"string\",\n      \"source\": {\n        \"parameter\": \"string\"\n      },\n      \"title\": \"string\"\n    },\n    {\n      \"detail\": \"string\",\n      \"source\": {\n        \"parameter\": \"string\"\n      },\n      \"title\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2a51e1cd-8d52-4223-af06-d77b199c1515",
+              "name": "Unprocessable Entity",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "library"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "source",
+                      "value": "workspace"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"title\": \"Invalid value\",\n      \"source\": {\n        \"pointer\": \"/data/attributes/petName\"\n      },\n      \"detail\": \"null value where string expected\"\n    },\n    {\n      \"title\": \"Invalid value\",\n      \"source\": {\n        \"pointer\": \"/data/attributes/petName\"\n      },\n      \"detail\": \"null value where string expected\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cb2c8a10-c452-495e-8d47-5e0564e80e46",
+              "name": "Unprocessable Entity",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "library"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "source",
+                      "value": "workspace"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"title\": \"Invalid value\",\n      \"source\": {\n        \"pointer\": \"/data/attributes/petName\"\n      },\n      \"detail\": \"null value where string expected\"\n    },\n    {\n      \"title\": \"Invalid value\",\n      \"source\": {\n        \"pointer\": \"/data/attributes/petName\"\n      },\n      \"detail\": \"null value where string expected\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d5f243ca-725b-49d2-8743-779dee8e3639",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "library"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "source",
+                      "value": "workspace"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"detail\": \"string\",\n      \"source\": {\n        \"parameter\": \"string\"\n      },\n      \"title\": \"string\"\n    },\n    {\n      \"detail\": \"string\",\n      \"source\": {\n        \"parameter\": \"string\"\n      },\n      \"title\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://felt.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "e1f0f4fc-1c1a-476d-bdc2-4cb1f5b1b580",
+    "name": "Felt Comments Layer Library API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Felt REST API v2.0",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Felt Comments Users API",
+    "version": "2.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Users",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get current user",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://felt.com/api/v2/user",
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Retrieve profile information and settings for the authenticated user."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

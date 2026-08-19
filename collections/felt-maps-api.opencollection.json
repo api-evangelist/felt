@@ -1,0 +1,162 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Felt Comments Maps API",
+    "version": "2.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Maps",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Move map",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://felt.com/api/v2/maps/:map_id/move",
+            "params": [
+              {
+                "name": "map_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Move a map to a different project or folder within the same workspace. Project IDs and Folder IDs can be found inside map settings."
+        },
+        {
+          "info": {
+            "name": "Duplicate map",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://felt.com/api/v2/maps/:map_id/duplicate",
+            "params": [
+              {
+                "name": "map_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the map to duplicate"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Create a copy of a map with all its layers, elements, and configuration."
+        },
+        {
+          "info": {
+            "name": "Create map",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://felt.com/api/v2/maps",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Create a new map with optional customization options.\n\nSeveral aspects can be customized when creating a new map, including:\n\n* Title\n* Initial location (latitude, longitude and zoom level)\n* Sharing permissions (defaults to viewing and commenting for users with the map URL)\n* An array of URLs to import on map creation\n"
+        },
+        {
+          "info": {
+            "name": "Update map",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://felt.com/api/v2/maps/:map_id/update",
+            "params": [
+              {
+                "name": "map_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the map to update"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Update map properties including title, description, and access permissions."
+        },
+        {
+          "info": {
+            "name": "Get map",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://felt.com/api/v2/maps/:map_id",
+            "params": [
+              {
+                "name": "map_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Retrieve a map with its metadata including title, URL, thumbnail, and timestamps."
+        },
+        {
+          "info": {
+            "name": "Delete map",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://felt.com/api/v2/maps/:map_id",
+            "params": [
+              {
+                "name": "map_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the map to delete"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Permanently delete a map and all its associated data.\n\n{% hint style=\"warning\" %}\nThis action cannot be undone. The map and all its layers, elements, and comments will be permanently removed.\n{% endhint %}\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

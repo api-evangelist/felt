@@ -1,0 +1,100 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Felt Comments Layer Uploads API",
+    "version": "2.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Layer Uploads",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Add layer from data source",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://felt.com/api/v2/maps/:map_id/add_source_layer",
+            "params": [
+              {
+                "name": "map_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Create a new layer from an existing data source connection (database, API, or file)."
+        },
+        {
+          "info": {
+            "name": "Refresh map layer",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://felt.com/api/v2/maps/:map_id/layers/:layer_id/refresh",
+            "params": [
+              {
+                "name": "map_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the map hosting the layer to refresh"
+              },
+              {
+                "name": "layer_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the layer to refresh"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Trigger a data refresh for a layer from its original data source to pull in the latest updates.\n\nAfter uploading a file or URL, you may want to update the resulting layer with new data. The process is quite similar to the upload:\n\n* For URL uploads, simply making a single `POST` request to the refresh endpoint is enough\n* For file refreshes, the response of the initial `POST` request will include a URL and some pre-signed attributes, which will be used to upload the new file to Amazon S3.\n\n{% hi"
+        },
+        {
+          "info": {
+            "name": "Upload map layer",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://felt.com/api/v2/maps/:map_id/upload",
+            "params": [
+              {
+                "name": "map_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the map to upload the layer to."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Upload a file or import data from a URL to create a new layer on the map.\n\nThe `/upload` endpoint can be used for both URL and file uploads:\n\n* For URL uploads, simply making a single `POST` request to the upload endpoint is enough\n* For file uploads, the response of the initial `POST` request contain information you will use to upload the file to Amazon S3\n\nCheck our [Upload Anything](https://help.felt.com/upload-anything) docs to see what URLs are supported.\n\n#### **Uploading the file to Amazo"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

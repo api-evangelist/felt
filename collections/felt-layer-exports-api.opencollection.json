@@ -1,0 +1,115 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Felt Comments Layer Exports API",
+    "version": "2.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Layer Exports",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create layer export link",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://felt.com/api/v2/maps/:map_id/layers/:layer_id/get_export_link",
+            "params": [
+              {
+                "name": "map_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the map where the layer is located"
+              },
+              {
+                "name": "layer_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the layer to export"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Generate a direct download link for layer data export.\n\nGet a link to export a layer as a GeoPackage (vector layers) or GeoTIFF (raster layers).\n"
+        },
+        {
+          "info": {
+            "name": "Check custom export status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://felt.com/api/v2/maps/:map_id/layers/:layer_id/custom_exports/:export_id",
+            "params": [
+              {
+                "name": "map_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the map where the layer is located"
+              },
+              {
+                "name": "layer_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the layer to export"
+              },
+              {
+                "name": "export_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the export"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Check the processing status and download availability of a custom export request.\n\nIf the export is successful, the response will include a `download_url` for accessing the exported data.\n"
+        },
+        {
+          "info": {
+            "name": "Create custom layer export",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://felt.com/api/v2/maps/:map_id/layers/:layer_id/custom_export",
+            "params": [
+              {
+                "name": "map_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the map where the layer is located"
+              },
+              {
+                "name": "layer_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the layer to export"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Start a custom export with specific format and filter options for layer data.\n\nExport requests are asynchronous. A successful response will return a `poll_endpoint` to check the status of the export using the poll custom export endpoint.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

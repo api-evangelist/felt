@@ -1,0 +1,46 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Felt Comments Embed Tokens API",
+    "version": "2.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Embed Tokens",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create an Embed Token",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://felt.com/api/v2/maps/:map_id/embed_token",
+            "params": [
+              {
+                "name": "map_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "user_email",
+                "value": "",
+                "type": "query",
+                "description": "Each token must be associated with the email address of the user who will use it."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Creates a short-lived (15 minutes) token for authenticating a visitor to view a private embedded map view without being logged into Felt. You must provide a `user_email` to associate the token with the end user that will be viewing the map.\nEach end user should be a member of your Felt workspace with a viewer, editor, or admin role assigned.\n### Usage\n* Generate a token by making a call to this API from your server\n* Securely pass the token to your frontend client\n* Include the token as a query "
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

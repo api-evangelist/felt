@@ -1,0 +1,2934 @@
+{
+  "item": [
+    {
+      "id": "355ae976-8c80-48eb-8e5d-85ca63f234a0",
+      "name": "Elements",
+      "description": {
+        "content": "Elements enable you to annotate maps with custom shapes, text, and markers.\n\nWith these APIs, you can create, update, and delete map elements.\n",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "86e07ed9-cdd8-4c77-8741-9df828b84a17",
+          "name": "Delete map element",
+          "request": {
+            "name": "Delete map element",
+            "description": {
+              "content": "Permanently delete an element from a map.\n\n{% hint style=\"warning\" %}\nThis action cannot be undone. The element will be permanently removed from the map.\n{% endhint %}\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "maps",
+                ":map_id",
+                "elements",
+                ":element_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "map_id",
+                  "description": "(Required) The ID of the map to delete the element from."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "element_id",
+                  "description": "(Required) The ID of the element to delete."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "ed554b1c-0cef-4fa7-96ab-b6c8704e6cdd",
+              "name": "No Content",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "maps",
+                    ":map_id",
+                    "elements",
+                    ":element_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "map_id",
+                      "description": "(Required) The ID of the map to delete the element from."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "element_id",
+                      "description": "(Required) The ID of the element to delete."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9a0cc19b-9a26-4ec0-83b9-106b46fa6ab5",
+              "name": "UnauthorizedError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "maps",
+                    ":map_id",
+                    "elements",
+                    ":element_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "map_id",
+                      "description": "(Required) The ID of the map to delete the element from."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "element_id",
+                      "description": "(Required) The ID of the element to delete."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"detail\": \"string\",\n      \"source\": {\n        \"header\": \"authorization\"\n      },\n      \"title\": \"string\"\n    },\n    {\n      \"detail\": \"string\",\n      \"source\": {\n        \"header\": \"authorization\"\n      },\n      \"title\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ed3e1900-cdf0-41cf-98fc-411f0833dbd6",
+              "name": "UnauthorizedError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "maps",
+                    ":map_id",
+                    "elements",
+                    ":element_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "map_id",
+                      "description": "(Required) The ID of the map to delete the element from."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "element_id",
+                      "description": "(Required) The ID of the element to delete."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"detail\": \"string\",\n      \"source\": {\n        \"header\": \"authorization\"\n      },\n      \"title\": \"string\"\n    },\n    {\n      \"detail\": \"string\",\n      \"source\": {\n        \"header\": \"authorization\"\n      },\n      \"title\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7dbb7d80-3bb8-47a6-87f1-9d75fa4a37be",
+              "name": "NotFoundError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "maps",
+                    ":map_id",
+                    "elements",
+                    ":element_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "map_id",
+                      "description": "(Required) The ID of the map to delete the element from."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "element_id",
+                      "description": "(Required) The ID of the element to delete."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"detail\": \"string\",\n      \"source\": {\n        \"parameter\": \"string\"\n      },\n      \"title\": \"string\"\n    },\n    {\n      \"detail\": \"string\",\n      \"source\": {\n        \"parameter\": \"string\"\n      },\n      \"title\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8d5989d1-c92a-400b-b733-a35ff306fc10",
+              "name": "Unprocessable Entity",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "maps",
+                    ":map_id",
+                    "elements",
+                    ":element_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "map_id",
+                      "description": "(Required) The ID of the map to delete the element from."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "element_id",
+                      "description": "(Required) The ID of the element to delete."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"title\": \"Invalid value\",\n      \"source\": {\n        \"pointer\": \"/data/attributes/petName\"\n      },\n      \"detail\": \"null value where string expected\"\n    },\n    {\n      \"title\": \"Invalid value\",\n      \"source\": {\n        \"pointer\": \"/data/attributes/petName\"\n      },\n      \"detail\": \"null value where string expected\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "05da98c1-caf1-41bb-b6f4-7ecc20cc92a1",
+              "name": "Unprocessable Entity",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "maps",
+                    ":map_id",
+                    "elements",
+                    ":element_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "map_id",
+                      "description": "(Required) The ID of the map to delete the element from."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "element_id",
+                      "description": "(Required) The ID of the element to delete."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"title\": \"Invalid value\",\n      \"source\": {\n        \"pointer\": \"/data/attributes/petName\"\n      },\n      \"detail\": \"null value where string expected\"\n    },\n    {\n      \"title\": \"Invalid value\",\n      \"source\": {\n        \"pointer\": \"/data/attributes/petName\"\n      },\n      \"detail\": \"null value where string expected\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "50de6bb0-06e5-46c2-a3e8-5796be88e2e1",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "maps",
+                    ":map_id",
+                    "elements",
+                    ":element_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "map_id",
+                      "description": "(Required) The ID of the map to delete the element from."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "element_id",
+                      "description": "(Required) The ID of the element to delete."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"detail\": \"string\",\n      \"source\": {\n        \"parameter\": \"string\"\n      },\n      \"title\": \"string\"\n    },\n    {\n      \"detail\": \"string\",\n      \"source\": {\n        \"parameter\": \"string\"\n      },\n      \"title\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b9db7bdd-0aa2-4565-96bf-ba1c5726ca1e",
+          "name": "List map elements",
+          "request": {
+            "name": "List map elements",
+            "description": {
+              "content": "Returns a GeoJSON `FeatureCollection` containing all the elements in a map that are not in an element group.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "maps",
+                ":map_id",
+                "elements"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "map_id",
+                  "description": "(Required) The ID of the map to list elements from."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "f55dfa1c-4254-49a7-9e03-d1086418ce58",
+              "name": "GeoJSON",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "maps",
+                    ":map_id",
+                    "elements"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "map_id",
+                      "description": "(Required) The ID of the map to list elements from."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"FeatureCollection\",\n  \"features\": [\n    {\n      \"geometry\": {\n        \"felt:id\": \"luCHyMruTQ6ozGk3gPJfEB\",\n        \"felt:parentId\": \"luCHyMruTQ6ozGk3gPJfEB\"\n      },\n      \"properties\": {},\n      \"type\": \"Feature\"\n    },\n    {\n      \"geometry\": {\n        \"felt:id\": \"luCHyMruTQ6ozGk3gPJfEB\",\n        \"felt:parentId\": \"luCHyMruTQ6ozGk3gPJfEB\"\n      },\n      \"properties\": {},\n      \"type\": \"Feature\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5c9598bf-d13e-405a-8fef-995dbf13e098",
+              "name": "UnauthorizedError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "maps",
+                    ":map_id",
+                    "elements"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "map_id",
+                      "description": "(Required) The ID of the map to list elements from."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"detail\": \"string\",\n      \"source\": {\n        \"header\": \"authorization\"\n      },\n      \"title\": \"string\"\n    },\n    {\n      \"detail\": \"string\",\n      \"source\": {\n        \"header\": \"authorization\"\n      },\n      \"title\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "75eefeb5-ec72-466d-9e7e-9dca8c6eab52",
+              "name": "UnauthorizedError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "maps",
+                    ":map_id",
+                    "elements"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "map_id",
+                      "description": "(Required) The ID of the map to list elements from."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"detail\": \"string\",\n      \"source\": {\n        \"header\": \"authorization\"\n      },\n      \"title\": \"string\"\n    },\n    {\n      \"detail\": \"string\",\n      \"source\": {\n        \"header\": \"authorization\"\n      },\n      \"title\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0462c0be-9640-4893-9d05-5ba4ecefc738",
+              "name": "NotFoundError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "maps",
+                    ":map_id",
+                    "elements"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "map_id",
+                      "description": "(Required) The ID of the map to list elements from."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"detail\": \"string\",\n      \"source\": {\n        \"parameter\": \"string\"\n      },\n      \"title\": \"string\"\n    },\n    {\n      \"detail\": \"string\",\n      \"source\": {\n        \"parameter\": \"string\"\n      },\n      \"title\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "21d4d662-b7f1-4c49-9a99-f04795418627",
+              "name": "Unprocessable Entity",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "maps",
+                    ":map_id",
+                    "elements"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "map_id",
+                      "description": "(Required) The ID of the map to list elements from."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"title\": \"Invalid value\",\n      \"source\": {\n        \"pointer\": \"/data/attributes/petName\"\n      },\n      \"detail\": \"null value where string expected\"\n    },\n    {\n      \"title\": \"Invalid value\",\n      \"source\": {\n        \"pointer\": \"/data/attributes/petName\"\n      },\n      \"detail\": \"null value where string expected\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d2553744-19e1-44c0-a360-b440da12ccf7",
+              "name": "Unprocessable Entity",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "maps",
+                    ":map_id",
+                    "elements"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "map_id",
+                      "description": "(Required) The ID of the map to list elements from."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"title\": \"Invalid value\",\n      \"source\": {\n        \"pointer\": \"/data/attributes/petName\"\n      },\n      \"detail\": \"null value where string expected\"\n    },\n    {\n      \"title\": \"Invalid value\",\n      \"source\": {\n        \"pointer\": \"/data/attributes/petName\"\n      },\n      \"detail\": \"null value where string expected\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "520cf586-2fa3-4517-8b7b-2a559529a587",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "maps",
+                    ":map_id",
+                    "elements"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "map_id",
+                      "description": "(Required) The ID of the map to list elements from."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"detail\": \"string\",\n      \"source\": {\n        \"parameter\": \"string\"\n      },\n      \"title\": \"string\"\n    },\n    {\n      \"detail\": \"string\",\n      \"source\": {\n        \"parameter\": \"string\"\n      },\n      \"title\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "05f183d9-b7be-4014-aa84-ab14a5ff2913",
+          "name": "Create or update map elements",
+          "request": {
+            "name": "Create or update map elements",
+            "description": {
+              "content": "Create new elements or update existing ones on a map using GeoJSON data.\nEach element is represented by a feature in the `POST`'ed GeoJSON Feature Collection.\nFor each feature, including an existing element `id` will result in the element being updated on the map. If no element `id` is provided (or a non-existent one), a new element will be created.\n\n{% hint style=\"info\" %}\nThe maximum payload size for any `POST` to the Felt API is 1MB. Additionally, complex element geometry may be automatically simplified. If you require large, complex geometries, consider uploading your data as a Data Layer.&#x20;\n{% endhint %}\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "maps",
+                ":map_id",
+                "elements"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "map_id",
+                  "description": "(Required) The ID of the map to create the elements in"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"type\": \"<string>\",\n  \"features\": [\n    {\n      \"geometry\": {\n        \"felt:id\": \"<felt_id>\",\n        \"felt:parentId\": \"<felt_id>\"\n      },\n      \"properties\": \"<object>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"geometry\": {\n        \"felt:id\": \"<felt_id>\",\n        \"felt:parentId\": \"<felt_id>\"\n      },\n      \"properties\": \"<object>\",\n      \"type\": \"<string>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "5dc7c6cd-eeba-4a6c-bf86-47535932206b",
+              "name": "GeoJSON",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "maps",
+                    ":map_id",
+                    "elements"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "map_id",
+                      "description": "(Required) The ID of the map to create the elements in"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"type\": \"<string>\",\n  \"features\": [\n    {\n      \"geometry\": {\n        \"felt:id\": \"luCHyMruTQ6ozGk3gPJfEB\",\n        \"felt:parentId\": \"luCHyMruTQ6ozGk3gPJfEB\"\n      },\n      \"properties\": \"<object>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"geometry\": {\n        \"felt:id\": \"luCHyMruTQ6ozGk3gPJfEB\",\n        \"felt:parentId\": \"luCHyMruTQ6ozGk3gPJfEB\"\n      },\n      \"properties\": \"<object>\",\n      \"type\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"<string>\",\n  \"features\": [\n    {\n      \"geometry\": {\n        \"felt:id\": \"luCHyMruTQ6ozGk3gPJfEB\",\n        \"felt:parentId\": \"luCHyMruTQ6ozGk3gPJfEB\"\n      },\n      \"properties\": \"<object>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"geometry\": {\n        \"felt:id\": \"luCHyMruTQ6ozGk3gPJfEB\",\n        \"felt:parentId\": \"luCHyMruTQ6ozGk3gPJfEB\"\n      },\n      \"properties\": \"<object>\",\n      \"type\": \"<string>\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e3ee5df5-85c7-43ca-a340-1cc0a596a5fb",
+              "name": "UnauthorizedError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "maps",
+                    ":map_id",
+                    "elements"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "map_id",
+                      "description": "(Required) The ID of the map to create the elements in"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"type\": \"<string>\",\n  \"features\": [\n    {\n      \"geometry\": {\n        \"felt:id\": \"luCHyMruTQ6ozGk3gPJfEB\",\n        \"felt:parentId\": \"luCHyMruTQ6ozGk3gPJfEB\"\n      },\n      \"properties\": \"<object>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"geometry\": {\n        \"felt:id\": \"luCHyMruTQ6ozGk3gPJfEB\",\n        \"felt:parentId\": \"luCHyMruTQ6ozGk3gPJfEB\"\n      },\n      \"properties\": \"<object>\",\n      \"type\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"detail\": \"string\",\n      \"source\": {\n        \"header\": \"authorization\"\n      },\n      \"title\": \"string\"\n    },\n    {\n      \"detail\": \"string\",\n      \"source\": {\n        \"header\": \"authorization\"\n      },\n      \"title\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c33d3b05-f27a-4868-9db9-1e1b1d0a334f",
+              "name": "UnauthorizedError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "maps",
+                    ":map_id",
+                    "elements"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "map_id",
+                      "description": "(Required) The ID of the map to create the elements in"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"type\": \"<string>\",\n  \"features\": [\n    {\n      \"geometry\": {\n        \"felt:id\": \"luCHyMruTQ6ozGk3gPJfEB\",\n        \"felt:parentId\": \"luCHyMruTQ6ozGk3gPJfEB\"\n      },\n      \"properties\": \"<object>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"geometry\": {\n        \"felt:id\": \"luCHyMruTQ6ozGk3gPJfEB\",\n        \"felt:parentId\": \"luCHyMruTQ6ozGk3gPJfEB\"\n      },\n      \"properties\": \"<object>\",\n      \"type\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"detail\": \"string\",\n      \"source\": {\n        \"header\": \"authorization\"\n      },\n      \"title\": \"string\"\n    },\n    {\n      \"detail\": \"string\",\n      \"source\": {\n        \"header\": \"authorization\"\n      },\n      \"title\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "132efe6e-2493-4418-88bf-402187bb65c6",
+              "name": "NotFoundError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "maps",
+                    ":map_id",
+                    "elements"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "map_id",
+                      "description": "(Required) The ID of the map to create the elements in"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"type\": \"<string>\",\n  \"features\": [\n    {\n      \"geometry\": {\n        \"felt:id\": \"luCHyMruTQ6ozGk3gPJfEB\",\n        \"felt:parentId\": \"luCHyMruTQ6ozGk3gPJfEB\"\n      },\n      \"properties\": \"<object>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"geometry\": {\n        \"felt:id\": \"luCHyMruTQ6ozGk3gPJfEB\",\n        \"felt:parentId\": \"luCHyMruTQ6ozGk3gPJfEB\"\n      },\n      \"properties\": \"<object>\",\n      \"type\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"detail\": \"string\",\n      \"source\": {\n        \"parameter\": \"string\"\n      },\n      \"title\": \"string\"\n    },\n    {\n      \"detail\": \"string\",\n      \"source\": {\n        \"parameter\": \"string\"\n      },\n      \"title\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "40d98617-a42a-4d75-8db7-9190d9d47fc8",
+              "name": "Unprocessable Entity",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "maps",
+                    ":map_id",
+                    "elements"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "map_id",
+                      "description": "(Required) The ID of the map to create the elements in"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"type\": \"<string>\",\n  \"features\": [\n    {\n      \"geometry\": {\n        \"felt:id\": \"luCHyMruTQ6ozGk3gPJfEB\",\n        \"felt:parentId\": \"luCHyMruTQ6ozGk3gPJfEB\"\n      },\n      \"properties\": \"<object>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"geometry\": {\n        \"felt:id\": \"luCHyMruTQ6ozGk3gPJfEB\",\n        \"felt:parentId\": \"luCHyMruTQ6ozGk3gPJfEB\"\n      },\n      \"properties\": \"<object>\",\n      \"type\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"title\": \"Invalid value\",\n      \"source\": {\n        \"pointer\": \"/data/attributes/petName\"\n      },\n      \"detail\": \"null value where string expected\"\n    },\n    {\n      \"title\": \"Invalid value\",\n      \"source\": {\n        \"pointer\": \"/data/attributes/petName\"\n      },\n      \"detail\": \"null value where string expected\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7df5d972-20a0-41d0-8c3d-bcac2f28fb61",
+              "name": "Unprocessable Entity",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "maps",
+                    ":map_id",
+                    "elements"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "map_id",
+                      "description": "(Required) The ID of the map to create the elements in"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"type\": \"<string>\",\n  \"features\": [\n    {\n      \"geometry\": {\n        \"felt:id\": \"luCHyMruTQ6ozGk3gPJfEB\",\n        \"felt:parentId\": \"luCHyMruTQ6ozGk3gPJfEB\"\n      },\n      \"properties\": \"<object>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"geometry\": {\n        \"felt:id\": \"luCHyMruTQ6ozGk3gPJfEB\",\n        \"felt:parentId\": \"luCHyMruTQ6ozGk3gPJfEB\"\n      },\n      \"properties\": \"<object>\",\n      \"type\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"title\": \"Invalid value\",\n      \"source\": {\n        \"pointer\": \"/data/attributes/petName\"\n      },\n      \"detail\": \"null value where string expected\"\n    },\n    {\n      \"title\": \"Invalid value\",\n      \"source\": {\n        \"pointer\": \"/data/attributes/petName\"\n      },\n      \"detail\": \"null value where string expected\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2bbd1f79-24d0-4289-b3ba-22f8cd1a41a2",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "maps",
+                    ":map_id",
+                    "elements"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "map_id",
+                      "description": "(Required) The ID of the map to create the elements in"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"type\": \"<string>\",\n  \"features\": [\n    {\n      \"geometry\": {\n        \"felt:id\": \"luCHyMruTQ6ozGk3gPJfEB\",\n        \"felt:parentId\": \"luCHyMruTQ6ozGk3gPJfEB\"\n      },\n      \"properties\": \"<object>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"geometry\": {\n        \"felt:id\": \"luCHyMruTQ6ozGk3gPJfEB\",\n        \"felt:parentId\": \"luCHyMruTQ6ozGk3gPJfEB\"\n      },\n      \"properties\": \"<object>\",\n      \"type\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"detail\": \"string\",\n      \"source\": {\n        \"parameter\": \"string\"\n      },\n      \"title\": \"string\"\n    },\n    {\n      \"detail\": \"string\",\n      \"source\": {\n        \"parameter\": \"string\"\n      },\n      \"title\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8ffc437a-8c8f-407a-92a0-9c59932cd83f",
+          "name": "Get map element group",
+          "request": {
+            "name": "Get map element group",
+            "description": {
+              "content": "Retrieve all elements from a specific group as GeoJSON.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "maps",
+                ":map_id",
+                "element_groups",
+                ":group_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "map_id",
+                  "description": "(Required) The ID of the map."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "group_id",
+                  "description": "(Required) The ID of the element group."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "e73d0d7d-99e1-49c0-b501-d1c7df2e17a0",
+              "name": "GeoJSON",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "maps",
+                    ":map_id",
+                    "element_groups",
+                    ":group_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "map_id",
+                      "description": "(Required) The ID of the map."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "group_id",
+                      "description": "(Required) The ID of the element group."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"<string>\",\n  \"features\": [\n    {\n      \"geometry\": {\n        \"felt:id\": \"luCHyMruTQ6ozGk3gPJfEB\",\n        \"felt:parentId\": \"luCHyMruTQ6ozGk3gPJfEB\"\n      },\n      \"properties\": \"<object>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"geometry\": {\n        \"felt:id\": \"luCHyMruTQ6ozGk3gPJfEB\",\n        \"felt:parentId\": \"luCHyMruTQ6ozGk3gPJfEB\"\n      },\n      \"properties\": \"<object>\",\n      \"type\": \"<string>\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d58185ca-3777-4559-bd97-242faf9e8f76",
+              "name": "UnauthorizedError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "maps",
+                    ":map_id",
+                    "element_groups",
+                    ":group_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "map_id",
+                      "description": "(Required) The ID of the map."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "group_id",
+                      "description": "(Required) The ID of the element group."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"detail\": \"string\",\n      \"source\": {\n        \"header\": \"authorization\"\n      },\n      \"title\": \"string\"\n    },\n    {\n      \"detail\": \"string\",\n      \"source\": {\n        \"header\": \"authorization\"\n      },\n      \"title\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b2fefd7f-eed9-4264-b04d-355428305f83",
+              "name": "UnauthorizedError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "maps",
+                    ":map_id",
+                    "element_groups",
+                    ":group_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "map_id",
+                      "description": "(Required) The ID of the map."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "group_id",
+                      "description": "(Required) The ID of the element group."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"detail\": \"string\",\n      \"source\": {\n        \"header\": \"authorization\"\n      },\n      \"title\": \"string\"\n    },\n    {\n      \"detail\": \"string\",\n      \"source\": {\n        \"header\": \"authorization\"\n      },\n      \"title\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7f8d4f04-34bd-40bb-8b73-a25222222f04",
+              "name": "NotFoundError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "maps",
+                    ":map_id",
+                    "element_groups",
+                    ":group_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "map_id",
+                      "description": "(Required) The ID of the map."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "group_id",
+                      "description": "(Required) The ID of the element group."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"detail\": \"string\",\n      \"source\": {\n        \"parameter\": \"string\"\n      },\n      \"title\": \"string\"\n    },\n    {\n      \"detail\": \"string\",\n      \"source\": {\n        \"parameter\": \"string\"\n      },\n      \"title\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "777e42d8-a85f-4025-87e5-6fa24485f879",
+              "name": "Unprocessable Entity",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "maps",
+                    ":map_id",
+                    "element_groups",
+                    ":group_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "map_id",
+                      "description": "(Required) The ID of the map."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "group_id",
+                      "description": "(Required) The ID of the element group."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"title\": \"Invalid value\",\n      \"source\": {\n        \"pointer\": \"/data/attributes/petName\"\n      },\n      \"detail\": \"null value where string expected\"\n    },\n    {\n      \"title\": \"Invalid value\",\n      \"source\": {\n        \"pointer\": \"/data/attributes/petName\"\n      },\n      \"detail\": \"null value where string expected\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b786d1be-fbaf-4397-840e-7e0a29b3cce9",
+              "name": "Unprocessable Entity",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "maps",
+                    ":map_id",
+                    "element_groups",
+                    ":group_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "map_id",
+                      "description": "(Required) The ID of the map."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "group_id",
+                      "description": "(Required) The ID of the element group."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"title\": \"Invalid value\",\n      \"source\": {\n        \"pointer\": \"/data/attributes/petName\"\n      },\n      \"detail\": \"null value where string expected\"\n    },\n    {\n      \"title\": \"Invalid value\",\n      \"source\": {\n        \"pointer\": \"/data/attributes/petName\"\n      },\n      \"detail\": \"null value where string expected\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "19ef9b02-0eed-46e6-8df8-ff7d94024bf5",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "maps",
+                    ":map_id",
+                    "element_groups",
+                    ":group_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "map_id",
+                      "description": "(Required) The ID of the map."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "group_id",
+                      "description": "(Required) The ID of the element group."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"detail\": \"string\",\n      \"source\": {\n        \"parameter\": \"string\"\n      },\n      \"title\": \"string\"\n    },\n    {\n      \"detail\": \"string\",\n      \"source\": {\n        \"parameter\": \"string\"\n      },\n      \"title\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "01743922-9511-4d54-abeb-ceae197fe461",
+          "name": "List map element groups",
+          "request": {
+            "name": "List map element groups",
+            "description": {
+              "content": "Returns a list of GeoJSON `FeatureCollection`s, one for each element group in the map.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "maps",
+                ":map_id",
+                "element_groups"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "map_id",
+                  "description": "(Required) The ID of the map to list groups from."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "dfd1b688-ceb3-43fb-91be-684b67c8d458",
+              "name": "ElementGroupList",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "maps",
+                    ":map_id",
+                    "element_groups"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "map_id",
+                      "description": "(Required) The ID of the map to list groups from."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"string\",\n    \"color\": \"string\",\n    \"name\": \"string\",\n    \"symbol\": \"string\",\n    \"elements\": {\n      \"type\": \"<string>\",\n      \"features\": [\n        {\n          \"geometry\": {\n            \"felt:id\": \"luCHyMruTQ6ozGk3gPJfEB\",\n            \"felt:parentId\": \"luCHyMruTQ6ozGk3gPJfEB\"\n          },\n          \"properties\": \"<object>\",\n          \"type\": \"<string>\"\n        },\n        {\n          \"geometry\": {\n            \"felt:id\": \"luCHyMruTQ6ozGk3gPJfEB\",\n            \"felt:parentId\": \"luCHyMruTQ6ozGk3gPJfEB\"\n          },\n          \"properties\": \"<object>\",\n          \"type\": \"<string>\"\n        }\n      ]\n    }\n  },\n  {\n    \"id\": \"string\",\n    \"color\": \"string\",\n    \"name\": \"string\",\n    \"symbol\": \"string\",\n    \"elements\": {\n      \"type\": \"<string>\",\n      \"features\": [\n        {\n          \"geometry\": {\n            \"felt:id\": \"luCHyMruTQ6ozGk3gPJfEB\",\n            \"felt:parentId\": \"luCHyMruTQ6ozGk3gPJfEB\"\n          },\n          \"properties\": \"<object>\",\n          \"type\": \"<string>\"\n        },\n        {\n          \"geometry\": {\n            \"felt:id\": \"luCHyMruTQ6ozGk3gPJfEB\",\n            \"felt:parentId\": \"luCHyMruTQ6ozGk3gPJfEB\"\n          },\n          \"properties\": \"<object>\",\n          \"type\": \"<string>\"\n        }\n      ]\n    }\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "60335dba-43e8-4b2d-b555-9247963ee1e5",
+              "name": "UnauthorizedError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "maps",
+                    ":map_id",
+                    "element_groups"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "map_id",
+                      "description": "(Required) The ID of the map to list groups from."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"detail\": \"string\",\n      \"source\": {\n        \"header\": \"authorization\"\n      },\n      \"title\": \"string\"\n    },\n    {\n      \"detail\": \"string\",\n      \"source\": {\n        \"header\": \"authorization\"\n      },\n      \"title\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c8885789-9efa-48db-b5dc-2e31fe230884",
+              "name": "UnauthorizedError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "maps",
+                    ":map_id",
+                    "element_groups"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "map_id",
+                      "description": "(Required) The ID of the map to list groups from."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"detail\": \"string\",\n      \"source\": {\n        \"header\": \"authorization\"\n      },\n      \"title\": \"string\"\n    },\n    {\n      \"detail\": \"string\",\n      \"source\": {\n        \"header\": \"authorization\"\n      },\n      \"title\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0bb9111f-6e18-4889-ba35-155c6bfae6cf",
+              "name": "NotFoundError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "maps",
+                    ":map_id",
+                    "element_groups"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "map_id",
+                      "description": "(Required) The ID of the map to list groups from."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"detail\": \"string\",\n      \"source\": {\n        \"parameter\": \"string\"\n      },\n      \"title\": \"string\"\n    },\n    {\n      \"detail\": \"string\",\n      \"source\": {\n        \"parameter\": \"string\"\n      },\n      \"title\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7f5139a8-2606-4bf4-90b1-c13db01b0eef",
+              "name": "Unprocessable Entity",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "maps",
+                    ":map_id",
+                    "element_groups"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "map_id",
+                      "description": "(Required) The ID of the map to list groups from."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"title\": \"Invalid value\",\n      \"source\": {\n        \"pointer\": \"/data/attributes/petName\"\n      },\n      \"detail\": \"null value where string expected\"\n    },\n    {\n      \"title\": \"Invalid value\",\n      \"source\": {\n        \"pointer\": \"/data/attributes/petName\"\n      },\n      \"detail\": \"null value where string expected\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "09a32efb-565d-4d2c-a336-931657c25359",
+              "name": "Unprocessable Entity",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "maps",
+                    ":map_id",
+                    "element_groups"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "map_id",
+                      "description": "(Required) The ID of the map to list groups from."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"title\": \"Invalid value\",\n      \"source\": {\n        \"pointer\": \"/data/attributes/petName\"\n      },\n      \"detail\": \"null value where string expected\"\n    },\n    {\n      \"title\": \"Invalid value\",\n      \"source\": {\n        \"pointer\": \"/data/attributes/petName\"\n      },\n      \"detail\": \"null value where string expected\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1314b286-e7b4-48c8-8837-fc5d17570e29",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "maps",
+                    ":map_id",
+                    "element_groups"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "map_id",
+                      "description": "(Required) The ID of the map to list groups from."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"detail\": \"string\",\n      \"source\": {\n        \"parameter\": \"string\"\n      },\n      \"title\": \"string\"\n    },\n    {\n      \"detail\": \"string\",\n      \"source\": {\n        \"parameter\": \"string\"\n      },\n      \"title\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5cb90104-c537-438d-ad22-eece38edd1d7",
+          "name": "Create or update map element groups",
+          "request": {
+            "name": "Create or update map element groups",
+            "description": {
+              "content": "Create new element groups or update existing ones.\n\nFor each Element Group, including an existing Element Group `id` will result in the Element Group being updated. If no `id` is provided, a new Element Group will be created.\n\n\n{% hint style=\"info\" %}\nThe maximum payload size for any `POST` to the Felt API is 1MB. Additionally, complex element geometry may be automatically simplified. If you require large, complex geometries, consider uploading your data as a Data Layer.&#x20;\n{% endhint %}\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "maps",
+                ":map_id",
+                "element_groups"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "map_id",
+                  "description": "(Required) The ID of the map to create the group in"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "[\n  {\n    \"name\": \"<string>\",\n    \"color\": \"#C93535\",\n    \"id\": \"<felt_id>\",\n    \"symbol\": \"dot\"\n  },\n  {\n    \"name\": \"<string>\",\n    \"color\": \"#C93535\",\n    \"id\": \"<felt_id>\",\n    \"symbol\": \"dot\"\n  }\n]",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "1923f2cc-880e-4dd5-a5b7-4417474009bd",
+              "name": "Element group list",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "maps",
+                    ":map_id",
+                    "element_groups"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "map_id",
+                      "description": "(Required) The ID of the map to create the group in"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"name\": \"My Element Group\",\n    \"color\": \"#C93535\",\n    \"id\": \"luCHyMruTQ6ozGk3gPJfEB\",\n    \"symbol\": \"dot\"\n  },\n  {\n    \"name\": \"My Element Group\",\n    \"color\": \"#C93535\",\n    \"id\": \"luCHyMruTQ6ozGk3gPJfEB\",\n    \"symbol\": \"dot\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"string\",\n    \"color\": \"string\",\n    \"name\": \"string\",\n    \"symbol\": \"string\",\n    \"elements\": {\n      \"type\": \"<string>\",\n      \"features\": [\n        {\n          \"geometry\": {\n            \"felt:id\": \"luCHyMruTQ6ozGk3gPJfEB\",\n            \"felt:parentId\": \"luCHyMruTQ6ozGk3gPJfEB\"\n          },\n          \"properties\": \"<object>\",\n          \"type\": \"<string>\"\n        },\n        {\n          \"geometry\": {\n            \"felt:id\": \"luCHyMruTQ6ozGk3gPJfEB\",\n            \"felt:parentId\": \"luCHyMruTQ6ozGk3gPJfEB\"\n          },\n          \"properties\": \"<object>\",\n          \"type\": \"<string>\"\n        }\n      ]\n    }\n  },\n  {\n    \"id\": \"string\",\n    \"color\": \"string\",\n    \"name\": \"string\",\n    \"symbol\": \"string\",\n    \"elements\": {\n      \"type\": \"<string>\",\n      \"features\": [\n        {\n          \"geometry\": {\n            \"felt:id\": \"luCHyMruTQ6ozGk3gPJfEB\",\n            \"felt:parentId\": \"luCHyMruTQ6ozGk3gPJfEB\"\n          },\n          \"properties\": \"<object>\",\n          \"type\": \"<string>\"\n        },\n        {\n          \"geometry\": {\n            \"felt:id\": \"luCHyMruTQ6ozGk3gPJfEB\",\n            \"felt:parentId\": \"luCHyMruTQ6ozGk3gPJfEB\"\n          },\n          \"properties\": \"<object>\",\n          \"type\": \"<string>\"\n        }\n      ]\n    }\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "15d60321-481b-4bf5-8903-1926674f0edb",
+              "name": "UnauthorizedError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "maps",
+                    ":map_id",
+                    "element_groups"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "map_id",
+                      "description": "(Required) The ID of the map to create the group in"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"name\": \"My Element Group\",\n    \"color\": \"#C93535\",\n    \"id\": \"luCHyMruTQ6ozGk3gPJfEB\",\n    \"symbol\": \"dot\"\n  },\n  {\n    \"name\": \"My Element Group\",\n    \"color\": \"#C93535\",\n    \"id\": \"luCHyMruTQ6ozGk3gPJfEB\",\n    \"symbol\": \"dot\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"detail\": \"string\",\n      \"source\": {\n        \"header\": \"authorization\"\n      },\n      \"title\": \"string\"\n    },\n    {\n      \"detail\": \"string\",\n      \"source\": {\n        \"header\": \"authorization\"\n      },\n      \"title\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bd6574dd-5186-4411-817b-4d146419a466",
+              "name": "UnauthorizedError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "maps",
+                    ":map_id",
+                    "element_groups"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "map_id",
+                      "description": "(Required) The ID of the map to create the group in"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"name\": \"My Element Group\",\n    \"color\": \"#C93535\",\n    \"id\": \"luCHyMruTQ6ozGk3gPJfEB\",\n    \"symbol\": \"dot\"\n  },\n  {\n    \"name\": \"My Element Group\",\n    \"color\": \"#C93535\",\n    \"id\": \"luCHyMruTQ6ozGk3gPJfEB\",\n    \"symbol\": \"dot\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"detail\": \"string\",\n      \"source\": {\n        \"header\": \"authorization\"\n      },\n      \"title\": \"string\"\n    },\n    {\n      \"detail\": \"string\",\n      \"source\": {\n        \"header\": \"authorization\"\n      },\n      \"title\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6afa4942-128b-479f-8d7a-e713205537ed",
+              "name": "NotFoundError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "maps",
+                    ":map_id",
+                    "element_groups"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "map_id",
+                      "description": "(Required) The ID of the map to create the group in"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"name\": \"My Element Group\",\n    \"color\": \"#C93535\",\n    \"id\": \"luCHyMruTQ6ozGk3gPJfEB\",\n    \"symbol\": \"dot\"\n  },\n  {\n    \"name\": \"My Element Group\",\n    \"color\": \"#C93535\",\n    \"id\": \"luCHyMruTQ6ozGk3gPJfEB\",\n    \"symbol\": \"dot\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"detail\": \"string\",\n      \"source\": {\n        \"parameter\": \"string\"\n      },\n      \"title\": \"string\"\n    },\n    {\n      \"detail\": \"string\",\n      \"source\": {\n        \"parameter\": \"string\"\n      },\n      \"title\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "937c3cc9-094c-42e5-9896-bca8f154c51c",
+              "name": "Unprocessable Entity",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "maps",
+                    ":map_id",
+                    "element_groups"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "map_id",
+                      "description": "(Required) The ID of the map to create the group in"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"name\": \"My Element Group\",\n    \"color\": \"#C93535\",\n    \"id\": \"luCHyMruTQ6ozGk3gPJfEB\",\n    \"symbol\": \"dot\"\n  },\n  {\n    \"name\": \"My Element Group\",\n    \"color\": \"#C93535\",\n    \"id\": \"luCHyMruTQ6ozGk3gPJfEB\",\n    \"symbol\": \"dot\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"title\": \"Invalid value\",\n      \"source\": {\n        \"pointer\": \"/data/attributes/petName\"\n      },\n      \"detail\": \"null value where string expected\"\n    },\n    {\n      \"title\": \"Invalid value\",\n      \"source\": {\n        \"pointer\": \"/data/attributes/petName\"\n      },\n      \"detail\": \"null value where string expected\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "061c922b-0f94-4fc9-88dc-0dcef546130d",
+              "name": "Unprocessable Entity",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "maps",
+                    ":map_id",
+                    "element_groups"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "map_id",
+                      "description": "(Required) The ID of the map to create the group in"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"name\": \"My Element Group\",\n    \"color\": \"#C93535\",\n    \"id\": \"luCHyMruTQ6ozGk3gPJfEB\",\n    \"symbol\": \"dot\"\n  },\n  {\n    \"name\": \"My Element Group\",\n    \"color\": \"#C93535\",\n    \"id\": \"luCHyMruTQ6ozGk3gPJfEB\",\n    \"symbol\": \"dot\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"title\": \"Invalid value\",\n      \"source\": {\n        \"pointer\": \"/data/attributes/petName\"\n      },\n      \"detail\": \"null value where string expected\"\n    },\n    {\n      \"title\": \"Invalid value\",\n      \"source\": {\n        \"pointer\": \"/data/attributes/petName\"\n      },\n      \"detail\": \"null value where string expected\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "87084d1a-1214-4e83-acd9-b200d8508d36",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "maps",
+                    ":map_id",
+                    "element_groups"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "map_id",
+                      "description": "(Required) The ID of the map to create the group in"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"name\": \"My Element Group\",\n    \"color\": \"#C93535\",\n    \"id\": \"luCHyMruTQ6ozGk3gPJfEB\",\n    \"symbol\": \"dot\"\n  },\n  {\n    \"name\": \"My Element Group\",\n    \"color\": \"#C93535\",\n    \"id\": \"luCHyMruTQ6ozGk3gPJfEB\",\n    \"symbol\": \"dot\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"detail\": \"string\",\n      \"source\": {\n        \"parameter\": \"string\"\n      },\n      \"title\": \"string\"\n    },\n    {\n      \"detail\": \"string\",\n      \"source\": {\n        \"parameter\": \"string\"\n      },\n      \"title\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://felt.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "f66a2dc3-da0c-4fc6-b61d-a8091ce09636",
+    "name": "Felt Comments Elements API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Felt REST API v2.0",
+      "type": "text/plain"
+    }
+  }
+}

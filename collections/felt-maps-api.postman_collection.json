@@ -1,0 +1,2848 @@
+{
+  "item": [
+    {
+      "id": "8c1fc1f9-caa6-4457-a016-0edbc4ed3733",
+      "name": "Maps",
+      "description": {
+        "content": "Maps are the centerpiece of Felt.\n\nWith these APIs, you can create, retrieve, update, delete, move, and duplicate maps programmatically.\n",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "d8b16888-f9f2-42b9-af45-969cb227c8d8",
+          "name": "Move map",
+          "request": {
+            "name": "Move map",
+            "description": {
+              "content": "Move a map to a different project or folder within the same workspace. Project IDs and Folder IDs can be found inside map settings.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "maps",
+                ":map_id",
+                "move"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "map_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"project_id\": \"<felt_id>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "59f30482-084c-4f6f-8ace-bc6b8f85254f",
+              "name": "Map",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "maps",
+                    ":map_id",
+                    "move"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "map_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"project_id\": \"luCHyMruTQ6ozGk3gPJfEB\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"luCHyMruTQ6ozGk3gPJfEB\",\n  \"type\": \"map\",\n  \"url\": \"string\",\n  \"title\": \"string\",\n  \"thumbnail_url\": \"string\",\n  \"created_at\": \"2024-05-25T15:51:34\",\n  \"visited_at\": \"string\",\n  \"layers\": [\n    {\n      \"id\": \"luCHyMruTQ6ozGk3gPJfEB\",\n      \"type\": \"layer\",\n      \"hide_from_legend\": true,\n      \"status\": \"completed\",\n      \"caption\": \"string\",\n      \"name\": \"string\",\n      \"progress\": 5928.288352007343,\n      \"geometry_type\": \"Point\",\n      \"style\": {},\n      \"refresh_period\": \"15 min\",\n      \"refresh_status\": \"active\",\n      \"attributes\": [\n        {\n          \"name\": \"string\",\n          \"type\": \"INTEGER\"\n        },\n        {\n          \"name\": \"string\",\n          \"type\": \"REAL\"\n        }\n      ],\n      \"is_spreadsheet\": true,\n      \"last_refreshed_at\": \"1951-10-30T20:14:01.420Z\",\n      \"legend_display\": \"default\",\n      \"legend_visibility\": \"show\",\n      \"links\": {\n        \"self\": \"https://felt.com/api/v2/maps/V0dnOMOuTd9B9BOsL9C0UjmqC/layers/k441enUxQUOnZqc1ZvNsDA\"\n      },\n      \"metadata\": {\n        \"attribution_text\": \"string\",\n        \"attribution_url\": \"string\",\n        \"description\": \"string\",\n        \"license\": \"string\",\n        \"source_abbreviation\": \"string\",\n        \"source_name\": \"string\",\n        \"source_url\": \"string\",\n        \"updated_at\": \"2025-03-24\"\n      },\n      \"next_refresh_at\": \"1993-08-06T06:17:37.245Z\",\n      \"ordering_key\": 5167,\n      \"paused_reason\": \"consecutive_failures\",\n      \"subtitle\": \"string\",\n      \"tile_url\": \"string\"\n    },\n    {\n      \"id\": \"luCHyMruTQ6ozGk3gPJfEB\",\n      \"type\": \"layer\",\n      \"hide_from_legend\": false,\n      \"status\": \"uploading\",\n      \"caption\": \"string\",\n      \"name\": \"string\",\n      \"progress\": 1452.5554330279876,\n      \"geometry_type\": \"Raster\",\n      \"style\": {},\n      \"refresh_period\": \"6 hours\",\n      \"refresh_status\": \"disabled\",\n      \"attributes\": [\n        {\n          \"name\": \"string\",\n          \"type\": \"DATETIME\"\n        },\n        {\n          \"name\": \"string\",\n          \"type\": \"BOOLEAN\"\n        }\n      ],\n      \"is_spreadsheet\": true,\n      \"last_refreshed_at\": \"1991-03-15T16:48:40.726Z\",\n      \"legend_display\": \"name_only\",\n      \"legend_visibility\": \"hide\",\n      \"links\": {\n        \"self\": \"https://felt.com/api/v2/maps/V0dnOMOuTd9B9BOsL9C0UjmqC/layers/k441enUxQUOnZqc1ZvNsDA\"\n      },\n      \"metadata\": {\n        \"attribution_text\": \"string\",\n        \"attribution_url\": \"string\",\n        \"description\": \"string\",\n        \"license\": \"string\",\n        \"source_abbreviation\": \"string\",\n        \"source_name\": \"string\",\n        \"source_url\": \"string\",\n        \"updated_at\": \"2025-03-24\"\n      },\n      \"next_refresh_at\": \"1982-10-12T12:49:50.043Z\",\n      \"ordering_key\": 6956,\n      \"paused_reason\": \"consecutive_failures\",\n      \"subtitle\": \"string\",\n      \"tile_url\": \"string\"\n    }\n  ],\n  \"layer_groups\": [\n    {\n      \"id\": \"luCHyMruTQ6ozGk3gPJfEB\",\n      \"type\": \"layer_group\",\n      \"name\": \"string\",\n      \"caption\": \"string\",\n      \"visibility_interaction\": \"default\",\n      \"layers\": [\n        {\n          \"id\": \"luCHyMruTQ6ozGk3gPJfEB\",\n          \"type\": \"layer\",\n          \"hide_from_legend\": false,\n          \"status\": \"processing\",\n          \"caption\": \"string\",\n          \"name\": \"string\",\n          \"progress\": 6631.946417227461,\n          \"geometry_type\": \"Point\",\n          \"style\": {},\n          \"refresh_period\": \"15 min\",\n          \"refresh_status\": \"disabled\",\n          \"attributes\": [\n            {\n              \"name\": \"string\",\n              \"type\": \"REAL\"\n            },\n            {\n              \"name\": \"string\",\n              \"type\": \"BOOLEAN\"\n            }\n          ],\n          \"is_spreadsheet\": true,\n          \"last_refreshed_at\": \"1952-03-10T00:13:11.128Z\",\n          \"legend_display\": \"name_only\",\n          \"legend_visibility\": \"show\",\n          \"links\": {\n            \"self\": \"https://felt.com/api/v2/maps/V0dnOMOuTd9B9BOsL9C0UjmqC/layers/k441enUxQUOnZqc1ZvNsDA\"\n          },\n          \"metadata\": {\n            \"attribution_text\": \"string\",\n            \"attribution_url\": \"string\",\n            \"description\": \"string\",\n            \"license\": \"string\",\n            \"source_abbreviation\": \"string\",\n            \"source_name\": \"string\",\n            \"source_url\": \"string\",\n            \"updated_at\": \"2025-03-24\"\n          },\n          \"next_refresh_at\": \"2007-10-02T10:40:49.604Z\",\n          \"ordering_key\": 6725,\n          \"paused_reason\": \"consecutive_failures\",\n          \"subtitle\": \"string\",\n          \"tile_url\": \"string\"\n        },\n        {\n          \"id\": \"luCHyMruTQ6ozGk3gPJfEB\",\n          \"type\": \"layer\",\n          \"hide_from_legend\": false,\n          \"status\": \"completed\",\n          \"caption\": \"string\",\n          \"name\": \"string\",\n          \"progress\": 6859.865387025362,\n          \"geometry_type\": \"Polygon\",\n          \"style\": {},\n          \"refresh_period\": \"disabled\",\n          \"refresh_status\": \"paused\",\n          \"attributes\": [\n            {\n              \"name\": \"string\",\n              \"type\": \"BOOLEAN\"\n            },\n            {\n              \"name\": \"string\",\n              \"type\": \"BOOLEAN\"\n            }\n          ],\n          \"is_spreadsheet\": false,\n          \"last_refreshed_at\": \"2000-03-22T18:17:28.368Z\",\n          \"legend_display\": \"name_only\",\n          \"legend_visibility\": \"show\",\n          \"links\": {\n            \"self\": \"https://felt.com/api/v2/maps/V0dnOMOuTd9B9BOsL9C0UjmqC/layers/k441enUxQUOnZqc1ZvNsDA\"\n          },\n          \"metadata\": {\n            \"attribution_text\": \"string\",\n            \"attribution_url\": \"string\",\n            \"description\": \"string\",\n            \"license\": \"string\",\n            \"source_abbreviation\": \"string\",\n            \"source_name\": \"string\",\n            \"source_url\": \"string\",\n            \"updated_at\": \"2025-03-24\"\n          },\n          \"next_refresh_at\": \"2021-12-29T04:27:47.434Z\",\n          \"ordering_key\": 7743,\n          \"paused_reason\": \"consecutive_failures\",\n          \"subtitle\": \"string\",\n          \"tile_url\": \"string\"\n        }\n      ],\n      \"legend_visibility\": \"show\",\n      \"links\": {\n        \"self\": \"https://felt.com/api/v2/maps/V0dnOMOuTd9B9BOsL9C0UjmqC/layer_groups/v13k4Ae9BRjCHHdPP5Fcm6D\"\n      },\n      \"ordering_key\": 7709,\n      \"subtitle\": \"string\"\n    },\n    {\n      \"id\": \"luCHyMruTQ6ozGk3gPJfEB\",\n      \"type\": \"layer_group\",\n      \"name\": \"string\",\n      \"caption\": \"string\",\n      \"visibility_interaction\": \"default\",\n      \"layers\": [\n        {\n          \"id\": \"luCHyMruTQ6ozGk3gPJfEB\",\n          \"type\": \"layer\",\n          \"hide_from_legend\": true,\n          \"status\": \"completed\",\n          \"caption\": \"string\",\n          \"name\": \"string\",\n          \"progress\": 1121.9417181502045,\n          \"geometry_type\": \"Point\",\n          \"style\": {},\n          \"refresh_period\": \"month\",\n          \"refresh_status\": \"paused\",\n          \"attributes\": [\n            {\n              \"name\": \"string\",\n              \"type\": \"GEOMETRY\"\n            },\n            {\n              \"name\": \"string\",\n              \"type\": \"TEXT\"\n            }\n          ],\n          \"is_spreadsheet\": true,\n          \"last_refreshed_at\": \"2008-04-05T20:48:18.012Z\",\n          \"legend_display\": \"name_only\",\n          \"legend_visibility\": \"hide\",\n          \"links\": {\n            \"self\": \"https://felt.com/api/v2/maps/V0dnOMOuTd9B9BOsL9C0UjmqC/layers/k441enUxQUOnZqc1ZvNsDA\"\n          },\n          \"metadata\": {\n            \"attribution_text\": \"string\",\n            \"attribution_url\": \"string\",\n            \"description\": \"string\",\n            \"license\": \"string\",\n            \"source_abbreviation\": \"string\",\n            \"source_name\": \"string\",\n            \"source_url\": \"string\",\n            \"updated_at\": \"2025-03-24\"\n          },\n          \"next_refresh_at\": \"2004-07-25T10:24:45.039Z\",\n          \"ordering_key\": 1636,\n          \"paused_reason\": \"consecutive_failures\",\n          \"subtitle\": \"string\",\n          \"tile_url\": \"string\"\n        },\n        {\n          \"id\": \"luCHyMruTQ6ozGk3gPJfEB\",\n          \"type\": \"layer\",\n          \"hide_from_legend\": true,\n          \"status\": \"failed\",\n          \"caption\": \"string\",\n          \"name\": \"string\",\n          \"progress\": 4021.777541149428,\n          \"geometry_type\": \"Raster\",\n          \"style\": {},\n          \"refresh_period\": \"week\",\n          \"refresh_status\": \"active\",\n          \"attributes\": [\n            {\n              \"name\": \"string\",\n              \"type\": \"REAL\"\n            },\n            {\n              \"name\": \"string\",\n              \"type\": \"TEXT\"\n            }\n          ],\n          \"is_spreadsheet\": false,\n          \"last_refreshed_at\": \"2003-09-10T18:38:45.574Z\",\n          \"legend_display\": \"default\",\n          \"legend_visibility\": \"show\",\n          \"links\": {\n            \"self\": \"https://felt.com/api/v2/maps/V0dnOMOuTd9B9BOsL9C0UjmqC/layers/k441enUxQUOnZqc1ZvNsDA\"\n          },\n          \"metadata\": {\n            \"attribution_text\": \"string\",\n            \"attribution_url\": \"string\",\n            \"description\": \"string\",\n            \"license\": \"string\",\n            \"source_abbreviation\": \"string\",\n            \"source_name\": \"string\",\n            \"source_url\": \"string\",\n            \"updated_at\": \"2025-03-24\"\n          },\n          \"next_refresh_at\": \"1984-02-01T16:20:04.478Z\",\n          \"ordering_key\": 3416,\n          \"paused_reason\": \"consecutive_failures\",\n          \"subtitle\": \"string\",\n          \"tile_url\": \"string\"\n        }\n      ],\n      \"legend_visibility\": \"show\",\n      \"links\": {\n        \"self\": \"https://felt.com/api/v2/maps/V0dnOMOuTd9B9BOsL9C0UjmqC/layer_groups/v13k4Ae9BRjCHHdPP5Fcm6D\"\n      },\n      \"ordering_key\": 9298,\n      \"subtitle\": \"string\"\n    }\n  ],\n  \"elements\": {\n    \"type\": \"FeatureCollection\",\n    \"features\": [\n      {\n        \"geometry\": {\n          \"felt:id\": \"luCHyMruTQ6ozGk3gPJfEB\",\n          \"felt:parentId\": \"luCHyMruTQ6ozGk3gPJfEB\"\n        },\n        \"properties\": {},\n        \"type\": \"Feature\"\n      },\n      {\n        \"geometry\": {\n          \"felt:id\": \"luCHyMruTQ6ozGk3gPJfEB\",\n          \"felt:parentId\": \"luCHyMruTQ6ozGk3gPJfEB\"\n        },\n        \"properties\": {},\n        \"type\": \"Feature\"\n      }\n    ]\n  },\n  \"element_groups\": [\n    {\n      \"elements\": {\n        \"type\": \"FeatureCollection\",\n        \"features\": [\n          {\n            \"geometry\": {\n              \"felt:id\": \"luCHyMruTQ6ozGk3gPJfEB\",\n              \"felt:parentId\": \"luCHyMruTQ6ozGk3gPJfEB\"\n            },\n            \"properties\": {},\n            \"type\": \"Feature\"\n          },\n          {\n            \"geometry\": {\n              \"felt:id\": \"luCHyMruTQ6ozGk3gPJfEB\",\n              \"felt:parentId\": \"luCHyMruTQ6ozGk3gPJfEB\"\n            },\n            \"properties\": {},\n            \"type\": \"Feature\"\n          }\n        ]\n      },\n      \"id\": \"luCHyMruTQ6ozGk3gPJfEB\",\n      \"name\": \"string\"\n    },\n    {\n      \"elements\": {\n        \"type\": \"FeatureCollection\",\n        \"features\": [\n          {\n            \"geometry\": {\n              \"felt:id\": \"luCHyMruTQ6ozGk3gPJfEB\",\n              \"felt:parentId\": \"luCHyMruTQ6ozGk3gPJfEB\"\n            },\n            \"properties\": {},\n            \"type\": \"Feature\"\n          },\n          {\n            \"geometry\": {\n              \"felt:id\": \"luCHyMruTQ6ozGk3gPJfEB\",\n              \"felt:parentId\": \"luCHyMruTQ6ozGk3gPJfEB\"\n            },\n            \"properties\": {},\n            \"type\": \"Feature\"\n          }\n        ]\n      },\n      \"id\": \"luCHyMruTQ6ozGk3gPJfEB\",\n      \"name\": \"string\"\n    }\n  ],\n  \"project_id\": \"string\",\n  \"public_access\": \"view_comment_and_edit\",\n  \"basemap\": \"string\",\n  \"folder_id\": \"string\",\n  \"links\": {\n    \"self\": \"https://felt.com/api/v2/maps/V0dnOMOuTd9B9BOsL9C0UjmqC\"\n  },\n  \"table_settings\": {\n    \"default_table_layer_id\": \"luCHyMruTQ6ozGk3gPJfEB\",\n    \"viewers_can_open_table\": false\n  },\n  \"viewer_permissions\": {\n    \"can_duplicate_map\": false,\n    \"can_export_data\": true,\n    \"can_see_map_presence\": true\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "96ce8439-1b42-4333-9888-18dfb22a5eba",
+              "name": "UnauthorizedError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "maps",
+                    ":map_id",
+                    "move"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "map_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"project_id\": \"luCHyMruTQ6ozGk3gPJfEB\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"detail\": \"string\",\n      \"source\": {\n        \"header\": \"authorization\"\n      },\n      \"title\": \"string\"\n    },\n    {\n      \"detail\": \"string\",\n      \"source\": {\n        \"header\": \"authorization\"\n      },\n      \"title\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "aaff157b-3b9b-4cdc-87c4-d973e18c6c44",
+              "name": "UnauthorizedError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "maps",
+                    ":map_id",
+                    "move"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "map_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"project_id\": \"luCHyMruTQ6ozGk3gPJfEB\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"detail\": \"string\",\n      \"source\": {\n        \"header\": \"authorization\"\n      },\n      \"title\": \"string\"\n    },\n    {\n      \"detail\": \"string\",\n      \"source\": {\n        \"header\": \"authorization\"\n      },\n      \"title\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "81828fcc-20cf-4978-a984-c2959ca783fd",
+              "name": "NotFoundError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "maps",
+                    ":map_id",
+                    "move"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "map_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"project_id\": \"luCHyMruTQ6ozGk3gPJfEB\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"detail\": \"string\",\n      \"source\": {\n        \"parameter\": \"string\"\n      },\n      \"title\": \"string\"\n    },\n    {\n      \"detail\": \"string\",\n      \"source\": {\n        \"parameter\": \"string\"\n      },\n      \"title\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "683bac2b-a572-4458-ab3b-7d1e4fe62189",
+              "name": "Unprocessable Entity",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "maps",
+                    ":map_id",
+                    "move"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "map_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"project_id\": \"luCHyMruTQ6ozGk3gPJfEB\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"title\": \"Invalid value\",\n      \"source\": {\n        \"pointer\": \"/data/attributes/petName\"\n      },\n      \"detail\": \"null value where string expected\"\n    },\n    {\n      \"title\": \"Invalid value\",\n      \"source\": {\n        \"pointer\": \"/data/attributes/petName\"\n      },\n      \"detail\": \"null value where string expected\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f7eaabe4-44c7-44d9-b5ac-84bbbfc821b6",
+              "name": "Unprocessable Entity",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "maps",
+                    ":map_id",
+                    "move"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "map_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"project_id\": \"luCHyMruTQ6ozGk3gPJfEB\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"title\": \"Invalid value\",\n      \"source\": {\n        \"pointer\": \"/data/attributes/petName\"\n      },\n      \"detail\": \"null value where string expected\"\n    },\n    {\n      \"title\": \"Invalid value\",\n      \"source\": {\n        \"pointer\": \"/data/attributes/petName\"\n      },\n      \"detail\": \"null value where string expected\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "00aa83d0-c8fb-4a9c-ad44-5240a989eb9b",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "maps",
+                    ":map_id",
+                    "move"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "map_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"project_id\": \"luCHyMruTQ6ozGk3gPJfEB\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"detail\": \"string\",\n      \"source\": {\n        \"parameter\": \"string\"\n      },\n      \"title\": \"string\"\n    },\n    {\n      \"detail\": \"string\",\n      \"source\": {\n        \"parameter\": \"string\"\n      },\n      \"title\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b483590e-0026-4915-b55d-5bf1fcadf0db",
+          "name": "Duplicate map",
+          "request": {
+            "name": "Duplicate map",
+            "description": {
+              "content": "Create a copy of a map with all its layers, elements, and configuration.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "maps",
+                ":map_id",
+                "duplicate"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "map_id",
+                  "description": "(Required) The ID of the map to duplicate"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"destination\": {\n    \"project_id\": \"<felt_id>\"\n  },\n  \"title\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "be33b266-0c7d-465c-b29b-b28fbc41ada9",
+              "name": "Duplicated Map",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "maps",
+                    ":map_id",
+                    "duplicate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "map_id",
+                      "description": "(Required) The ID of the map to duplicate"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"destination\": {\n    \"project_id\": \"luCHyMruTQ6ozGk3gPJfEB\"\n  },\n  \"title\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"luCHyMruTQ6ozGk3gPJfEB\",\n  \"type\": \"map\",\n  \"url\": \"string\",\n  \"title\": \"string\",\n  \"thumbnail_url\": \"string\",\n  \"created_at\": \"2024-05-25T15:51:34\",\n  \"visited_at\": \"string\",\n  \"layers\": [\n    {\n      \"id\": \"luCHyMruTQ6ozGk3gPJfEB\",\n      \"type\": \"layer\",\n      \"hide_from_legend\": false,\n      \"status\": \"completed\",\n      \"caption\": \"string\",\n      \"name\": \"string\",\n      \"progress\": 5122.329004957691,\n      \"geometry_type\": \"Polygon\",\n      \"style\": {},\n      \"refresh_period\": \"disabled\",\n      \"refresh_status\": \"active\",\n      \"attributes\": [\n        {\n          \"name\": \"string\",\n          \"type\": \"REAL\"\n        },\n        {\n          \"name\": \"string\",\n          \"type\": \"DATE\"\n        }\n      ],\n      \"is_spreadsheet\": false,\n      \"last_refreshed_at\": \"2007-05-02T09:43:16.172Z\",\n      \"legend_display\": \"name_only\",\n      \"legend_visibility\": \"show\",\n      \"links\": {\n        \"self\": \"https://felt.com/api/v2/maps/V0dnOMOuTd9B9BOsL9C0UjmqC/layers/k441enUxQUOnZqc1ZvNsDA\"\n      },\n      \"metadata\": {\n        \"attribution_text\": \"string\",\n        \"attribution_url\": \"string\",\n        \"description\": \"string\",\n        \"license\": \"string\",\n        \"source_abbreviation\": \"string\",\n        \"source_name\": \"string\",\n        \"source_url\": \"string\",\n        \"updated_at\": \"2025-03-24\"\n      },\n      \"next_refresh_at\": \"1958-08-07T03:40:22.877Z\",\n      \"ordering_key\": 2695,\n      \"paused_reason\": \"consecutive_failures\",\n      \"subtitle\": \"string\",\n      \"tile_url\": \"string\"\n    },\n    {\n      \"id\": \"luCHyMruTQ6ozGk3gPJfEB\",\n      \"type\": \"layer\",\n      \"hide_from_legend\": true,\n      \"status\": \"processing\",\n      \"caption\": \"string\",\n      \"name\": \"string\",\n      \"progress\": 8014.97835088988,\n      \"geometry_type\": \"Polygon\",\n      \"style\": {},\n      \"refresh_period\": \"hour\",\n      \"refresh_status\": \"disabled\",\n      \"attributes\": [\n        {\n          \"name\": \"string\",\n          \"type\": \"GEOMETRY\"\n        },\n        {\n          \"name\": \"string\",\n          \"type\": \"GEOMETRY\"\n        }\n      ],\n      \"is_spreadsheet\": true,\n      \"last_refreshed_at\": \"2010-03-22T14:52:01.492Z\",\n      \"legend_display\": \"name_only\",\n      \"legend_visibility\": \"hide\",\n      \"links\": {\n        \"self\": \"https://felt.com/api/v2/maps/V0dnOMOuTd9B9BOsL9C0UjmqC/layers/k441enUxQUOnZqc1ZvNsDA\"\n      },\n      \"metadata\": {\n        \"attribution_text\": \"string\",\n        \"attribution_url\": \"string\",\n        \"description\": \"string\",\n        \"license\": \"string\",\n        \"source_abbreviation\": \"string\",\n        \"source_name\": \"string\",\n        \"source_url\": \"string\",\n        \"updated_at\": \"2025-03-24\"\n      },\n      \"next_refresh_at\": \"1973-09-17T20:18:35.013Z\",\n      \"ordering_key\": 6434,\n      \"paused_reason\": \"consecutive_failures\",\n      \"subtitle\": \"string\",\n      \"tile_url\": \"string\"\n    }\n  ],\n  \"layer_groups\": [\n    {\n      \"id\": \"luCHyMruTQ6ozGk3gPJfEB\",\n      \"type\": \"layer_group\",\n      \"name\": \"string\",\n      \"caption\": \"string\",\n      \"visibility_interaction\": \"default\",\n      \"layers\": [\n        {\n          \"id\": \"luCHyMruTQ6ozGk3gPJfEB\",\n          \"type\": \"layer\",\n          \"hide_from_legend\": true,\n          \"status\": \"failed\",\n          \"caption\": \"string\",\n          \"name\": \"string\",\n          \"progress\": 4607.876797656245,\n          \"geometry_type\": \"Raster\",\n          \"style\": {},\n          \"refresh_period\": \"6 hours\",\n          \"refresh_status\": \"disabled\",\n          \"attributes\": [\n            {\n              \"name\": \"string\",\n              \"type\": \"GEOMETRY\"\n            },\n            {\n              \"name\": \"string\",\n              \"type\": \"TEXT\"\n            }\n          ],\n          \"is_spreadsheet\": true,\n          \"last_refreshed_at\": \"1991-03-20T16:18:56.465Z\",\n          \"legend_display\": \"default\",\n          \"legend_visibility\": \"hide\",\n          \"links\": {\n            \"self\": \"https://felt.com/api/v2/maps/V0dnOMOuTd9B9BOsL9C0UjmqC/layers/k441enUxQUOnZqc1ZvNsDA\"\n          },\n          \"metadata\": {\n            \"attribution_text\": \"string\",\n            \"attribution_url\": \"string\",\n            \"description\": \"string\",\n            \"license\": \"string\",\n            \"source_abbreviation\": \"string\",\n            \"source_name\": \"string\",\n            \"source_url\": \"string\",\n            \"updated_at\": \"2025-03-24\"\n          },\n          \"next_refresh_at\": \"1955-02-09T10:43:55.034Z\",\n          \"ordering_key\": 8549,\n          \"paused_reason\": \"consecutive_failures\",\n          \"subtitle\": \"string\",\n          \"tile_url\": \"string\"\n        },\n        {\n          \"id\": \"luCHyMruTQ6ozGk3gPJfEB\",\n          \"type\": \"layer\",\n          \"hide_from_legend\": false,\n          \"status\": \"processing\",\n          \"caption\": \"string\",\n          \"name\": \"string\",\n          \"progress\": 526.9987001435072,\n          \"geometry_type\": \"Polygon\",\n          \"style\": {},\n          \"refresh_period\": \"12 hours\",\n          \"refresh_status\": \"active\",\n          \"attributes\": [\n            {\n              \"name\": \"string\",\n              \"type\": \"GEOMETRY\"\n            },\n            {\n              \"name\": \"string\",\n              \"type\": \"DATE\"\n            }\n          ],\n          \"is_spreadsheet\": true,\n          \"last_refreshed_at\": \"1986-04-28T14:10:11.644Z\",\n          \"legend_display\": \"name_only\",\n          \"legend_visibility\": \"hide\",\n          \"links\": {\n            \"self\": \"https://felt.com/api/v2/maps/V0dnOMOuTd9B9BOsL9C0UjmqC/layers/k441enUxQUOnZqc1ZvNsDA\"\n          },\n          \"metadata\": {\n            \"attribution_text\": \"string\",\n            \"attribution_url\": \"string\",\n            \"description\": \"string\",\n            \"license\": \"string\",\n            \"source_abbreviation\": \"string\",\n            \"source_name\": \"string\",\n            \"source_url\": \"string\",\n            \"updated_at\": \"2025-03-24\"\n          },\n          \"next_refresh_at\": \"1964-02-10T09:58:02.295Z\",\n          \"ordering_key\": 2285,\n          \"paused_reason\": \"consecutive_failures\",\n          \"subtitle\": \"string\",\n          \"tile_url\": \"string\"\n        }\n      ],\n      \"legend_visibility\": \"hide\",\n      \"links\": {\n        \"self\": \"https://felt.com/api/v2/maps/V0dnOMOuTd9B9BOsL9C0UjmqC/layer_groups/v13k4Ae9BRjCHHdPP5Fcm6D\"\n      },\n      \"ordering_key\": 5638,\n      \"subtitle\": \"string\"\n    },\n    {\n      \"id\": \"luCHyMruTQ6ozGk3gPJfEB\",\n      \"type\": \"layer_group\",\n      \"name\": \"string\",\n      \"caption\": \"string\",\n      \"visibility_interaction\": \"default\",\n      \"layers\": [\n        {\n          \"id\": \"luCHyMruTQ6ozGk3gPJfEB\",\n          \"type\": \"layer\",\n          \"hide_from_legend\": true,\n          \"status\": \"completed\",\n          \"caption\": \"string\",\n          \"name\": \"string\",\n          \"progress\": 1286.3261443890794,\n          \"geometry_type\": \"Raster\",\n          \"style\": {},\n          \"refresh_period\": \"15 min\",\n          \"refresh_status\": \"disabled\",\n          \"attributes\": [\n            {\n              \"name\": \"string\",\n              \"type\": \"DATETIME\"\n            },\n            {\n              \"name\": \"string\",\n              \"type\": \"BOOLEAN\"\n            }\n          ],\n          \"is_spreadsheet\": false,\n          \"last_refreshed_at\": \"2021-07-18T02:26:38.892Z\",\n          \"legend_display\": \"default\",\n          \"legend_visibility\": \"show\",\n          \"links\": {\n            \"self\": \"https://felt.com/api/v2/maps/V0dnOMOuTd9B9BOsL9C0UjmqC/layers/k441enUxQUOnZqc1ZvNsDA\"\n          },\n          \"metadata\": {\n            \"attribution_text\": \"string\",\n            \"attribution_url\": \"string\",\n            \"description\": \"string\",\n            \"license\": \"string\",\n            \"source_abbreviation\": \"string\",\n            \"source_name\": \"string\",\n            \"source_url\": \"string\",\n            \"updated_at\": \"2025-03-24\"\n          },\n          \"next_refresh_at\": \"1949-07-20T05:18:44.595Z\",\n          \"ordering_key\": 9768,\n          \"paused_reason\": \"consecutive_failures\",\n          \"subtitle\": \"string\",\n          \"tile_url\": \"string\"\n        },\n        {\n          \"id\": \"luCHyMruTQ6ozGk3gPJfEB\",\n          \"type\": \"layer\",\n          \"hide_from_legend\": true,\n          \"status\": \"uploading\",\n          \"caption\": \"string\",\n          \"name\": \"string\",\n          \"progress\": 4184.678885883979,\n          \"geometry_type\": \"Polygon\",\n          \"style\": {},\n          \"refresh_period\": \"3 hours\",\n          \"refresh_status\": \"active\",\n          \"attributes\": [\n            {\n              \"name\": \"string\",\n              \"type\": \"GEOMETRY\"\n            },\n            {\n              \"name\": \"string\",\n              \"type\": \"REAL\"\n            }\n          ],\n          \"is_spreadsheet\": false,\n          \"last_refreshed_at\": \"1960-05-19T02:30:42.596Z\",\n          \"legend_display\": \"name_only\",\n          \"legend_visibility\": \"hide\",\n          \"links\": {\n            \"self\": \"https://felt.com/api/v2/maps/V0dnOMOuTd9B9BOsL9C0UjmqC/layers/k441enUxQUOnZqc1ZvNsDA\"\n          },\n          \"metadata\": {\n            \"attribution_text\": \"string\",\n            \"attribution_url\": \"string\",\n            \"description\": \"string\",\n            \"license\": \"string\",\n            \"source_abbreviation\": \"string\",\n            \"source_name\": \"string\",\n            \"source_url\": \"string\",\n            \"updated_at\": \"2025-03-24\"\n          },\n          \"next_refresh_at\": \"2018-05-02T03:57:26.980Z\",\n          \"ordering_key\": 3920,\n          \"paused_reason\": \"consecutive_failures\",\n          \"subtitle\": \"string\",\n          \"tile_url\": \"string\"\n        }\n      ],\n      \"legend_visibility\": \"hide\",\n      \"links\": {\n        \"self\": \"https://felt.com/api/v2/maps/V0dnOMOuTd9B9BOsL9C0UjmqC/layer_groups/v13k4Ae9BRjCHHdPP5Fcm6D\"\n      },\n      \"ordering_key\": 9938,\n      \"subtitle\": \"string\"\n    }\n  ],\n  \"elements\": {\n    \"type\": \"FeatureCollection\",\n    \"features\": [\n      {\n        \"geometry\": {\n          \"felt:id\": \"luCHyMruTQ6ozGk3gPJfEB\",\n          \"felt:parentId\": \"luCHyMruTQ6ozGk3gPJfEB\"\n        },\n        \"properties\": {},\n        \"type\": \"Feature\"\n      },\n      {\n        \"geometry\": {\n          \"felt:id\": \"luCHyMruTQ6ozGk3gPJfEB\",\n          \"felt:parentId\": \"luCHyMruTQ6ozGk3gPJfEB\"\n        },\n        \"properties\": {},\n        \"type\": \"Feature\"\n      }\n    ]\n  },\n  \"element_groups\": [\n    {\n      \"elements\": {\n        \"type\": \"FeatureCollection\",\n        \"features\": [\n          {\n            \"geometry\": {\n              \"felt:id\": \"luCHyMruTQ6ozGk3gPJfEB\",\n              \"felt:parentId\": \"luCHyMruTQ6ozGk3gPJfEB\"\n            },\n            \"properties\": {},\n            \"type\": \"Feature\"\n          },\n          {\n            \"geometry\": {\n              \"felt:id\": \"luCHyMruTQ6ozGk3gPJfEB\",\n              \"felt:parentId\": \"luCHyMruTQ6ozGk3gPJfEB\"\n            },\n            \"properties\": {},\n            \"type\": \"Feature\"\n          }\n        ]\n      },\n      \"id\": \"luCHyMruTQ6ozGk3gPJfEB\",\n      \"name\": \"string\"\n    },\n    {\n      \"elements\": {\n        \"type\": \"FeatureCollection\",\n        \"features\": [\n          {\n            \"geometry\": {\n              \"felt:id\": \"luCHyMruTQ6ozGk3gPJfEB\",\n              \"felt:parentId\": \"luCHyMruTQ6ozGk3gPJfEB\"\n            },\n            \"properties\": {},\n            \"type\": \"Feature\"\n          },\n          {\n            \"geometry\": {\n              \"felt:id\": \"luCHyMruTQ6ozGk3gPJfEB\",\n              \"felt:parentId\": \"luCHyMruTQ6ozGk3gPJfEB\"\n            },\n            \"properties\": {},\n            \"type\": \"Feature\"\n          }\n        ]\n      },\n      \"id\": \"luCHyMruTQ6ozGk3gPJfEB\",\n      \"name\": \"string\"\n    }\n  ],\n  \"project_id\": \"string\",\n  \"public_access\": \"view_and_comment\",\n  \"basemap\": \"string\",\n  \"folder_id\": \"string\",\n  \"links\": {\n    \"self\": \"https://felt.com/api/v2/maps/V0dnOMOuTd9B9BOsL9C0UjmqC\"\n  },\n  \"table_settings\": {\n    \"default_table_layer_id\": \"luCHyMruTQ6ozGk3gPJfEB\",\n    \"viewers_can_open_table\": true\n  },\n  \"viewer_permissions\": {\n    \"can_duplicate_map\": false,\n    \"can_export_data\": true,\n    \"can_see_map_presence\": false\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4a578062-132e-4672-bc34-641c9a4a3a9f",
+              "name": "UnauthorizedError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "maps",
+                    ":map_id",
+                    "duplicate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "map_id",
+                      "description": "(Required) The ID of the map to duplicate"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"destination\": {\n    \"project_id\": \"luCHyMruTQ6ozGk3gPJfEB\"\n  },\n  \"title\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"detail\": \"string\",\n      \"source\": {\n        \"header\": \"authorization\"\n      },\n      \"title\": \"string\"\n    },\n    {\n      \"detail\": \"string\",\n      \"source\": {\n        \"header\": \"authorization\"\n      },\n      \"title\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f3e03e01-d418-41c1-9aed-d41615ccfef8",
+              "name": "UnauthorizedError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "maps",
+                    ":map_id",
+                    "duplicate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "map_id",
+                      "description": "(Required) The ID of the map to duplicate"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"destination\": {\n    \"project_id\": \"luCHyMruTQ6ozGk3gPJfEB\"\n  },\n  \"title\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"detail\": \"string\",\n      \"source\": {\n        \"header\": \"authorization\"\n      },\n      \"title\": \"string\"\n    },\n    {\n      \"detail\": \"string\",\n      \"source\": {\n        \"header\": \"authorization\"\n      },\n      \"title\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "abe055be-a4f7-4115-a3a6-9cc1463b1d71",
+              "name": "NotFoundError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "maps",
+                    ":map_id",
+                    "duplicate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "map_id",
+                      "description": "(Required) The ID of the map to duplicate"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"destination\": {\n    \"project_id\": \"luCHyMruTQ6ozGk3gPJfEB\"\n  },\n  \"title\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"detail\": \"string\",\n      \"source\": {\n        \"parameter\": \"string\"\n      },\n      \"title\": \"string\"\n    },\n    {\n      \"detail\": \"string\",\n      \"source\": {\n        \"parameter\": \"string\"\n      },\n      \"title\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "293a3b1c-2e10-42ed-8008-a07a94c7eabc",
+              "name": "Unprocessable Entity",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "maps",
+                    ":map_id",
+                    "duplicate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "map_id",
+                      "description": "(Required) The ID of the map to duplicate"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"destination\": {\n    \"project_id\": \"luCHyMruTQ6ozGk3gPJfEB\"\n  },\n  \"title\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"title\": \"Invalid value\",\n      \"source\": {\n        \"pointer\": \"/data/attributes/petName\"\n      },\n      \"detail\": \"null value where string expected\"\n    },\n    {\n      \"title\": \"Invalid value\",\n      \"source\": {\n        \"pointer\": \"/data/attributes/petName\"\n      },\n      \"detail\": \"null value where string expected\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "51cfa3a4-5729-44a8-a038-31c3bb4c3824",
+              "name": "Unprocessable Entity",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "maps",
+                    ":map_id",
+                    "duplicate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "map_id",
+                      "description": "(Required) The ID of the map to duplicate"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"destination\": {\n    \"project_id\": \"luCHyMruTQ6ozGk3gPJfEB\"\n  },\n  \"title\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"title\": \"Invalid value\",\n      \"source\": {\n        \"pointer\": \"/data/attributes/petName\"\n      },\n      \"detail\": \"null value where string expected\"\n    },\n    {\n      \"title\": \"Invalid value\",\n      \"source\": {\n        \"pointer\": \"/data/attributes/petName\"\n      },\n      \"detail\": \"null value where string expected\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b2c0b6fb-cba1-4729-b026-e482e59a7cd0",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "maps",
+                    ":map_id",
+                    "duplicate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "map_id",
+                      "description": "(Required) The ID of the map to duplicate"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"destination\": {\n    \"project_id\": \"luCHyMruTQ6ozGk3gPJfEB\"\n  },\n  \"title\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"detail\": \"string\",\n      \"source\": {\n        \"parameter\": \"string\"\n      },\n      \"title\": \"string\"\n    },\n    {\n      \"detail\": \"string\",\n      \"source\": {\n        \"parameter\": \"string\"\n      },\n      \"title\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bfedbef4-f813-4307-94bb-24ac5e283402",
+          "name": "Create map",
+          "request": {
+            "name": "Create map",
+            "description": {
+              "content": "Create a new map with optional customization options.\n\nSeveral aspects can be customized when creating a new map, including:\n\n* Title\n* Initial location (latitude, longitude and zoom level)\n* Sharing permissions (defaults to viewing and commenting for users with the map URL)\n* An array of URLs to import on map creation\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "maps"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"basemap\": \"<string>\",\n  \"description\": \"<string>\",\n  \"lat\": \"<number>\",\n  \"layer_urls\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"lon\": \"<number>\",\n  \"public_access\": \"<string>\",\n  \"title\": \"<string>\",\n  \"workspace_id\": \"<string>\",\n  \"zoom\": \"<number>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f5d56d3c-61a0-417c-85bd-e0aaafb3dcba",
+              "name": "Map",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "maps"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"basemap\": \"<string>\",\n  \"description\": \"<string>\",\n  \"lat\": \"<number>\",\n  \"layer_urls\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"lon\": \"<number>\",\n  \"public_access\": \"<string>\",\n  \"title\": \"<string>\",\n  \"workspace_id\": \"<string>\",\n  \"zoom\": \"<number>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"luCHyMruTQ6ozGk3gPJfEB\",\n  \"type\": \"map\",\n  \"url\": \"string\",\n  \"title\": \"string\",\n  \"thumbnail_url\": \"string\",\n  \"created_at\": \"2024-05-25T15:51:34\",\n  \"visited_at\": \"string\",\n  \"layers\": [\n    {\n      \"id\": \"luCHyMruTQ6ozGk3gPJfEB\",\n      \"type\": \"layer\",\n      \"hide_from_legend\": false,\n      \"status\": \"completed\",\n      \"caption\": \"string\",\n      \"name\": \"string\",\n      \"progress\": 5122.329004957691,\n      \"geometry_type\": \"Polygon\",\n      \"style\": {},\n      \"refresh_period\": \"disabled\",\n      \"refresh_status\": \"active\",\n      \"attributes\": [\n        {\n          \"name\": \"string\",\n          \"type\": \"REAL\"\n        },\n        {\n          \"name\": \"string\",\n          \"type\": \"DATE\"\n        }\n      ],\n      \"is_spreadsheet\": false,\n      \"last_refreshed_at\": \"2007-05-02T09:43:16.172Z\",\n      \"legend_display\": \"name_only\",\n      \"legend_visibility\": \"show\",\n      \"links\": {\n        \"self\": \"https://felt.com/api/v2/maps/V0dnOMOuTd9B9BOsL9C0UjmqC/layers/k441enUxQUOnZqc1ZvNsDA\"\n      },\n      \"metadata\": {\n        \"attribution_text\": \"string\",\n        \"attribution_url\": \"string\",\n        \"description\": \"string\",\n        \"license\": \"string\",\n        \"source_abbreviation\": \"string\",\n        \"source_name\": \"string\",\n        \"source_url\": \"string\",\n        \"updated_at\": \"2025-03-24\"\n      },\n      \"next_refresh_at\": \"1958-08-07T03:40:22.877Z\",\n      \"ordering_key\": 2695,\n      \"paused_reason\": \"consecutive_failures\",\n      \"subtitle\": \"string\",\n      \"tile_url\": \"string\"\n    },\n    {\n      \"id\": \"luCHyMruTQ6ozGk3gPJfEB\",\n      \"type\": \"layer\",\n      \"hide_from_legend\": true,\n      \"status\": \"processing\",\n      \"caption\": \"string\",\n      \"name\": \"string\",\n      \"progress\": 8014.97835088988,\n      \"geometry_type\": \"Polygon\",\n      \"style\": {},\n      \"refresh_period\": \"hour\",\n      \"refresh_status\": \"disabled\",\n      \"attributes\": [\n        {\n          \"name\": \"string\",\n          \"type\": \"GEOMETRY\"\n        },\n        {\n          \"name\": \"string\",\n          \"type\": \"GEOMETRY\"\n        }\n      ],\n      \"is_spreadsheet\": true,\n      \"last_refreshed_at\": \"2010-03-22T14:52:01.492Z\",\n      \"legend_display\": \"name_only\",\n      \"legend_visibility\": \"hide\",\n      \"links\": {\n        \"self\": \"https://felt.com/api/v2/maps/V0dnOMOuTd9B9BOsL9C0UjmqC/layers/k441enUxQUOnZqc1ZvNsDA\"\n      },\n      \"metadata\": {\n        \"attribution_text\": \"string\",\n        \"attribution_url\": \"string\",\n        \"description\": \"string\",\n        \"license\": \"string\",\n        \"source_abbreviation\": \"string\",\n        \"source_name\": \"string\",\n        \"source_url\": \"string\",\n        \"updated_at\": \"2025-03-24\"\n      },\n      \"next_refresh_at\": \"1973-09-17T20:18:35.013Z\",\n      \"ordering_key\": 6434,\n      \"paused_reason\": \"consecutive_failures\",\n      \"subtitle\": \"string\",\n      \"tile_url\": \"string\"\n    }\n  ],\n  \"layer_groups\": [\n    {\n      \"id\": \"luCHyMruTQ6ozGk3gPJfEB\",\n      \"type\": \"layer_group\",\n      \"name\": \"string\",\n      \"caption\": \"string\",\n      \"visibility_interaction\": \"default\",\n      \"layers\": [\n        {\n          \"id\": \"luCHyMruTQ6ozGk3gPJfEB\",\n          \"type\": \"layer\",\n          \"hide_from_legend\": true,\n          \"status\": \"failed\",\n          \"caption\": \"string\",\n          \"name\": \"string\",\n          \"progress\": 4607.876797656245,\n          \"geometry_type\": \"Raster\",\n          \"style\": {},\n          \"refresh_period\": \"6 hours\",\n          \"refresh_status\": \"disabled\",\n          \"attributes\": [\n            {\n              \"name\": \"string\",\n              \"type\": \"GEOMETRY\"\n            },\n            {\n              \"name\": \"string\",\n              \"type\": \"TEXT\"\n            }\n          ],\n          \"is_spreadsheet\": true,\n          \"last_refreshed_at\": \"1991-03-20T16:18:56.465Z\",\n          \"legend_display\": \"default\",\n          \"legend_visibility\": \"hide\",\n          \"links\": {\n            \"self\": \"https://felt.com/api/v2/maps/V0dnOMOuTd9B9BOsL9C0UjmqC/layers/k441enUxQUOnZqc1ZvNsDA\"\n          },\n          \"metadata\": {\n            \"attribution_text\": \"string\",\n            \"attribution_url\": \"string\",\n            \"description\": \"string\",\n            \"license\": \"string\",\n            \"source_abbreviation\": \"string\",\n            \"source_name\": \"string\",\n            \"source_url\": \"string\",\n            \"updated_at\": \"2025-03-24\"\n          },\n          \"next_refresh_at\": \"1955-02-09T10:43:55.034Z\",\n          \"ordering_key\": 8549,\n          \"paused_reason\": \"consecutive_failures\",\n          \"subtitle\": \"string\",\n          \"tile_url\": \"string\"\n        },\n        {\n          \"id\": \"luCHyMruTQ6ozGk3gPJfEB\",\n          \"type\": \"layer\",\n          \"hide_from_legend\": false,\n          \"status\": \"processing\",\n          \"caption\": \"string\",\n          \"name\": \"string\",\n          \"progress\": 526.9987001435072,\n          \"geometry_type\": \"Polygon\",\n          \"style\": {},\n          \"refresh_period\": \"12 hours\",\n          \"refresh_status\": \"active\",\n          \"attributes\": [\n            {\n              \"name\": \"string\",\n              \"type\": \"GEOMETRY\"\n            },\n            {\n              \"name\": \"string\",\n              \"type\": \"DATE\"\n            }\n          ],\n          \"is_spreadsheet\": true,\n          \"last_refreshed_at\": \"1986-04-28T14:10:11.644Z\",\n          \"legend_display\": \"name_only\",\n          \"legend_visibility\": \"hide\",\n          \"links\": {\n            \"self\": \"https://felt.com/api/v2/maps/V0dnOMOuTd9B9BOsL9C0UjmqC/layers/k441enUxQUOnZqc1ZvNsDA\"\n          },\n          \"metadata\": {\n            \"attribution_text\": \"string\",\n            \"attribution_url\": \"string\",\n            \"description\": \"string\",\n            \"license\": \"string\",\n            \"source_abbreviation\": \"string\",\n            \"source_name\": \"string\",\n            \"source_url\": \"string\",\n            \"updated_at\": \"2025-03-24\"\n          },\n          \"next_refresh_at\": \"1964-02-10T09:58:02.295Z\",\n          \"ordering_key\": 2285,\n          \"paused_reason\": \"consecutive_failures\",\n          \"subtitle\": \"string\",\n          \"tile_url\": \"string\"\n        }\n      ],\n      \"legend_visibility\": \"hide\",\n      \"links\": {\n        \"self\": \"https://felt.com/api/v2/maps/V0dnOMOuTd9B9BOsL9C0UjmqC/layer_groups/v13k4Ae9BRjCHHdPP5Fcm6D\"\n      },\n      \"ordering_key\": 5638,\n      \"subtitle\": \"string\"\n    },\n    {\n      \"id\": \"luCHyMruTQ6ozGk3gPJfEB\",\n      \"type\": \"layer_group\",\n      \"name\": \"string\",\n      \"caption\": \"string\",\n      \"visibility_interaction\": \"default\",\n      \"layers\": [\n        {\n          \"id\": \"luCHyMruTQ6ozGk3gPJfEB\",\n          \"type\": \"layer\",\n          \"hide_from_legend\": true,\n          \"status\": \"completed\",\n          \"caption\": \"string\",\n          \"name\": \"string\",\n          \"progress\": 1286.3261443890794,\n          \"geometry_type\": \"Raster\",\n          \"style\": {},\n          \"refresh_period\": \"15 min\",\n          \"refresh_status\": \"disabled\",\n          \"attributes\": [\n            {\n              \"name\": \"string\",\n              \"type\": \"DATETIME\"\n            },\n            {\n              \"name\": \"string\",\n              \"type\": \"BOOLEAN\"\n            }\n          ],\n          \"is_spreadsheet\": false,\n          \"last_refreshed_at\": \"2021-07-18T02:26:38.892Z\",\n          \"legend_display\": \"default\",\n          \"legend_visibility\": \"show\",\n          \"links\": {\n            \"self\": \"https://felt.com/api/v2/maps/V0dnOMOuTd9B9BOsL9C0UjmqC/layers/k441enUxQUOnZqc1ZvNsDA\"\n          },\n          \"metadata\": {\n            \"attribution_text\": \"string\",\n            \"attribution_url\": \"string\",\n            \"description\": \"string\",\n            \"license\": \"string\",\n            \"source_abbreviation\": \"string\",\n            \"source_name\": \"string\",\n            \"source_url\": \"string\",\n            \"updated_at\": \"2025-03-24\"\n          },\n          \"next_refresh_at\": \"1949-07-20T05:18:44.595Z\",\n          \"ordering_key\": 9768,\n          \"paused_reason\": \"consecutive_failures\",\n          \"subtitle\": \"string\",\n          \"tile_url\": \"string\"\n        },\n        {\n          \"id\": \"luCHyMruTQ6ozGk3gPJfEB\",\n          \"type\": \"layer\",\n          \"hide_from_legend\": true,\n          \"status\": \"uploading\",\n          \"caption\": \"string\",\n          \"name\": \"string\",\n          \"progress\": 4184.678885883979,\n          \"geometry_type\": \"Polygon\",\n          \"style\": {},\n          \"refresh_period\": \"3 hours\",\n          \"refresh_status\": \"active\",\n          \"attributes\": [\n            {\n              \"name\": \"string\",\n              \"type\": \"GEOMETRY\"\n            },\n            {\n              \"name\": \"string\",\n              \"type\": \"REAL\"\n            }\n          ],\n          \"is_spreadsheet\": false,\n          \"last_refreshed_at\": \"1960-05-19T02:30:42.596Z\",\n          \"legend_display\": \"name_only\",\n          \"legend_visibility\": \"hide\",\n          \"links\": {\n            \"self\": \"https://felt.com/api/v2/maps/V0dnOMOuTd9B9BOsL9C0UjmqC/layers/k441enUxQUOnZqc1ZvNsDA\"\n          },\n          \"metadata\": {\n            \"attribution_text\": \"string\",\n            \"attribution_url\": \"string\",\n            \"description\": \"string\",\n            \"license\": \"string\",\n            \"source_abbreviation\": \"string\",\n            \"source_name\": \"string\",\n            \"source_url\": \"string\",\n            \"updated_at\": \"2025-03-24\"\n          },\n          \"next_refresh_at\": \"2018-05-02T03:57:26.980Z\",\n          \"ordering_key\": 3920,\n          \"paused_reason\": \"consecutive_failures\",\n          \"subtitle\": \"string\",\n          \"tile_url\": \"string\"\n        }\n      ],\n      \"legend_visibility\": \"hide\",\n      \"links\": {\n        \"self\": \"https://felt.com/api/v2/maps/V0dnOMOuTd9B9BOsL9C0UjmqC/layer_groups/v13k4Ae9BRjCHHdPP5Fcm6D\"\n      },\n      \"ordering_key\": 9938,\n      \"subtitle\": \"string\"\n    }\n  ],\n  \"elements\": {\n    \"type\": \"FeatureCollection\",\n    \"features\": [\n      {\n        \"geometry\": {\n          \"felt:id\": \"luCHyMruTQ6ozGk3gPJfEB\",\n          \"felt:parentId\": \"luCHyMruTQ6ozGk3gPJfEB\"\n        },\n        \"properties\": {},\n        \"type\": \"Feature\"\n      },\n      {\n        \"geometry\": {\n          \"felt:id\": \"luCHyMruTQ6ozGk3gPJfEB\",\n          \"felt:parentId\": \"luCHyMruTQ6ozGk3gPJfEB\"\n        },\n        \"properties\": {},\n        \"type\": \"Feature\"\n      }\n    ]\n  },\n  \"element_groups\": [\n    {\n      \"elements\": {\n        \"type\": \"FeatureCollection\",\n        \"features\": [\n          {\n            \"geometry\": {\n              \"felt:id\": \"luCHyMruTQ6ozGk3gPJfEB\",\n              \"felt:parentId\": \"luCHyMruTQ6ozGk3gPJfEB\"\n            },\n            \"properties\": {},\n            \"type\": \"Feature\"\n          },\n          {\n            \"geometry\": {\n              \"felt:id\": \"luCHyMruTQ6ozGk3gPJfEB\",\n              \"felt:parentId\": \"luCHyMruTQ6ozGk3gPJfEB\"\n            },\n            \"properties\": {},\n            \"type\": \"Feature\"\n          }\n        ]\n      },\n      \"id\": \"luCHyMruTQ6ozGk3gPJfEB\",\n      \"name\": \"string\"\n    },\n    {\n      \"elements\": {\n        \"type\": \"FeatureCollection\",\n        \"features\": [\n          {\n            \"geometry\": {\n              \"felt:id\": \"luCHyMruTQ6ozGk3gPJfEB\",\n              \"felt:parentId\": \"luCHyMruTQ6ozGk3gPJfEB\"\n            },\n            \"properties\": {},\n            \"type\": \"Feature\"\n          },\n          {\n            \"geometry\": {\n              \"felt:id\": \"luCHyMruTQ6ozGk3gPJfEB\",\n              \"felt:parentId\": \"luCHyMruTQ6ozGk3gPJfEB\"\n            },\n            \"properties\": {},\n            \"type\": \"Feature\"\n          }\n        ]\n      },\n      \"id\": \"luCHyMruTQ6ozGk3gPJfEB\",\n      \"name\": \"string\"\n    }\n  ],\n  \"project_id\": \"string\",\n  \"public_access\": \"view_and_comment\",\n  \"basemap\": \"string\",\n  \"folder_id\": \"string\",\n  \"links\": {\n    \"self\": \"https://felt.com/api/v2/maps/V0dnOMOuTd9B9BOsL9C0UjmqC\"\n  },\n  \"table_settings\": {\n    \"default_table_layer_id\": \"luCHyMruTQ6ozGk3gPJfEB\",\n    \"viewers_can_open_table\": true\n  },\n  \"viewer_permissions\": {\n    \"can_duplicate_map\": false,\n    \"can_export_data\": true,\n    \"can_see_map_presence\": false\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e35dfcc6-ae0c-4882-8bdf-69ae56770864",
+              "name": "UnauthorizedError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "maps"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"basemap\": \"<string>\",\n  \"description\": \"<string>\",\n  \"lat\": \"<number>\",\n  \"layer_urls\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"lon\": \"<number>\",\n  \"public_access\": \"<string>\",\n  \"title\": \"<string>\",\n  \"workspace_id\": \"<string>\",\n  \"zoom\": \"<number>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"detail\": \"string\",\n      \"source\": {\n        \"header\": \"authorization\"\n      },\n      \"title\": \"string\"\n    },\n    {\n      \"detail\": \"string\",\n      \"source\": {\n        \"header\": \"authorization\"\n      },\n      \"title\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2ba71d55-6d6d-4138-b37f-1f439cd919dc",
+              "name": "UnauthorizedError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "maps"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"basemap\": \"<string>\",\n  \"description\": \"<string>\",\n  \"lat\": \"<number>\",\n  \"layer_urls\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"lon\": \"<number>\",\n  \"public_access\": \"<string>\",\n  \"title\": \"<string>\",\n  \"workspace_id\": \"<string>\",\n  \"zoom\": \"<number>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"detail\": \"string\",\n      \"source\": {\n        \"header\": \"authorization\"\n      },\n      \"title\": \"string\"\n    },\n    {\n      \"detail\": \"string\",\n      \"source\": {\n        \"header\": \"authorization\"\n      },\n      \"title\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c94127f4-8194-4b34-98af-269eaa6021e2",
+              "name": "NotFoundError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "maps"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"basemap\": \"<string>\",\n  \"description\": \"<string>\",\n  \"lat\": \"<number>\",\n  \"layer_urls\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"lon\": \"<number>\",\n  \"public_access\": \"<string>\",\n  \"title\": \"<string>\",\n  \"workspace_id\": \"<string>\",\n  \"zoom\": \"<number>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"detail\": \"string\",\n      \"source\": {\n        \"parameter\": \"string\"\n      },\n      \"title\": \"string\"\n    },\n    {\n      \"detail\": \"string\",\n      \"source\": {\n        \"parameter\": \"string\"\n      },\n      \"title\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9ca357b7-ba8b-4666-ada5-b786aa624475",
+              "name": "Unprocessable Entity",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "maps"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"basemap\": \"<string>\",\n  \"description\": \"<string>\",\n  \"lat\": \"<number>\",\n  \"layer_urls\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"lon\": \"<number>\",\n  \"public_access\": \"<string>\",\n  \"title\": \"<string>\",\n  \"workspace_id\": \"<string>\",\n  \"zoom\": \"<number>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"title\": \"Invalid value\",\n      \"source\": {\n        \"pointer\": \"/data/attributes/petName\"\n      },\n      \"detail\": \"null value where string expected\"\n    },\n    {\n      \"title\": \"Invalid value\",\n      \"source\": {\n        \"pointer\": \"/data/attributes/petName\"\n      },\n      \"detail\": \"null value where string expected\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c5a83445-fd09-403f-bc97-55779099b25f",
+              "name": "Unprocessable Entity",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "maps"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"basemap\": \"<string>\",\n  \"description\": \"<string>\",\n  \"lat\": \"<number>\",\n  \"layer_urls\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"lon\": \"<number>\",\n  \"public_access\": \"<string>\",\n  \"title\": \"<string>\",\n  \"workspace_id\": \"<string>\",\n  \"zoom\": \"<number>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"title\": \"Invalid value\",\n      \"source\": {\n        \"pointer\": \"/data/attributes/petName\"\n      },\n      \"detail\": \"null value where string expected\"\n    },\n    {\n      \"title\": \"Invalid value\",\n      \"source\": {\n        \"pointer\": \"/data/attributes/petName\"\n      },\n      \"detail\": \"null value where string expected\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "58a65877-91f7-4f70-a4b8-a719f8f35a01",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "maps"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"basemap\": \"<string>\",\n  \"description\": \"<string>\",\n  \"lat\": \"<number>\",\n  \"layer_urls\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"lon\": \"<number>\",\n  \"public_access\": \"<string>\",\n  \"title\": \"<string>\",\n  \"workspace_id\": \"<string>\",\n  \"zoom\": \"<number>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"detail\": \"string\",\n      \"source\": {\n        \"parameter\": \"string\"\n      },\n      \"title\": \"string\"\n    },\n    {\n      \"detail\": \"string\",\n      \"source\": {\n        \"parameter\": \"string\"\n      },\n      \"title\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "14e81c6e-45b1-4276-b1f9-1b2a12cca4fd",
+          "name": "Update map",
+          "request": {
+            "name": "Update map",
+            "description": {
+              "content": "Update map properties including title, description, and access permissions.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "maps",
+                ":map_id",
+                "update"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "map_id",
+                  "description": "(Required) The ID of the map to update"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"basemap\": \"<string>\",\n  \"description\": \"<string>\",\n  \"public_access\": \"<string>\",\n  \"table_settings\": {\n    \"default_table_layer_id\": \"<felt_id>\",\n    \"viewers_can_open_table\": \"<boolean>\"\n  },\n  \"title\": \"<string>\",\n  \"viewer_permissions\": {\n    \"can_duplicate_map\": \"<boolean>\",\n    \"can_export_data\": \"<boolean>\",\n    \"can_see_map_presence\": \"<boolean>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "7db5399f-e622-47fc-aded-a12d416960c7",
+              "name": "Map",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "maps",
+                    ":map_id",
+                    "update"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "map_id",
+                      "description": "(Required) The ID of the map to update"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"basemap\": \"<string>\",\n  \"description\": \"<string>\",\n  \"public_access\": \"<string>\",\n  \"table_settings\": {\n    \"default_table_layer_id\": \"luCHyMruTQ6ozGk3gPJfEB\",\n    \"viewers_can_open_table\": \"<boolean>\"\n  },\n  \"title\": \"<string>\",\n  \"viewer_permissions\": {\n    \"can_duplicate_map\": \"<boolean>\",\n    \"can_export_data\": \"<boolean>\",\n    \"can_see_map_presence\": \"<boolean>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"luCHyMruTQ6ozGk3gPJfEB\",\n  \"type\": \"map\",\n  \"url\": \"string\",\n  \"title\": \"string\",\n  \"thumbnail_url\": \"string\",\n  \"created_at\": \"2024-05-25T15:51:34\",\n  \"visited_at\": \"string\",\n  \"layers\": [\n    {\n      \"id\": \"luCHyMruTQ6ozGk3gPJfEB\",\n      \"type\": \"layer\",\n      \"hide_from_legend\": false,\n      \"status\": \"failed\",\n      \"caption\": \"string\",\n      \"name\": \"string\",\n      \"progress\": 9544.970340612117,\n      \"geometry_type\": \"Point\",\n      \"style\": {},\n      \"refresh_period\": \"day\",\n      \"refresh_status\": \"paused\",\n      \"attributes\": [\n        {\n          \"name\": \"string\",\n          \"type\": \"GEOMETRY\"\n        },\n        {\n          \"name\": \"string\",\n          \"type\": \"DATETIME\"\n        }\n      ],\n      \"is_spreadsheet\": true,\n      \"last_refreshed_at\": \"2013-01-28T10:28:48.370Z\",\n      \"legend_display\": \"name_only\",\n      \"legend_visibility\": \"show\",\n      \"links\": {\n        \"self\": \"https://felt.com/api/v2/maps/V0dnOMOuTd9B9BOsL9C0UjmqC/layers/k441enUxQUOnZqc1ZvNsDA\"\n      },\n      \"metadata\": {\n        \"attribution_text\": \"string\",\n        \"attribution_url\": \"string\",\n        \"description\": \"string\",\n        \"license\": \"string\",\n        \"source_abbreviation\": \"string\",\n        \"source_name\": \"string\",\n        \"source_url\": \"string\",\n        \"updated_at\": \"2025-03-24\"\n      },\n      \"next_refresh_at\": \"2007-05-24T02:21:19.643Z\",\n      \"ordering_key\": 6285,\n      \"paused_reason\": \"consecutive_failures\",\n      \"subtitle\": \"string\",\n      \"tile_url\": \"string\"\n    },\n    {\n      \"id\": \"luCHyMruTQ6ozGk3gPJfEB\",\n      \"type\": \"layer\",\n      \"hide_from_legend\": false,\n      \"status\": \"uploading\",\n      \"caption\": \"string\",\n      \"name\": \"string\",\n      \"progress\": 1813.729832915474,\n      \"geometry_type\": \"Line\",\n      \"style\": {},\n      \"refresh_period\": \"15 min\",\n      \"refresh_status\": \"disabled\",\n      \"attributes\": [\n        {\n          \"name\": \"string\",\n          \"type\": \"TEXT\"\n        },\n        {\n          \"name\": \"string\",\n          \"type\": \"DATE\"\n        }\n      ],\n      \"is_spreadsheet\": false,\n      \"last_refreshed_at\": \"1958-07-10T05:17:18.384Z\",\n      \"legend_display\": \"name_only\",\n      \"legend_visibility\": \"show\",\n      \"links\": {\n        \"self\": \"https://felt.com/api/v2/maps/V0dnOMOuTd9B9BOsL9C0UjmqC/layers/k441enUxQUOnZqc1ZvNsDA\"\n      },\n      \"metadata\": {\n        \"attribution_text\": \"string\",\n        \"attribution_url\": \"string\",\n        \"description\": \"string\",\n        \"license\": \"string\",\n        \"source_abbreviation\": \"string\",\n        \"source_name\": \"string\",\n        \"source_url\": \"string\",\n        \"updated_at\": \"2025-03-24\"\n      },\n      \"next_refresh_at\": \"1947-10-08T10:57:26.930Z\",\n      \"ordering_key\": 4178,\n      \"paused_reason\": \"consecutive_failures\",\n      \"subtitle\": \"string\",\n      \"tile_url\": \"string\"\n    }\n  ],\n  \"layer_groups\": [\n    {\n      \"id\": \"luCHyMruTQ6ozGk3gPJfEB\",\n      \"type\": \"layer_group\",\n      \"name\": \"string\",\n      \"caption\": \"string\",\n      \"visibility_interaction\": \"select\",\n      \"layers\": [\n        {\n          \"id\": \"luCHyMruTQ6ozGk3gPJfEB\",\n          \"type\": \"layer\",\n          \"hide_from_legend\": false,\n          \"status\": \"completed\",\n          \"caption\": \"string\",\n          \"name\": \"string\",\n          \"progress\": 764.5749724850504,\n          \"geometry_type\": \"Line\",\n          \"style\": {},\n          \"refresh_period\": \"day\",\n          \"refresh_status\": \"active\",\n          \"attributes\": [\n            {\n              \"name\": \"string\",\n              \"type\": \"BOOLEAN\"\n            },\n            {\n              \"name\": \"string\",\n              \"type\": \"BOOLEAN\"\n            }\n          ],\n          \"is_spreadsheet\": true,\n          \"last_refreshed_at\": \"1966-01-04T07:40:44.984Z\",\n          \"legend_display\": \"default\",\n          \"legend_visibility\": \"show\",\n          \"links\": {\n            \"self\": \"https://felt.com/api/v2/maps/V0dnOMOuTd9B9BOsL9C0UjmqC/layers/k441enUxQUOnZqc1ZvNsDA\"\n          },\n          \"metadata\": {\n            \"attribution_text\": \"string\",\n            \"attribution_url\": \"string\",\n            \"description\": \"string\",\n            \"license\": \"string\",\n            \"source_abbreviation\": \"string\",\n            \"source_name\": \"string\",\n            \"source_url\": \"string\",\n            \"updated_at\": \"2025-03-24\"\n          },\n          \"next_refresh_at\": \"1965-06-28T20:57:12.243Z\",\n          \"ordering_key\": 2832,\n          \"paused_reason\": \"consecutive_failures\",\n          \"subtitle\": \"string\",\n          \"tile_url\": \"string\"\n        },\n        {\n          \"id\": \"luCHyMruTQ6ozGk3gPJfEB\",\n          \"type\": \"layer\",\n          \"hide_from_legend\": false,\n          \"status\": \"completed\",\n          \"caption\": \"string\",\n          \"name\": \"string\",\n          \"progress\": 7198.330892105316,\n          \"geometry_type\": \"Raster\",\n          \"style\": {},\n          \"refresh_period\": \"30 min\",\n          \"refresh_status\": \"active\",\n          \"attributes\": [\n            {\n              \"name\": \"string\",\n              \"type\": \"BOOLEAN\"\n            },\n            {\n              \"name\": \"string\",\n              \"type\": \"INTEGER\"\n            }\n          ],\n          \"is_spreadsheet\": true,\n          \"last_refreshed_at\": \"2005-01-17T10:02:49.262Z\",\n          \"legend_display\": \"default\",\n          \"legend_visibility\": \"hide\",\n          \"links\": {\n            \"self\": \"https://felt.com/api/v2/maps/V0dnOMOuTd9B9BOsL9C0UjmqC/layers/k441enUxQUOnZqc1ZvNsDA\"\n          },\n          \"metadata\": {\n            \"attribution_text\": \"string\",\n            \"attribution_url\": \"string\",\n            \"description\": \"string\",\n            \"license\": \"string\",\n            \"source_abbreviation\": \"string\",\n            \"source_name\": \"string\",\n            \"source_url\": \"string\",\n            \"updated_at\": \"2025-03-24\"\n          },\n          \"next_refresh_at\": \"1981-09-24T15:01:26.263Z\",\n          \"ordering_key\": 9543,\n          \"paused_reason\": \"consecutive_failures\",\n          \"subtitle\": \"string\",\n          \"tile_url\": \"string\"\n        }\n      ],\n      \"legend_visibility\": \"show\",\n      \"links\": {\n        \"self\": \"https://felt.com/api/v2/maps/V0dnOMOuTd9B9BOsL9C0UjmqC/layer_groups/v13k4Ae9BRjCHHdPP5Fcm6D\"\n      },\n      \"ordering_key\": 4078,\n      \"subtitle\": \"string\"\n    },\n    {\n      \"id\": \"luCHyMruTQ6ozGk3gPJfEB\",\n      \"type\": \"layer_group\",\n      \"name\": \"string\",\n      \"caption\": \"string\",\n      \"visibility_interaction\": \"default\",\n      \"layers\": [\n        {\n          \"id\": \"luCHyMruTQ6ozGk3gPJfEB\",\n          \"type\": \"layer\",\n          \"hide_from_legend\": true,\n          \"status\": \"processing\",\n          \"caption\": \"string\",\n          \"name\": \"string\",\n          \"progress\": 3464.927074399453,\n          \"geometry_type\": \"Point\",\n          \"style\": {},\n          \"refresh_period\": \"30 min\",\n          \"refresh_status\": \"disabled\",\n          \"attributes\": [\n            {\n              \"name\": \"string\",\n              \"type\": \"TEXT\"\n            },\n            {\n              \"name\": \"string\",\n              \"type\": \"DATETIME\"\n            }\n          ],\n          \"is_spreadsheet\": false,\n          \"last_refreshed_at\": \"1974-03-05T13:53:29.437Z\",\n          \"legend_display\": \"name_only\",\n          \"legend_visibility\": \"hide\",\n          \"links\": {\n            \"self\": \"https://felt.com/api/v2/maps/V0dnOMOuTd9B9BOsL9C0UjmqC/layers/k441enUxQUOnZqc1ZvNsDA\"\n          },\n          \"metadata\": {\n            \"attribution_text\": \"string\",\n            \"attribution_url\": \"string\",\n            \"description\": \"string\",\n            \"license\": \"string\",\n            \"source_abbreviation\": \"string\",\n            \"source_name\": \"string\",\n            \"source_url\": \"string\",\n            \"updated_at\": \"2025-03-24\"\n          },\n          \"next_refresh_at\": \"1990-03-30T19:01:24.921Z\",\n          \"ordering_key\": 7674,\n          \"paused_reason\": \"consecutive_failures\",\n          \"subtitle\": \"string\",\n          \"tile_url\": \"string\"\n        },\n        {\n          \"id\": \"luCHyMruTQ6ozGk3gPJfEB\",\n          \"type\": \"layer\",\n          \"hide_from_legend\": true,\n          \"status\": \"completed\",\n          \"caption\": \"string\",\n          \"name\": \"string\",\n          \"progress\": 8037.82591638233,\n          \"geometry_type\": \"Raster\",\n          \"style\": {},\n          \"refresh_period\": \"3 hours\",\n          \"refresh_status\": \"paused\",\n          \"attributes\": [\n            {\n              \"name\": \"string\",\n              \"type\": \"INTEGER\"\n            },\n            {\n              \"name\": \"string\",\n              \"type\": \"GEOMETRY\"\n            }\n          ],\n          \"is_spreadsheet\": false,\n          \"last_refreshed_at\": \"1982-12-19T09:33:32.759Z\",\n          \"legend_display\": \"name_only\",\n          \"legend_visibility\": \"hide\",\n          \"links\": {\n            \"self\": \"https://felt.com/api/v2/maps/V0dnOMOuTd9B9BOsL9C0UjmqC/layers/k441enUxQUOnZqc1ZvNsDA\"\n          },\n          \"metadata\": {\n            \"attribution_text\": \"string\",\n            \"attribution_url\": \"string\",\n            \"description\": \"string\",\n            \"license\": \"string\",\n            \"source_abbreviation\": \"string\",\n            \"source_name\": \"string\",\n            \"source_url\": \"string\",\n            \"updated_at\": \"2025-03-24\"\n          },\n          \"next_refresh_at\": \"2005-10-17T18:25:40.916Z\",\n          \"ordering_key\": 3374,\n          \"paused_reason\": \"consecutive_failures\",\n          \"subtitle\": \"string\",\n          \"tile_url\": \"string\"\n        }\n      ],\n      \"legend_visibility\": \"show\",\n      \"links\": {\n        \"self\": \"https://felt.com/api/v2/maps/V0dnOMOuTd9B9BOsL9C0UjmqC/layer_groups/v13k4Ae9BRjCHHdPP5Fcm6D\"\n      },\n      \"ordering_key\": 8121,\n      \"subtitle\": \"string\"\n    }\n  ],\n  \"elements\": {\n    \"type\": \"FeatureCollection\",\n    \"features\": [\n      {\n        \"geometry\": {\n          \"felt:id\": \"luCHyMruTQ6ozGk3gPJfEB\",\n          \"felt:parentId\": \"luCHyMruTQ6ozGk3gPJfEB\"\n        },\n        \"properties\": {},\n        \"type\": \"Feature\"\n      },\n      {\n        \"geometry\": {\n          \"felt:id\": \"luCHyMruTQ6ozGk3gPJfEB\",\n          \"felt:parentId\": \"luCHyMruTQ6ozGk3gPJfEB\"\n        },\n        \"properties\": {},\n        \"type\": \"Feature\"\n      }\n    ]\n  },\n  \"element_groups\": [\n    {\n      \"elements\": {\n        \"type\": \"FeatureCollection\",\n        \"features\": [\n          {\n            \"geometry\": {\n              \"felt:id\": \"luCHyMruTQ6ozGk3gPJfEB\",\n              \"felt:parentId\": \"luCHyMruTQ6ozGk3gPJfEB\"\n            },\n            \"properties\": {},\n            \"type\": \"Feature\"\n          },\n          {\n            \"geometry\": {\n              \"felt:id\": \"luCHyMruTQ6ozGk3gPJfEB\",\n              \"felt:parentId\": \"luCHyMruTQ6ozGk3gPJfEB\"\n            },\n            \"properties\": {},\n            \"type\": \"Feature\"\n          }\n        ]\n      },\n      \"id\": \"luCHyMruTQ6ozGk3gPJfEB\",\n      \"name\": \"string\"\n    },\n    {\n      \"elements\": {\n        \"type\": \"FeatureCollection\",\n        \"features\": [\n          {\n            \"geometry\": {\n              \"felt:id\": \"luCHyMruTQ6ozGk3gPJfEB\",\n              \"felt:parentId\": \"luCHyMruTQ6ozGk3gPJfEB\"\n            },\n            \"properties\": {},\n            \"type\": \"Feature\"\n          },\n          {\n            \"geometry\": {\n              \"felt:id\": \"luCHyMruTQ6ozGk3gPJfEB\",\n              \"felt:parentId\": \"luCHyMruTQ6ozGk3gPJfEB\"\n            },\n            \"properties\": {},\n            \"type\": \"Feature\"\n          }\n        ]\n      },\n      \"id\": \"luCHyMruTQ6ozGk3gPJfEB\",\n      \"name\": \"string\"\n    }\n  ],\n  \"project_id\": \"string\",\n  \"public_access\": \"view_and_comment\",\n  \"basemap\": \"string\",\n  \"folder_id\": \"string\",\n  \"links\": {\n    \"self\": \"https://felt.com/api/v2/maps/V0dnOMOuTd9B9BOsL9C0UjmqC\"\n  },\n  \"table_settings\": {\n    \"default_table_layer_id\": \"luCHyMruTQ6ozGk3gPJfEB\",\n    \"viewers_can_open_table\": \"<boolean>\"\n  },\n  \"viewer_permissions\": {\n    \"can_duplicate_map\": \"<boolean>\",\n    \"can_export_data\": \"<boolean>\",\n    \"can_see_map_presence\": \"<boolean>\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "07ba9cc1-c074-4b40-9e62-99ff4c1f90c1",
+              "name": "UnauthorizedError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "maps",
+                    ":map_id",
+                    "update"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "map_id",
+                      "description": "(Required) The ID of the map to update"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"basemap\": \"<string>\",\n  \"description\": \"<string>\",\n  \"public_access\": \"<string>\",\n  \"table_settings\": {\n    \"default_table_layer_id\": \"luCHyMruTQ6ozGk3gPJfEB\",\n    \"viewers_can_open_table\": \"<boolean>\"\n  },\n  \"title\": \"<string>\",\n  \"viewer_permissions\": {\n    \"can_duplicate_map\": \"<boolean>\",\n    \"can_export_data\": \"<boolean>\",\n    \"can_see_map_presence\": \"<boolean>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"detail\": \"string\",\n      \"source\": {\n        \"header\": \"authorization\"\n      },\n      \"title\": \"string\"\n    },\n    {\n      \"detail\": \"string\",\n      \"source\": {\n        \"header\": \"authorization\"\n      },\n      \"title\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8633e0be-07f1-45b8-a0bc-386523acdeb2",
+              "name": "UnauthorizedError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "maps",
+                    ":map_id",
+                    "update"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "map_id",
+                      "description": "(Required) The ID of the map to update"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"basemap\": \"<string>\",\n  \"description\": \"<string>\",\n  \"public_access\": \"<string>\",\n  \"table_settings\": {\n    \"default_table_layer_id\": \"luCHyMruTQ6ozGk3gPJfEB\",\n    \"viewers_can_open_table\": \"<boolean>\"\n  },\n  \"title\": \"<string>\",\n  \"viewer_permissions\": {\n    \"can_duplicate_map\": \"<boolean>\",\n    \"can_export_data\": \"<boolean>\",\n    \"can_see_map_presence\": \"<boolean>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"detail\": \"string\",\n      \"source\": {\n        \"header\": \"authorization\"\n      },\n      \"title\": \"string\"\n    },\n    {\n      \"detail\": \"string\",\n      \"source\": {\n        \"header\": \"authorization\"\n      },\n      \"title\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9472b3d2-85fc-43ec-9ad6-2e2d7700a7c1",
+              "name": "NotFoundError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "maps",
+                    ":map_id",
+                    "update"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "map_id",
+                      "description": "(Required) The ID of the map to update"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"basemap\": \"<string>\",\n  \"description\": \"<string>\",\n  \"public_access\": \"<string>\",\n  \"table_settings\": {\n    \"default_table_layer_id\": \"luCHyMruTQ6ozGk3gPJfEB\",\n    \"viewers_can_open_table\": \"<boolean>\"\n  },\n  \"title\": \"<string>\",\n  \"viewer_permissions\": {\n    \"can_duplicate_map\": \"<boolean>\",\n    \"can_export_data\": \"<boolean>\",\n    \"can_see_map_presence\": \"<boolean>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"detail\": \"string\",\n      \"source\": {\n        \"parameter\": \"string\"\n      },\n      \"title\": \"string\"\n    },\n    {\n      \"detail\": \"string\",\n      \"source\": {\n        \"parameter\": \"string\"\n      },\n      \"title\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4b9e1e3a-2df7-4e91-bf9f-fd969c49f1b3",
+              "name": "Unprocessable Entity",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "maps",
+                    ":map_id",
+                    "update"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "map_id",
+                      "description": "(Required) The ID of the map to update"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"basemap\": \"<string>\",\n  \"description\": \"<string>\",\n  \"public_access\": \"<string>\",\n  \"table_settings\": {\n    \"default_table_layer_id\": \"luCHyMruTQ6ozGk3gPJfEB\",\n    \"viewers_can_open_table\": \"<boolean>\"\n  },\n  \"title\": \"<string>\",\n  \"viewer_permissions\": {\n    \"can_duplicate_map\": \"<boolean>\",\n    \"can_export_data\": \"<boolean>\",\n    \"can_see_map_presence\": \"<boolean>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"title\": \"Invalid value\",\n      \"source\": {\n        \"pointer\": \"/data/attributes/petName\"\n      },\n      \"detail\": \"null value where string expected\"\n    },\n    {\n      \"title\": \"Invalid value\",\n      \"source\": {\n        \"pointer\": \"/data/attributes/petName\"\n      },\n      \"detail\": \"null value where string expected\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "01d7082f-f7bf-4e62-97d8-7dac4d3b904e",
+              "name": "Unprocessable Entity",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "maps",
+                    ":map_id",
+                    "update"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "map_id",
+                      "description": "(Required) The ID of the map to update"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"basemap\": \"<string>\",\n  \"description\": \"<string>\",\n  \"public_access\": \"<string>\",\n  \"table_settings\": {\n    \"default_table_layer_id\": \"luCHyMruTQ6ozGk3gPJfEB\",\n    \"viewers_can_open_table\": \"<boolean>\"\n  },\n  \"title\": \"<string>\",\n  \"viewer_permissions\": {\n    \"can_duplicate_map\": \"<boolean>\",\n    \"can_export_data\": \"<boolean>\",\n    \"can_see_map_presence\": \"<boolean>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"title\": \"Invalid value\",\n      \"source\": {\n        \"pointer\": \"/data/attributes/petName\"\n      },\n      \"detail\": \"null value where string expected\"\n    },\n    {\n      \"title\": \"Invalid value\",\n      \"source\": {\n        \"pointer\": \"/data/attributes/petName\"\n      },\n      \"detail\": \"null value where string expected\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "35955fc5-298c-48aa-96de-1a9299326714",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "maps",
+                    ":map_id",
+                    "update"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "map_id",
+                      "description": "(Required) The ID of the map to update"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"basemap\": \"<string>\",\n  \"description\": \"<string>\",\n  \"public_access\": \"<string>\",\n  \"table_settings\": {\n    \"default_table_layer_id\": \"luCHyMruTQ6ozGk3gPJfEB\",\n    \"viewers_can_open_table\": \"<boolean>\"\n  },\n  \"title\": \"<string>\",\n  \"viewer_permissions\": {\n    \"can_duplicate_map\": \"<boolean>\",\n    \"can_export_data\": \"<boolean>\",\n    \"can_see_map_presence\": \"<boolean>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"detail\": \"string\",\n      \"source\": {\n        \"parameter\": \"string\"\n      },\n      \"title\": \"string\"\n    },\n    {\n      \"detail\": \"string\",\n      \"source\": {\n        \"parameter\": \"string\"\n      },\n      \"title\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2d520143-4107-46e3-92e4-38c9af528c7a",
+          "name": "Delete map",
+          "request": {
+            "name": "Delete map",
+            "description": {
+              "content": "Permanently delete a map and all its associated data.\n\n{% hint style=\"warning\" %}\nThis action cannot be undone. The map and all its layers, elements, and comments will be permanently removed.\n{% endhint %}\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "maps",
+                ":map_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "map_id",
+                  "description": "(Required) The ID of the map to delete"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "25db6dbd-52cd-4a83-8542-3cd80685009d",
+              "name": "No Content",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "maps",
+                    ":map_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "map_id",
+                      "description": "(Required) The ID of the map to delete"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "82eead60-dd7a-4a2e-bdfa-ef57d1af2374",
+              "name": "UnauthorizedError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "maps",
+                    ":map_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "map_id",
+                      "description": "(Required) The ID of the map to delete"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"detail\": \"string\",\n      \"source\": {\n        \"header\": \"authorization\"\n      },\n      \"title\": \"string\"\n    },\n    {\n      \"detail\": \"string\",\n      \"source\": {\n        \"header\": \"authorization\"\n      },\n      \"title\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "17d9e107-ff0f-4362-98ee-3decb821c81f",
+              "name": "UnauthorizedError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "maps",
+                    ":map_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "map_id",
+                      "description": "(Required) The ID of the map to delete"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"detail\": \"string\",\n      \"source\": {\n        \"header\": \"authorization\"\n      },\n      \"title\": \"string\"\n    },\n    {\n      \"detail\": \"string\",\n      \"source\": {\n        \"header\": \"authorization\"\n      },\n      \"title\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ac570e56-10b2-47ba-9ab8-a0c5e1a21a0a",
+              "name": "NotFoundError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "maps",
+                    ":map_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "map_id",
+                      "description": "(Required) The ID of the map to delete"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"detail\": \"string\",\n      \"source\": {\n        \"parameter\": \"string\"\n      },\n      \"title\": \"string\"\n    },\n    {\n      \"detail\": \"string\",\n      \"source\": {\n        \"parameter\": \"string\"\n      },\n      \"title\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cd30118a-f0ff-4aa1-89f8-0a87f428018e",
+              "name": "Unprocessable Entity",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "maps",
+                    ":map_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "map_id",
+                      "description": "(Required) The ID of the map to delete"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"title\": \"Invalid value\",\n      \"source\": {\n        \"pointer\": \"/data/attributes/petName\"\n      },\n      \"detail\": \"null value where string expected\"\n    },\n    {\n      \"title\": \"Invalid value\",\n      \"source\": {\n        \"pointer\": \"/data/attributes/petName\"\n      },\n      \"detail\": \"null value where string expected\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3a0ea6ff-199d-4a7d-b1f3-79047b5f0dbe",
+              "name": "Unprocessable Entity",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "maps",
+                    ":map_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "map_id",
+                      "description": "(Required) The ID of the map to delete"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"title\": \"Invalid value\",\n      \"source\": {\n        \"pointer\": \"/data/attributes/petName\"\n      },\n      \"detail\": \"null value where string expected\"\n    },\n    {\n      \"title\": \"Invalid value\",\n      \"source\": {\n        \"pointer\": \"/data/attributes/petName\"\n      },\n      \"detail\": \"null value where string expected\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c4338e0d-ae8a-4d0f-8f61-7f301a9b2390",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "maps",
+                    ":map_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "map_id",
+                      "description": "(Required) The ID of the map to delete"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"detail\": \"string\",\n      \"source\": {\n        \"parameter\": \"string\"\n      },\n      \"title\": \"string\"\n    },\n    {\n      \"detail\": \"string\",\n      \"source\": {\n        \"parameter\": \"string\"\n      },\n      \"title\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "19d11e8a-fa14-419b-9af6-bf8490303d65",
+          "name": "Get map",
+          "request": {
+            "name": "Get map",
+            "description": {
+              "content": "Retrieve a map with its metadata including title, URL, thumbnail, and timestamps.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "maps",
+                ":map_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "map_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "098c9ddd-fcdf-49f5-807d-04d368486878",
+              "name": "Map",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "maps",
+                    ":map_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "map_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"luCHyMruTQ6ozGk3gPJfEB\",\n  \"type\": \"map\",\n  \"url\": \"string\",\n  \"title\": \"string\",\n  \"thumbnail_url\": \"string\",\n  \"created_at\": \"2024-05-25T15:51:34\",\n  \"visited_at\": \"string\",\n  \"layers\": [\n    {\n      \"id\": \"luCHyMruTQ6ozGk3gPJfEB\",\n      \"type\": \"layer\",\n      \"hide_from_legend\": false,\n      \"status\": \"failed\",\n      \"caption\": \"string\",\n      \"name\": \"string\",\n      \"progress\": 9544.970340612117,\n      \"geometry_type\": \"Point\",\n      \"style\": {},\n      \"refresh_period\": \"day\",\n      \"refresh_status\": \"paused\",\n      \"attributes\": [\n        {\n          \"name\": \"string\",\n          \"type\": \"GEOMETRY\"\n        },\n        {\n          \"name\": \"string\",\n          \"type\": \"DATETIME\"\n        }\n      ],\n      \"is_spreadsheet\": true,\n      \"last_refreshed_at\": \"2013-01-28T10:28:48.370Z\",\n      \"legend_display\": \"name_only\",\n      \"legend_visibility\": \"show\",\n      \"links\": {\n        \"self\": \"https://felt.com/api/v2/maps/V0dnOMOuTd9B9BOsL9C0UjmqC/layers/k441enUxQUOnZqc1ZvNsDA\"\n      },\n      \"metadata\": {\n        \"attribution_text\": \"string\",\n        \"attribution_url\": \"string\",\n        \"description\": \"string\",\n        \"license\": \"string\",\n        \"source_abbreviation\": \"string\",\n        \"source_name\": \"string\",\n        \"source_url\": \"string\",\n        \"updated_at\": \"2025-03-24\"\n      },\n      \"next_refresh_at\": \"2007-05-24T02:21:19.643Z\",\n      \"ordering_key\": 6285,\n      \"paused_reason\": \"consecutive_failures\",\n      \"subtitle\": \"string\",\n      \"tile_url\": \"string\"\n    },\n    {\n      \"id\": \"luCHyMruTQ6ozGk3gPJfEB\",\n      \"type\": \"layer\",\n      \"hide_from_legend\": false,\n      \"status\": \"uploading\",\n      \"caption\": \"string\",\n      \"name\": \"string\",\n      \"progress\": 1813.729832915474,\n      \"geometry_type\": \"Line\",\n      \"style\": {},\n      \"refresh_period\": \"15 min\",\n      \"refresh_status\": \"disabled\",\n      \"attributes\": [\n        {\n          \"name\": \"string\",\n          \"type\": \"TEXT\"\n        },\n        {\n          \"name\": \"string\",\n          \"type\": \"DATE\"\n        }\n      ],\n      \"is_spreadsheet\": false,\n      \"last_refreshed_at\": \"1958-07-10T05:17:18.384Z\",\n      \"legend_display\": \"name_only\",\n      \"legend_visibility\": \"show\",\n      \"links\": {\n        \"self\": \"https://felt.com/api/v2/maps/V0dnOMOuTd9B9BOsL9C0UjmqC/layers/k441enUxQUOnZqc1ZvNsDA\"\n      },\n      \"metadata\": {\n        \"attribution_text\": \"string\",\n        \"attribution_url\": \"string\",\n        \"description\": \"string\",\n        \"license\": \"string\",\n        \"source_abbreviation\": \"string\",\n        \"source_name\": \"string\",\n        \"source_url\": \"string\",\n        \"updated_at\": \"2025-03-24\"\n      },\n      \"next_refresh_at\": \"1947-10-08T10:57:26.930Z\",\n      \"ordering_key\": 4178,\n      \"paused_reason\": \"consecutive_failures\",\n      \"subtitle\": \"string\",\n      \"tile_url\": \"string\"\n    }\n  ],\n  \"layer_groups\": [\n    {\n      \"id\": \"luCHyMruTQ6ozGk3gPJfEB\",\n      \"type\": \"layer_group\",\n      \"name\": \"string\",\n      \"caption\": \"string\",\n      \"visibility_interaction\": \"select\",\n      \"layers\": [\n        {\n          \"id\": \"luCHyMruTQ6ozGk3gPJfEB\",\n          \"type\": \"layer\",\n          \"hide_from_legend\": false,\n          \"status\": \"completed\",\n          \"caption\": \"string\",\n          \"name\": \"string\",\n          \"progress\": 764.5749724850504,\n          \"geometry_type\": \"Line\",\n          \"style\": {},\n          \"refresh_period\": \"day\",\n          \"refresh_status\": \"active\",\n          \"attributes\": [\n            {\n              \"name\": \"string\",\n              \"type\": \"BOOLEAN\"\n            },\n            {\n              \"name\": \"string\",\n              \"type\": \"BOOLEAN\"\n            }\n          ],\n          \"is_spreadsheet\": true,\n          \"last_refreshed_at\": \"1966-01-04T07:40:44.984Z\",\n          \"legend_display\": \"default\",\n          \"legend_visibility\": \"show\",\n          \"links\": {\n            \"self\": \"https://felt.com/api/v2/maps/V0dnOMOuTd9B9BOsL9C0UjmqC/layers/k441enUxQUOnZqc1ZvNsDA\"\n          },\n          \"metadata\": {\n            \"attribution_text\": \"string\",\n            \"attribution_url\": \"string\",\n            \"description\": \"string\",\n            \"license\": \"string\",\n            \"source_abbreviation\": \"string\",\n            \"source_name\": \"string\",\n            \"source_url\": \"string\",\n            \"updated_at\": \"2025-03-24\"\n          },\n          \"next_refresh_at\": \"1965-06-28T20:57:12.243Z\",\n          \"ordering_key\": 2832,\n          \"paused_reason\": \"consecutive_failures\",\n          \"subtitle\": \"string\",\n          \"tile_url\": \"string\"\n        },\n        {\n          \"id\": \"luCHyMruTQ6ozGk3gPJfEB\",\n          \"type\": \"layer\",\n          \"hide_from_legend\": false,\n          \"status\": \"completed\",\n          \"caption\": \"string\",\n          \"name\": \"string\",\n          \"progress\": 7198.330892105316,\n          \"geometry_type\": \"Raster\",\n          \"style\": {},\n          \"refresh_period\": \"30 min\",\n          \"refresh_status\": \"active\",\n          \"attributes\": [\n            {\n              \"name\": \"string\",\n              \"type\": \"BOOLEAN\"\n            },\n            {\n              \"name\": \"string\",\n              \"type\": \"INTEGER\"\n            }\n          ],\n          \"is_spreadsheet\": true,\n          \"last_refreshed_at\": \"2005-01-17T10:02:49.262Z\",\n          \"legend_display\": \"default\",\n          \"legend_visibility\": \"hide\",\n          \"links\": {\n            \"self\": \"https://felt.com/api/v2/maps/V0dnOMOuTd9B9BOsL9C0UjmqC/layers/k441enUxQUOnZqc1ZvNsDA\"\n          },\n          \"metadata\": {\n            \"attribution_text\": \"string\",\n            \"attribution_url\": \"string\",\n            \"description\": \"string\",\n            \"license\": \"string\",\n            \"source_abbreviation\": \"string\",\n            \"source_name\": \"string\",\n            \"source_url\": \"string\",\n            \"updated_at\": \"2025-03-24\"\n          },\n          \"next_refresh_at\": \"1981-09-24T15:01:26.263Z\",\n          \"ordering_key\": 9543,\n          \"paused_reason\": \"consecutive_failures\",\n          \"subtitle\": \"string\",\n          \"tile_url\": \"string\"\n        }\n      ],\n      \"legend_visibility\": \"show\",\n      \"links\": {\n        \"self\": \"https://felt.com/api/v2/maps/V0dnOMOuTd9B9BOsL9C0UjmqC/layer_groups/v13k4Ae9BRjCHHdPP5Fcm6D\"\n      },\n      \"ordering_key\": 4078,\n      \"subtitle\": \"string\"\n    },\n    {\n      \"id\": \"luCHyMruTQ6ozGk3gPJfEB\",\n      \"type\": \"layer_group\",\n      \"name\": \"string\",\n      \"caption\": \"string\",\n      \"visibility_interaction\": \"default\",\n      \"layers\": [\n        {\n          \"id\": \"luCHyMruTQ6ozGk3gPJfEB\",\n          \"type\": \"layer\",\n          \"hide_from_legend\": true,\n          \"status\": \"processing\",\n          \"caption\": \"string\",\n          \"name\": \"string\",\n          \"progress\": 3464.927074399453,\n          \"geometry_type\": \"Point\",\n          \"style\": {},\n          \"refresh_period\": \"30 min\",\n          \"refresh_status\": \"disabled\",\n          \"attributes\": [\n            {\n              \"name\": \"string\",\n              \"type\": \"TEXT\"\n            },\n            {\n              \"name\": \"string\",\n              \"type\": \"DATETIME\"\n            }\n          ],\n          \"is_spreadsheet\": false,\n          \"last_refreshed_at\": \"1974-03-05T13:53:29.437Z\",\n          \"legend_display\": \"name_only\",\n          \"legend_visibility\": \"hide\",\n          \"links\": {\n            \"self\": \"https://felt.com/api/v2/maps/V0dnOMOuTd9B9BOsL9C0UjmqC/layers/k441enUxQUOnZqc1ZvNsDA\"\n          },\n          \"metadata\": {\n            \"attribution_text\": \"string\",\n            \"attribution_url\": \"string\",\n            \"description\": \"string\",\n            \"license\": \"string\",\n            \"source_abbreviation\": \"string\",\n            \"source_name\": \"string\",\n            \"source_url\": \"string\",\n            \"updated_at\": \"2025-03-24\"\n          },\n          \"next_refresh_at\": \"1990-03-30T19:01:24.921Z\",\n          \"ordering_key\": 7674,\n          \"paused_reason\": \"consecutive_failures\",\n          \"subtitle\": \"string\",\n          \"tile_url\": \"string\"\n        },\n        {\n          \"id\": \"luCHyMruTQ6ozGk3gPJfEB\",\n          \"type\": \"layer\",\n          \"hide_from_legend\": true,\n          \"status\": \"completed\",\n          \"caption\": \"string\",\n          \"name\": \"string\",\n          \"progress\": 8037.82591638233,\n          \"geometry_type\": \"Raster\",\n          \"style\": {},\n          \"refresh_period\": \"3 hours\",\n          \"refresh_status\": \"paused\",\n          \"attributes\": [\n            {\n              \"name\": \"string\",\n              \"type\": \"INTEGER\"\n            },\n            {\n              \"name\": \"string\",\n              \"type\": \"GEOMETRY\"\n            }\n          ],\n          \"is_spreadsheet\": false,\n          \"last_refreshed_at\": \"1982-12-19T09:33:32.759Z\",\n          \"legend_display\": \"name_only\",\n          \"legend_visibility\": \"hide\",\n          \"links\": {\n            \"self\": \"https://felt.com/api/v2/maps/V0dnOMOuTd9B9BOsL9C0UjmqC/layers/k441enUxQUOnZqc1ZvNsDA\"\n          },\n          \"metadata\": {\n            \"attribution_text\": \"string\",\n            \"attribution_url\": \"string\",\n            \"description\": \"string\",\n            \"license\": \"string\",\n            \"source_abbreviation\": \"string\",\n            \"source_name\": \"string\",\n            \"source_url\": \"string\",\n            \"updated_at\": \"2025-03-24\"\n          },\n          \"next_refresh_at\": \"2005-10-17T18:25:40.916Z\",\n          \"ordering_key\": 3374,\n          \"paused_reason\": \"consecutive_failures\",\n          \"subtitle\": \"string\",\n          \"tile_url\": \"string\"\n        }\n      ],\n      \"legend_visibility\": \"show\",\n      \"links\": {\n        \"self\": \"https://felt.com/api/v2/maps/V0dnOMOuTd9B9BOsL9C0UjmqC/layer_groups/v13k4Ae9BRjCHHdPP5Fcm6D\"\n      },\n      \"ordering_key\": 8121,\n      \"subtitle\": \"string\"\n    }\n  ],\n  \"elements\": {\n    \"type\": \"FeatureCollection\",\n    \"features\": [\n      {\n        \"geometry\": {\n          \"felt:id\": \"luCHyMruTQ6ozGk3gPJfEB\",\n          \"felt:parentId\": \"luCHyMruTQ6ozGk3gPJfEB\"\n        },\n        \"properties\": {},\n        \"type\": \"Feature\"\n      },\n      {\n        \"geometry\": {\n          \"felt:id\": \"luCHyMruTQ6ozGk3gPJfEB\",\n          \"felt:parentId\": \"luCHyMruTQ6ozGk3gPJfEB\"\n        },\n        \"properties\": {},\n        \"type\": \"Feature\"\n      }\n    ]\n  },\n  \"element_groups\": [\n    {\n      \"elements\": {\n        \"type\": \"FeatureCollection\",\n        \"features\": [\n          {\n            \"geometry\": {\n              \"felt:id\": \"luCHyMruTQ6ozGk3gPJfEB\",\n              \"felt:parentId\": \"luCHyMruTQ6ozGk3gPJfEB\"\n            },\n            \"properties\": {},\n            \"type\": \"Feature\"\n          },\n          {\n            \"geometry\": {\n              \"felt:id\": \"luCHyMruTQ6ozGk3gPJfEB\",\n              \"felt:parentId\": \"luCHyMruTQ6ozGk3gPJfEB\"\n            },\n            \"properties\": {},\n            \"type\": \"Feature\"\n          }\n        ]\n      },\n      \"id\": \"luCHyMruTQ6ozGk3gPJfEB\",\n      \"name\": \"string\"\n    },\n    {\n      \"elements\": {\n        \"type\": \"FeatureCollection\",\n        \"features\": [\n          {\n            \"geometry\": {\n              \"felt:id\": \"luCHyMruTQ6ozGk3gPJfEB\",\n              \"felt:parentId\": \"luCHyMruTQ6ozGk3gPJfEB\"\n            },\n            \"properties\": {},\n            \"type\": \"Feature\"\n          },\n          {\n            \"geometry\": {\n              \"felt:id\": \"luCHyMruTQ6ozGk3gPJfEB\",\n              \"felt:parentId\": \"luCHyMruTQ6ozGk3gPJfEB\"\n            },\n            \"properties\": {},\n            \"type\": \"Feature\"\n          }\n        ]\n      },\n      \"id\": \"luCHyMruTQ6ozGk3gPJfEB\",\n      \"name\": \"string\"\n    }\n  ],\n  \"project_id\": \"string\",\n  \"public_access\": \"view_and_comment\",\n  \"basemap\": \"string\",\n  \"folder_id\": \"string\",\n  \"links\": {\n    \"self\": \"https://felt.com/api/v2/maps/V0dnOMOuTd9B9BOsL9C0UjmqC\"\n  },\n  \"table_settings\": {\n    \"default_table_layer_id\": \"luCHyMruTQ6ozGk3gPJfEB\",\n    \"viewers_can_open_table\": \"<boolean>\"\n  },\n  \"viewer_permissions\": {\n    \"can_duplicate_map\": \"<boolean>\",\n    \"can_export_data\": \"<boolean>\",\n    \"can_see_map_presence\": \"<boolean>\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "339ceb51-5f0d-4c27-bc0c-450157bceaba",
+              "name": "UnauthorizedError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "maps",
+                    ":map_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "map_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"detail\": \"string\",\n      \"source\": {\n        \"header\": \"authorization\"\n      },\n      \"title\": \"string\"\n    },\n    {\n      \"detail\": \"string\",\n      \"source\": {\n        \"header\": \"authorization\"\n      },\n      \"title\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "125dd58a-abf1-4526-b0a8-7fcc21f4d694",
+              "name": "UnauthorizedError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "maps",
+                    ":map_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "map_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"detail\": \"string\",\n      \"source\": {\n        \"header\": \"authorization\"\n      },\n      \"title\": \"string\"\n    },\n    {\n      \"detail\": \"string\",\n      \"source\": {\n        \"header\": \"authorization\"\n      },\n      \"title\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ca96cfc4-de20-4f0c-b3f4-add11227dc89",
+              "name": "NotFoundError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "maps",
+                    ":map_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "map_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"detail\": \"string\",\n      \"source\": {\n        \"parameter\": \"string\"\n      },\n      \"title\": \"string\"\n    },\n    {\n      \"detail\": \"string\",\n      \"source\": {\n        \"parameter\": \"string\"\n      },\n      \"title\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "76084d70-313e-486e-b0f2-6c5c646629d0",
+              "name": "Unprocessable Entity",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "maps",
+                    ":map_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "map_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"title\": \"Invalid value\",\n      \"source\": {\n        \"pointer\": \"/data/attributes/petName\"\n      },\n      \"detail\": \"null value where string expected\"\n    },\n    {\n      \"title\": \"Invalid value\",\n      \"source\": {\n        \"pointer\": \"/data/attributes/petName\"\n      },\n      \"detail\": \"null value where string expected\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "53773ff7-39fc-4516-bb4b-430c9bd590a0",
+              "name": "Unprocessable Entity",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "maps",
+                    ":map_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "map_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"title\": \"Invalid value\",\n      \"source\": {\n        \"pointer\": \"/data/attributes/petName\"\n      },\n      \"detail\": \"null value where string expected\"\n    },\n    {\n      \"title\": \"Invalid value\",\n      \"source\": {\n        \"pointer\": \"/data/attributes/petName\"\n      },\n      \"detail\": \"null value where string expected\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "58a090e6-97a7-4f58-90e0-153763ee0741",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "maps",
+                    ":map_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "map_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"detail\": \"string\",\n      \"source\": {\n        \"parameter\": \"string\"\n      },\n      \"title\": \"string\"\n    },\n    {\n      \"detail\": \"string\",\n      \"source\": {\n        \"parameter\": \"string\"\n      },\n      \"title\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://felt.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "a01f201e-1cbd-49f6-a549-e4fc7c0e7e44",
+    "name": "Felt Comments Maps API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Felt REST API v2.0",
+      "type": "text/plain"
+    }
+  }
+}

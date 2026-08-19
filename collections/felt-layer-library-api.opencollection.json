@@ -1,0 +1,106 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Felt Comments Layer Library API",
+    "version": "2.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Layer Library",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Publish map layer",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://felt.com/api/v2/maps/:map_id/layers/:layer_id/publish",
+            "params": [
+              {
+                "name": "map_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the map where the layer is located"
+              },
+              {
+                "name": "layer_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the layer to publish"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Make a layer available in the workspace library for reuse by team members."
+        },
+        {
+          "info": {
+            "name": "Publish map layer group",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://felt.com/api/v2/maps/:map_id/layer_groups/:layer_group_id/publish",
+            "params": [
+              {
+                "name": "map_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the map where the layer group is located"
+              },
+              {
+                "name": "layer_group_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the layer group to publish"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Make a layer group available in the workspace library for reuse by team members."
+        },
+        {
+          "info": {
+            "name": "List library layers",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://felt.com/api/v2/library",
+            "params": [
+              {
+                "name": "source",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "List all layers in your workspace's library, or the felt layer library.\n\nYou can add a layer from the library to a map by using the \"Duplicate layers\" API endpoint (`POST /api/v2/duplicate_layers`) and the layer `id` provided by this endpoint.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

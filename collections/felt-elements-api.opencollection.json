@@ -1,0 +1,176 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Felt Comments Elements API",
+    "version": "2.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Elements",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Delete map element",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://felt.com/api/v2/maps/:map_id/elements/:element_id",
+            "params": [
+              {
+                "name": "map_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the map to delete the element from."
+              },
+              {
+                "name": "element_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the element to delete."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Permanently delete an element from a map.\n\n{% hint style=\"warning\" %}\nThis action cannot be undone. The element will be permanently removed from the map.\n{% endhint %}\n"
+        },
+        {
+          "info": {
+            "name": "List map elements",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://felt.com/api/v2/maps/:map_id/elements",
+            "params": [
+              {
+                "name": "map_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the map to list elements from."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Returns a GeoJSON `FeatureCollection` containing all the elements in a map that are not in an element group."
+        },
+        {
+          "info": {
+            "name": "Create or update map elements",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://felt.com/api/v2/maps/:map_id/elements",
+            "params": [
+              {
+                "name": "map_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the map to create the elements in"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Create new elements or update existing ones on a map using GeoJSON data.\nEach element is represented by a feature in the `POST`'ed GeoJSON Feature Collection.\nFor each feature, including an existing element `id` will result in the element being updated on the map. If no element `id` is provided (or a non-existent one), a new element will be created.\n\n{% hint style=\"info\" %}\nThe maximum payload size for any `POST` to the Felt API is 1MB. Additionally, complex element geometry may be automatically"
+        },
+        {
+          "info": {
+            "name": "Get map element group",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://felt.com/api/v2/maps/:map_id/element_groups/:group_id",
+            "params": [
+              {
+                "name": "map_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the map."
+              },
+              {
+                "name": "group_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the element group."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Retrieve all elements from a specific group as GeoJSON."
+        },
+        {
+          "info": {
+            "name": "List map element groups",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://felt.com/api/v2/maps/:map_id/element_groups",
+            "params": [
+              {
+                "name": "map_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the map to list groups from."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Returns a list of GeoJSON `FeatureCollection`s, one for each element group in the map."
+        },
+        {
+          "info": {
+            "name": "Create or update map element groups",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://felt.com/api/v2/maps/:map_id/element_groups",
+            "params": [
+              {
+                "name": "map_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the map to create the group in"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Create new element groups or update existing ones.\n\nFor each Element Group, including an existing Element Group `id` will result in the Element Group being updated. If no `id` is provided, a new Element Group will be created.\n\n\n{% hint style=\"info\" %}\nThe maximum payload size for any `POST` to the Felt API is 1MB. Additionally, complex element geometry may be automatically simplified. If you require large, complex geometries, consider uploading your data as a Data Layer.&#x20;\n{% endhint %}\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

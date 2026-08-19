@@ -1,0 +1,2232 @@
+{
+  "item": [
+    {
+      "id": "97604656-1462-4844-8513-265650b1cef4",
+      "name": "Projects",
+      "description": {
+        "content": "Projects help you organize maps and manage team permissions.\n\nWith these APIs, you can manage the projects in your workspace.\n",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "64c3884c-0bc2-4823-8925-904288779ac1",
+          "name": "List projects",
+          "request": {
+            "name": "List projects",
+            "description": {
+              "content": "Retrieve all projects accessible to the authenticated user within the workspace.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "projects"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "workspace_id",
+                  "value": "<string>",
+                  "description": "Only needed when using the API as part of a plugin"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "2b67f41c-06a9-4ed3-9e36-49822e83deef",
+              "name": "Projects",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "projects"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "workspace_id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"luCHyMruTQ6ozGk3gPJfEB\",\n    \"type\": \"project_reference\",\n    \"name\": \"string\",\n    \"visibility\": \"private\",\n    \"max_inherited_permission\": \"view_only\",\n    \"links\": {\n      \"self\": \"https://felt.com/api/v2/projects/V0dnOMOuTd9B9BOsL9C0UjmqC\"\n    }\n  },\n  {\n    \"id\": \"luCHyMruTQ6ozGk3gPJfEB\",\n    \"type\": \"project_reference\",\n    \"name\": \"string\",\n    \"visibility\": \"workspace\",\n    \"max_inherited_permission\": \"view_only\",\n    \"links\": {\n      \"self\": \"https://felt.com/api/v2/projects/V0dnOMOuTd9B9BOsL9C0UjmqC\"\n    }\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "53b306eb-b4d7-446a-9ce9-1021f80c8a52",
+              "name": "UnauthorizedError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "projects"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "workspace_id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"detail\": \"string\",\n      \"source\": {\n        \"header\": \"authorization\"\n      },\n      \"title\": \"string\"\n    },\n    {\n      \"detail\": \"string\",\n      \"source\": {\n        \"header\": \"authorization\"\n      },\n      \"title\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "eb0234de-b663-4644-9948-e85fa16447d3",
+              "name": "UnauthorizedError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "projects"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "workspace_id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"detail\": \"string\",\n      \"source\": {\n        \"header\": \"authorization\"\n      },\n      \"title\": \"string\"\n    },\n    {\n      \"detail\": \"string\",\n      \"source\": {\n        \"header\": \"authorization\"\n      },\n      \"title\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cb6745d8-c092-4ec6-b804-a14abd33566d",
+              "name": "NotFoundError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "projects"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "workspace_id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"detail\": \"string\",\n      \"source\": {\n        \"parameter\": \"string\"\n      },\n      \"title\": \"string\"\n    },\n    {\n      \"detail\": \"string\",\n      \"source\": {\n        \"parameter\": \"string\"\n      },\n      \"title\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3787f5ab-9f13-429b-a63d-16adf2af4bc7",
+              "name": "Unprocessable Entity",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "projects"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "workspace_id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"title\": \"Invalid value\",\n      \"source\": {\n        \"pointer\": \"/data/attributes/petName\"\n      },\n      \"detail\": \"null value where string expected\"\n    },\n    {\n      \"title\": \"Invalid value\",\n      \"source\": {\n        \"pointer\": \"/data/attributes/petName\"\n      },\n      \"detail\": \"null value where string expected\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "21db4d12-644c-4b5a-b70d-d940aad427b1",
+              "name": "Unprocessable Entity",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "projects"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "workspace_id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"title\": \"Invalid value\",\n      \"source\": {\n        \"pointer\": \"/data/attributes/petName\"\n      },\n      \"detail\": \"null value where string expected\"\n    },\n    {\n      \"title\": \"Invalid value\",\n      \"source\": {\n        \"pointer\": \"/data/attributes/petName\"\n      },\n      \"detail\": \"null value where string expected\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1d1fcd4e-2a43-4d5b-a9d7-408e37d2eb1f",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "projects"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "workspace_id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"detail\": \"string\",\n      \"source\": {\n        \"parameter\": \"string\"\n      },\n      \"title\": \"string\"\n    },\n    {\n      \"detail\": \"string\",\n      \"source\": {\n        \"parameter\": \"string\"\n      },\n      \"title\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f0aab9cb-bc5a-4b10-9dbc-92b97e57705c",
+          "name": "Create project",
+          "request": {
+            "name": "Create project",
+            "description": {
+              "content": "Create a new project with specified name and visibility settings within the workspace.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "projects"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"visibility\": \"<string>\",\n  \"max_inherited_permission\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "8312da39-ec0c-4443-8f6e-fad72003cd3b",
+              "name": "Project",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "projects"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"visibility\": \"<string>\",\n  \"max_inherited_permission\": \"view_only\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"luCHyMruTQ6ozGk3gPJfEB\",\n  \"type\": \"project\",\n  \"name\": \"string\",\n  \"visibility\": \"workspace\",\n  \"max_inherited_permission\": \"view_only\",\n  \"maps\": [\n    {\n      \"id\": \"luCHyMruTQ6ozGk3gPJfEB\",\n      \"type\": \"map_reference\",\n      \"url\": \"string\",\n      \"title\": \"string\",\n      \"thumbnail_url\": \"string\",\n      \"created_at\": \"2024-05-25T15:51:34\",\n      \"visited_at\": \"string\",\n      \"project_id\": \"string\",\n      \"folder_id\": \"string\",\n      \"public_access\": \"view_only\",\n      \"links\": {\n        \"self\": \"https://felt.com/api/v2/maps/V0dnOMOuTd9B9BOsL9C0UjmqC\"\n      }\n    },\n    {\n      \"id\": \"luCHyMruTQ6ozGk3gPJfEB\",\n      \"type\": \"map_reference\",\n      \"url\": \"string\",\n      \"title\": \"string\",\n      \"thumbnail_url\": \"string\",\n      \"created_at\": \"2024-05-25T15:51:34\",\n      \"visited_at\": \"string\",\n      \"project_id\": \"string\",\n      \"folder_id\": \"string\",\n      \"public_access\": \"view_and_comment\",\n      \"links\": {\n        \"self\": \"https://felt.com/api/v2/maps/V0dnOMOuTd9B9BOsL9C0UjmqC\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c2856895-8635-45f8-a364-77584a9df816",
+              "name": "UnauthorizedError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "projects"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"visibility\": \"<string>\",\n  \"max_inherited_permission\": \"view_only\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"detail\": \"string\",\n      \"source\": {\n        \"header\": \"authorization\"\n      },\n      \"title\": \"string\"\n    },\n    {\n      \"detail\": \"string\",\n      \"source\": {\n        \"header\": \"authorization\"\n      },\n      \"title\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "39331502-1908-43a9-b20d-9faa99c48c79",
+              "name": "UnauthorizedError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "projects"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"visibility\": \"<string>\",\n  \"max_inherited_permission\": \"view_only\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"detail\": \"string\",\n      \"source\": {\n        \"header\": \"authorization\"\n      },\n      \"title\": \"string\"\n    },\n    {\n      \"detail\": \"string\",\n      \"source\": {\n        \"header\": \"authorization\"\n      },\n      \"title\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "85c0b1dc-6f47-4e05-9e01-6494ab08e6ef",
+              "name": "NotFoundError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "projects"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"visibility\": \"<string>\",\n  \"max_inherited_permission\": \"view_only\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"detail\": \"string\",\n      \"source\": {\n        \"parameter\": \"string\"\n      },\n      \"title\": \"string\"\n    },\n    {\n      \"detail\": \"string\",\n      \"source\": {\n        \"parameter\": \"string\"\n      },\n      \"title\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a3106b1b-5ce8-4f74-896a-6ee4c37d7ebb",
+              "name": "Unprocessable Entity",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "projects"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"visibility\": \"<string>\",\n  \"max_inherited_permission\": \"view_only\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"title\": \"Invalid value\",\n      \"source\": {\n        \"pointer\": \"/data/attributes/petName\"\n      },\n      \"detail\": \"null value where string expected\"\n    },\n    {\n      \"title\": \"Invalid value\",\n      \"source\": {\n        \"pointer\": \"/data/attributes/petName\"\n      },\n      \"detail\": \"null value where string expected\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5e18f2da-53f1-44ee-a6fd-d2184ce7015e",
+              "name": "Unprocessable Entity",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "projects"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"visibility\": \"<string>\",\n  \"max_inherited_permission\": \"view_only\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"title\": \"Invalid value\",\n      \"source\": {\n        \"pointer\": \"/data/attributes/petName\"\n      },\n      \"detail\": \"null value where string expected\"\n    },\n    {\n      \"title\": \"Invalid value\",\n      \"source\": {\n        \"pointer\": \"/data/attributes/petName\"\n      },\n      \"detail\": \"null value where string expected\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "50734c59-773e-4595-93e6-af94f3e8d0ea",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "projects"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"visibility\": \"<string>\",\n  \"max_inherited_permission\": \"view_only\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"detail\": \"string\",\n      \"source\": {\n        \"parameter\": \"string\"\n      },\n      \"title\": \"string\"\n    },\n    {\n      \"detail\": \"string\",\n      \"source\": {\n        \"parameter\": \"string\"\n      },\n      \"title\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "889e0f44-5454-43fb-988d-cda598b803e7",
+          "name": "Delete project",
+          "request": {
+            "name": "Delete project",
+            "description": {
+              "content": "Permanently delete a project and all its contained maps and folders.\n\n{% hint style=\"danger\" %}\nCaution: Deleting a project deletes all of the folders and maps inside!\n{% endhint %}\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "projects",
+                ":project_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "project_id",
+                  "description": "(Required) The ID of the Project to delete. Note: This will delete all Folders and Maps inside the project!"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "2310ca24-bd38-4f81-a552-8202c4b75847",
+              "name": "No Content",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "projects",
+                    ":project_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "project_id",
+                      "description": "(Required) The ID of the Project to delete. Note: This will delete all Folders and Maps inside the project!"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "3e5705a2-d776-4d08-ba0c-e9d9a5169f2b",
+              "name": "UnauthorizedError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "projects",
+                    ":project_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "project_id",
+                      "description": "(Required) The ID of the Project to delete. Note: This will delete all Folders and Maps inside the project!"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"detail\": \"string\",\n      \"source\": {\n        \"header\": \"authorization\"\n      },\n      \"title\": \"string\"\n    },\n    {\n      \"detail\": \"string\",\n      \"source\": {\n        \"header\": \"authorization\"\n      },\n      \"title\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "09fbf0d3-5e4e-4598-b165-44ebffd454c8",
+              "name": "UnauthorizedError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "projects",
+                    ":project_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "project_id",
+                      "description": "(Required) The ID of the Project to delete. Note: This will delete all Folders and Maps inside the project!"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"detail\": \"string\",\n      \"source\": {\n        \"header\": \"authorization\"\n      },\n      \"title\": \"string\"\n    },\n    {\n      \"detail\": \"string\",\n      \"source\": {\n        \"header\": \"authorization\"\n      },\n      \"title\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e3974491-ba03-418f-9547-d8301c83fcfe",
+              "name": "NotFoundError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "projects",
+                    ":project_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "project_id",
+                      "description": "(Required) The ID of the Project to delete. Note: This will delete all Folders and Maps inside the project!"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"detail\": \"string\",\n      \"source\": {\n        \"parameter\": \"string\"\n      },\n      \"title\": \"string\"\n    },\n    {\n      \"detail\": \"string\",\n      \"source\": {\n        \"parameter\": \"string\"\n      },\n      \"title\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "77135739-5a62-46da-8e27-30265cc36732",
+              "name": "Unprocessable Entity",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "projects",
+                    ":project_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "project_id",
+                      "description": "(Required) The ID of the Project to delete. Note: This will delete all Folders and Maps inside the project!"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"title\": \"Invalid value\",\n      \"source\": {\n        \"pointer\": \"/data/attributes/petName\"\n      },\n      \"detail\": \"null value where string expected\"\n    },\n    {\n      \"title\": \"Invalid value\",\n      \"source\": {\n        \"pointer\": \"/data/attributes/petName\"\n      },\n      \"detail\": \"null value where string expected\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8c4a6094-370d-4d4a-8ab7-746d0593c88b",
+              "name": "Unprocessable Entity",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "projects",
+                    ":project_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "project_id",
+                      "description": "(Required) The ID of the Project to delete. Note: This will delete all Folders and Maps inside the project!"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"title\": \"Invalid value\",\n      \"source\": {\n        \"pointer\": \"/data/attributes/petName\"\n      },\n      \"detail\": \"null value where string expected\"\n    },\n    {\n      \"title\": \"Invalid value\",\n      \"source\": {\n        \"pointer\": \"/data/attributes/petName\"\n      },\n      \"detail\": \"null value where string expected\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1d678769-4c1e-4414-add6-b3583f736601",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "projects",
+                    ":project_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "project_id",
+                      "description": "(Required) The ID of the Project to delete. Note: This will delete all Folders and Maps inside the project!"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"detail\": \"string\",\n      \"source\": {\n        \"parameter\": \"string\"\n      },\n      \"title\": \"string\"\n    },\n    {\n      \"detail\": \"string\",\n      \"source\": {\n        \"parameter\": \"string\"\n      },\n      \"title\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f81025c8-e3b1-41e0-9a46-429834bbc02e",
+          "name": "Get project",
+          "request": {
+            "name": "Get project",
+            "description": {
+              "content": "Retrieve detailed information about a specific project including metadata, permissions, and references to the maps in the project.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "projects",
+                ":project_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "project_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "464697ee-09a4-48f1-929c-8000ee45c92f",
+              "name": "Project",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "projects",
+                    ":project_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "project_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"luCHyMruTQ6ozGk3gPJfEB\",\n  \"type\": \"project\",\n  \"name\": \"string\",\n  \"visibility\": \"private\",\n  \"max_inherited_permission\": \"view_only\",\n  \"maps\": [\n    {\n      \"id\": \"luCHyMruTQ6ozGk3gPJfEB\",\n      \"type\": \"map_reference\",\n      \"url\": \"string\",\n      \"title\": \"string\",\n      \"thumbnail_url\": \"string\",\n      \"created_at\": \"2024-05-25T15:51:34\",\n      \"visited_at\": \"string\",\n      \"project_id\": \"string\",\n      \"folder_id\": \"string\",\n      \"public_access\": \"view_comment_and_edit\",\n      \"links\": {\n        \"self\": \"https://felt.com/api/v2/maps/V0dnOMOuTd9B9BOsL9C0UjmqC\"\n      }\n    },\n    {\n      \"id\": \"luCHyMruTQ6ozGk3gPJfEB\",\n      \"type\": \"map_reference\",\n      \"url\": \"string\",\n      \"title\": \"string\",\n      \"thumbnail_url\": \"string\",\n      \"created_at\": \"2024-05-25T15:51:34\",\n      \"visited_at\": \"string\",\n      \"project_id\": \"string\",\n      \"folder_id\": \"string\",\n      \"public_access\": \"view_and_comment\",\n      \"links\": {\n        \"self\": \"https://felt.com/api/v2/maps/V0dnOMOuTd9B9BOsL9C0UjmqC\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "19a61d7c-2b25-4158-a0c7-5a1a0a7f3cc0",
+              "name": "UnauthorizedError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "projects",
+                    ":project_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "project_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"detail\": \"string\",\n      \"source\": {\n        \"header\": \"authorization\"\n      },\n      \"title\": \"string\"\n    },\n    {\n      \"detail\": \"string\",\n      \"source\": {\n        \"header\": \"authorization\"\n      },\n      \"title\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e192eb24-f8f2-4d2c-91fb-2eeb00f7c2d0",
+              "name": "UnauthorizedError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "projects",
+                    ":project_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "project_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"detail\": \"string\",\n      \"source\": {\n        \"header\": \"authorization\"\n      },\n      \"title\": \"string\"\n    },\n    {\n      \"detail\": \"string\",\n      \"source\": {\n        \"header\": \"authorization\"\n      },\n      \"title\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "aa6b655e-60a4-4fec-ae14-d93bc4a6fc78",
+              "name": "NotFoundError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "projects",
+                    ":project_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "project_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"detail\": \"string\",\n      \"source\": {\n        \"parameter\": \"string\"\n      },\n      \"title\": \"string\"\n    },\n    {\n      \"detail\": \"string\",\n      \"source\": {\n        \"parameter\": \"string\"\n      },\n      \"title\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b7ebca0a-27e4-416d-8748-92614d87e365",
+              "name": "Unprocessable Entity",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "projects",
+                    ":project_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "project_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"title\": \"Invalid value\",\n      \"source\": {\n        \"pointer\": \"/data/attributes/petName\"\n      },\n      \"detail\": \"null value where string expected\"\n    },\n    {\n      \"title\": \"Invalid value\",\n      \"source\": {\n        \"pointer\": \"/data/attributes/petName\"\n      },\n      \"detail\": \"null value where string expected\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d8129548-0d1a-4d65-ace5-c0121f8f1fcf",
+              "name": "Unprocessable Entity",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "projects",
+                    ":project_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "project_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"title\": \"Invalid value\",\n      \"source\": {\n        \"pointer\": \"/data/attributes/petName\"\n      },\n      \"detail\": \"null value where string expected\"\n    },\n    {\n      \"title\": \"Invalid value\",\n      \"source\": {\n        \"pointer\": \"/data/attributes/petName\"\n      },\n      \"detail\": \"null value where string expected\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5689d508-11ca-41c7-a4fa-53334e8f0330",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "projects",
+                    ":project_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "project_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"detail\": \"string\",\n      \"source\": {\n        \"parameter\": \"string\"\n      },\n      \"title\": \"string\"\n    },\n    {\n      \"detail\": \"string\",\n      \"source\": {\n        \"parameter\": \"string\"\n      },\n      \"title\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4bcbb520-7dff-4df9-b78d-7ab643d77186",
+          "name": "Update project",
+          "request": {
+            "name": "Update project",
+            "description": {
+              "content": "Update project properties including name and visibility settings.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "projects",
+                ":project_id",
+                "update"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "project_id",
+                  "description": "(Required) The ID of the project to update"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"max_inherited_permission\": \"<string>\",\n  \"name\": \"<string>\",\n  \"visibility\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "4344e491-55d8-4a37-bfa8-2e3a94aab77b",
+              "name": "Project",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "projects",
+                    ":project_id",
+                    "update"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "project_id",
+                      "description": "(Required) The ID of the project to update"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"max_inherited_permission\": \"view_only\",\n  \"name\": \"<string>\",\n  \"visibility\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"luCHyMruTQ6ozGk3gPJfEB\",\n  \"type\": \"project\",\n  \"name\": \"string\",\n  \"visibility\": \"private\",\n  \"max_inherited_permission\": \"view_only\",\n  \"maps\": [\n    {\n      \"id\": \"luCHyMruTQ6ozGk3gPJfEB\",\n      \"type\": \"map_reference\",\n      \"url\": \"string\",\n      \"title\": \"string\",\n      \"thumbnail_url\": \"string\",\n      \"created_at\": \"2024-05-25T15:51:34\",\n      \"visited_at\": \"string\",\n      \"project_id\": \"string\",\n      \"folder_id\": \"string\",\n      \"public_access\": \"view_comment_and_edit\",\n      \"links\": {\n        \"self\": \"https://felt.com/api/v2/maps/V0dnOMOuTd9B9BOsL9C0UjmqC\"\n      }\n    },\n    {\n      \"id\": \"luCHyMruTQ6ozGk3gPJfEB\",\n      \"type\": \"map_reference\",\n      \"url\": \"string\",\n      \"title\": \"string\",\n      \"thumbnail_url\": \"string\",\n      \"created_at\": \"2024-05-25T15:51:34\",\n      \"visited_at\": \"string\",\n      \"project_id\": \"string\",\n      \"folder_id\": \"string\",\n      \"public_access\": \"view_and_comment\",\n      \"links\": {\n        \"self\": \"https://felt.com/api/v2/maps/V0dnOMOuTd9B9BOsL9C0UjmqC\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4b5d32d6-33ad-4fd0-80b1-0774f5a00ebb",
+              "name": "UnauthorizedError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "projects",
+                    ":project_id",
+                    "update"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "project_id",
+                      "description": "(Required) The ID of the project to update"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"max_inherited_permission\": \"view_only\",\n  \"name\": \"<string>\",\n  \"visibility\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"detail\": \"string\",\n      \"source\": {\n        \"header\": \"authorization\"\n      },\n      \"title\": \"string\"\n    },\n    {\n      \"detail\": \"string\",\n      \"source\": {\n        \"header\": \"authorization\"\n      },\n      \"title\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2867d2d2-b6dc-455e-9bb8-d3678e39bbc4",
+              "name": "UnauthorizedError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "projects",
+                    ":project_id",
+                    "update"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "project_id",
+                      "description": "(Required) The ID of the project to update"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"max_inherited_permission\": \"view_only\",\n  \"name\": \"<string>\",\n  \"visibility\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"detail\": \"string\",\n      \"source\": {\n        \"header\": \"authorization\"\n      },\n      \"title\": \"string\"\n    },\n    {\n      \"detail\": \"string\",\n      \"source\": {\n        \"header\": \"authorization\"\n      },\n      \"title\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "05a3ba5f-7f5b-4c2f-b4a6-9871fd0d6773",
+              "name": "NotFoundError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "projects",
+                    ":project_id",
+                    "update"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "project_id",
+                      "description": "(Required) The ID of the project to update"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"max_inherited_permission\": \"view_only\",\n  \"name\": \"<string>\",\n  \"visibility\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"detail\": \"string\",\n      \"source\": {\n        \"parameter\": \"string\"\n      },\n      \"title\": \"string\"\n    },\n    {\n      \"detail\": \"string\",\n      \"source\": {\n        \"parameter\": \"string\"\n      },\n      \"title\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8234e333-1df0-4fb8-8ef0-c621d32d129b",
+              "name": "Unprocessable Entity",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "projects",
+                    ":project_id",
+                    "update"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "project_id",
+                      "description": "(Required) The ID of the project to update"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"max_inherited_permission\": \"view_only\",\n  \"name\": \"<string>\",\n  \"visibility\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"title\": \"Invalid value\",\n      \"source\": {\n        \"pointer\": \"/data/attributes/petName\"\n      },\n      \"detail\": \"null value where string expected\"\n    },\n    {\n      \"title\": \"Invalid value\",\n      \"source\": {\n        \"pointer\": \"/data/attributes/petName\"\n      },\n      \"detail\": \"null value where string expected\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5f619382-8213-41ff-b12a-fb2c78adcd58",
+              "name": "Unprocessable Entity",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "projects",
+                    ":project_id",
+                    "update"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "project_id",
+                      "description": "(Required) The ID of the project to update"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"max_inherited_permission\": \"view_only\",\n  \"name\": \"<string>\",\n  \"visibility\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"title\": \"Invalid value\",\n      \"source\": {\n        \"pointer\": \"/data/attributes/petName\"\n      },\n      \"detail\": \"null value where string expected\"\n    },\n    {\n      \"title\": \"Invalid value\",\n      \"source\": {\n        \"pointer\": \"/data/attributes/petName\"\n      },\n      \"detail\": \"null value where string expected\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "695984a9-4179-4b91-8e20-7dbb74a7ea1f",
+              "name": "InternalServerError",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "projects",
+                    ":project_id",
+                    "update"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "project_id",
+                      "description": "(Required) The ID of the project to update"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"max_inherited_permission\": \"view_only\",\n  \"name\": \"<string>\",\n  \"visibility\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"detail\": \"string\",\n      \"source\": {\n        \"parameter\": \"string\"\n      },\n      \"title\": \"string\"\n    },\n    {\n      \"detail\": \"string\",\n      \"source\": {\n        \"parameter\": \"string\"\n      },\n      \"title\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://felt.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "c5670d84-3ee1-4e9f-8a95-739f944270bd",
+    "name": "Felt Comments Projects API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Felt REST API v2.0",
+      "type": "text/plain"
+    }
+  }
+}

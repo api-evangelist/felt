@@ -1,0 +1,132 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Felt Comments Projects API",
+    "version": "2.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Projects",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List projects",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://felt.com/api/v2/projects",
+            "params": [
+              {
+                "name": "workspace_id",
+                "value": "",
+                "type": "query",
+                "description": "Only needed when using the API as part of a plugin"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Retrieve all projects accessible to the authenticated user within the workspace."
+        },
+        {
+          "info": {
+            "name": "Create project",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://felt.com/api/v2/projects",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Create a new project with specified name and visibility settings within the workspace."
+        },
+        {
+          "info": {
+            "name": "Get project",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://felt.com/api/v2/projects/:project_id",
+            "params": [
+              {
+                "name": "project_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Retrieve detailed information about a specific project including metadata, permissions, and references to the maps in the project."
+        },
+        {
+          "info": {
+            "name": "Delete project",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://felt.com/api/v2/projects/:project_id",
+            "params": [
+              {
+                "name": "project_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the Project to delete. Note: This will delete all Folders and Maps inside the project!"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Permanently delete a project and all its contained maps and folders.\n\n{% hint style=\"danger\" %}\nCaution: Deleting a project deletes all of the folders and maps inside!\n{% endhint %}\n"
+        },
+        {
+          "info": {
+            "name": "Update project",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://felt.com/api/v2/projects/:project_id/update",
+            "params": [
+              {
+                "name": "project_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the project to update"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Update project properties including name and visibility settings."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

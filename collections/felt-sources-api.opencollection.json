@@ -1,0 +1,245 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Felt Comments Sources API",
+    "version": "2.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Sources",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Update source",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://felt.com/api/v2/sources/:source_id/update",
+            "params": [
+              {
+                "name": "source_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the source to update"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Update data source connection settings, access permissions, or configuration details.\n\nConnecting the Source and inspecting its datasets will happen asynchronously after the API response is returned. To determine when the inspection process has completed, poll the Show Source endpoint and check for `sync_status: completed`.\n"
+        },
+        {
+          "info": {
+            "name": "List sources",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://felt.com/api/v2/sources",
+            "params": [
+              {
+                "name": "workspace_id",
+                "value": "",
+                "type": "query",
+                "description": "Only needed when using the API as part of a plugin"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Retrieve all data sources accessible to the authenticated user within the workspace."
+        },
+        {
+          "info": {
+            "name": "Create source",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://felt.com/api/v2/sources",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Create a new data source connection with authentication credentials and access permissions.\n\nConnecting the Source and inspecting its datasets will happen asynchronously after the API response is returned. To determine when the inspection process has completed, poll the Show Source endpoint and check for `sync_status: completed`.\n"
+        },
+        {
+          "info": {
+            "name": "Sync source",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://felt.com/api/v2/sources/:source_id/sync",
+            "params": [
+              {
+                "name": "source_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the source to sync"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Trigger a full data synchronization from the source to update all connected layers with latest data.\n\nSyncing will happen asynchronously after the API response is returned. To determine when the inspection process has completed, poll the Show Source endpoint and check for `sync_status: completed`.\n"
+        },
+        {
+          "info": {
+            "name": "Get source",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://felt.com/api/v2/sources/:source_id",
+            "params": [
+              {
+                "name": "source_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the source to show"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Retrieve detailed configuration and connection information for a specific data source."
+        },
+        {
+          "info": {
+            "name": "Delete source",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://felt.com/api/v2/sources/:source_id",
+            "params": [
+              {
+                "name": "source_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the source to delete"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Permanently delete a data source connection and all its associated layers and data.\n\n{% hint style=\"warning\" %}\nAny layers created from the Source will remain after it is deleted, but they will no longer be refreshed.\n{% endhint %}\n"
+        },
+        {
+          "info": {
+            "name": "Create source credential",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://felt.com/api/v2/sources/:source_id/credentials",
+            "params": [
+              {
+                "name": "source_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the source to attach the credential"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Add authentication credentials to an existing data source for secure access.\n\nSome sources may need to be configured with additional credentials to work with Felt. Access to S3 Buckets, for example, may be protected by IAM policies. Adding a `SourceCredential-AwsAssumeRole` credential to your S3 Bucket source allows Felt to connect to a private source.\n\nSensitive fields in credentials, like `SourceCredential-KeyPair.private_key`, will be returned as `felt:redacted`.\n"
+        },
+        {
+          "info": {
+            "name": "Update source credential",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://felt.com/api/v2/sources/:source_id/credentials/:credential_id/update",
+            "params": [
+              {
+                "name": "source_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the source that the credential belongs to"
+              },
+              {
+                "name": "credential_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the credential"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Update existing authentication credentials for a data source connection.\n\nSensitive fields in credentials, like `SourceCredential-KeyPair.private_key`, will be returned as `felt:redacted`.\n"
+        },
+        {
+          "info": {
+            "name": "Delete source credential",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://felt.com/api/v2/sources/:source_id/credentials/:credential_id",
+            "params": [
+              {
+                "name": "source_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the source that the credential belongs to"
+              },
+              {
+                "name": "credential_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the credential to delete"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Remove authentication credentials from a data source connection."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

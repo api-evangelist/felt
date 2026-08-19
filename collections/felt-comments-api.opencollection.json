@@ -1,0 +1,105 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Felt Comments API",
+    "version": "2.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Comments",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Export map comments",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://felt.com/api/v2/maps/:map_id/comments/export",
+            "params": [
+              {
+                "name": "map_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the map to export comments from."
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "The format to export the comments in: 'csv', 'json' (default), or 'geojson'"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Export all comments and replies from a map in `CSV`, `JSON`, or `GeoJSON` format."
+        },
+        {
+          "info": {
+            "name": "Resolve map comment",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://felt.com/api/v2/maps/:map_id/comments/:comment_id/resolve",
+            "params": [
+              {
+                "name": "map_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the map that contains the comment."
+              },
+              {
+                "name": "comment_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the comment to resolve."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Mark a comment thread as resolved."
+        },
+        {
+          "info": {
+            "name": "Delete map comment",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://felt.com/api/v2/maps/:map_id/comments/:comment_id",
+            "params": [
+              {
+                "name": "map_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the map that contains the comment."
+              },
+              {
+                "name": "comment_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the comment to delete."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Permanently delete a comment or reply from the map.\n\n{% hint style=\"warning\" %}\nThis action cannot be undone. The comment or reply will be permanently removed from the map.\n{% endhint %}\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
