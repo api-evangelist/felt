@@ -7,6 +7,18 @@ description: >
   custom mapping applications, automate geospatial workflows, embed maps, and
   integrate with data pipelines using Bearer token authentication against the
   https://felt.com/api/v2 base URL.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: freemium
   onboarding: self-serve
