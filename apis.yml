@@ -447,8 +447,6 @@ common:
     url: json-ld/felt-context.jsonld
   - type: BlogRSS
     url: https://felt.com/blog/rss.xml
-  - type: Blog
-    url: blogs/blogs.json
 
 maintainers:
   - FN: Kin Lane
