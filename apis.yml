@@ -46,6 +46,14 @@ tags:
   - Collaborative
   - Mapping
   - Layers
+  - Embeddings
+tags_raw:
+  - Maps
+  - GIS
+  - Geospatial
+  - Collaborative
+  - Mapping
+  - Layers
   - Embedding
 apis:
 - aid: felt:felt-javascript-sdk
