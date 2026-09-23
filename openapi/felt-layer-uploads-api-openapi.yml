@@ -1,16 +1,14 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
   description: Felt REST API v2.0
-  title: Felt Comments Layer Uploads API
+  title: Felt Layer Uploads API
   version: '2.0'
 servers:
 - url: https://felt.com
   variables: {}
 security: []
 tags:
-- description: 'With these APIs, you can upload your data to create new layers.
-
-    '
+- description: With these APIs, you can upload your data to create new layers.
   name: Layer Uploads
   x-page-description: APIs to upload data
   x-page-icon: layer-group
@@ -113,9 +111,7 @@ paths:
 
         refresh_url_layer(map_id, layer_id)
 
-        ```
-
-        '
+        ```'
       operationId: refresh_map_layer
       parameters:
       - description: The ID of the map hosting the layer to refresh
@@ -192,7 +188,7 @@ paths:
         * For file uploads, the response of the initial `POST` request contain information you will use to upload the file to Amazon S3
 
 
-        Check our [Upload Anything](https://help.felt.com/upload-anything) docs to see what URLs are supported.
+        Check our Upload Anything docs to see what URLs are supported.
 
 
         #### **Uploading the file to Amazon S3**
@@ -221,9 +217,7 @@ paths:
 
         upload_file(map_id, file_name="features.geojson", layer_name="My new layer")
 
-        ```
-
-        '
+        ```'
       operationId: upload_map_layer
       parameters:
       - description: The ID of the map to upload the layer to.
@@ -290,6 +284,11 @@ paths:
       x-sort-order: 0
 components:
   schemas:
+    FeltID:
+      example: luCHyMruTQ6ozGk3gPJfEB
+      format: felt_id
+      title: FeltID
+      type: string
     UploadLayerParams:
       properties:
         hints:
@@ -317,188 +316,6 @@ components:
       required:
       - name
       title: UploadLayerParams
-      type: object
-    FeltID:
-      example: luCHyMruTQ6ozGk3gPJfEB
-      format: felt_id
-      nullable: false
-      title: FeltID
-      type: string
-    UploadResponse:
-      properties:
-        layer_group_id:
-          $ref: '#/components/schemas/FeltID'
-        layer_id:
-          description: The ID of the layer created by this upload. If multiple layers are included in the upload, this is the ID of the first layer in the layer group.
-          example: luCHyMruTQ6ozGk3gPJfEB
-          format: felt_id
-          nullable: false
-          type: string
-        presigned_attributes:
-          description: If provided, the presigned attributes to attach to the post request
-          nullable: true
-          type: object
-        type:
-          enum:
-          - upload_response
-          type: string
-        url:
-          description: If provided, the URL to post the file to
-          nullable: true
-          type: string
-      title: UploadResponse
-      type: object
-    InternalServerError:
-      properties:
-        errors:
-          items:
-            properties:
-              detail:
-                type: string
-              source:
-                properties:
-                  parameter:
-                    type: string
-                type: object
-              title:
-                type: string
-            type: object
-          type: array
-      title: InternalServerError
-      type: object
-    UnauthorizedError:
-      properties:
-        errors:
-          items:
-            properties:
-              detail:
-                type: string
-              source:
-                properties:
-                  header:
-                    enum:
-                    - authorization
-                    type: string
-                type: object
-              title:
-                type: string
-            type: object
-          type: array
-      title: UnauthorizedError
-      type: object
-    AddSourceLayerAccepted:
-      additionalProperties: false
-      properties:
-        links:
-          additionalProperties: false
-          properties:
-            layer_group:
-              example: https://felt.com/api/v2/maps/V0dnOMOuTd9B9BOsL9C0UjmqC/layer_groups/KFFhKAbvS4anD3wxtwNEpD
-              type: string
-            self:
-              example: https://felt.com/api/v2/maps/V0dnOMOuTd9B9BOsL9C0UjmqC
-              type: string
-          type: object
-        status:
-          enum:
-          - accepted
-          type: string
-      title: AddSourceLayerAccepted
-      type: object
-    LayerMetadata:
-      additionalProperties: false
-      properties:
-        attribution_text:
-          nullable: true
-          type: string
-        attribution_url:
-          nullable: true
-          type: string
-        description:
-          nullable: true
-          type: string
-        license:
-          nullable: true
-          type: string
-        source_abbreviation:
-          nullable: true
-          type: string
-        source_name:
-          nullable: true
-          type: string
-        source_url:
-          nullable: true
-          type: string
-        updated_at:
-          example: '2025-03-24'
-          format: date
-          nullable: true
-          type: string
-      title: LayerMetadata
-      type: object
-    AddSourceLayerParams:
-      oneOf:
-      - properties:
-          dataset_id:
-            $ref: '#/components/schemas/FeltID'
-          from:
-            enum:
-            - dataset
-            type: string
-        required:
-        - from
-        - dataset_id
-        title: AddSourceLayer-Dataset-Params
-        type: object
-      - properties:
-          from:
-            enum:
-            - sql
-            type: string
-          query:
-            type: string
-          source_id:
-            $ref: '#/components/schemas/FeltID'
-        required:
-        - from
-        - source_id
-        - query
-        title: AddSourceLayer-SQL-Params
-        type: object
-      - properties:
-          from:
-            enum:
-            - stac
-            type: string
-          source_id:
-            $ref: '#/components/schemas/FeltID'
-          stac_asset_url:
-            type: string
-        required:
-        - from
-        - source_id
-        - stac_asset_url
-        title: AddSourceLayer-STAC-Params
-        type: object
-      title: AddSourceLayerParams
-      type: object
-    NotFoundError:
-      properties:
-        errors:
-          items:
-            properties:
-              detail:
-                type: string
-              source:
-                properties:
-                  parameter:
-                    type: string
-                type: object
-              title:
-                type: string
-            type: object
-          type: array
-      title: NotFoundError
       type: object
     UploadInterpretationHint:
       oneOf:
@@ -793,6 +610,96 @@ components:
         title: UploadInterpretationHint-AttributeHint-H3
         type: object
       title: UploadInterpretationHint
+    AddSourceLayerParams:
+      oneOf:
+      - properties:
+          dataset_id:
+            $ref: '#/components/schemas/FeltID'
+          from:
+            enum:
+            - dataset
+            type: string
+        required:
+        - from
+        - dataset_id
+        title: AddSourceLayer-Dataset-Params
+        type: object
+      - properties:
+          from:
+            enum:
+            - sql
+            type: string
+          query:
+            type: string
+          source_id:
+            $ref: '#/components/schemas/FeltID'
+        required:
+        - from
+        - source_id
+        - query
+        title: AddSourceLayer-SQL-Params
+        type: object
+      - properties:
+          from:
+            enum:
+            - stac
+            type: string
+          source_id:
+            $ref: '#/components/schemas/FeltID'
+          stac_asset_url:
+            type: string
+        required:
+        - from
+        - source_id
+        - stac_asset_url
+        title: AddSourceLayer-STAC-Params
+        type: object
+      title: AddSourceLayerParams
+      type: object
+    AddSourceLayerAccepted:
+      additionalProperties: false
+      properties:
+        links:
+          additionalProperties: false
+          properties:
+            layer_group:
+              example: https://felt.com/api/v2/maps/V0dnOMOuTd9B9BOsL9C0UjmqC/layer_groups/KFFhKAbvS4anD3wxtwNEpD
+              type: string
+            self:
+              example: https://felt.com/api/v2/maps/V0dnOMOuTd9B9BOsL9C0UjmqC
+              type: string
+          type: object
+        status:
+          enum:
+          - accepted
+          type: string
+      title: AddSourceLayerAccepted
+      type: object
+    UploadResponse:
+      properties:
+        layer_group_id:
+          $ref: '#/components/schemas/FeltID'
+        layer_id:
+          description: The ID of the layer created by this upload. If multiple layers are included in the upload, this is the ID of the first layer in the layer group.
+          example: luCHyMruTQ6ozGk3gPJfEB
+          format: felt_id
+          type: string
+        presigned_attributes:
+          description: If provided, the presigned attributes to attach to the post request
+          type:
+          - object
+          - 'null'
+        type:
+          enum:
+          - upload_response
+          type: string
+        url:
+          description: If provided, the URL to post the file to
+          type:
+          - string
+          - 'null'
+      title: UploadResponse
+      type: object
     JsonErrorResponse:
       properties:
         errors:
@@ -821,6 +728,101 @@ components:
       required:
       - errors
       title: JsonErrorResponse
+      type: object
+    InternalServerError:
+      properties:
+        errors:
+          items:
+            properties:
+              detail:
+                type: string
+              source:
+                properties:
+                  parameter:
+                    type: string
+                type: object
+              title:
+                type: string
+            type: object
+          type: array
+      title: InternalServerError
+      type: object
+    NotFoundError:
+      properties:
+        errors:
+          items:
+            properties:
+              detail:
+                type: string
+              source:
+                properties:
+                  parameter:
+                    type: string
+                type: object
+              title:
+                type: string
+            type: object
+          type: array
+      title: NotFoundError
+      type: object
+    UnauthorizedError:
+      properties:
+        errors:
+          items:
+            properties:
+              detail:
+                type: string
+              source:
+                properties:
+                  header:
+                    enum:
+                    - authorization
+                    type: string
+                type: object
+              title:
+                type: string
+            type: object
+          type: array
+      title: UnauthorizedError
+      type: object
+    LayerMetadata:
+      additionalProperties: false
+      properties:
+        attribution_text:
+          type:
+          - string
+          - 'null'
+        attribution_url:
+          type:
+          - string
+          - 'null'
+        description:
+          type:
+          - string
+          - 'null'
+        license:
+          type:
+          - string
+          - 'null'
+        source_abbreviation:
+          type:
+          - string
+          - 'null'
+        source_name:
+          type:
+          - string
+          - 'null'
+        source_url:
+          type:
+          - string
+          - 'null'
+        updated_at:
+          example: '2025-03-24'
+          format: date
+          type:
+          - string
+          - 'null'
+      title: LayerMetadata
       type: object
   securitySchemes:
     bearerAuth:

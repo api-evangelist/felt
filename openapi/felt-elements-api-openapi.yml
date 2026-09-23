@@ -1,7 +1,7 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
   description: Felt REST API v2.0
-  title: Felt Comments Elements API
+  title: Felt Elements API
   version: '2.0'
 servers:
 - url: https://felt.com
@@ -11,9 +11,7 @@ tags:
 - description: 'Elements enable you to annotate maps with custom shapes, text, and markers.
 
 
-    With these APIs, you can create, update, and delete map elements.
-
-    '
+    With these APIs, you can create, update, and delete map elements.'
   name: Elements
   x-page-description: APIs for drawing spatially
   x-page-icon: shapes
@@ -28,9 +26,7 @@ paths:
 
         This action cannot be undone. The element will be permanently removed from the map.
 
-        {% endhint %}
-
-        '
+        {% endhint %}'
       operationId: delete_map_element
       parameters:
       - description: The ID of the map to delete the element from.
@@ -161,11 +157,9 @@ paths:
 
         {% hint style="info" %}
 
-        The maximum payload size for any `POST` to the Felt API is 1MB. Additionally, complex element geometry may be automatically simplified. If you require large, complex geometries, consider uploading your data as a Data Layer.&#x20;
+        The maximum payload size for any `POST` to the Felt API is 1MB. Additionally, complex element geometry may be automatically simplified. If you require large, complex geometries, consider uploading your data as a Data Layer.
 
-        {% endhint %}
-
-        '
+        {% endhint %}'
       operationId: upsert_map_elements
       parameters:
       - description: The ID of the map to create the elements in
@@ -363,14 +357,11 @@ paths:
         For each Element Group, including an existing Element Group `id` will result in the Element Group being updated. If no `id` is provided, a new Element Group will be created.
 
 
-
         {% hint style="info" %}
 
-        The maximum payload size for any `POST` to the Felt API is 1MB. Additionally, complex element geometry may be automatically simplified. If you require large, complex geometries, consider uploading your data as a Data Layer.&#x20;
+        The maximum payload size for any `POST` to the Felt API is 1MB. Additionally, complex element geometry may be automatically simplified. If you require large, complex geometries, consider uploading your data as a Data Layer.
 
-        {% endhint %}
-
-        '
+        {% endhint %}'
       operationId: upsert_map_element_groups
       parameters:
       - description: The ID of the map to create the group in
@@ -436,42 +427,9 @@ paths:
       - Elements
 components:
   schemas:
-    GeoJSON:
-      properties:
-        features:
-          items:
-            properties:
-              geometry:
-                properties:
-                  felt:id:
-                    $ref: '#/components/schemas/FeltID'
-                  felt:parentId:
-                    example: luCHyMruTQ6ozGk3gPJfEB
-                    format: felt_id
-                    nullable: true
-                    type: string
-                type: object
-              properties:
-                type: object
-              type:
-                enum:
-                - Feature
-                type: string
-            type: object
-          type: array
-        type:
-          enum:
-          - FeatureCollection
-          type: string
-      required:
-      - type
-      - features
-      title: GeoJSON
-      type: object
     FeltID:
       example: luCHyMruTQ6ozGk3gPJfEB
       format: felt_id
-      nullable: false
       title: FeltID
       type: string
     ElementGroupParams:
@@ -492,6 +450,73 @@ components:
       - name
       title: ElementGroupParams
       type: object
+    ElementGroupParamsList:
+      items:
+        $ref: '#/components/schemas/ElementGroupParams'
+      title: ElementGroupParamsList
+      type: array
+    GeoJSON:
+      properties:
+        features:
+          items:
+            properties:
+              geometry:
+                properties:
+                  felt:id:
+                    $ref: '#/components/schemas/FeltID'
+                  felt:parentId:
+                    example: luCHyMruTQ6ozGk3gPJfEB
+                    format: felt_id
+                    type:
+                    - string
+                    - 'null'
+                type: object
+              properties:
+                type: object
+              type:
+                enum:
+                - Feature
+                type: string
+            type: object
+          type: array
+        type:
+          enum:
+          - FeatureCollection
+          type: string
+      required:
+      - type
+      - features
+      title: GeoJSON
+      type: object
+    JsonErrorResponse:
+      properties:
+        errors:
+          items:
+            properties:
+              detail:
+                example: null value where string expected
+                type: string
+              source:
+                properties:
+                  pointer:
+                    example: /data/attributes/petName
+                    type: string
+                required:
+                - pointer
+                type: object
+              title:
+                example: Invalid value
+                type: string
+            required:
+            - title
+            - source
+            - detail
+            type: object
+          type: array
+      required:
+      - errors
+      title: JsonErrorResponse
+      type: object
     InternalServerError:
       properties:
         errors:
@@ -509,6 +534,24 @@ components:
             type: object
           type: array
       title: InternalServerError
+      type: object
+    NotFoundError:
+      properties:
+        errors:
+          items:
+            properties:
+              detail:
+                type: string
+              source:
+                properties:
+                  parameter:
+                    type: string
+                type: object
+              title:
+                type: string
+            type: object
+          type: array
+      title: NotFoundError
       type: object
     UnauthorizedError:
       properties:
@@ -540,7 +583,6 @@ components:
       properties:
         color:
           description: The color of the element group symbol.
-          nullable: false
           type: string
         elements:
           $ref: '#/components/schemas/GeoJSON'
@@ -549,12 +591,14 @@ components:
           type: string
         name:
           description: The name of the element group.
-          nullable: true
-          type: string
+          type:
+          - string
+          - 'null'
         symbol:
           description: The symbol used to represent the element group.
-          nullable: true
-          type: string
+          type:
+          - string
+          - 'null'
       required:
       - id
       - color
@@ -562,58 +606,6 @@ components:
       - symbol
       - elements
       title: ElementGroup
-      type: object
-    NotFoundError:
-      properties:
-        errors:
-          items:
-            properties:
-              detail:
-                type: string
-              source:
-                properties:
-                  parameter:
-                    type: string
-                type: object
-              title:
-                type: string
-            type: object
-          type: array
-      title: NotFoundError
-      type: object
-    ElementGroupParamsList:
-      items:
-        $ref: '#/components/schemas/ElementGroupParams'
-      title: ElementGroupParamsList
-      type: array
-    JsonErrorResponse:
-      properties:
-        errors:
-          items:
-            properties:
-              detail:
-                example: null value where string expected
-                type: string
-              source:
-                properties:
-                  pointer:
-                    example: /data/attributes/petName
-                    type: string
-                required:
-                - pointer
-                type: object
-              title:
-                example: Invalid value
-                type: string
-            required:
-            - title
-            - source
-            - detail
-            type: object
-          type: array
-      required:
-      - errors
-      title: JsonErrorResponse
       type: object
   securitySchemes:
     bearerAuth:

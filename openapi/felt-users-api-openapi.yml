@@ -1,7 +1,7 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
   description: Felt REST API v2.0
-  title: Felt Comments Users API
+  title: Felt Users API
   version: '2.0'
 servers:
 - url: https://felt.com
@@ -11,9 +11,7 @@ tags:
 - description: 'Users represent the people in your workspace.
 
 
-    With these APIs, you can retrieve user profile information.
-
-    '
+    With these APIs, you can retrieve user profile information.'
   name: Users
   x-page-description: APIs for user information
   x-page-icon: user
@@ -77,47 +75,8 @@ components:
     FeltID:
       example: luCHyMruTQ6ozGk3gPJfEB
       format: felt_id
-      nullable: false
       title: FeltID
       type: string
-    InternalServerError:
-      properties:
-        errors:
-          items:
-            properties:
-              detail:
-                type: string
-              source:
-                properties:
-                  parameter:
-                    type: string
-                type: object
-              title:
-                type: string
-            type: object
-          type: array
-      title: InternalServerError
-      type: object
-    UnauthorizedError:
-      properties:
-        errors:
-          items:
-            properties:
-              detail:
-                type: string
-              source:
-                properties:
-                  header:
-                    enum:
-                    - authorization
-                    type: string
-                type: object
-              title:
-                type: string
-            type: object
-          type: array
-      title: UnauthorizedError
-      type: object
     User:
       properties:
         email:
@@ -127,24 +86,6 @@ components:
         name:
           type: string
       title: User
-      type: object
-    NotFoundError:
-      properties:
-        errors:
-          items:
-            properties:
-              detail:
-                type: string
-              source:
-                properties:
-                  parameter:
-                    type: string
-                type: object
-              title:
-                type: string
-            type: object
-          type: array
-      title: NotFoundError
       type: object
     JsonErrorResponse:
       properties:
@@ -174,6 +115,62 @@ components:
       required:
       - errors
       title: JsonErrorResponse
+      type: object
+    InternalServerError:
+      properties:
+        errors:
+          items:
+            properties:
+              detail:
+                type: string
+              source:
+                properties:
+                  parameter:
+                    type: string
+                type: object
+              title:
+                type: string
+            type: object
+          type: array
+      title: InternalServerError
+      type: object
+    NotFoundError:
+      properties:
+        errors:
+          items:
+            properties:
+              detail:
+                type: string
+              source:
+                properties:
+                  parameter:
+                    type: string
+                type: object
+              title:
+                type: string
+            type: object
+          type: array
+      title: NotFoundError
+      type: object
+    UnauthorizedError:
+      properties:
+        errors:
+          items:
+            properties:
+              detail:
+                type: string
+              source:
+                properties:
+                  header:
+                    enum:
+                    - authorization
+                    type: string
+                type: object
+              title:
+                type: string
+            type: object
+          type: array
+      title: UnauthorizedError
       type: object
   securitySchemes:
     bearerAuth:

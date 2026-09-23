@@ -1,17 +1,7 @@
 {
   "provider": "felt",
   "sources": [
-    "felt-comments-api-openapi.yml",
-    "felt-elements-api-openapi.yml",
-    "felt-embed-tokens-api-openapi.yml",
-    "felt-layer-exports-api-openapi.yml",
-    "felt-layer-library-api-openapi.yml",
-    "felt-layer-uploads-api-openapi.yml",
-    "felt-layers-api-openapi.yml",
-    "felt-maps-api-openapi.yml",
-    "felt-projects-api-openapi.yml",
-    "felt-sources-api-openapi.yml",
-    "felt-users-api-openapi.yml"
+    "_original/felt-felt-rest-api-openapi.yml"
   ],
   "outputs": [
     "felt-comments-api-openapi.yml",
@@ -29,6 +19,22 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "felt-felt-rest-api-openapi.yml: upgraded openapi 3.0.0 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "felt-comments-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "felt-elements-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "felt-embed-tokens-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "felt-layer-exports-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "felt-layer-library-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "felt-layer-uploads-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "felt-layers-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "felt-maps-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "felt-projects-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "felt-sources-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "felt-users-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

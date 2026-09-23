@@ -1,7 +1,7 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
   description: Felt REST API v2.0
-  title: Felt Comments Embed Tokens API
+  title: Felt Embed Tokens API
   version: '2.0'
 servers:
 - url: https://felt.com
@@ -11,9 +11,7 @@ tags:
 - description: 'Embed tokens enable safely sharing your private maps.
 
 
-    With these APIs, you can generate secure tokens for embedding maps.
-
-    '
+    With these APIs, you can generate secure tokens for embedding maps.'
   name: Embed Tokens
   x-page-description: APIs to share maps securely
   x-page-icon: code
@@ -36,7 +34,6 @@ paths:
 
         ```html
 
-        <iframe src="https://felt.com/embed/map/{mapId}?token={token}"></iframe>
 
         ```
 
@@ -47,9 +44,7 @@ paths:
         You can allow EmbedToken based page views to export layer data.
 
 
-        * Turn on "Viewer permissions: Export data" in Map settings
-
-        '
+        * Turn on "Viewer permissions: Export data" in Map settings'
       operationId: create_map_embed_token
       parameters:
       - description: ''
@@ -114,44 +109,6 @@ paths:
       - Embed Tokens
 components:
   schemas:
-    InternalServerError:
-      properties:
-        errors:
-          items:
-            properties:
-              detail:
-                type: string
-              source:
-                properties:
-                  parameter:
-                    type: string
-                type: object
-              title:
-                type: string
-            type: object
-          type: array
-      title: InternalServerError
-      type: object
-    UnauthorizedError:
-      properties:
-        errors:
-          items:
-            properties:
-              detail:
-                type: string
-              source:
-                properties:
-                  header:
-                    enum:
-                    - authorization
-                    type: string
-                type: object
-              title:
-                type: string
-            type: object
-          type: array
-      title: UnauthorizedError
-      type: object
     EmbedToken:
       properties:
         expires_at:
@@ -161,24 +118,6 @@ components:
         token:
           type: string
       title: EmbedToken
-      type: object
-    NotFoundError:
-      properties:
-        errors:
-          items:
-            properties:
-              detail:
-                type: string
-              source:
-                properties:
-                  parameter:
-                    type: string
-                type: object
-              title:
-                type: string
-            type: object
-          type: array
-      title: NotFoundError
       type: object
     JsonErrorResponse:
       properties:
@@ -208,6 +147,62 @@ components:
       required:
       - errors
       title: JsonErrorResponse
+      type: object
+    InternalServerError:
+      properties:
+        errors:
+          items:
+            properties:
+              detail:
+                type: string
+              source:
+                properties:
+                  parameter:
+                    type: string
+                type: object
+              title:
+                type: string
+            type: object
+          type: array
+      title: InternalServerError
+      type: object
+    NotFoundError:
+      properties:
+        errors:
+          items:
+            properties:
+              detail:
+                type: string
+              source:
+                properties:
+                  parameter:
+                    type: string
+                type: object
+              title:
+                type: string
+            type: object
+          type: array
+      title: NotFoundError
+      type: object
+    UnauthorizedError:
+      properties:
+        errors:
+          items:
+            properties:
+              detail:
+                type: string
+              source:
+                properties:
+                  header:
+                    enum:
+                    - authorization
+                    type: string
+                type: object
+              title:
+                type: string
+            type: object
+          type: array
+      title: UnauthorizedError
       type: object
   securitySchemes:
     bearerAuth:

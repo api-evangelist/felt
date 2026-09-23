@@ -1,4 +1,4 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
   description: Felt REST API v2.0
   title: Felt Comments API
@@ -11,9 +11,7 @@ tags:
 - description: 'Comments bring conversations to mapping.
 
 
-    With these APIs, you can export, resolve, and delete map comments and collaboration threads.
-
-    '
+    With these APIs, you can export, resolve, and delete map comments and collaboration threads.'
   name: Comments
   x-page-description: APIs for programatic collaboration
   x-page-icon: comment
@@ -160,9 +158,7 @@ paths:
 
         This action cannot be undone. The comment or reply will be permanently removed from the map.
 
-        {% endhint %}
-
-        '
+        {% endhint %}'
       operationId: delete_map_comment
       parameters:
       - description: The ID of the map that contains the comment.
@@ -226,75 +222,13 @@ components:
     FeltID:
       example: luCHyMruTQ6ozGk3gPJfEB
       format: felt_id
-      nullable: false
       title: FeltID
       type: string
-    CommentExport:
-      items:
-        description: Comment Thread
-      title: CommentExport
-      type: array
-    InternalServerError:
-      properties:
-        errors:
-          items:
-            properties:
-              detail:
-                type: string
-              source:
-                properties:
-                  parameter:
-                    type: string
-                type: object
-              title:
-                type: string
-            type: object
-          type: array
-      title: InternalServerError
-      type: object
-    UnauthorizedError:
-      properties:
-        errors:
-          items:
-            properties:
-              detail:
-                type: string
-              source:
-                properties:
-                  header:
-                    enum:
-                    - authorization
-                    type: string
-                type: object
-              title:
-                type: string
-            type: object
-          type: array
-      title: UnauthorizedError
-      type: object
     CommentResolved:
       properties:
         comment_id:
           $ref: '#/components/schemas/FeltID'
       title: CommentResolved
-      type: object
-    NotFoundError:
-      properties:
-        errors:
-          items:
-            properties:
-              detail:
-                type: string
-              source:
-                properties:
-                  parameter:
-                    type: string
-                type: object
-              title:
-                type: string
-            type: object
-          type: array
-      title: NotFoundError
       type: object
     JsonErrorResponse:
       properties:
@@ -324,6 +258,67 @@ components:
       required:
       - errors
       title: JsonErrorResponse
+      type: object
+    InternalServerError:
+      properties:
+        errors:
+          items:
+            properties:
+              detail:
+                type: string
+              source:
+                properties:
+                  parameter:
+                    type: string
+                type: object
+              title:
+                type: string
+            type: object
+          type: array
+      title: InternalServerError
+      type: object
+    CommentExport:
+      items:
+        description: Comment Thread
+      title: CommentExport
+      type: array
+    NotFoundError:
+      properties:
+        errors:
+          items:
+            properties:
+              detail:
+                type: string
+              source:
+                properties:
+                  parameter:
+                    type: string
+                type: object
+              title:
+                type: string
+            type: object
+          type: array
+      title: NotFoundError
+      type: object
+    UnauthorizedError:
+      properties:
+        errors:
+          items:
+            properties:
+              detail:
+                type: string
+              source:
+                properties:
+                  header:
+                    enum:
+                    - authorization
+                    type: string
+                type: object
+              title:
+                type: string
+            type: object
+          type: array
+      title: UnauthorizedError
       type: object
   securitySchemes:
     bearerAuth:

@@ -1,16 +1,14 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
   description: Felt REST API v2.0
-  title: Felt Comments Layer Exports API
+  title: Felt Layer Exports API
   version: '2.0'
 servers:
 - url: https://felt.com
   variables: {}
 security: []
 tags:
-- description: 'With these APIs, you can export data to CSV, GeoJSON, and other formats.
-
-    '
+- description: With these APIs, you can export data to CSV, GeoJSON, and other formats.
   name: Layer Exports
   x-page-description: APIs to export layer data
   x-page-icon: layer-group
@@ -22,9 +20,7 @@ paths:
       description: 'Generate a direct download link for layer data export.
 
 
-        Get a link to export a layer as a GeoPackage (vector layers) or GeoTIFF (raster layers).
-
-        '
+        Get a link to export a layer as a GeoPackage (vector layers) or GeoTIFF (raster layers).'
       operationId: create_map_layer_export_link
       parameters:
       - description: The ID of the map where the layer is located
@@ -99,9 +95,7 @@ paths:
       description: 'Check the processing status and download availability of a custom export request.
 
 
-        If the export is successful, the response will include a `download_url` for accessing the exported data.
-
-        '
+        If the export is successful, the response will include a `download_url` for accessing the exported data.'
       operationId: poll_map_layer_custom_export
       parameters:
       - description: The ID of the map where the layer is located
@@ -176,9 +170,7 @@ paths:
       description: 'Start a custom export with specific format and filter options for layer data.
 
 
-        Export requests are asynchronous. A successful response will return a `poll_endpoint` to check the status of the export using the poll custom export endpoint.
-
-        '
+        Export requests are asynchronous. A successful response will return a `poll_endpoint` to check the status of the export using the poll custom export endpoint.'
       operationId: create_map_layer_custom_export
       parameters:
       - description: The ID of the map where the layer is located
@@ -259,41 +251,21 @@ components:
     FeltID:
       example: luCHyMruTQ6ozGk3gPJfEB
       format: felt_id
-      nullable: false
       title: FeltID
       type: string
-    InternalServerError:
-      properties:
-        errors:
-          items:
-            properties:
-              detail:
-                type: string
-              source:
-                properties:
-                  parameter:
-                    type: string
-                type: object
-              title:
-                type: string
-            type: object
-          type: array
-      title: InternalServerError
-      type: object
     CustomExportRequestStatus:
       additionalProperties: false
       properties:
         download_url:
           example: https://us1.data-pipeline.felt.com/fcdfd96c-06fa-40b9-9ae9-ad034b5a66df/Felt-Export.zip
-          nullable: true
-          type: string
+          type:
+          - string
+          - 'null'
         export_id:
           example: FZWQjWZJSZWvW3yn9BeV9AyA
-          nullable: false
           type: string
         filters:
           items: {}
-          nullable: false
           type: array
         status:
           enum:
@@ -301,7 +273,6 @@ components:
           - failed
           - in_progress
           example: completed
-          nullable: false
           type: string
       required:
       - export_id
@@ -310,95 +281,14 @@ components:
       - filters
       title: CustomExportRequestStatus
       type: object
-    UnauthorizedError:
-      properties:
-        errors:
-          items:
-            properties:
-              detail:
-                type: string
-              source:
-                properties:
-                  header:
-                    enum:
-                    - authorization
-                    type: string
-                type: object
-              title:
-                type: string
-            type: object
-          type: array
-      title: UnauthorizedError
-      type: object
     ExportLink:
       additionalProperties: false
       properties:
         export_link:
-          nullable: false
           type: string
       required:
       - export_link
       title: ExportLink
-      type: object
-    ServiceUnavailableError:
-      properties:
-        errors:
-          items:
-            properties:
-              detail:
-                type: string
-              source:
-                properties:
-                  parameter:
-                    type: string
-                type: object
-              title:
-                type: string
-            type: object
-          type: array
-      title: ServiceUnavailableError
-      type: object
-    NotFoundError:
-      properties:
-        errors:
-          items:
-            properties:
-              detail:
-                type: string
-              source:
-                properties:
-                  parameter:
-                    type: string
-                type: object
-              title:
-                type: string
-            type: object
-          type: array
-      title: NotFoundError
-      type: object
-    CustomExportParams:
-      additionalProperties: false
-      properties:
-        email_on_completion:
-          description: Send an email to the requesting user when the export completes. Defaults to `true`
-          type: boolean
-        filters:
-          description: Filters for the layer in Felt Style Language filter format
-          items: {}
-          type: array
-        output_format:
-          enum:
-          - csv
-          - gpkg
-          - geojson
-          - geotiff
-          - pmtiles
-          example: csv
-          nullable: false
-          type: string
-      required:
-      - output_format
-      title: CustomExportParams
       type: object
     CustomExportResponse:
       additionalProperties: false
@@ -407,7 +297,6 @@ components:
           $ref: '#/components/schemas/FeltID'
         poll_endpoint:
           example: http://felt.com/api/v2/maps/vAbZ5eKqRoGe4sCH8nHW8D/layers/7kF9Cfz45TUWIiuuWV8uZ7A/custom_exports/auFxn9BO4RrGGiKrGfaS7ZB
-          nullable: false
           type: string
       required:
       - export_request_id
@@ -442,6 +331,103 @@ components:
       required:
       - errors
       title: JsonErrorResponse
+      type: object
+    InternalServerError:
+      properties:
+        errors:
+          items:
+            properties:
+              detail:
+                type: string
+              source:
+                properties:
+                  parameter:
+                    type: string
+                type: object
+              title:
+                type: string
+            type: object
+          type: array
+      title: InternalServerError
+      type: object
+    NotFoundError:
+      properties:
+        errors:
+          items:
+            properties:
+              detail:
+                type: string
+              source:
+                properties:
+                  parameter:
+                    type: string
+                type: object
+              title:
+                type: string
+            type: object
+          type: array
+      title: NotFoundError
+      type: object
+    ServiceUnavailableError:
+      properties:
+        errors:
+          items:
+            properties:
+              detail:
+                type: string
+              source:
+                properties:
+                  parameter:
+                    type: string
+                type: object
+              title:
+                type: string
+            type: object
+          type: array
+      title: ServiceUnavailableError
+      type: object
+    UnauthorizedError:
+      properties:
+        errors:
+          items:
+            properties:
+              detail:
+                type: string
+              source:
+                properties:
+                  header:
+                    enum:
+                    - authorization
+                    type: string
+                type: object
+              title:
+                type: string
+            type: object
+          type: array
+      title: UnauthorizedError
+      type: object
+    CustomExportParams:
+      additionalProperties: false
+      properties:
+        email_on_completion:
+          description: Send an email to the requesting user when the export completes. Defaults to `true`
+          type: boolean
+        filters:
+          description: Filters for the layer in Felt Style Language filter format
+          items: {}
+          type: array
+        output_format:
+          enum:
+          - csv
+          - gpkg
+          - geojson
+          - geotiff
+          - pmtiles
+          example: csv
+          type: string
+      required:
+      - output_format
+      title: CustomExportParams
       type: object
   securitySchemes:
     bearerAuth:
