@@ -224,11 +224,36 @@ components:
       format: felt_id
       title: FeltID
       type: string
+    CommentExport:
+      items:
+        description: Comment Thread
+      title: CommentExport
+      type: array
     CommentResolved:
       properties:
         comment_id:
           $ref: '#/components/schemas/FeltID'
       title: CommentResolved
+      type: object
+    UnauthorizedError:
+      properties:
+        errors:
+          items:
+            properties:
+              detail:
+                type: string
+              source:
+                properties:
+                  header:
+                    enum:
+                    - authorization
+                    type: string
+                type: object
+              title:
+                type: string
+            type: object
+          type: array
+      title: UnauthorizedError
       type: object
     JsonErrorResponse:
       properties:
@@ -277,11 +302,6 @@ components:
           type: array
       title: InternalServerError
       type: object
-    CommentExport:
-      items:
-        description: Comment Thread
-      title: CommentExport
-      type: array
     NotFoundError:
       properties:
         errors:
@@ -299,26 +319,6 @@ components:
             type: object
           type: array
       title: NotFoundError
-      type: object
-    UnauthorizedError:
-      properties:
-        errors:
-          items:
-            properties:
-              detail:
-                type: string
-              source:
-                properties:
-                  header:
-                    enum:
-                    - authorization
-                    type: string
-                type: object
-              title:
-                type: string
-            type: object
-          type: array
-      title: UnauthorizedError
       type: object
   securitySchemes:
     bearerAuth:

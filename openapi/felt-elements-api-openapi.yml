@@ -427,34 +427,6 @@ paths:
       - Elements
 components:
   schemas:
-    FeltID:
-      example: luCHyMruTQ6ozGk3gPJfEB
-      format: felt_id
-      title: FeltID
-      type: string
-    ElementGroupParams:
-      additionalProperties: false
-      properties:
-        color:
-          default: '#C93535'
-          type: string
-        id:
-          $ref: '#/components/schemas/FeltID'
-        name:
-          example: My Element Group
-          type: string
-        symbol:
-          default: dot
-          type: string
-      required:
-      - name
-      title: ElementGroupParams
-      type: object
-    ElementGroupParamsList:
-      items:
-        $ref: '#/components/schemas/ElementGroupParams'
-      title: ElementGroupParamsList
-      type: array
     GeoJSON:
       properties:
         features:
@@ -487,6 +459,88 @@ components:
       - type
       - features
       title: GeoJSON
+      type: object
+    FeltID:
+      example: luCHyMruTQ6ozGk3gPJfEB
+      format: felt_id
+      title: FeltID
+      type: string
+    ElementGroupParams:
+      additionalProperties: false
+      properties:
+        color:
+          default: '#C93535'
+          type: string
+        id:
+          $ref: '#/components/schemas/FeltID'
+        name:
+          example: My Element Group
+          type: string
+        symbol:
+          default: dot
+          type: string
+      required:
+      - name
+      title: ElementGroupParams
+      type: object
+    ElementGroupList:
+      items:
+        $ref: '#/components/schemas/ElementGroup'
+      title: ElementGroupList
+      type: array
+    ElementGroupParamsList:
+      items:
+        $ref: '#/components/schemas/ElementGroupParams'
+      title: ElementGroupParamsList
+      type: array
+    ElementGroup:
+      additionalProperties: false
+      properties:
+        color:
+          description: The color of the element group symbol.
+          type: string
+        elements:
+          $ref: '#/components/schemas/GeoJSON'
+        id:
+          description: The ID of the element group.
+          type: string
+        name:
+          description: The name of the element group.
+          type:
+          - string
+          - 'null'
+        symbol:
+          description: The symbol used to represent the element group.
+          type:
+          - string
+          - 'null'
+      required:
+      - id
+      - color
+      - name
+      - symbol
+      - elements
+      title: ElementGroup
+      type: object
+    UnauthorizedError:
+      properties:
+        errors:
+          items:
+            properties:
+              detail:
+                type: string
+              source:
+                properties:
+                  header:
+                    enum:
+                    - authorization
+                    type: string
+                type: object
+              title:
+                type: string
+            type: object
+          type: array
+      title: UnauthorizedError
       type: object
     JsonErrorResponse:
       properties:
@@ -552,60 +606,6 @@ components:
             type: object
           type: array
       title: NotFoundError
-      type: object
-    UnauthorizedError:
-      properties:
-        errors:
-          items:
-            properties:
-              detail:
-                type: string
-              source:
-                properties:
-                  header:
-                    enum:
-                    - authorization
-                    type: string
-                type: object
-              title:
-                type: string
-            type: object
-          type: array
-      title: UnauthorizedError
-      type: object
-    ElementGroupList:
-      items:
-        $ref: '#/components/schemas/ElementGroup'
-      title: ElementGroupList
-      type: array
-    ElementGroup:
-      additionalProperties: false
-      properties:
-        color:
-          description: The color of the element group symbol.
-          type: string
-        elements:
-          $ref: '#/components/schemas/GeoJSON'
-        id:
-          description: The ID of the element group.
-          type: string
-        name:
-          description: The name of the element group.
-          type:
-          - string
-          - 'null'
-        symbol:
-          description: The symbol used to represent the element group.
-          type:
-          - string
-          - 'null'
-      required:
-      - id
-      - color
-      - name
-      - symbol
-      - elements
-      title: ElementGroup
       type: object
   securitySchemes:
     bearerAuth:

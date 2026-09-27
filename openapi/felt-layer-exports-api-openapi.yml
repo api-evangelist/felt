@@ -248,11 +248,6 @@ paths:
       - Layer Exports
 components:
   schemas:
-    FeltID:
-      example: luCHyMruTQ6ozGk3gPJfEB
-      format: felt_id
-      title: FeltID
-      type: string
     CustomExportRequestStatus:
       additionalProperties: false
       properties:
@@ -281,6 +276,11 @@ components:
       - filters
       title: CustomExportRequestStatus
       type: object
+    FeltID:
+      example: luCHyMruTQ6ozGk3gPJfEB
+      format: felt_id
+      title: FeltID
+      type: string
     ExportLink:
       additionalProperties: false
       properties:
@@ -289,6 +289,47 @@ components:
       required:
       - export_link
       title: ExportLink
+      type: object
+    CustomExportParams:
+      additionalProperties: false
+      properties:
+        email_on_completion:
+          description: Send an email to the requesting user when the export completes. Defaults to `true`
+          type: boolean
+        filters:
+          description: Filters for the layer in Felt Style Language filter format
+          items: {}
+          type: array
+        output_format:
+          enum:
+          - csv
+          - gpkg
+          - geojson
+          - geotiff
+          - pmtiles
+          example: csv
+          type: string
+      required:
+      - output_format
+      title: CustomExportParams
+      type: object
+    ServiceUnavailableError:
+      properties:
+        errors:
+          items:
+            properties:
+              detail:
+                type: string
+              source:
+                properties:
+                  parameter:
+                    type: string
+                type: object
+              title:
+                type: string
+            type: object
+          type: array
+      title: ServiceUnavailableError
       type: object
     CustomExportResponse:
       additionalProperties: false
@@ -302,6 +343,26 @@ components:
       - export_request_id
       - poll_endpoint
       title: CustomExportResponse
+      type: object
+    UnauthorizedError:
+      properties:
+        errors:
+          items:
+            properties:
+              detail:
+                type: string
+              source:
+                properties:
+                  header:
+                    enum:
+                    - authorization
+                    type: string
+                type: object
+              title:
+                type: string
+            type: object
+          type: array
+      title: UnauthorizedError
       type: object
     JsonErrorResponse:
       properties:
@@ -367,67 +428,6 @@ components:
             type: object
           type: array
       title: NotFoundError
-      type: object
-    ServiceUnavailableError:
-      properties:
-        errors:
-          items:
-            properties:
-              detail:
-                type: string
-              source:
-                properties:
-                  parameter:
-                    type: string
-                type: object
-              title:
-                type: string
-            type: object
-          type: array
-      title: ServiceUnavailableError
-      type: object
-    UnauthorizedError:
-      properties:
-        errors:
-          items:
-            properties:
-              detail:
-                type: string
-              source:
-                properties:
-                  header:
-                    enum:
-                    - authorization
-                    type: string
-                type: object
-              title:
-                type: string
-            type: object
-          type: array
-      title: UnauthorizedError
-      type: object
-    CustomExportParams:
-      additionalProperties: false
-      properties:
-        email_on_completion:
-          description: Send an email to the requesting user when the export completes. Defaults to `true`
-          type: boolean
-        filters:
-          description: Filters for the layer in Felt Style Language filter format
-          items: {}
-          type: array
-        output_format:
-          enum:
-          - csv
-          - gpkg
-          - geojson
-          - geotiff
-          - pmtiles
-          example: csv
-          type: string
-      required:
-      - output_format
-      title: CustomExportParams
       type: object
   securitySchemes:
     bearerAuth:

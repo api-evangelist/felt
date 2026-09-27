@@ -332,6 +332,11 @@ components:
       format: felt_id
       title: FeltID
       type: string
+    ProjectReferenceList:
+      items:
+        $ref: '#/components/schemas/ProjectReference'
+      title: ProjectReferenceList
+      type: array
     Project:
       additionalProperties: false
       properties:
@@ -407,6 +412,53 @@ components:
       - max_inherited_permission
       title: ProjectReference
       type: object
+    ProjectCreateParams:
+      additionalProperties: false
+      properties:
+        max_inherited_permission:
+          description: The maximum permission level workspace members inherit on team-visible projects. Only applicable when visibility is "workspace".
+          enum:
+          - view_only
+          - view_and_contribute
+          - view_and_edit
+          example: view_only
+          type: string
+        name:
+          description: The name to be used for the Project
+          type: string
+        visibility:
+          description: Either viewable by all members of the workspace, or private to users who are invited.
+          enum:
+          - workspace
+          - private
+          type: string
+      required:
+      - name
+      - visibility
+      title: ProjectCreateParams
+      type: object
+    ProjectUpdateParams:
+      additionalProperties: false
+      properties:
+        max_inherited_permission:
+          description: The maximum permission level workspace members inherit on team-visible projects. Only applicable when visibility is "workspace".
+          enum:
+          - view_only
+          - view_and_contribute
+          - view_and_edit
+          example: view_only
+          type: string
+        name:
+          description: The name to be used for the Project
+          type: string
+        visibility:
+          description: Either viewable by all members of the workspace, or private to users who are invited.
+          enum:
+          - workspace
+          - private
+          type: string
+      title: ProjectUpdateParams
+      type: object
     MapReference:
       additionalProperties: false
       properties:
@@ -466,11 +518,26 @@ components:
       - public_access
       title: MapReference
       type: object
-    ProjectReferenceList:
-      items:
-        $ref: '#/components/schemas/ProjectReference'
-      title: ProjectReferenceList
-      type: array
+    UnauthorizedError:
+      properties:
+        errors:
+          items:
+            properties:
+              detail:
+                type: string
+              source:
+                properties:
+                  header:
+                    enum:
+                    - authorization
+                    type: string
+                type: object
+              title:
+                type: string
+            type: object
+          type: array
+      title: UnauthorizedError
+      type: object
     JsonErrorResponse:
       properties:
         errors:
@@ -535,73 +602,6 @@ components:
             type: object
           type: array
       title: NotFoundError
-      type: object
-    UnauthorizedError:
-      properties:
-        errors:
-          items:
-            properties:
-              detail:
-                type: string
-              source:
-                properties:
-                  header:
-                    enum:
-                    - authorization
-                    type: string
-                type: object
-              title:
-                type: string
-            type: object
-          type: array
-      title: UnauthorizedError
-      type: object
-    ProjectUpdateParams:
-      additionalProperties: false
-      properties:
-        max_inherited_permission:
-          description: The maximum permission level workspace members inherit on team-visible projects. Only applicable when visibility is "workspace".
-          enum:
-          - view_only
-          - view_and_contribute
-          - view_and_edit
-          example: view_only
-          type: string
-        name:
-          description: The name to be used for the Project
-          type: string
-        visibility:
-          description: Either viewable by all members of the workspace, or private to users who are invited.
-          enum:
-          - workspace
-          - private
-          type: string
-      title: ProjectUpdateParams
-      type: object
-    ProjectCreateParams:
-      additionalProperties: false
-      properties:
-        max_inherited_permission:
-          description: The maximum permission level workspace members inherit on team-visible projects. Only applicable when visibility is "workspace".
-          enum:
-          - view_only
-          - view_and_contribute
-          - view_and_edit
-          example: view_only
-          type: string
-        name:
-          description: The name to be used for the Project
-          type: string
-        visibility:
-          description: Either viewable by all members of the workspace, or private to users who are invited.
-          enum:
-          - workspace
-          - private
-          type: string
-      required:
-      - name
-      - visibility
-      title: ProjectCreateParams
       type: object
   securitySchemes:
     bearerAuth:

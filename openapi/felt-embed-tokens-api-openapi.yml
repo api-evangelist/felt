@@ -109,15 +109,25 @@ paths:
       - Embed Tokens
 components:
   schemas:
-    EmbedToken:
+    UnauthorizedError:
       properties:
-        expires_at:
-          example: '2024-05-25T15:51:34'
-          format: date_time
-          type: string
-        token:
-          type: string
-      title: EmbedToken
+        errors:
+          items:
+            properties:
+              detail:
+                type: string
+              source:
+                properties:
+                  header:
+                    enum:
+                    - authorization
+                    type: string
+                type: object
+              title:
+                type: string
+            type: object
+          type: array
+      title: UnauthorizedError
       type: object
     JsonErrorResponse:
       properties:
@@ -184,25 +194,15 @@ components:
           type: array
       title: NotFoundError
       type: object
-    UnauthorizedError:
+    EmbedToken:
       properties:
-        errors:
-          items:
-            properties:
-              detail:
-                type: string
-              source:
-                properties:
-                  header:
-                    enum:
-                    - authorization
-                    type: string
-                type: object
-              title:
-                type: string
-            type: object
-          type: array
-      title: UnauthorizedError
+        expires_at:
+          example: '2024-05-25T15:51:34'
+          format: date_time
+          type: string
+        token:
+          type: string
+      title: EmbedToken
       type: object
   securitySchemes:
     bearerAuth:
