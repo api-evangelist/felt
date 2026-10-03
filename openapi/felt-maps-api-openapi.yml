@@ -415,46 +415,6 @@ paths:
       - Maps
 components:
   schemas:
-    MapViewerPermissions:
-      additionalProperties: false
-      properties:
-        can_duplicate_map:
-          description: Whether viewers can duplicate the map and data
-          type: boolean
-        can_export_data:
-          description: Whether viewers can export map data
-          type: boolean
-        can_see_map_presence:
-          description: Whether viewers can see who else is viewing the map
-          type: boolean
-      title: MapViewerPermissions
-      type: object
-    MapUpdateParams:
-      additionalProperties: false
-      properties:
-        basemap:
-          description: 'The basemap to use for the map. Defaults to "default". Valid values are "default", "light", "dark", "satellite", a valid raster tile URL with {x}, {y}, and {z} parameters, or a hex color string like #ff0000.'
-          type: string
-        description:
-          description: A description to display in the map legend
-          type: string
-        public_access:
-          description: The level of access to grant to the map. Defaults to "view_only".
-          enum:
-          - private
-          - view_only
-          - view_and_comment
-          - view_comment_and_edit
-          type: string
-        table_settings:
-          $ref: '#/components/schemas/MapTableSettings'
-        title:
-          description: The new title for the map
-          type: string
-        viewer_permissions:
-          $ref: '#/components/schemas/MapViewerPermissions'
-      title: MapUpdateParams
-      type: object
     GeoJSON:
       properties:
         features:
@@ -488,12 +448,195 @@ components:
       - features
       title: GeoJSON
       type: object
-    FeltID:
-      example: luCHyMruTQ6ozGk3gPJfEB
-      format: felt_id
-      title: FeltID
-      type: string
-    InternalServerError:
+    MapCreateParams:
+      additionalProperties: false
+      properties:
+        basemap:
+          description: 'The basemap to use for the new map. Defaults to "default". Valid values are "default", "light", "dark", "satellite", a valid raster tile URL with {x}, {y}, and {z} parameters, or a hex color string like #ff0000.'
+          type: string
+        description:
+          description: A description to display in the map legend
+          type: string
+        lat:
+          description: If no data has been uploaded to the map, the initial latitude to center the map display on.
+          type: number
+        layer_urls:
+          description: An array of urls to use to create layers in the map. Only tile URLs for raster layers are supported at the moment.
+          items:
+            type: string
+          type: array
+        lon:
+          description: If no data has been uploaded to the map, the initial longitude to center the map display on.
+          type: number
+        public_access:
+          description: The level of access to grant to the map. Defaults to "view_only".
+          enum:
+          - private
+          - view_only
+          - view_and_comment
+          - view_comment_and_edit
+          type: string
+        title:
+          description: The title to be used for the map. Defaults to "Untitled Map"
+          type: string
+        workspace_id:
+          description: The workspace to create the map in. Defaults to the latest used workspace
+          type: string
+        zoom:
+          description: If no data has been uploaded to the map, the initial zoom level for the map to display.
+          type: number
+      title: MapCreateParams
+      type: object
+    MapUpdateParams:
+      additionalProperties: false
+      properties:
+        basemap:
+          description: 'The basemap to use for the map. Defaults to "default". Valid values are "default", "light", "dark", "satellite", a valid raster tile URL with {x}, {y}, and {z} parameters, or a hex color string like #ff0000.'
+          type: string
+        description:
+          description: A description to display in the map legend
+          type: string
+        public_access:
+          description: The level of access to grant to the map. Defaults to "view_only".
+          enum:
+          - private
+          - view_only
+          - view_and_comment
+          - view_comment_and_edit
+          type: string
+        table_settings:
+          $ref: '#/components/schemas/MapTableSettings'
+        title:
+          description: The new title for the map
+          type: string
+        viewer_permissions:
+          $ref: '#/components/schemas/MapViewerPermissions'
+      title: MapUpdateParams
+      type: object
+    MapViewerPermissions:
+      additionalProperties: false
+      properties:
+        can_duplicate_map:
+          description: Whether viewers can duplicate the map and data
+          type: boolean
+        can_export_data:
+          description: Whether viewers can export map data
+          type: boolean
+        can_see_map_presence:
+          description: Whether viewers can see who else is viewing the map
+          type: boolean
+      title: MapViewerPermissions
+      type: object
+    Map:
+      additionalProperties: false
+      properties:
+        basemap:
+          type: string
+        created_at:
+          example: '2024-05-25T15:51:34'
+          format: date_time
+          type: string
+        element_groups:
+          items:
+            properties:
+              elements:
+                $ref: '#/components/schemas/GeoJSON'
+              id:
+                $ref: '#/components/schemas/FeltID'
+              name:
+                type:
+                - string
+                - 'null'
+            type: object
+          type: array
+        elements:
+          $ref: '#/components/schemas/GeoJSON'
+        folder_id:
+          type:
+          - string
+          - 'null'
+        id:
+          $ref: '#/components/schemas/FeltID'
+        layer_groups:
+          items:
+            $ref: '#/components/schemas/LayerGroup'
+          type: array
+        layers:
+          items:
+            $ref: '#/components/schemas/Layer'
+          type: array
+        links:
+          properties:
+            self:
+              example: https://felt.com/api/v2/maps/V0dnOMOuTd9B9BOsL9C0UjmqC
+              type: string
+          type: object
+        project_id:
+          type: string
+        public_access:
+          enum:
+          - private
+          - view_only
+          - view_and_comment
+          - view_comment_and_edit
+          type: string
+        table_settings:
+          $ref: '#/components/schemas/MapTableSettings'
+        thumbnail_url:
+          description: A static thumbnail image of the map
+          type:
+          - string
+          - 'null'
+        title:
+          type: string
+        type:
+          enum:
+          - map
+          type: string
+        url:
+          type: string
+        viewer_permissions:
+          $ref: '#/components/schemas/MapViewerPermissions'
+        visited_at:
+          format: date_time
+          type:
+          - string
+          - 'null'
+      required:
+      - id
+      - type
+      - url
+      - title
+      - thumbnail_url
+      - created_at
+      - visited_at
+      - layers
+      - layer_groups
+      - elements
+      - element_groups
+      - project_id
+      - public_access
+      title: Map
+      type: object
+    MapMoveParams:
+      oneOf:
+      - properties:
+          project_id:
+            $ref: '#/components/schemas/FeltID'
+        required:
+        - project_id
+        title: MoveMapProjectParams
+        type: object
+      - properties:
+          folder_id:
+            $ref: '#/components/schemas/FeltID'
+        required:
+        - folder_id
+        title: MoveMapFolderParams
+        type: object
+      title: MapMoveParams
+      type: object
+    NotFoundError:
       properties:
         errors:
           items:
@@ -509,8 +652,13 @@ components:
                 type: string
             type: object
           type: array
-      title: InternalServerError
+      title: NotFoundError
       type: object
+    FeltID:
+      example: luCHyMruTQ6ozGk3gPJfEB
+      format: felt_id
+      title: FeltID
+      type: string
     LayerGroup:
       additionalProperties: false
       properties:
@@ -595,64 +743,48 @@ components:
           type: string
       title: MapDuplicateParams
       type: object
-    UnauthorizedError:
+    MapTableSettings:
+      additionalProperties: false
+      properties:
+        default_table_layer_id:
+          example: luCHyMruTQ6ozGk3gPJfEB
+          format: felt_id
+          type:
+          - string
+          - 'null'
+        viewers_can_open_table:
+          description: Whether viewers can open the data table
+          type: boolean
+      title: MapTableSettings
+      type: object
+    JsonErrorResponse:
       properties:
         errors:
           items:
             properties:
               detail:
+                example: null value where string expected
                 type: string
               source:
                 properties:
-                  header:
-                    enum:
-                    - authorization
+                  pointer:
+                    example: /data/attributes/petName
                     type: string
+                required:
+                - pointer
                 type: object
               title:
+                example: Invalid value
                 type: string
+            required:
+            - title
+            - source
+            - detail
             type: object
           type: array
-      title: UnauthorizedError
-      type: object
-    LayerMetadata:
-      additionalProperties: false
-      properties:
-        attribution_text:
-          type:
-          - string
-          - 'null'
-        attribution_url:
-          type:
-          - string
-          - 'null'
-        description:
-          type:
-          - string
-          - 'null'
-        license:
-          type:
-          - string
-          - 'null'
-        source_abbreviation:
-          type:
-          - string
-          - 'null'
-        source_name:
-          type:
-          - string
-          - 'null'
-        source_url:
-          type:
-          - string
-          - 'null'
-        updated_at:
-          example: '2025-03-24'
-          format: date
-          type:
-          - string
-          - 'null'
-      title: LayerMetadata
+      required:
+      - errors
+      title: JsonErrorResponse
       type: object
     Layer:
       additionalProperties: false
@@ -814,184 +946,7 @@ components:
       - refresh_status
       title: Layer
       type: object
-    JsonErrorResponse:
-      properties:
-        errors:
-          items:
-            properties:
-              detail:
-                example: null value where string expected
-                type: string
-              source:
-                properties:
-                  pointer:
-                    example: /data/attributes/petName
-                    type: string
-                required:
-                - pointer
-                type: object
-              title:
-                example: Invalid value
-                type: string
-            required:
-            - title
-            - source
-            - detail
-            type: object
-          type: array
-      required:
-      - errors
-      title: JsonErrorResponse
-      type: object
-    Map:
-      additionalProperties: false
-      properties:
-        basemap:
-          type: string
-        created_at:
-          example: '2024-05-25T15:51:34'
-          format: date_time
-          type: string
-        element_groups:
-          items:
-            properties:
-              elements:
-                $ref: '#/components/schemas/GeoJSON'
-              id:
-                $ref: '#/components/schemas/FeltID'
-              name:
-                type:
-                - string
-                - 'null'
-            type: object
-          type: array
-        elements:
-          $ref: '#/components/schemas/GeoJSON'
-        folder_id:
-          type:
-          - string
-          - 'null'
-        id:
-          $ref: '#/components/schemas/FeltID'
-        layer_groups:
-          items:
-            $ref: '#/components/schemas/LayerGroup'
-          type: array
-        layers:
-          items:
-            $ref: '#/components/schemas/Layer'
-          type: array
-        links:
-          properties:
-            self:
-              example: https://felt.com/api/v2/maps/V0dnOMOuTd9B9BOsL9C0UjmqC
-              type: string
-          type: object
-        project_id:
-          type: string
-        public_access:
-          enum:
-          - private
-          - view_only
-          - view_and_comment
-          - view_comment_and_edit
-          type: string
-        table_settings:
-          $ref: '#/components/schemas/MapTableSettings'
-        thumbnail_url:
-          description: A static thumbnail image of the map
-          type:
-          - string
-          - 'null'
-        title:
-          type: string
-        type:
-          enum:
-          - map
-          type: string
-        url:
-          type: string
-        viewer_permissions:
-          $ref: '#/components/schemas/MapViewerPermissions'
-        visited_at:
-          format: date_time
-          type:
-          - string
-          - 'null'
-      required:
-      - id
-      - type
-      - url
-      - title
-      - thumbnail_url
-      - created_at
-      - visited_at
-      - layers
-      - layer_groups
-      - elements
-      - element_groups
-      - project_id
-      - public_access
-      title: Map
-      type: object
-    MapMoveParams:
-      oneOf:
-      - properties:
-          project_id:
-            $ref: '#/components/schemas/FeltID'
-        required:
-        - project_id
-        title: MoveMapProjectParams
-        type: object
-      - properties:
-          folder_id:
-            $ref: '#/components/schemas/FeltID'
-        required:
-        - folder_id
-        title: MoveMapFolderParams
-        type: object
-      title: MapMoveParams
-      type: object
-    MapCreateParams:
-      additionalProperties: false
-      properties:
-        basemap:
-          description: 'The basemap to use for the new map. Defaults to "default". Valid values are "default", "light", "dark", "satellite", a valid raster tile URL with {x}, {y}, and {z} parameters, or a hex color string like #ff0000.'
-          type: string
-        description:
-          description: A description to display in the map legend
-          type: string
-        lat:
-          description: If no data has been uploaded to the map, the initial latitude to center the map display on.
-          type: number
-        layer_urls:
-          description: An array of urls to use to create layers in the map. Only tile URLs for raster layers are supported at the moment.
-          items:
-            type: string
-          type: array
-        lon:
-          description: If no data has been uploaded to the map, the initial longitude to center the map display on.
-          type: number
-        public_access:
-          description: The level of access to grant to the map. Defaults to "view_only".
-          enum:
-          - private
-          - view_only
-          - view_and_comment
-          - view_comment_and_edit
-          type: string
-        title:
-          description: The title to be used for the map. Defaults to "Untitled Map"
-          type: string
-        workspace_id:
-          description: The workspace to create the map in. Defaults to the latest used workspace
-          type: string
-        zoom:
-          description: If no data has been uploaded to the map, the initial zoom level for the map to display.
-          type: number
-      title: MapCreateParams
-      type: object
-    NotFoundError:
+    InternalServerError:
       properties:
         errors:
           items:
@@ -1007,21 +962,66 @@ components:
                 type: string
             type: object
           type: array
-      title: NotFoundError
+      title: InternalServerError
       type: object
-    MapTableSettings:
+    LayerMetadata:
       additionalProperties: false
       properties:
-        default_table_layer_id:
-          example: luCHyMruTQ6ozGk3gPJfEB
-          format: felt_id
+        attribution_text:
           type:
           - string
           - 'null'
-        viewers_can_open_table:
-          description: Whether viewers can open the data table
-          type: boolean
-      title: MapTableSettings
+        attribution_url:
+          type:
+          - string
+          - 'null'
+        description:
+          type:
+          - string
+          - 'null'
+        license:
+          type:
+          - string
+          - 'null'
+        source_abbreviation:
+          type:
+          - string
+          - 'null'
+        source_name:
+          type:
+          - string
+          - 'null'
+        source_url:
+          type:
+          - string
+          - 'null'
+        updated_at:
+          example: '2025-03-24'
+          format: date
+          type:
+          - string
+          - 'null'
+      title: LayerMetadata
+      type: object
+    UnauthorizedError:
+      properties:
+        errors:
+          items:
+            properties:
+              detail:
+                type: string
+              source:
+                properties:
+                  header:
+                    enum:
+                    - authorization
+                    type: string
+                type: object
+              title:
+                type: string
+            type: object
+          type: array
+      title: UnauthorizedError
       type: object
   securitySchemes:
     bearerAuth:

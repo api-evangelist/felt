@@ -240,11 +240,6 @@ components:
           type: string
       title: PublishLayerGroupParams
       type: object
-    FeltID:
-      example: luCHyMruTQ6ozGk3gPJfEB
-      format: felt_id
-      title: FeltID
-      type: string
     LayerLibrary:
       properties:
         layer_groups:
@@ -264,6 +259,38 @@ components:
       - layers
       - layer_groups
       title: LayerLibrary
+      type: object
+    NotFoundError:
+      properties:
+        errors:
+          items:
+            properties:
+              detail:
+                type: string
+              source:
+                properties:
+                  parameter:
+                    type: string
+                type: object
+              title:
+                type: string
+            type: object
+          type: array
+      title: NotFoundError
+      type: object
+    FeltID:
+      example: luCHyMruTQ6ozGk3gPJfEB
+      format: felt_id
+      title: FeltID
+      type: string
+    PublishLayerParams:
+      additionalProperties: false
+      properties:
+        name:
+          description: The name to publish the layer under
+          example: My Layer
+          type: string
+      title: PublishLayerParams
       type: object
     LayerGroup:
       additionalProperties: false
@@ -324,64 +351,34 @@ components:
       - layers
       title: LayerGroup
       type: object
-    UnauthorizedError:
+    JsonErrorResponse:
       properties:
         errors:
           items:
             properties:
               detail:
+                example: null value where string expected
                 type: string
               source:
                 properties:
-                  header:
-                    enum:
-                    - authorization
+                  pointer:
+                    example: /data/attributes/petName
                     type: string
+                required:
+                - pointer
                 type: object
               title:
+                example: Invalid value
                 type: string
+            required:
+            - title
+            - source
+            - detail
             type: object
           type: array
-      title: UnauthorizedError
-      type: object
-    LayerMetadata:
-      additionalProperties: false
-      properties:
-        attribution_text:
-          type:
-          - string
-          - 'null'
-        attribution_url:
-          type:
-          - string
-          - 'null'
-        description:
-          type:
-          - string
-          - 'null'
-        license:
-          type:
-          - string
-          - 'null'
-        source_abbreviation:
-          type:
-          - string
-          - 'null'
-        source_name:
-          type:
-          - string
-          - 'null'
-        source_url:
-          type:
-          - string
-          - 'null'
-        updated_at:
-          example: '2025-03-24'
-          format: date
-          type:
-          - string
-          - 'null'
-      title: LayerMetadata
+      required:
+      - errors
+      title: JsonErrorResponse
       type: object
     Layer:
       additionalProperties: false
@@ -543,44 +540,6 @@ components:
       - refresh_status
       title: Layer
       type: object
-    PublishLayerParams:
-      additionalProperties: false
-      properties:
-        name:
-          description: The name to publish the layer under
-          example: My Layer
-          type: string
-      title: PublishLayerParams
-      type: object
-    JsonErrorResponse:
-      properties:
-        errors:
-          items:
-            properties:
-              detail:
-                example: null value where string expected
-                type: string
-              source:
-                properties:
-                  pointer:
-                    example: /data/attributes/petName
-                    type: string
-                required:
-                - pointer
-                type: object
-              title:
-                example: Invalid value
-                type: string
-            required:
-            - title
-            - source
-            - detail
-            type: object
-          type: array
-      required:
-      - errors
-      title: JsonErrorResponse
-      type: object
     InternalServerError:
       properties:
         errors:
@@ -599,7 +558,46 @@ components:
           type: array
       title: InternalServerError
       type: object
-    NotFoundError:
+    LayerMetadata:
+      additionalProperties: false
+      properties:
+        attribution_text:
+          type:
+          - string
+          - 'null'
+        attribution_url:
+          type:
+          - string
+          - 'null'
+        description:
+          type:
+          - string
+          - 'null'
+        license:
+          type:
+          - string
+          - 'null'
+        source_abbreviation:
+          type:
+          - string
+          - 'null'
+        source_name:
+          type:
+          - string
+          - 'null'
+        source_url:
+          type:
+          - string
+          - 'null'
+        updated_at:
+          example: '2025-03-24'
+          format: date
+          type:
+          - string
+          - 'null'
+      title: LayerMetadata
+      type: object
+    UnauthorizedError:
       properties:
         errors:
           items:
@@ -608,14 +606,16 @@ components:
                 type: string
               source:
                 properties:
-                  parameter:
+                  header:
+                    enum:
+                    - authorization
                     type: string
                 type: object
               title:
                 type: string
             type: object
           type: array
-      title: NotFoundError
+      title: UnauthorizedError
       type: object
   securitySchemes:
     bearerAuth:

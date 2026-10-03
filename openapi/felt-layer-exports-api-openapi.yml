@@ -276,44 +276,7 @@ components:
       - filters
       title: CustomExportRequestStatus
       type: object
-    FeltID:
-      example: luCHyMruTQ6ozGk3gPJfEB
-      format: felt_id
-      title: FeltID
-      type: string
-    ExportLink:
-      additionalProperties: false
-      properties:
-        export_link:
-          type: string
-      required:
-      - export_link
-      title: ExportLink
-      type: object
-    CustomExportParams:
-      additionalProperties: false
-      properties:
-        email_on_completion:
-          description: Send an email to the requesting user when the export completes. Defaults to `true`
-          type: boolean
-        filters:
-          description: Filters for the layer in Felt Style Language filter format
-          items: {}
-          type: array
-        output_format:
-          enum:
-          - csv
-          - gpkg
-          - geojson
-          - geotiff
-          - pmtiles
-          example: csv
-          type: string
-      required:
-      - output_format
-      title: CustomExportParams
-      type: object
-    ServiceUnavailableError:
+    NotFoundError:
       properties:
         errors:
           items:
@@ -329,20 +292,7 @@ components:
                 type: string
             type: object
           type: array
-      title: ServiceUnavailableError
-      type: object
-    CustomExportResponse:
-      additionalProperties: false
-      properties:
-        export_request_id:
-          $ref: '#/components/schemas/FeltID'
-        poll_endpoint:
-          example: http://felt.com/api/v2/maps/vAbZ5eKqRoGe4sCH8nHW8D/layers/7kF9Cfz45TUWIiuuWV8uZ7A/custom_exports/auFxn9BO4RrGGiKrGfaS7ZB
-          type: string
-      required:
-      - export_request_id
-      - poll_endpoint
-      title: CustomExportResponse
+      title: NotFoundError
       type: object
     UnauthorizedError:
       properties:
@@ -363,6 +313,33 @@ components:
             type: object
           type: array
       title: UnauthorizedError
+      type: object
+    FeltID:
+      example: luCHyMruTQ6ozGk3gPJfEB
+      format: felt_id
+      title: FeltID
+      type: string
+    ExportLink:
+      additionalProperties: false
+      properties:
+        export_link:
+          type: string
+      required:
+      - export_link
+      title: ExportLink
+      type: object
+    CustomExportResponse:
+      additionalProperties: false
+      properties:
+        export_request_id:
+          $ref: '#/components/schemas/FeltID'
+        poll_endpoint:
+          example: http://felt.com/api/v2/maps/vAbZ5eKqRoGe4sCH8nHW8D/layers/7kF9Cfz45TUWIiuuWV8uZ7A/custom_exports/auFxn9BO4RrGGiKrGfaS7ZB
+          type: string
+      required:
+      - export_request_id
+      - poll_endpoint
+      title: CustomExportResponse
       type: object
     JsonErrorResponse:
       properties:
@@ -411,7 +388,7 @@ components:
           type: array
       title: InternalServerError
       type: object
-    NotFoundError:
+    ServiceUnavailableError:
       properties:
         errors:
           items:
@@ -427,7 +404,30 @@ components:
                 type: string
             type: object
           type: array
-      title: NotFoundError
+      title: ServiceUnavailableError
+      type: object
+    CustomExportParams:
+      additionalProperties: false
+      properties:
+        email_on_completion:
+          description: Send an email to the requesting user when the export completes. Defaults to `true`
+          type: boolean
+        filters:
+          description: Filters for the layer in Felt Style Language filter format
+          items: {}
+          type: array
+        output_format:
+          enum:
+          - csv
+          - gpkg
+          - geojson
+          - geotiff
+          - pmtiles
+          example: csv
+          type: string
+      required:
+      - output_format
+      title: CustomExportParams
       type: object
   securitySchemes:
     bearerAuth:

@@ -219,6 +219,30 @@ paths:
       - Comments
 components:
   schemas:
+    NotFoundError:
+      properties:
+        errors:
+          items:
+            properties:
+              detail:
+                type: string
+              source:
+                properties:
+                  parameter:
+                    type: string
+                type: object
+              title:
+                type: string
+            type: object
+          type: array
+      title: NotFoundError
+      type: object
+    CommentResolved:
+      properties:
+        comment_id:
+          $ref: '#/components/schemas/FeltID'
+      title: CommentResolved
+      type: object
     FeltID:
       example: luCHyMruTQ6ozGk3gPJfEB
       format: felt_id
@@ -229,32 +253,6 @@ components:
         description: Comment Thread
       title: CommentExport
       type: array
-    CommentResolved:
-      properties:
-        comment_id:
-          $ref: '#/components/schemas/FeltID'
-      title: CommentResolved
-      type: object
-    UnauthorizedError:
-      properties:
-        errors:
-          items:
-            properties:
-              detail:
-                type: string
-              source:
-                properties:
-                  header:
-                    enum:
-                    - authorization
-                    type: string
-                type: object
-              title:
-                type: string
-            type: object
-          type: array
-      title: UnauthorizedError
-      type: object
     JsonErrorResponse:
       properties:
         errors:
@@ -302,7 +300,7 @@ components:
           type: array
       title: InternalServerError
       type: object
-    NotFoundError:
+    UnauthorizedError:
       properties:
         errors:
           items:
@@ -311,14 +309,16 @@ components:
                 type: string
               source:
                 properties:
-                  parameter:
+                  header:
+                    enum:
+                    - authorization
                     type: string
                 type: object
               title:
                 type: string
             type: object
           type: array
-      title: NotFoundError
+      title: UnauthorizedError
       type: object
   securitySchemes:
     bearerAuth:
