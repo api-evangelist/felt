@@ -608,12 +608,35 @@ paths:
       - Sources
 components:
   schemas:
-    SourceConnection-ABSBucket:
+    SourceCredentialUpdateParams:
       additionalProperties: false
-      description: Microsoft Azure Blob Storage
       properties:
-        blob_storage_url:
+        credential:
+          oneOf:
+          - $ref: '#/components/schemas/SourceCredentialUpdate-AwsAssumeRole'
+          - $ref: '#/components/schemas/SourceCredentialUpdate-AzureStorageString'
+          - $ref: '#/components/schemas/SourceCredentialUpdate-CustomHeaders'
+          - $ref: '#/components/schemas/SourceCredentialUpdate-GcpServiceAccountJson'
+          - $ref: '#/components/schemas/SourceCredentialUpdate-KeyPair'
+          - $ref: '#/components/schemas/SourceCredentialUpdate-SnowflakePAT'
+          type: object
+        name:
           type: string
+        use_case:
+          enum:
+          - stac_api_authentication
+          - stac_asset_fetching
+          - source_authentication
+          type: string
+      title: SourceCredentialUpdateParams
+      type: object
+    SourceConnection-Databricks:
+      additionalProperties: false
+      properties:
+        catalog:
+          type:
+          - string
+          - 'null'
         credentials:
           items:
             properties:
@@ -623,7 +646,8 @@ components:
                 - 'null'
               credential:
                 oneOf:
-                - $ref: '#/components/schemas/SourceCredential-AzureStorageString'
+                - $ref: '#/components/schemas/SourceCredential-OAuthM2M'
+                - $ref: '#/components/schemas/SourceCredential-DatabricksPAT'
                 type: object
               id:
                 $ref: '#/components/schemas/FeltID'
@@ -641,11 +665,298 @@ components:
                 type: string
             type: object
           type: array
+        http_path:
+          type: string
+        schema:
+          type:
+          - string
+          - 'null'
+        server_hostname:
+          type: string
         type:
           enum:
-          - abs_bucket
+          - databricks
           type: string
-      title: SourceConnection-ABSBucket
+      title: SourceConnection-Databricks
+      type: object
+    Source:
+      additionalProperties: false
+      properties:
+        automatic_sync:
+          enum:
+          - enabled
+          - paused
+          type: string
+        connection:
+          oneOf:
+          - $ref: '#/components/schemas/SourceConnection-ABSBucket'
+          - $ref: '#/components/schemas/SourceConnection-Google-BigQuery'
+          - $ref: '#/components/schemas/SourceConnection-Databricks'
+          - $ref: '#/components/schemas/SourceConnection-ESRI-FeatureServer'
+          - $ref: '#/components/schemas/SourceConnection-GCSBucket'
+          - $ref: '#/components/schemas/SourceConnection-Microsoft-SQL'
+          - $ref: '#/components/schemas/SourceConnection-Postgres'
+          - $ref: '#/components/schemas/SourceConnection-Amazon-Redshift'
+          - $ref: '#/components/schemas/SourceConnection-S3Bucket'
+          - $ref: '#/components/schemas/SourceConnection-Snowflake'
+          - $ref: '#/components/schemas/SourceConnection-STAC'
+          - $ref: '#/components/schemas/SourceConnection-WFS'
+          - $ref: '#/components/schemas/SourceConnection-WMS-WMTS'
+        created_at:
+          type:
+          - integer
+          - 'null'
+        datasets:
+          items:
+            $ref: '#/components/schemas/SourceDataset'
+          type: array
+        id:
+          $ref: '#/components/schemas/FeltID'
+        last_synced_at:
+          type:
+          - integer
+          - 'null'
+        name:
+          type: string
+        owner_id:
+          $ref: '#/components/schemas/FeltID'
+        permissions:
+          $ref: '#/components/schemas/SourcePermissions'
+        sync_status:
+          enum:
+          - syncing
+          - completed
+          - failed
+          type: string
+        type:
+          enum:
+          - source
+          type: string
+        updated_at:
+          type:
+          - integer
+          - 'null'
+        workspace_id:
+          $ref: '#/components/schemas/FeltID'
+      title: Source
+      type: object
+    SourceUpdateParams:
+      additionalProperties: false
+      properties:
+        connection:
+          $ref: '#/components/schemas/SourceUpdateConnectionParams'
+        name:
+          type: string
+        permissions:
+          $ref: '#/components/schemas/SourcePermissions'
+      title: SourceUpdateParams
+      type: object
+    SourceCredentialUpdate-AzureStorageString:
+      additionalProperties: false
+      description: Authenticate to Azure Blob Storage
+      properties:
+        connection_string:
+          type: string
+        type:
+          enum:
+          - azure_storage_connection_string
+          type: string
+      required:
+      - type
+      title: SourceCredentialUpdate-AzureStorageString
+      type: object
+    SourceCredentialUpdate-AwsAssumeRole:
+      additionalProperties: false
+      description: Authenticate to AWS S3
+      properties:
+        role_arn:
+          type: string
+        role_session_name:
+          type: string
+        type:
+          enum:
+          - aws_assume_role
+          type: string
+      required:
+      - type
+      title: SourceCredentialUpdate-AwsAssumeRole
+      type: object
+    SourceConnection-WMS-WMTS:
+      additionalProperties: false
+      description: Web Map Service / Web Map Tile Service
+      properties:
+        type:
+          enum:
+          - wms_wmts
+          type: string
+        url:
+          type: string
+      title: SourceConnection-WMS-WMTS
+      type: object
+    UnauthorizedError:
+      properties:
+        errors:
+          items:
+            properties:
+              detail:
+                type: string
+              source:
+                properties:
+                  header:
+                    enum:
+                    - authorization
+                    type: string
+                type: object
+              title:
+                type: string
+            type: object
+          type: array
+      title: UnauthorizedError
+      type: object
+    SourceCredential-DatabricksPAT:
+      additionalProperties: false
+      description: Authenticate to Databricks using a Personal Access Token (PAT)
+      properties:
+        token:
+          type: string
+        type:
+          enum:
+          - databricks_pat
+          type: string
+      required:
+      - type
+      - token
+      title: SourceCredential-DatabricksPAT
+      type: object
+    SourceCreateParams:
+      additionalProperties: false
+      properties:
+        connection:
+          $ref: '#/components/schemas/SourceCreateConnectionParams'
+        name:
+          type: string
+        permissions:
+          $ref: '#/components/schemas/SourcePermissions'
+      required:
+      - name
+      - connection
+      title: SourceCreateParams
+      type: object
+    SourceConnection-S3Bucket:
+      additionalProperties: false
+      description: AWS S3
+      properties:
+        credentials:
+          items:
+            properties:
+              created_at:
+                type:
+                - integer
+                - 'null'
+              credential:
+                oneOf:
+                - $ref: '#/components/schemas/SourceCredential-AwsAssumeRole'
+                type: object
+              id:
+                $ref: '#/components/schemas/FeltID'
+              name:
+                type: string
+              source_id:
+                $ref: '#/components/schemas/FeltID'
+              updated_at:
+                type:
+                - integer
+                - 'null'
+              use_case:
+                enum:
+                - source_authentication
+                type: string
+            type: object
+          type: array
+        s3_uri:
+          type: string
+        type:
+          enum:
+          - s3_bucket
+          type: string
+      title: SourceConnection-S3Bucket
+      type: object
+    SourceCredential-AwsAssumeRole:
+      additionalProperties: false
+      description: Authenticate to AWS S3
+      properties:
+        role_arn:
+          type: string
+        role_session_name:
+          type: string
+        type:
+          enum:
+          - aws_assume_role
+          type: string
+      required:
+      - type
+      - role_arn
+      - role_session_name
+      title: SourceCredential-AwsAssumeRole
+      type: object
+    SourceCredentialUpdate-CustomHeaders:
+      additionalProperties: false
+      description: Authenticate to an API using headers
+      properties:
+        headers:
+          items:
+            properties:
+              name:
+                description: The header name
+                type: string
+              sensitive:
+                description: Whether or not the header is sensitive. If it is marked as sensitive, then `felt:redacted` will be returned when viewing this header
+                type: boolean
+              value:
+                description: The header value
+                type: string
+            required:
+            - name
+            - value
+            - sensitive
+            type: object
+          type: array
+        type:
+          enum:
+          - custom_headers
+          type: string
+      required:
+      - type
+      title: SourceCredentialUpdate-CustomHeaders
+      type: object
+    JsonErrorResponse:
+      properties:
+        errors:
+          items:
+            properties:
+              detail:
+                example: null value where string expected
+                type: string
+              source:
+                properties:
+                  pointer:
+                    example: /data/attributes/petName
+                    type: string
+                required:
+                - pointer
+                type: object
+              title:
+                example: Invalid value
+                type: string
+            required:
+            - title
+            - source
+            - detail
+            type: object
+          type: array
+      required:
+      - errors
+      title: JsonErrorResponse
       type: object
     SourceReference:
       additionalProperties: false
@@ -712,598 +1023,6 @@ components:
         workspace_id:
           $ref: '#/components/schemas/FeltID'
       title: SourceReference
-      type: object
-    SourceCredential-CustomHeaders:
-      additionalProperties: false
-      description: Authenticate to an API using headers
-      properties:
-        headers:
-          items:
-            properties:
-              name:
-                description: The header name
-                type: string
-              sensitive:
-                description: Whether or not the header is sensitive. If it is marked as sensitive, then `felt:redacted` will be returned when viewing this header
-                type: boolean
-              value:
-                description: The header value
-                type: string
-            required:
-            - name
-            - value
-            - sensitive
-            type: object
-          type: array
-        type:
-          enum:
-          - custom_headers
-          type: string
-      required:
-      - type
-      - headers
-      title: SourceCredential-CustomHeaders
-      type: object
-    FeltID:
-      example: luCHyMruTQ6ozGk3gPJfEB
-      format: felt_id
-      title: FeltID
-      type: string
-    SourceConnection-Amazon-Redshift:
-      additionalProperties: false
-      properties:
-        database:
-          type: string
-        host:
-          type: string
-        port:
-          type:
-          - integer
-          - 'null'
-        type:
-          enum:
-          - redshift
-          type: string
-        user:
-          type: string
-      title: SourceConnection-Amazon-Redshift
-      type: object
-    SourcePermissions:
-      oneOf:
-      - additionalProperties: false
-        properties:
-          type:
-            enum:
-            - workspace_editors
-            type: string
-        required:
-        - type
-        title: SourcePermissions-WorkspaceEditors
-        type: object
-      - additionalProperties: false
-        properties:
-          type:
-            enum:
-            - source_owner
-            type: string
-        required:
-        - type
-        title: SourcePermissions-SourceOwner
-        type: object
-      - additionalProperties: false
-        properties:
-          project_ids:
-            items:
-              $ref: '#/components/schemas/FeltID'
-            type: array
-          type:
-            enum:
-            - project_editors
-            type: string
-        required:
-        - type
-        - project_ids
-        title: SourcePermissions-ProjectEditors
-        type: object
-      title: SourcePermissions
-    SourceCredentialUpdateParams:
-      additionalProperties: false
-      properties:
-        credential:
-          oneOf:
-          - $ref: '#/components/schemas/SourceCredentialUpdate-AwsAssumeRole'
-          - $ref: '#/components/schemas/SourceCredentialUpdate-AzureStorageString'
-          - $ref: '#/components/schemas/SourceCredentialUpdate-CustomHeaders'
-          - $ref: '#/components/schemas/SourceCredentialUpdate-GcpServiceAccountJson'
-          - $ref: '#/components/schemas/SourceCredentialUpdate-KeyPair'
-          - $ref: '#/components/schemas/SourceCredentialUpdate-SnowflakePAT'
-          type: object
-        name:
-          type: string
-        use_case:
-          enum:
-          - stac_api_authentication
-          - stac_asset_fetching
-          - source_authentication
-          type: string
-      title: SourceCredentialUpdateParams
-      type: object
-    InternalServerError:
-      properties:
-        errors:
-          items:
-            properties:
-              detail:
-                type: string
-              source:
-                properties:
-                  parameter:
-                    type: string
-                type: object
-              title:
-                type: string
-            type: object
-          type: array
-      title: InternalServerError
-      type: object
-    SourceConnection-Microsoft-SQL:
-      additionalProperties: false
-      properties:
-        database:
-          type: string
-        host:
-          type: string
-        port:
-          type:
-          - integer
-          - 'null'
-        type:
-          enum:
-          - mssql
-          type: string
-        user:
-          type: string
-      title: SourceConnection-Microsoft-SQL
-      type: object
-    SourceConnection-STAC:
-      additionalProperties: false
-      description: SpatioTemporal Asset Catalogs
-      properties:
-        credentials:
-          items:
-            properties:
-              created_at:
-                type:
-                - integer
-                - 'null'
-              credential:
-                oneOf:
-                - $ref: '#/components/schemas/SourceCredential-GcpServiceAccountJson'
-                - $ref: '#/components/schemas/SourceCredential-AzureStorageString'
-                - $ref: '#/components/schemas/SourceCredential-AwsAssumeRole'
-                - $ref: '#/components/schemas/SourceCredential-CustomHeaders'
-                type: object
-              id:
-                $ref: '#/components/schemas/FeltID'
-              name:
-                type: string
-              source_id:
-                $ref: '#/components/schemas/FeltID'
-              updated_at:
-                type:
-                - integer
-                - 'null'
-              use_case:
-                enum:
-                - stac_api_authentication
-                - stac_asset_fetching
-                type: string
-            type: object
-          type: array
-        type:
-          enum:
-          - stac
-          type: string
-        url:
-          type: string
-      title: SourceConnection-STAC
-      type: object
-    JsonErrorResponse:
-      properties:
-        errors:
-          items:
-            properties:
-              detail:
-                example: null value where string expected
-                type: string
-              source:
-                properties:
-                  pointer:
-                    example: /data/attributes/petName
-                    type: string
-                required:
-                - pointer
-                type: object
-              title:
-                example: Invalid value
-                type: string
-            required:
-            - title
-            - source
-            - detail
-            type: object
-          type: array
-      required:
-      - errors
-      title: JsonErrorResponse
-      type: object
-    SourceCredentialUpdate-KeyPair:
-      additionalProperties: false
-      description: Authenticate using key pair authentication
-      properties:
-        private_key:
-          type: string
-        private_key_name:
-          type: string
-        private_key_passphrase:
-          type: string
-        type:
-          enum:
-          - key_pair
-          type: string
-      required:
-      - type
-      title: SourceCredentialUpdate-KeyPair
-      type: object
-    SourceCredential:
-      additionalProperties: false
-      properties:
-        created_at:
-          type:
-          - integer
-          - 'null'
-        credential:
-          oneOf:
-          - $ref: '#/components/schemas/SourceCredential-AwsAssumeRole'
-          - $ref: '#/components/schemas/SourceCredential-AzureStorageString'
-          - $ref: '#/components/schemas/SourceCredential-CustomHeaders'
-          - $ref: '#/components/schemas/SourceCredential-GcpServiceAccountJson'
-          - $ref: '#/components/schemas/SourceCredential-KeyPair'
-          - $ref: '#/components/schemas/SourceCredential-SnowflakePAT'
-          type: object
-        id:
-          $ref: '#/components/schemas/FeltID'
-        name:
-          type: string
-        source_id:
-          $ref: '#/components/schemas/FeltID'
-        updated_at:
-          type:
-          - integer
-          - 'null'
-        use_case:
-          enum:
-          - stac_api_authentication
-          - stac_asset_fetching
-          - source_authentication
-          type: string
-      required:
-      - id
-      - source_id
-      - name
-      - use_case
-      - created_at
-      - updated_at
-      - credential
-      title: SourceCredential
-      type: object
-    SourceUpdateConnectionParams:
-      oneOf:
-      - additionalProperties: false
-        properties:
-          blob_storage_url:
-            description: ABS blob storage URL
-            type: string
-          type:
-            enum:
-            - abs_bucket
-            type: string
-        required:
-        - type
-        title: SourceUpdateConnectionParams-ABS
-        type: object
-      - additionalProperties: false
-        properties:
-          base64_encoded_service_account:
-            description: BigQuery credentials - Base 64 encoded Service account JSON
-            type:
-            - string
-            - 'null'
-          dataset:
-            description: BigQuery dataset
-            type:
-            - string
-            - 'null'
-          project:
-            description: BigQuery project
-            type: string
-          type:
-            enum:
-            - bigquery
-            type: string
-        required:
-        - type
-        title: SourceUpdateConnectionParams-GoogleBigQuery
-        type: object
-      - additionalProperties: false
-        properties:
-          catalog:
-            description: Databricks catalog
-            type:
-            - string
-            - 'null'
-          http_path:
-            description: Databricks server HTTP path
-            type: string
-          schema:
-            description: Databricks schema
-            type:
-            - string
-            - 'null'
-          server_hostname:
-            description: Databricks server hostname
-            type: string
-          type:
-            enum:
-            - databricks
-            type: string
-        required:
-        - type
-        title: SourceUpdateConnectionParams-Databricks
-        type: object
-      - additionalProperties: false
-        properties:
-          token:
-            description: Feature Server token
-            type:
-            - string
-            - 'null'
-          type:
-            enum:
-            - feature_server
-            type: string
-          url:
-            description: Feature Server URL
-            type: string
-        required:
-        - type
-        title: SourceUpdateConnectionParams-ESRIFeatureServer
-        type: object
-      - additionalProperties: false
-        properties:
-          gs_uri:
-            description: GCS URI
-            type: string
-          type:
-            enum:
-            - gcs_bucket
-            type: string
-        required:
-        - type
-        title: SourceUpdateConnectionParams-GCS
-        type: object
-      - additionalProperties: false
-        properties:
-          database:
-            description: MSSQL database name
-            type: string
-          host:
-            description: MSSQL host
-            type: string
-          password:
-            description: MSSQL password
-            type: string
-          port:
-            description: MSSQL port
-            type:
-            - integer
-            - 'null'
-          type:
-            enum:
-            - mssql
-            type: string
-          user:
-            description: MSSQL user name
-            type: string
-        required:
-        - type
-        title: SourceUpdateConnectionParams-MicrosoftSQL
-        type: object
-      - additionalProperties: false
-        description: Postgres / PostGIS
-        properties:
-          database:
-            description: Postgres database name
-            type: string
-          host:
-            description: Postgres host
-            type: string
-          password:
-            description: Postgres password
-            type: string
-          port:
-            description: Postgres port
-            type:
-            - integer
-            - 'null'
-          schema:
-            description: Postgres schema
-            type: string
-          type:
-            enum:
-            - postgresql
-            type: string
-          user:
-            description: Postgres user name
-            type: string
-        required:
-        - type
-        title: SourceUpdateConnectionParams-Postgres
-        type: object
-      - additionalProperties: false
-        properties:
-          database:
-            description: Redshift database name
-            type: string
-          host:
-            description: Redshift host
-            type: string
-          password:
-            description: Redshift password
-            type: string
-          port:
-            description: Redshift port
-            type:
-            - integer
-            - 'null'
-          type:
-            enum:
-            - redshift
-            type: string
-          user:
-            description: Redshift user name
-            type: string
-        required:
-        - type
-        title: SourceUpdateConnectionParams-AmazonRedshift
-        type: object
-      - additionalProperties: false
-        properties:
-          s3_uri:
-            description: S3 URI
-            type: string
-          type:
-            enum:
-            - s3_bucket
-            type: string
-        required:
-        - type
-        title: SourceUpdateConnectionParams-S3
-        type: object
-      - additionalProperties: false
-        properties:
-          account_id:
-            description: Snowflake account ID
-            type: string
-          database:
-            description: Snowflake database name
-            type: string
-          password:
-            description: Snowflake password
-            type: string
-          role:
-            description: Snowflake role
-            type:
-            - string
-            - 'null'
-          schema:
-            description: Snowflake database schema
-            type:
-            - string
-            - 'null'
-          type:
-            enum:
-            - snowflake
-            type: string
-          user:
-            description: Snowflake user name
-            type: string
-          warehouse:
-            description: Snowflake warehouse
-            type:
-            - string
-            - 'null'
-        required:
-        - type
-        title: SourceUpdateConnectionParams-Snowflake
-        type: object
-      - additionalProperties: false
-        description: SpatioTemporal Asset Catalogs
-        properties:
-          token:
-            description: STAC token
-            type:
-            - string
-            - 'null'
-          type:
-            enum:
-            - stac
-            type: string
-          url:
-            description: STAC server / asset URL
-            type: string
-        required:
-        - type
-        title: SourceUpdateConnectionParams-STAC
-        type: object
-      - additionalProperties: false
-        description: Web Feature Server
-        properties:
-          type:
-            enum:
-            - wfs
-            type: string
-          url:
-            description: WFS URL
-            type: string
-        required:
-        - type
-        title: SourceUpdateConnectionParams-WFS
-        type: object
-      - additionalProperties: false
-        description: Web Map Service / Web Map Tile Service
-        properties:
-          type:
-            enum:
-            - wms_wmts
-            type: string
-          url:
-            description: WMS/WMTS URL
-            type: string
-        required:
-        - type
-        title: SourceUpdateConnectionParams-WMS-WMTS
-        type: object
-      title: SourceUpdateConnectionParams
-    SourceCredentialUpdate-CustomHeaders:
-      additionalProperties: false
-      description: Authenticate to an API using headers
-      properties:
-        headers:
-          items:
-            properties:
-              name:
-                description: The header name
-                type: string
-              sensitive:
-                description: Whether or not the header is sensitive. If it is marked as sensitive, then `felt:redacted` will be returned when viewing this header
-                type: boolean
-              value:
-                description: The header value
-                type: string
-            required:
-            - name
-            - value
-            - sensitive
-            type: object
-          type: array
-        type:
-          enum:
-          - custom_headers
-          type: string
-      required:
-      - type
-      title: SourceCredentialUpdate-CustomHeaders
       type: object
     SourceCreateConnectionParams:
       oneOf:
@@ -1727,335 +1446,20 @@ components:
         title: SourceCreateConnectionParams-WMSWMTS
         type: object
       title: SourceCreateConnectionParams
-    SourceDataset:
+    SourceCredential-AzureStorageString:
       additionalProperties: false
-      description: A Dataset found when inspecting a Source, e.g. a database table.
+      description: Authenticate to Azure Blob Storage
       properties:
-        created_at:
-          type: integer
-        description:
-          type:
-          - string
-          - 'null'
-        geometry_type:
-          enum:
-          - polygon
-          - line
-          - point
-          - raster
-          - none
-          type: string
-        id:
-          $ref: '#/components/schemas/FeltID'
-        inspection_status:
-          enum:
-          - completed
-          - failed
-          type: string
-        name:
+        connection_string:
           type: string
         type:
           enum:
-          - dataset
-          type: string
-        updated_at:
-          type: integer
-      title: SourceDataset
-      type: object
-    Source:
-      additionalProperties: false
-      properties:
-        automatic_sync:
-          enum:
-          - enabled
-          - paused
-          type: string
-        connection:
-          oneOf:
-          - $ref: '#/components/schemas/SourceConnection-ABSBucket'
-          - $ref: '#/components/schemas/SourceConnection-Google-BigQuery'
-          - $ref: '#/components/schemas/SourceConnection-Databricks'
-          - $ref: '#/components/schemas/SourceConnection-ESRI-FeatureServer'
-          - $ref: '#/components/schemas/SourceConnection-GCSBucket'
-          - $ref: '#/components/schemas/SourceConnection-Microsoft-SQL'
-          - $ref: '#/components/schemas/SourceConnection-Postgres'
-          - $ref: '#/components/schemas/SourceConnection-Amazon-Redshift'
-          - $ref: '#/components/schemas/SourceConnection-S3Bucket'
-          - $ref: '#/components/schemas/SourceConnection-Snowflake'
-          - $ref: '#/components/schemas/SourceConnection-STAC'
-          - $ref: '#/components/schemas/SourceConnection-WFS'
-          - $ref: '#/components/schemas/SourceConnection-WMS-WMTS'
-        created_at:
-          type:
-          - integer
-          - 'null'
-        datasets:
-          items:
-            $ref: '#/components/schemas/SourceDataset'
-          type: array
-        id:
-          $ref: '#/components/schemas/FeltID'
-        last_synced_at:
-          type:
-          - integer
-          - 'null'
-        name:
-          type: string
-        owner_id:
-          $ref: '#/components/schemas/FeltID'
-        permissions:
-          $ref: '#/components/schemas/SourcePermissions'
-        sync_status:
-          enum:
-          - syncing
-          - completed
-          - failed
-          type: string
-        type:
-          enum:
-          - source
-          type: string
-        updated_at:
-          type:
-          - integer
-          - 'null'
-        workspace_id:
-          $ref: '#/components/schemas/FeltID'
-      title: Source
-      type: object
-    NotFoundError:
-      properties:
-        errors:
-          items:
-            properties:
-              detail:
-                type: string
-              source:
-                properties:
-                  parameter:
-                    type: string
-                type: object
-              title:
-                type: string
-            type: object
-          type: array
-      title: NotFoundError
-      type: object
-    SourceConnection-GCSBucket:
-      additionalProperties: false
-      description: Google Cloud Storage
-      properties:
-        credentials:
-          items:
-            properties:
-              created_at:
-                type:
-                - integer
-                - 'null'
-              credential:
-                oneOf:
-                - $ref: '#/components/schemas/SourceCredential-GcpServiceAccountJson'
-                type: object
-              id:
-                $ref: '#/components/schemas/FeltID'
-              name:
-                type: string
-              source_id:
-                $ref: '#/components/schemas/FeltID'
-              updated_at:
-                type:
-                - integer
-                - 'null'
-              use_case:
-                enum:
-                - source_authentication
-                type: string
-            type: object
-          type: array
-        gs_uri:
-          type: string
-        type:
-          enum:
-          - gcs_bucket
-          type: string
-      title: SourceConnection-GCSBucket
-      type: object
-    SourceCredential-AwsAssumeRole:
-      additionalProperties: false
-      description: Authenticate to AWS S3
-      properties:
-        role_arn:
-          type: string
-        role_session_name:
-          type: string
-        type:
-          enum:
-          - aws_assume_role
+          - azure_storage_connection_string
           type: string
       required:
       - type
-      - role_arn
-      - role_session_name
-      title: SourceCredential-AwsAssumeRole
-      type: object
-    SourceCredential-GcpServiceAccountJson:
-      additionalProperties: false
-      properties:
-        service_account_filename:
-          type: string
-        service_account_json:
-          oneOf:
-          - type: object
-          - type: string
-        type:
-          enum:
-          - gcp_service_account_json
-          type: string
-      required:
-      - type
-      - service_account_filename
-      - service_account_json
-      title: SourceCredential-GcpServiceAccountJson
-      type: object
-    SourceCreateParams:
-      additionalProperties: false
-      properties:
-        connection:
-          $ref: '#/components/schemas/SourceCreateConnectionParams'
-        name:
-          type: string
-        permissions:
-          $ref: '#/components/schemas/SourcePermissions'
-      required:
-      - name
-      - connection
-      title: SourceCreateParams
-      type: object
-    SourceCredential-DatabricksPAT:
-      additionalProperties: false
-      description: Authenticate to Databricks using a Personal Access Token (PAT)
-      properties:
-        token:
-          type: string
-        type:
-          enum:
-          - databricks_pat
-          type: string
-      required:
-      - type
-      - token
-      title: SourceCredential-DatabricksPAT
-      type: object
-    SourceConnection-Databricks:
-      additionalProperties: false
-      properties:
-        catalog:
-          type:
-          - string
-          - 'null'
-        credentials:
-          items:
-            properties:
-              created_at:
-                type:
-                - integer
-                - 'null'
-              credential:
-                oneOf:
-                - $ref: '#/components/schemas/SourceCredential-OAuthM2M'
-                - $ref: '#/components/schemas/SourceCredential-DatabricksPAT'
-                type: object
-              id:
-                $ref: '#/components/schemas/FeltID'
-              name:
-                type: string
-              source_id:
-                $ref: '#/components/schemas/FeltID'
-              updated_at:
-                type:
-                - integer
-                - 'null'
-              use_case:
-                enum:
-                - source_authentication
-                type: string
-            type: object
-          type: array
-        http_path:
-          type: string
-        schema:
-          type:
-          - string
-          - 'null'
-        server_hostname:
-          type: string
-        type:
-          enum:
-          - databricks
-          type: string
-      title: SourceConnection-Databricks
-      type: object
-    SourceConnection-S3Bucket:
-      additionalProperties: false
-      description: AWS S3
-      properties:
-        credentials:
-          items:
-            properties:
-              created_at:
-                type:
-                - integer
-                - 'null'
-              credential:
-                oneOf:
-                - $ref: '#/components/schemas/SourceCredential-AwsAssumeRole'
-                type: object
-              id:
-                $ref: '#/components/schemas/FeltID'
-              name:
-                type: string
-              source_id:
-                $ref: '#/components/schemas/FeltID'
-              updated_at:
-                type:
-                - integer
-                - 'null'
-              use_case:
-                enum:
-                - source_authentication
-                type: string
-            type: object
-          type: array
-        s3_uri:
-          type: string
-        type:
-          enum:
-          - s3_bucket
-          type: string
-      title: SourceConnection-S3Bucket
-      type: object
-    SourceUpdateParams:
-      additionalProperties: false
-      properties:
-        connection:
-          $ref: '#/components/schemas/SourceUpdateConnectionParams'
-        name:
-          type: string
-        permissions:
-          $ref: '#/components/schemas/SourcePermissions'
-      title: SourceUpdateParams
-      type: object
-    SourceConnection-WMS-WMTS:
-      additionalProperties: false
-      description: Web Map Service / Web Map Tile Service
-      properties:
-        type:
-          enum:
-          - wms_wmts
-          type: string
-        url:
-          type: string
-      title: SourceConnection-WMS-WMTS
+      - connection_string
+      title: SourceCredential-AzureStorageString
       type: object
     SourceConnection-Snowflake:
       additionalProperties: false
@@ -2112,32 +1516,491 @@ components:
           - 'null'
       title: SourceConnection-Snowflake
       type: object
-    SourceCredentialUpdate-SnowflakePAT:
+    SourceConnection-Microsoft-SQL:
       additionalProperties: false
-      description: Authenticate to Snowflake with a programmatic access token (PAT)
       properties:
-        token:
+        database:
+          type: string
+        host:
+          type: string
+        port:
+          type:
+          - integer
+          - 'null'
+        type:
+          enum:
+          - mssql
+          type: string
+        user:
+          type: string
+      title: SourceConnection-Microsoft-SQL
+      type: object
+    SourceUpdateConnectionParams:
+      oneOf:
+      - additionalProperties: false
+        properties:
+          blob_storage_url:
+            description: ABS blob storage URL
+            type: string
+          type:
+            enum:
+            - abs_bucket
+            type: string
+        required:
+        - type
+        title: SourceUpdateConnectionParams-ABS
+        type: object
+      - additionalProperties: false
+        properties:
+          base64_encoded_service_account:
+            description: BigQuery credentials - Base 64 encoded Service account JSON
+            type:
+            - string
+            - 'null'
+          dataset:
+            description: BigQuery dataset
+            type:
+            - string
+            - 'null'
+          project:
+            description: BigQuery project
+            type: string
+          type:
+            enum:
+            - bigquery
+            type: string
+        required:
+        - type
+        title: SourceUpdateConnectionParams-GoogleBigQuery
+        type: object
+      - additionalProperties: false
+        properties:
+          catalog:
+            description: Databricks catalog
+            type:
+            - string
+            - 'null'
+          http_path:
+            description: Databricks server HTTP path
+            type: string
+          schema:
+            description: Databricks schema
+            type:
+            - string
+            - 'null'
+          server_hostname:
+            description: Databricks server hostname
+            type: string
+          type:
+            enum:
+            - databricks
+            type: string
+        required:
+        - type
+        title: SourceUpdateConnectionParams-Databricks
+        type: object
+      - additionalProperties: false
+        properties:
+          token:
+            description: Feature Server token
+            type:
+            - string
+            - 'null'
+          type:
+            enum:
+            - feature_server
+            type: string
+          url:
+            description: Feature Server URL
+            type: string
+        required:
+        - type
+        title: SourceUpdateConnectionParams-ESRIFeatureServer
+        type: object
+      - additionalProperties: false
+        properties:
+          gs_uri:
+            description: GCS URI
+            type: string
+          type:
+            enum:
+            - gcs_bucket
+            type: string
+        required:
+        - type
+        title: SourceUpdateConnectionParams-GCS
+        type: object
+      - additionalProperties: false
+        properties:
+          database:
+            description: MSSQL database name
+            type: string
+          host:
+            description: MSSQL host
+            type: string
+          password:
+            description: MSSQL password
+            type: string
+          port:
+            description: MSSQL port
+            type:
+            - integer
+            - 'null'
+          type:
+            enum:
+            - mssql
+            type: string
+          user:
+            description: MSSQL user name
+            type: string
+        required:
+        - type
+        title: SourceUpdateConnectionParams-MicrosoftSQL
+        type: object
+      - additionalProperties: false
+        description: Postgres / PostGIS
+        properties:
+          database:
+            description: Postgres database name
+            type: string
+          host:
+            description: Postgres host
+            type: string
+          password:
+            description: Postgres password
+            type: string
+          port:
+            description: Postgres port
+            type:
+            - integer
+            - 'null'
+          schema:
+            description: Postgres schema
+            type: string
+          type:
+            enum:
+            - postgresql
+            type: string
+          user:
+            description: Postgres user name
+            type: string
+        required:
+        - type
+        title: SourceUpdateConnectionParams-Postgres
+        type: object
+      - additionalProperties: false
+        properties:
+          database:
+            description: Redshift database name
+            type: string
+          host:
+            description: Redshift host
+            type: string
+          password:
+            description: Redshift password
+            type: string
+          port:
+            description: Redshift port
+            type:
+            - integer
+            - 'null'
+          type:
+            enum:
+            - redshift
+            type: string
+          user:
+            description: Redshift user name
+            type: string
+        required:
+        - type
+        title: SourceUpdateConnectionParams-AmazonRedshift
+        type: object
+      - additionalProperties: false
+        properties:
+          s3_uri:
+            description: S3 URI
+            type: string
+          type:
+            enum:
+            - s3_bucket
+            type: string
+        required:
+        - type
+        title: SourceUpdateConnectionParams-S3
+        type: object
+      - additionalProperties: false
+        properties:
+          account_id:
+            description: Snowflake account ID
+            type: string
+          database:
+            description: Snowflake database name
+            type: string
+          password:
+            description: Snowflake password
+            type: string
+          role:
+            description: Snowflake role
+            type:
+            - string
+            - 'null'
+          schema:
+            description: Snowflake database schema
+            type:
+            - string
+            - 'null'
+          type:
+            enum:
+            - snowflake
+            type: string
+          user:
+            description: Snowflake user name
+            type: string
+          warehouse:
+            description: Snowflake warehouse
+            type:
+            - string
+            - 'null'
+        required:
+        - type
+        title: SourceUpdateConnectionParams-Snowflake
+        type: object
+      - additionalProperties: false
+        description: SpatioTemporal Asset Catalogs
+        properties:
+          token:
+            description: STAC token
+            type:
+            - string
+            - 'null'
+          type:
+            enum:
+            - stac
+            type: string
+          url:
+            description: STAC server / asset URL
+            type: string
+        required:
+        - type
+        title: SourceUpdateConnectionParams-STAC
+        type: object
+      - additionalProperties: false
+        description: Web Feature Server
+        properties:
+          type:
+            enum:
+            - wfs
+            type: string
+          url:
+            description: WFS URL
+            type: string
+        required:
+        - type
+        title: SourceUpdateConnectionParams-WFS
+        type: object
+      - additionalProperties: false
+        description: Web Map Service / Web Map Tile Service
+        properties:
+          type:
+            enum:
+            - wms_wmts
+            type: string
+          url:
+            description: WMS/WMTS URL
+            type: string
+        required:
+        - type
+        title: SourceUpdateConnectionParams-WMS-WMTS
+        type: object
+      title: SourceUpdateConnectionParams
+    SourceDataset:
+      additionalProperties: false
+      description: A Dataset found when inspecting a Source, e.g. a database table.
+      properties:
+        created_at:
+          type: integer
+        description:
+          type:
+          - string
+          - 'null'
+        geometry_type:
+          enum:
+          - polygon
+          - line
+          - point
+          - raster
+          - none
+          type: string
+        id:
+          $ref: '#/components/schemas/FeltID'
+        inspection_status:
+          enum:
+          - completed
+          - failed
+          type: string
+        name:
           type: string
         type:
           enum:
-          - snowflake_pat
+          - dataset
+          type: string
+        updated_at:
+          type: integer
+      title: SourceDataset
+      type: object
+    SourceConnection-GCSBucket:
+      additionalProperties: false
+      description: Google Cloud Storage
+      properties:
+        credentials:
+          items:
+            properties:
+              created_at:
+                type:
+                - integer
+                - 'null'
+              credential:
+                oneOf:
+                - $ref: '#/components/schemas/SourceCredential-GcpServiceAccountJson'
+                type: object
+              id:
+                $ref: '#/components/schemas/FeltID'
+              name:
+                type: string
+              source_id:
+                $ref: '#/components/schemas/FeltID'
+              updated_at:
+                type:
+                - integer
+                - 'null'
+              use_case:
+                enum:
+                - source_authentication
+                type: string
+            type: object
+          type: array
+        gs_uri:
+          type: string
+        type:
+          enum:
+          - gcs_bucket
+          type: string
+      title: SourceConnection-GCSBucket
+      type: object
+    SourceConnection-ABSBucket:
+      additionalProperties: false
+      description: Microsoft Azure Blob Storage
+      properties:
+        blob_storage_url:
+          type: string
+        credentials:
+          items:
+            properties:
+              created_at:
+                type:
+                - integer
+                - 'null'
+              credential:
+                oneOf:
+                - $ref: '#/components/schemas/SourceCredential-AzureStorageString'
+                type: object
+              id:
+                $ref: '#/components/schemas/FeltID'
+              name:
+                type: string
+              source_id:
+                $ref: '#/components/schemas/FeltID'
+              updated_at:
+                type:
+                - integer
+                - 'null'
+              use_case:
+                enum:
+                - source_authentication
+                type: string
+            type: object
+          type: array
+        type:
+          enum:
+          - abs_bucket
+          type: string
+      title: SourceConnection-ABSBucket
+      type: object
+    SourceCredentialUpdate-GcpServiceAccountJson:
+      additionalProperties: false
+      properties:
+        service_account_filename:
+          type: string
+        service_account_json:
+          oneOf:
+          - type: object
+          - type: string
+        type:
+          enum:
+          - gcp_service_account_json
           type: string
       required:
       - type
-      title: SourceCredentialUpdate-SnowflakePAT
+      title: SourceCredentialUpdate-GcpServiceAccountJson
       type: object
-    SourceConnection-ESRI-FeatureServer:
+    SourcePermissions:
+      oneOf:
+      - additionalProperties: false
+        properties:
+          type:
+            enum:
+            - workspace_editors
+            type: string
+        required:
+        - type
+        title: SourcePermissions-WorkspaceEditors
+        type: object
+      - additionalProperties: false
+        properties:
+          type:
+            enum:
+            - source_owner
+            type: string
+        required:
+        - type
+        title: SourcePermissions-SourceOwner
+        type: object
+      - additionalProperties: false
+        properties:
+          project_ids:
+            items:
+              $ref: '#/components/schemas/FeltID'
+            type: array
+          type:
+            enum:
+            - project_editors
+            type: string
+        required:
+        - type
+        - project_ids
+        title: SourcePermissions-ProjectEditors
+        type: object
+      title: SourcePermissions
+    SourceCredential-GcpServiceAccountJson:
       additionalProperties: false
       properties:
+        service_account_filename:
+          type: string
+        service_account_json:
+          oneOf:
+          - type: object
+          - type: string
         type:
           enum:
-          - feature_server
+          - gcp_service_account_json
           type: string
-        url:
-          type: string
-      title: SourceConnection-ESRI-FeatureServer
+      required:
+      - type
+      - service_account_filename
+      - service_account_json
+      title: SourceCredential-GcpServiceAccountJson
       type: object
-    UnauthorizedError:
+    NotFoundError:
       properties:
         errors:
           items:
@@ -2146,34 +2009,56 @@ components:
                 type: string
               source:
                 properties:
-                  header:
-                    enum:
-                    - authorization
+                  parameter:
                     type: string
                 type: object
               title:
                 type: string
             type: object
           type: array
-      title: UnauthorizedError
+      title: NotFoundError
       type: object
-    SourceCredential-OAuthM2M:
+    SourceCredential:
       additionalProperties: false
-      description: Authenticate to your source using Machine-to-Machine (M2M) OAuth
       properties:
-        client_id:
+        created_at:
+          type:
+          - integer
+          - 'null'
+        credential:
+          oneOf:
+          - $ref: '#/components/schemas/SourceCredential-AwsAssumeRole'
+          - $ref: '#/components/schemas/SourceCredential-AzureStorageString'
+          - $ref: '#/components/schemas/SourceCredential-CustomHeaders'
+          - $ref: '#/components/schemas/SourceCredential-GcpServiceAccountJson'
+          - $ref: '#/components/schemas/SourceCredential-KeyPair'
+          - $ref: '#/components/schemas/SourceCredential-SnowflakePAT'
+          type: object
+        id:
+          $ref: '#/components/schemas/FeltID'
+        name:
           type: string
-        client_secret:
-          type: string
-        type:
+        source_id:
+          $ref: '#/components/schemas/FeltID'
+        updated_at:
+          type:
+          - integer
+          - 'null'
+        use_case:
           enum:
-          - oauth_m2m
+          - stac_api_authentication
+          - stac_asset_fetching
+          - source_authentication
           type: string
       required:
-      - type
-      - client_id
-      - client_secret
-      title: SourceCredential-OAuthM2M
+      - id
+      - source_id
+      - name
+      - use_case
+      - created_at
+      - updated_at
+      - credential
+      title: SourceCredential
       type: object
     SourceCredential-KeyPair:
       additionalProperties: false
@@ -2195,37 +2080,52 @@ components:
       - private_key_name
       title: SourceCredential-KeyPair
       type: object
-    SourceCredential-AzureStorageString:
+    SourceCredential-SnowflakePAT:
       additionalProperties: false
-      description: Authenticate to Azure Blob Storage
+      description: Authenticate to Snowflake with a programmatic access token (PAT)
       properties:
-        connection_string:
+        token:
           type: string
         type:
           enum:
-          - azure_storage_connection_string
+          - snowflake_pat
           type: string
       required:
       - type
-      - connection_string
-      title: SourceCredential-AzureStorageString
+      - token
+      title: SourceCredential-SnowflakePAT
       type: object
-    SourceCredentialUpdate-GcpServiceAccountJson:
+    SourceCredential-OAuthM2M:
       additionalProperties: false
+      description: Authenticate to your source using Machine-to-Machine (M2M) OAuth
       properties:
-        service_account_filename:
+        client_id:
           type: string
-        service_account_json:
-          oneOf:
-          - type: object
-          - type: string
+        client_secret:
+          type: string
         type:
           enum:
-          - gcp_service_account_json
+          - oauth_m2m
           type: string
       required:
       - type
-      title: SourceCredentialUpdate-GcpServiceAccountJson
+      - client_id
+      - client_secret
+      title: SourceCredential-OAuthM2M
+      type: object
+    SourceCredentialUpdate-SnowflakePAT:
+      additionalProperties: false
+      description: Authenticate to Snowflake with a programmatic access token (PAT)
+      properties:
+        token:
+          type: string
+        type:
+          enum:
+          - snowflake_pat
+          type: string
+      required:
+      - type
+      title: SourceCredentialUpdate-SnowflakePAT
       type: object
     SourceCredentialCreateParams:
       additionalProperties: false
@@ -2253,70 +2153,6 @@ components:
       - credential
       title: SourceCredentialCreateParams
       type: object
-    SourceCredentialUpdate-AwsAssumeRole:
-      additionalProperties: false
-      description: Authenticate to AWS S3
-      properties:
-        role_arn:
-          type: string
-        role_session_name:
-          type: string
-        type:
-          enum:
-          - aws_assume_role
-          type: string
-      required:
-      - type
-      title: SourceCredentialUpdate-AwsAssumeRole
-      type: object
-    SourceConnection-WFS:
-      additionalProperties: false
-      description: Web Feature Server
-      properties:
-        type:
-          enum:
-          - wfs
-          type: string
-        url:
-          type: string
-      title: SourceConnection-WFS
-      type: object
-    SourceReferenceList:
-      items:
-        $ref: '#/components/schemas/SourceReference'
-      title: SourceReferenceList
-      type: array
-    SourceCredentialUpdate-AzureStorageString:
-      additionalProperties: false
-      description: Authenticate to Azure Blob Storage
-      properties:
-        connection_string:
-          type: string
-        type:
-          enum:
-          - azure_storage_connection_string
-          type: string
-      required:
-      - type
-      title: SourceCredentialUpdate-AzureStorageString
-      type: object
-    SourceConnection-Google-BigQuery:
-      additionalProperties: false
-      properties:
-        dataset:
-          description: BigQuery dataset to index. If omitted all datasets will be indexed
-          type:
-          - string
-          - 'null'
-        project:
-          description: BigQuery project to index
-          type: string
-        type:
-          enum:
-          - bigquery
-          type: string
-      title: SourceConnection-Google-BigQuery
-      type: object
     SourceConnection-Postgres:
       additionalProperties: false
       description: Postgres / PostGIS
@@ -2341,20 +2177,184 @@ components:
           type: string
       title: SourceConnection-Postgres
       type: object
-    SourceCredential-SnowflakePAT:
+    SourceReferenceList:
+      items:
+        $ref: '#/components/schemas/SourceReference'
+      title: SourceReferenceList
+      type: array
+    SourceConnection-STAC:
       additionalProperties: false
-      description: Authenticate to Snowflake with a programmatic access token (PAT)
+      description: SpatioTemporal Asset Catalogs
       properties:
-        token:
+        credentials:
+          items:
+            properties:
+              created_at:
+                type:
+                - integer
+                - 'null'
+              credential:
+                oneOf:
+                - $ref: '#/components/schemas/SourceCredential-GcpServiceAccountJson'
+                - $ref: '#/components/schemas/SourceCredential-AzureStorageString'
+                - $ref: '#/components/schemas/SourceCredential-AwsAssumeRole'
+                - $ref: '#/components/schemas/SourceCredential-CustomHeaders'
+                type: object
+              id:
+                $ref: '#/components/schemas/FeltID'
+              name:
+                type: string
+              source_id:
+                $ref: '#/components/schemas/FeltID'
+              updated_at:
+                type:
+                - integer
+                - 'null'
+              use_case:
+                enum:
+                - stac_api_authentication
+                - stac_asset_fetching
+                type: string
+            type: object
+          type: array
+        type:
+          enum:
+          - stac
+          type: string
+        url:
+          type: string
+      title: SourceConnection-STAC
+      type: object
+    SourceConnection-Amazon-Redshift:
+      additionalProperties: false
+      properties:
+        database:
+          type: string
+        host:
+          type: string
+        port:
+          type:
+          - integer
+          - 'null'
+        type:
+          enum:
+          - redshift
+          type: string
+        user:
+          type: string
+      title: SourceConnection-Amazon-Redshift
+      type: object
+    SourceConnection-WFS:
+      additionalProperties: false
+      description: Web Feature Server
+      properties:
+        type:
+          enum:
+          - wfs
+          type: string
+        url:
+          type: string
+      title: SourceConnection-WFS
+      type: object
+    SourceCredentialUpdate-KeyPair:
+      additionalProperties: false
+      description: Authenticate using key pair authentication
+      properties:
+        private_key:
+          type: string
+        private_key_name:
+          type: string
+        private_key_passphrase:
           type: string
         type:
           enum:
-          - snowflake_pat
+          - key_pair
           type: string
       required:
       - type
-      - token
-      title: SourceCredential-SnowflakePAT
+      title: SourceCredentialUpdate-KeyPair
+      type: object
+    InternalServerError:
+      properties:
+        errors:
+          items:
+            properties:
+              detail:
+                type: string
+              source:
+                properties:
+                  parameter:
+                    type: string
+                type: object
+              title:
+                type: string
+            type: object
+          type: array
+      title: InternalServerError
+      type: object
+    SourceCredential-CustomHeaders:
+      additionalProperties: false
+      description: Authenticate to an API using headers
+      properties:
+        headers:
+          items:
+            properties:
+              name:
+                description: The header name
+                type: string
+              sensitive:
+                description: Whether or not the header is sensitive. If it is marked as sensitive, then `felt:redacted` will be returned when viewing this header
+                type: boolean
+              value:
+                description: The header value
+                type: string
+            required:
+            - name
+            - value
+            - sensitive
+            type: object
+          type: array
+        type:
+          enum:
+          - custom_headers
+          type: string
+      required:
+      - type
+      - headers
+      title: SourceCredential-CustomHeaders
+      type: object
+    SourceConnection-Google-BigQuery:
+      additionalProperties: false
+      properties:
+        dataset:
+          description: BigQuery dataset to index. If omitted all datasets will be indexed
+          type:
+          - string
+          - 'null'
+        project:
+          description: BigQuery project to index
+          type: string
+        type:
+          enum:
+          - bigquery
+          type: string
+      title: SourceConnection-Google-BigQuery
+      type: object
+    FeltID:
+      example: luCHyMruTQ6ozGk3gPJfEB
+      format: felt_id
+      title: FeltID
+      type: string
+    SourceConnection-ESRI-FeatureServer:
+      additionalProperties: false
+      properties:
+        type:
+          enum:
+          - feature_server
+          type: string
+        url:
+          type: string
+      title: SourceConnection-ESRI-FeatureServer
       type: object
   securitySchemes:
     bearerAuth:

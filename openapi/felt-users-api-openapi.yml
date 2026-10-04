@@ -72,39 +72,6 @@ paths:
       - Users
 components:
   schemas:
-    NotFoundError:
-      properties:
-        errors:
-          items:
-            properties:
-              detail:
-                type: string
-              source:
-                properties:
-                  parameter:
-                    type: string
-                type: object
-              title:
-                type: string
-            type: object
-          type: array
-      title: NotFoundError
-      type: object
-    FeltID:
-      example: luCHyMruTQ6ozGk3gPJfEB
-      format: felt_id
-      title: FeltID
-      type: string
-    User:
-      properties:
-        email:
-          type: string
-        id:
-          $ref: '#/components/schemas/FeltID'
-        name:
-          type: string
-      title: User
-      type: object
     JsonErrorResponse:
       properties:
         errors:
@@ -152,6 +119,21 @@ components:
           type: array
       title: InternalServerError
       type: object
+    User:
+      properties:
+        email:
+          type: string
+        id:
+          $ref: '#/components/schemas/FeltID'
+        name:
+          type: string
+      title: User
+      type: object
+    FeltID:
+      example: luCHyMruTQ6ozGk3gPJfEB
+      format: felt_id
+      title: FeltID
+      type: string
     UnauthorizedError:
       properties:
         errors:
@@ -171,6 +153,24 @@ components:
             type: object
           type: array
       title: UnauthorizedError
+      type: object
+    NotFoundError:
+      properties:
+        errors:
+          items:
+            properties:
+              detail:
+                type: string
+              source:
+                properties:
+                  parameter:
+                    type: string
+                type: object
+              title:
+                type: string
+            type: object
+          type: array
+      title: NotFoundError
       type: object
   securitySchemes:
     bearerAuth:

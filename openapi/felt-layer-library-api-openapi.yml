@@ -231,126 +231,6 @@ paths:
       - Layer Library
 components:
   schemas:
-    PublishLayerGroupParams:
-      additionalProperties: false
-      properties:
-        name:
-          description: The name to publish the layer group under
-          example: My Layer
-          type: string
-      title: PublishLayerGroupParams
-      type: object
-    LayerLibrary:
-      properties:
-        layer_groups:
-          items:
-            $ref: '#/components/schemas/LayerGroup'
-          type: array
-        layers:
-          items:
-            $ref: '#/components/schemas/Layer'
-          type: array
-        type:
-          enum:
-          - layer_library
-          type: string
-      required:
-      - type
-      - layers
-      - layer_groups
-      title: LayerLibrary
-      type: object
-    NotFoundError:
-      properties:
-        errors:
-          items:
-            properties:
-              detail:
-                type: string
-              source:
-                properties:
-                  parameter:
-                    type: string
-                type: object
-              title:
-                type: string
-            type: object
-          type: array
-      title: NotFoundError
-      type: object
-    FeltID:
-      example: luCHyMruTQ6ozGk3gPJfEB
-      format: felt_id
-      title: FeltID
-      type: string
-    PublishLayerParams:
-      additionalProperties: false
-      properties:
-        name:
-          description: The name to publish the layer under
-          example: My Layer
-          type: string
-      title: PublishLayerParams
-      type: object
-    LayerGroup:
-      additionalProperties: false
-      properties:
-        caption:
-          type:
-          - string
-          - 'null'
-        id:
-          $ref: '#/components/schemas/FeltID'
-        layers:
-          items:
-            $ref: '#/components/schemas/Layer'
-          type: array
-        legend_visibility:
-          description: Controls how the layer group is displayed in the legend. Defaults to "show".
-          enum:
-          - hide
-          - show
-          type:
-          - string
-          - 'null'
-        links:
-          properties:
-            self:
-              example: https://felt.com/api/v2/maps/V0dnOMOuTd9B9BOsL9C0UjmqC/layer_groups/v13k4Ae9BRjCHHdPP5Fcm6D
-              type: string
-          type: object
-        name:
-          type: string
-        ordering_key:
-          description: A sort order key used for ordering layers and layer groups in the legend
-          type: integer
-        subtitle:
-          deprecated: true
-          description: 'Deprecated: use `caption` instead.'
-          type:
-          - string
-          - 'null'
-        type:
-          enum:
-          - layer_group
-          type: string
-        visibility_interaction:
-          description: Controls how the layer group is displayed in the legend. Defaults to `"default"`.
-          enum:
-          - default
-          - slider
-          - select
-          - multi_select
-          type: string
-      required:
-      - id
-      - type
-      - name
-      - caption
-      - visibility_interaction
-      - layers
-      title: LayerGroup
-      type: object
     JsonErrorResponse:
       properties:
         errors:
@@ -380,6 +260,58 @@ components:
       - errors
       title: JsonErrorResponse
       type: object
+    InternalServerError:
+      properties:
+        errors:
+          items:
+            properties:
+              detail:
+                type: string
+              source:
+                properties:
+                  parameter:
+                    type: string
+                type: object
+              title:
+                type: string
+            type: object
+          type: array
+      title: InternalServerError
+      type: object
+    PublishLayerParams:
+      additionalProperties: false
+      properties:
+        name:
+          description: The name to publish the layer under
+          example: My Layer
+          type: string
+      title: PublishLayerParams
+      type: object
+    LayerLibrary:
+      properties:
+        layer_groups:
+          items:
+            $ref: '#/components/schemas/LayerGroup'
+          type: array
+        layers:
+          items:
+            $ref: '#/components/schemas/Layer'
+          type: array
+        type:
+          enum:
+          - layer_library
+          type: string
+      required:
+      - type
+      - layers
+      - layer_groups
+      title: LayerLibrary
+      type: object
+    FeltID:
+      example: luCHyMruTQ6ozGk3gPJfEB
+      format: felt_id
+      title: FeltID
+      type: string
     Layer:
       additionalProperties: false
       properties:
@@ -540,7 +472,66 @@ components:
       - refresh_status
       title: Layer
       type: object
-    InternalServerError:
+    LayerGroup:
+      additionalProperties: false
+      properties:
+        caption:
+          type:
+          - string
+          - 'null'
+        id:
+          $ref: '#/components/schemas/FeltID'
+        layers:
+          items:
+            $ref: '#/components/schemas/Layer'
+          type: array
+        legend_visibility:
+          description: Controls how the layer group is displayed in the legend. Defaults to "show".
+          enum:
+          - hide
+          - show
+          type:
+          - string
+          - 'null'
+        links:
+          properties:
+            self:
+              example: https://felt.com/api/v2/maps/V0dnOMOuTd9B9BOsL9C0UjmqC/layer_groups/v13k4Ae9BRjCHHdPP5Fcm6D
+              type: string
+          type: object
+        name:
+          type: string
+        ordering_key:
+          description: A sort order key used for ordering layers and layer groups in the legend
+          type: integer
+        subtitle:
+          deprecated: true
+          description: 'Deprecated: use `caption` instead.'
+          type:
+          - string
+          - 'null'
+        type:
+          enum:
+          - layer_group
+          type: string
+        visibility_interaction:
+          description: Controls how the layer group is displayed in the legend. Defaults to `"default"`.
+          enum:
+          - default
+          - slider
+          - select
+          - multi_select
+          type: string
+      required:
+      - id
+      - type
+      - name
+      - caption
+      - visibility_interaction
+      - layers
+      title: LayerGroup
+      type: object
+    UnauthorizedError:
       properties:
         errors:
           items:
@@ -549,14 +540,25 @@ components:
                 type: string
               source:
                 properties:
-                  parameter:
+                  header:
+                    enum:
+                    - authorization
                     type: string
                 type: object
               title:
                 type: string
             type: object
           type: array
-      title: InternalServerError
+      title: UnauthorizedError
+      type: object
+    PublishLayerGroupParams:
+      additionalProperties: false
+      properties:
+        name:
+          description: The name to publish the layer group under
+          example: My Layer
+          type: string
+      title: PublishLayerGroupParams
       type: object
     LayerMetadata:
       additionalProperties: false
@@ -597,7 +599,7 @@ components:
           - 'null'
       title: LayerMetadata
       type: object
-    UnauthorizedError:
+    NotFoundError:
       properties:
         errors:
           items:
@@ -606,16 +608,14 @@ components:
                 type: string
               source:
                 properties:
-                  header:
-                    enum:
-                    - authorization
+                  parameter:
                     type: string
                 type: object
               title:
                 type: string
             type: object
           type: array
-      title: UnauthorizedError
+      title: NotFoundError
       type: object
   securitySchemes:
     bearerAuth:

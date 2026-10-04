@@ -109,34 +109,6 @@ paths:
       - Embed Tokens
 components:
   schemas:
-    EmbedToken:
-      properties:
-        expires_at:
-          example: '2024-05-25T15:51:34'
-          format: date_time
-          type: string
-        token:
-          type: string
-      title: EmbedToken
-      type: object
-    NotFoundError:
-      properties:
-        errors:
-          items:
-            properties:
-              detail:
-                type: string
-              source:
-                properties:
-                  parameter:
-                    type: string
-                type: object
-              title:
-                type: string
-            type: object
-          type: array
-      title: NotFoundError
-      type: object
     JsonErrorResponse:
       properties:
         errors:
@@ -184,6 +156,16 @@ components:
           type: array
       title: InternalServerError
       type: object
+    EmbedToken:
+      properties:
+        expires_at:
+          example: '2024-05-25T15:51:34'
+          format: date_time
+          type: string
+        token:
+          type: string
+      title: EmbedToken
+      type: object
     UnauthorizedError:
       properties:
         errors:
@@ -203,6 +185,24 @@ components:
             type: object
           type: array
       title: UnauthorizedError
+      type: object
+    NotFoundError:
+      properties:
+        errors:
+          items:
+            properties:
+              detail:
+                type: string
+              source:
+                properties:
+                  parameter:
+                    type: string
+                type: object
+              title:
+                type: string
+            type: object
+          type: array
+      title: NotFoundError
       type: object
   securitySchemes:
     bearerAuth:

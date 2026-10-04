@@ -219,40 +219,6 @@ paths:
       - Comments
 components:
   schemas:
-    NotFoundError:
-      properties:
-        errors:
-          items:
-            properties:
-              detail:
-                type: string
-              source:
-                properties:
-                  parameter:
-                    type: string
-                type: object
-              title:
-                type: string
-            type: object
-          type: array
-      title: NotFoundError
-      type: object
-    CommentResolved:
-      properties:
-        comment_id:
-          $ref: '#/components/schemas/FeltID'
-      title: CommentResolved
-      type: object
-    FeltID:
-      example: luCHyMruTQ6ozGk3gPJfEB
-      format: felt_id
-      title: FeltID
-      type: string
-    CommentExport:
-      items:
-        description: Comment Thread
-      title: CommentExport
-      type: array
     JsonErrorResponse:
       properties:
         errors:
@@ -300,6 +266,11 @@ components:
           type: array
       title: InternalServerError
       type: object
+    FeltID:
+      example: luCHyMruTQ6ozGk3gPJfEB
+      format: felt_id
+      title: FeltID
+      type: string
     UnauthorizedError:
       properties:
         errors:
@@ -319,6 +290,35 @@ components:
             type: object
           type: array
       title: UnauthorizedError
+      type: object
+    CommentExport:
+      items:
+        description: Comment Thread
+      title: CommentExport
+      type: array
+    NotFoundError:
+      properties:
+        errors:
+          items:
+            properties:
+              detail:
+                type: string
+              source:
+                properties:
+                  parameter:
+                    type: string
+                type: object
+              title:
+                type: string
+            type: object
+          type: array
+      title: NotFoundError
+      type: object
+    CommentResolved:
+      properties:
+        comment_id:
+          $ref: '#/components/schemas/FeltID'
+      title: CommentResolved
       type: object
   securitySchemes:
     bearerAuth:

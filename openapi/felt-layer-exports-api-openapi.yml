@@ -248,99 +248,6 @@ paths:
       - Layer Exports
 components:
   schemas:
-    CustomExportRequestStatus:
-      additionalProperties: false
-      properties:
-        download_url:
-          example: https://us1.data-pipeline.felt.com/fcdfd96c-06fa-40b9-9ae9-ad034b5a66df/Felt-Export.zip
-          type:
-          - string
-          - 'null'
-        export_id:
-          example: FZWQjWZJSZWvW3yn9BeV9AyA
-          type: string
-        filters:
-          items: {}
-          type: array
-        status:
-          enum:
-          - completed
-          - failed
-          - in_progress
-          example: completed
-          type: string
-      required:
-      - export_id
-      - status
-      - download_url
-      - filters
-      title: CustomExportRequestStatus
-      type: object
-    NotFoundError:
-      properties:
-        errors:
-          items:
-            properties:
-              detail:
-                type: string
-              source:
-                properties:
-                  parameter:
-                    type: string
-                type: object
-              title:
-                type: string
-            type: object
-          type: array
-      title: NotFoundError
-      type: object
-    UnauthorizedError:
-      properties:
-        errors:
-          items:
-            properties:
-              detail:
-                type: string
-              source:
-                properties:
-                  header:
-                    enum:
-                    - authorization
-                    type: string
-                type: object
-              title:
-                type: string
-            type: object
-          type: array
-      title: UnauthorizedError
-      type: object
-    FeltID:
-      example: luCHyMruTQ6ozGk3gPJfEB
-      format: felt_id
-      title: FeltID
-      type: string
-    ExportLink:
-      additionalProperties: false
-      properties:
-        export_link:
-          type: string
-      required:
-      - export_link
-      title: ExportLink
-      type: object
-    CustomExportResponse:
-      additionalProperties: false
-      properties:
-        export_request_id:
-          $ref: '#/components/schemas/FeltID'
-        poll_endpoint:
-          example: http://felt.com/api/v2/maps/vAbZ5eKqRoGe4sCH8nHW8D/layers/7kF9Cfz45TUWIiuuWV8uZ7A/custom_exports/auFxn9BO4RrGGiKrGfaS7ZB
-          type: string
-      required:
-      - export_request_id
-      - poll_endpoint
-      title: CustomExportResponse
-      type: object
     JsonErrorResponse:
       properties:
         errors:
@@ -370,6 +277,34 @@ components:
       - errors
       title: JsonErrorResponse
       type: object
+    CustomExportRequestStatus:
+      additionalProperties: false
+      properties:
+        download_url:
+          example: https://us1.data-pipeline.felt.com/fcdfd96c-06fa-40b9-9ae9-ad034b5a66df/Felt-Export.zip
+          type:
+          - string
+          - 'null'
+        export_id:
+          example: FZWQjWZJSZWvW3yn9BeV9AyA
+          type: string
+        filters:
+          items: {}
+          type: array
+        status:
+          enum:
+          - completed
+          - failed
+          - in_progress
+          example: completed
+          type: string
+      required:
+      - export_id
+      - status
+      - download_url
+      - filters
+      title: CustomExportRequestStatus
+      type: object
     InternalServerError:
       properties:
         errors:
@@ -388,24 +323,24 @@ components:
           type: array
       title: InternalServerError
       type: object
-    ServiceUnavailableError:
+    CustomExportResponse:
+      additionalProperties: false
       properties:
-        errors:
-          items:
-            properties:
-              detail:
-                type: string
-              source:
-                properties:
-                  parameter:
-                    type: string
-                type: object
-              title:
-                type: string
-            type: object
-          type: array
-      title: ServiceUnavailableError
+        export_request_id:
+          $ref: '#/components/schemas/FeltID'
+        poll_endpoint:
+          example: http://felt.com/api/v2/maps/vAbZ5eKqRoGe4sCH8nHW8D/layers/7kF9Cfz45TUWIiuuWV8uZ7A/custom_exports/auFxn9BO4RrGGiKrGfaS7ZB
+          type: string
+      required:
+      - export_request_id
+      - poll_endpoint
+      title: CustomExportResponse
       type: object
+    FeltID:
+      example: luCHyMruTQ6ozGk3gPJfEB
+      format: felt_id
+      title: FeltID
+      type: string
     CustomExportParams:
       additionalProperties: false
       properties:
@@ -428,6 +363,71 @@ components:
       required:
       - output_format
       title: CustomExportParams
+      type: object
+    UnauthorizedError:
+      properties:
+        errors:
+          items:
+            properties:
+              detail:
+                type: string
+              source:
+                properties:
+                  header:
+                    enum:
+                    - authorization
+                    type: string
+                type: object
+              title:
+                type: string
+            type: object
+          type: array
+      title: UnauthorizedError
+      type: object
+    ServiceUnavailableError:
+      properties:
+        errors:
+          items:
+            properties:
+              detail:
+                type: string
+              source:
+                properties:
+                  parameter:
+                    type: string
+                type: object
+              title:
+                type: string
+            type: object
+          type: array
+      title: ServiceUnavailableError
+      type: object
+    NotFoundError:
+      properties:
+        errors:
+          items:
+            properties:
+              detail:
+                type: string
+              source:
+                properties:
+                  parameter:
+                    type: string
+                type: object
+              title:
+                type: string
+            type: object
+          type: array
+      title: NotFoundError
+      type: object
+    ExportLink:
+      additionalProperties: false
+      properties:
+        export_link:
+          type: string
+      required:
+      - export_link
+      title: ExportLink
       type: object
   securitySchemes:
     bearerAuth:

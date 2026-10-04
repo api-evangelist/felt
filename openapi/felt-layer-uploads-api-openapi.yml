@@ -284,103 +284,6 @@ paths:
       x-sort-order: 0
 components:
   schemas:
-    AddSourceLayerParams:
-      oneOf:
-      - properties:
-          dataset_id:
-            $ref: '#/components/schemas/FeltID'
-          from:
-            enum:
-            - dataset
-            type: string
-        required:
-        - from
-        - dataset_id
-        title: AddSourceLayer-Dataset-Params
-        type: object
-      - properties:
-          from:
-            enum:
-            - sql
-            type: string
-          query:
-            type: string
-          source_id:
-            $ref: '#/components/schemas/FeltID'
-        required:
-        - from
-        - source_id
-        - query
-        title: AddSourceLayer-SQL-Params
-        type: object
-      - properties:
-          from:
-            enum:
-            - stac
-            type: string
-          source_id:
-            $ref: '#/components/schemas/FeltID'
-          stac_asset_url:
-            type: string
-        required:
-        - from
-        - source_id
-        - stac_asset_url
-        title: AddSourceLayer-STAC-Params
-        type: object
-      title: AddSourceLayerParams
-      type: object
-    UploadLayerParams:
-      properties:
-        hints:
-          description: A list of hints for interpreting the data in the upload.
-          items:
-            $ref: '#/components/schemas/UploadInterpretationHint'
-          type: array
-        import_url:
-          description: A public URL containing geodata to import, in place of uploading a file.
-          type: string
-        lat:
-          description: (Image uploads only) The latitude of the image center.
-          type: number
-        lng:
-          description: (Image uploads only) The longitude of the image center.
-          type: number
-        metadata:
-          $ref: '#/components/schemas/LayerMetadata'
-        name:
-          description: The display name for the new layer.
-          type: string
-        zoom:
-          description: (Image uploads only) The zoom level of the image.
-          type: number
-      required:
-      - name
-      title: UploadLayerParams
-      type: object
-    NotFoundError:
-      properties:
-        errors:
-          items:
-            properties:
-              detail:
-                type: string
-              source:
-                properties:
-                  parameter:
-                    type: string
-                type: object
-              title:
-                type: string
-            type: object
-          type: array
-      title: NotFoundError
-      type: object
-    FeltID:
-      example: luCHyMruTQ6ozGk3gPJfEB
-      format: felt_id
-      title: FeltID
-      type: string
     JsonErrorResponse:
       properties:
         errors:
@@ -409,6 +312,77 @@ components:
       required:
       - errors
       title: JsonErrorResponse
+      type: object
+    UploadResponse:
+      properties:
+        layer_group_id:
+          $ref: '#/components/schemas/FeltID'
+        layer_id:
+          description: The ID of the layer created by this upload. If multiple layers are included in the upload, this is the ID of the first layer in the layer group.
+          example: luCHyMruTQ6ozGk3gPJfEB
+          format: felt_id
+          type: string
+        presigned_attributes:
+          description: If provided, the presigned attributes to attach to the post request
+          type:
+          - object
+          - 'null'
+        type:
+          enum:
+          - upload_response
+          type: string
+        url:
+          description: If provided, the URL to post the file to
+          type:
+          - string
+          - 'null'
+      title: UploadResponse
+      type: object
+    InternalServerError:
+      properties:
+        errors:
+          items:
+            properties:
+              detail:
+                type: string
+              source:
+                properties:
+                  parameter:
+                    type: string
+                type: object
+              title:
+                type: string
+            type: object
+          type: array
+      title: InternalServerError
+      type: object
+    UploadLayerParams:
+      properties:
+        hints:
+          description: A list of hints for interpreting the data in the upload.
+          items:
+            $ref: '#/components/schemas/UploadInterpretationHint'
+          type: array
+        import_url:
+          description: A public URL containing geodata to import, in place of uploading a file.
+          type: string
+        lat:
+          description: (Image uploads only) The latitude of the image center.
+          type: number
+        lng:
+          description: (Image uploads only) The longitude of the image center.
+          type: number
+        metadata:
+          $ref: '#/components/schemas/LayerMetadata'
+        name:
+          description: The display name for the new layer.
+          type: string
+        zoom:
+          description: (Image uploads only) The zoom level of the image.
+          type: number
+      required:
+      - name
+      title: UploadLayerParams
       type: object
     UploadInterpretationHint:
       oneOf:
@@ -703,32 +677,12 @@ components:
         title: UploadInterpretationHint-AttributeHint-H3
         type: object
       title: UploadInterpretationHint
-    UploadResponse:
-      properties:
-        layer_group_id:
-          $ref: '#/components/schemas/FeltID'
-        layer_id:
-          description: The ID of the layer created by this upload. If multiple layers are included in the upload, this is the ID of the first layer in the layer group.
-          example: luCHyMruTQ6ozGk3gPJfEB
-          format: felt_id
-          type: string
-        presigned_attributes:
-          description: If provided, the presigned attributes to attach to the post request
-          type:
-          - object
-          - 'null'
-        type:
-          enum:
-          - upload_response
-          type: string
-        url:
-          description: If provided, the URL to post the file to
-          type:
-          - string
-          - 'null'
-      title: UploadResponse
-      type: object
-    InternalServerError:
+    FeltID:
+      example: luCHyMruTQ6ozGk3gPJfEB
+      format: felt_id
+      title: FeltID
+      type: string
+    UnauthorizedError:
       properties:
         errors:
           items:
@@ -737,14 +691,81 @@ components:
                 type: string
               source:
                 properties:
-                  parameter:
+                  header:
+                    enum:
+                    - authorization
                     type: string
                 type: object
               title:
                 type: string
             type: object
           type: array
-      title: InternalServerError
+      title: UnauthorizedError
+      type: object
+    AddSourceLayerAccepted:
+      additionalProperties: false
+      properties:
+        links:
+          additionalProperties: false
+          properties:
+            layer_group:
+              example: https://felt.com/api/v2/maps/V0dnOMOuTd9B9BOsL9C0UjmqC/layer_groups/KFFhKAbvS4anD3wxtwNEpD
+              type: string
+            self:
+              example: https://felt.com/api/v2/maps/V0dnOMOuTd9B9BOsL9C0UjmqC
+              type: string
+          type: object
+        status:
+          enum:
+          - accepted
+          type: string
+      title: AddSourceLayerAccepted
+      type: object
+    AddSourceLayerParams:
+      oneOf:
+      - properties:
+          dataset_id:
+            $ref: '#/components/schemas/FeltID'
+          from:
+            enum:
+            - dataset
+            type: string
+        required:
+        - from
+        - dataset_id
+        title: AddSourceLayer-Dataset-Params
+        type: object
+      - properties:
+          from:
+            enum:
+            - sql
+            type: string
+          query:
+            type: string
+          source_id:
+            $ref: '#/components/schemas/FeltID'
+        required:
+        - from
+        - source_id
+        - query
+        title: AddSourceLayer-SQL-Params
+        type: object
+      - properties:
+          from:
+            enum:
+            - stac
+            type: string
+          source_id:
+            $ref: '#/components/schemas/FeltID'
+          stac_asset_url:
+            type: string
+        required:
+        - from
+        - source_id
+        - stac_asset_url
+        title: AddSourceLayer-STAC-Params
+        type: object
+      title: AddSourceLayerParams
       type: object
     LayerMetadata:
       additionalProperties: false
@@ -785,7 +806,7 @@ components:
           - 'null'
       title: LayerMetadata
       type: object
-    UnauthorizedError:
+    NotFoundError:
       properties:
         errors:
           items:
@@ -794,35 +815,14 @@ components:
                 type: string
               source:
                 properties:
-                  header:
-                    enum:
-                    - authorization
+                  parameter:
                     type: string
                 type: object
               title:
                 type: string
             type: object
           type: array
-      title: UnauthorizedError
-      type: object
-    AddSourceLayerAccepted:
-      additionalProperties: false
-      properties:
-        links:
-          additionalProperties: false
-          properties:
-            layer_group:
-              example: https://felt.com/api/v2/maps/V0dnOMOuTd9B9BOsL9C0UjmqC/layer_groups/KFFhKAbvS4anD3wxtwNEpD
-              type: string
-            self:
-              example: https://felt.com/api/v2/maps/V0dnOMOuTd9B9BOsL9C0UjmqC
-              type: string
-          type: object
-        status:
-          enum:
-          - accepted
-          type: string
-      title: AddSourceLayerAccepted
+      title: NotFoundError
       type: object
   securitySchemes:
     bearerAuth:
