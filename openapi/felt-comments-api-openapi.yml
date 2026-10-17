@@ -271,6 +271,11 @@ components:
       format: felt_id
       title: FeltID
       type: string
+    CommentExport:
+      items:
+        description: Comment Thread
+      title: CommentExport
+      type: array
     UnauthorizedError:
       properties:
         errors:
@@ -291,11 +296,6 @@ components:
           type: array
       title: UnauthorizedError
       type: object
-    CommentExport:
-      items:
-        description: Comment Thread
-      title: CommentExport
-      type: array
     NotFoundError:
       properties:
         errors:

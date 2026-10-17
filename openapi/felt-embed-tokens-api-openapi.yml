@@ -138,6 +138,16 @@ components:
       - errors
       title: JsonErrorResponse
       type: object
+    EmbedToken:
+      properties:
+        expires_at:
+          example: '2024-05-25T15:51:34'
+          format: date_time
+          type: string
+        token:
+          type: string
+      title: EmbedToken
+      type: object
     InternalServerError:
       properties:
         errors:
@@ -155,16 +165,6 @@ components:
             type: object
           type: array
       title: InternalServerError
-      type: object
-    EmbedToken:
-      properties:
-        expires_at:
-          example: '2024-05-25T15:51:34'
-          format: date_time
-          type: string
-        token:
-          type: string
-      title: EmbedToken
       type: object
     UnauthorizedError:
       properties:

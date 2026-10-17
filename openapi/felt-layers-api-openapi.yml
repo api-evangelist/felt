@@ -709,20 +709,34 @@ paths:
       - Layers
 components:
   schemas:
-    DuplicateLayersResponse:
+    JsonErrorResponse:
       properties:
-        layer_groups:
+        errors:
           items:
-            $ref: '#/components/schemas/LayerGroup'
-          type: array
-        layers:
-          items:
-            $ref: '#/components/schemas/Layer'
+            properties:
+              detail:
+                example: null value where string expected
+                type: string
+              source:
+                properties:
+                  pointer:
+                    example: /data/attributes/petName
+                    type: string
+                required:
+                - pointer
+                type: object
+              title:
+                example: Invalid value
+                type: string
+            required:
+            - title
+            - source
+            - detail
+            type: object
           type: array
       required:
-      - layers
-      - layer_groups
-      title: DuplicateLayersResponse
+      - errors
+      title: JsonErrorResponse
       type: object
     LayerGroupParamsList:
       items:
@@ -766,6 +780,11 @@ components:
       - name
       title: LayerGroupParams
       type: object
+    LayerGroupList:
+      items:
+        $ref: '#/components/schemas/LayerGroup'
+      title: LayerGroupList
+      type: array
     InternalServerError:
       properties:
         errors:
@@ -784,44 +803,59 @@ components:
           type: array
       title: InternalServerError
       type: object
-    LayerGroupList:
-      items:
-        $ref: '#/components/schemas/LayerGroup'
-      title: LayerGroupList
-      type: array
-    LayerList:
-      items:
-        $ref: '#/components/schemas/Layer'
-      title: LayerList
-      type: array
-    JsonErrorResponse:
+    LayerUpdateParams:
+      additionalProperties: false
       properties:
-        errors:
-          items:
-            properties:
-              detail:
-                example: null value where string expected
-                type: string
-              source:
-                properties:
-                  pointer:
-                    example: /data/attributes/petName
-                    type: string
-                required:
-                - pointer
-                type: object
-              title:
-                example: Invalid value
-                type: string
-            required:
-            - title
-            - source
-            - detail
-            type: object
-          type: array
+        caption:
+          example: A very interesting dataset
+          type: string
+        id:
+          $ref: '#/components/schemas/FeltID'
+        layer_group_id:
+          example: luCHyMruTQ6ozGk3gPJfEB
+          format: felt_id
+          type:
+          - string
+          - 'null'
+        legend_display:
+          description: Controls how the layer is displayed in the legend.
+          enum:
+          - default
+          - name_only
+          type: string
+        legend_visibility:
+          description: Controls whether or not the layer is displayed in the legend.
+          enum:
+          - hide
+          - show
+          type: string
+        metadata:
+          $ref: '#/components/schemas/LayerMetadata'
+        name:
+          example: My Layer
+          type: string
+        ordering_key:
+          type: integer
+        refresh_period:
+          enum:
+          - 15 min
+          - 30 min
+          - hour
+          - 3 hours
+          - 6 hours
+          - 12 hours
+          - day
+          - week
+          - month
+          - disabled
+          type: string
+        subtitle:
+          deprecated: true
+          description: 'Deprecated: use `caption` instead.'
+          type: string
       required:
-      - errors
-      title: JsonErrorResponse
+      - id
+      title: LayerUpdateParams
       type: object
     LayerGroupUpdateParams:
       additionalProperties: false
@@ -858,36 +892,6 @@ components:
           - 'null'
       title: LayerGroupUpdateParams
       type: object
-    FeltID:
-      example: luCHyMruTQ6ozGk3gPJfEB
-      format: felt_id
-      title: FeltID
-      type: string
-    DuplicateLayersParams:
-      items:
-        oneOf:
-        - properties:
-            destination_map_id:
-              $ref: '#/components/schemas/FeltID'
-            source_layer_id:
-              $ref: '#/components/schemas/FeltID'
-          required:
-          - source_layer_id
-          - destination_map_id
-          title: DuplicateLayersParams-Layer
-          type: object
-        - properties:
-            destination_map_id:
-              $ref: '#/components/schemas/FeltID'
-            source_layer_group_id:
-              $ref: '#/components/schemas/FeltID'
-          required:
-          - source_layer_group_id
-          - destination_map_id
-          title: DuplicateLayersParams-LayerGroup
-          type: object
-      title: DuplicateLayersParams
-      type: array
     Layer:
       additionalProperties: false
       properties:
@@ -1048,6 +1052,95 @@ components:
       - refresh_status
       title: Layer
       type: object
+    DuplicateLayersParams:
+      items:
+        oneOf:
+        - properties:
+            destination_map_id:
+              $ref: '#/components/schemas/FeltID'
+            source_layer_id:
+              $ref: '#/components/schemas/FeltID'
+          required:
+          - source_layer_id
+          - destination_map_id
+          title: DuplicateLayersParams-Layer
+          type: object
+        - properties:
+            destination_map_id:
+              $ref: '#/components/schemas/FeltID'
+            source_layer_group_id:
+              $ref: '#/components/schemas/FeltID'
+          required:
+          - source_layer_group_id
+          - destination_map_id
+          title: DuplicateLayersParams-LayerGroup
+          type: object
+      title: DuplicateLayersParams
+      type: array
+    FeltID:
+      example: luCHyMruTQ6ozGk3gPJfEB
+      format: felt_id
+      title: FeltID
+      type: string
+    UnauthorizedError:
+      properties:
+        errors:
+          items:
+            properties:
+              detail:
+                type: string
+              source:
+                properties:
+                  header:
+                    enum:
+                    - authorization
+                    type: string
+                type: object
+              title:
+                type: string
+            type: object
+          type: array
+      title: UnauthorizedError
+      type: object
+    LayerMetadata:
+      additionalProperties: false
+      properties:
+        attribution_text:
+          type:
+          - string
+          - 'null'
+        attribution_url:
+          type:
+          - string
+          - 'null'
+        description:
+          type:
+          - string
+          - 'null'
+        license:
+          type:
+          - string
+          - 'null'
+        source_abbreviation:
+          type:
+          - string
+          - 'null'
+        source_name:
+          type:
+          - string
+          - 'null'
+        source_url:
+          type:
+          - string
+          - 'null'
+        updated_at:
+          example: '2025-03-24'
+          format: date
+          type:
+          - string
+          - 'null'
+      title: LayerMetadata
+      type: object
     LayerGroup:
       additionalProperties: false
       properties:
@@ -1107,79 +1200,6 @@ components:
       - layers
       title: LayerGroup
       type: object
-    UnauthorizedError:
-      properties:
-        errors:
-          items:
-            properties:
-              detail:
-                type: string
-              source:
-                properties:
-                  header:
-                    enum:
-                    - authorization
-                    type: string
-                type: object
-              title:
-                type: string
-            type: object
-          type: array
-      title: UnauthorizedError
-      type: object
-    LayerUpdateStyleParams:
-      properties:
-        style:
-          description: The new layer style, specified in Felt Style Language format
-          type: object
-      required:
-      - style
-      title: LayerUpdateStyleParams
-      type: object
-    LayerMetadata:
-      additionalProperties: false
-      properties:
-        attribution_text:
-          type:
-          - string
-          - 'null'
-        attribution_url:
-          type:
-          - string
-          - 'null'
-        description:
-          type:
-          - string
-          - 'null'
-        license:
-          type:
-          - string
-          - 'null'
-        source_abbreviation:
-          type:
-          - string
-          - 'null'
-        source_name:
-          type:
-          - string
-          - 'null'
-        source_url:
-          type:
-          - string
-          - 'null'
-        updated_at:
-          example: '2025-03-24'
-          format: date
-          type:
-          - string
-          - 'null'
-      title: LayerMetadata
-      type: object
-    LayerUpdateParamsList:
-      items:
-        $ref: '#/components/schemas/LayerUpdateParams'
-      title: LayerUpdateParamsList
-      type: array
     NotFoundError:
       properties:
         errors:
@@ -1198,59 +1218,39 @@ components:
           type: array
       title: NotFoundError
       type: object
-    LayerUpdateParams:
-      additionalProperties: false
+    LayerList:
+      items:
+        $ref: '#/components/schemas/Layer'
+      title: LayerList
+      type: array
+    DuplicateLayersResponse:
       properties:
-        caption:
-          example: A very interesting dataset
-          type: string
-        id:
-          $ref: '#/components/schemas/FeltID'
-        layer_group_id:
-          example: luCHyMruTQ6ozGk3gPJfEB
-          format: felt_id
-          type:
-          - string
-          - 'null'
-        legend_display:
-          description: Controls how the layer is displayed in the legend.
-          enum:
-          - default
-          - name_only
-          type: string
-        legend_visibility:
-          description: Controls whether or not the layer is displayed in the legend.
-          enum:
-          - hide
-          - show
-          type: string
-        metadata:
-          $ref: '#/components/schemas/LayerMetadata'
-        name:
-          example: My Layer
-          type: string
-        ordering_key:
-          type: integer
-        refresh_period:
-          enum:
-          - 15 min
-          - 30 min
-          - hour
-          - 3 hours
-          - 6 hours
-          - 12 hours
-          - day
-          - week
-          - month
-          - disabled
-          type: string
-        subtitle:
-          deprecated: true
-          description: 'Deprecated: use `caption` instead.'
-          type: string
+        layer_groups:
+          items:
+            $ref: '#/components/schemas/LayerGroup'
+          type: array
+        layers:
+          items:
+            $ref: '#/components/schemas/Layer'
+          type: array
       required:
-      - id
-      title: LayerUpdateParams
+      - layers
+      - layer_groups
+      title: DuplicateLayersResponse
+      type: object
+    LayerUpdateParamsList:
+      items:
+        $ref: '#/components/schemas/LayerUpdateParams'
+      title: LayerUpdateParamsList
+      type: array
+    LayerUpdateStyleParams:
+      properties:
+        style:
+          description: The new layer style, specified in Felt Style Language format
+          type: object
+      required:
+      - style
+      title: LayerUpdateStyleParams
       type: object
   securitySchemes:
     bearerAuth:

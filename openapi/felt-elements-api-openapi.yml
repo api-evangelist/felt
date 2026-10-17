@@ -427,6 +427,39 @@ paths:
       - Elements
 components:
   schemas:
+    GeoJSON:
+      properties:
+        features:
+          items:
+            properties:
+              geometry:
+                properties:
+                  felt:id:
+                    $ref: '#/components/schemas/FeltID'
+                  felt:parentId:
+                    example: luCHyMruTQ6ozGk3gPJfEB
+                    format: felt_id
+                    type:
+                    - string
+                    - 'null'
+                type: object
+              properties:
+                type: object
+              type:
+                enum:
+                - Feature
+                type: string
+            type: object
+          type: array
+        type:
+          enum:
+          - FeatureCollection
+          type: string
+      required:
+      - type
+      - features
+      title: GeoJSON
+      type: object
     JsonErrorResponse:
       properties:
         errors:
@@ -474,6 +507,16 @@ components:
           type: array
       title: InternalServerError
       type: object
+    ElementGroupList:
+      items:
+        $ref: '#/components/schemas/ElementGroup'
+      title: ElementGroupList
+      type: array
+    ElementGroupParamsList:
+      items:
+        $ref: '#/components/schemas/ElementGroupParams'
+      title: ElementGroupParamsList
+      type: array
     ElementGroupParams:
       additionalProperties: false
       properties:
@@ -491,6 +534,31 @@ components:
       required:
       - name
       title: ElementGroupParams
+      type: object
+    FeltID:
+      example: luCHyMruTQ6ozGk3gPJfEB
+      format: felt_id
+      title: FeltID
+      type: string
+    UnauthorizedError:
+      properties:
+        errors:
+          items:
+            properties:
+              detail:
+                type: string
+              source:
+                properties:
+                  header:
+                    enum:
+                    - authorization
+                    type: string
+                type: object
+              title:
+                type: string
+            type: object
+          type: array
+      title: UnauthorizedError
       type: object
     ElementGroup:
       additionalProperties: false
@@ -521,36 +589,6 @@ components:
       - elements
       title: ElementGroup
       type: object
-    FeltID:
-      example: luCHyMruTQ6ozGk3gPJfEB
-      format: felt_id
-      title: FeltID
-      type: string
-    ElementGroupParamsList:
-      items:
-        $ref: '#/components/schemas/ElementGroupParams'
-      title: ElementGroupParamsList
-      type: array
-    UnauthorizedError:
-      properties:
-        errors:
-          items:
-            properties:
-              detail:
-                type: string
-              source:
-                properties:
-                  header:
-                    enum:
-                    - authorization
-                    type: string
-                type: object
-              title:
-                type: string
-            type: object
-          type: array
-      title: UnauthorizedError
-      type: object
     NotFoundError:
       properties:
         errors:
@@ -568,44 +606,6 @@ components:
             type: object
           type: array
       title: NotFoundError
-      type: object
-    ElementGroupList:
-      items:
-        $ref: '#/components/schemas/ElementGroup'
-      title: ElementGroupList
-      type: array
-    GeoJSON:
-      properties:
-        features:
-          items:
-            properties:
-              geometry:
-                properties:
-                  felt:id:
-                    $ref: '#/components/schemas/FeltID'
-                  felt:parentId:
-                    example: luCHyMruTQ6ozGk3gPJfEB
-                    format: felt_id
-                    type:
-                    - string
-                    - 'null'
-                type: object
-              properties:
-                type: object
-              type:
-                enum:
-                - Feature
-                type: string
-            type: object
-          type: array
-        type:
-          enum:
-          - FeatureCollection
-          type: string
-      required:
-      - type
-      - features
-      title: GeoJSON
       type: object
   securitySchemes:
     bearerAuth:

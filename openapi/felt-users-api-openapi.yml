@@ -119,16 +119,6 @@ components:
           type: array
       title: InternalServerError
       type: object
-    User:
-      properties:
-        email:
-          type: string
-        id:
-          $ref: '#/components/schemas/FeltID'
-        name:
-          type: string
-      title: User
-      type: object
     FeltID:
       example: luCHyMruTQ6ozGk3gPJfEB
       format: felt_id
@@ -153,6 +143,16 @@ components:
             type: object
           type: array
       title: UnauthorizedError
+      type: object
+    User:
+      properties:
+        email:
+          type: string
+        id:
+          $ref: '#/components/schemas/FeltID'
+        name:
+          type: string
+      title: User
       type: object
     NotFoundError:
       properties:

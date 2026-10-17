@@ -313,31 +313,6 @@ components:
       - errors
       title: JsonErrorResponse
       type: object
-    UploadResponse:
-      properties:
-        layer_group_id:
-          $ref: '#/components/schemas/FeltID'
-        layer_id:
-          description: The ID of the layer created by this upload. If multiple layers are included in the upload, this is the ID of the first layer in the layer group.
-          example: luCHyMruTQ6ozGk3gPJfEB
-          format: felt_id
-          type: string
-        presigned_attributes:
-          description: If provided, the presigned attributes to attach to the post request
-          type:
-          - object
-          - 'null'
-        type:
-          enum:
-          - upload_response
-          type: string
-        url:
-          description: If provided, the URL to post the file to
-          type:
-          - string
-          - 'null'
-      title: UploadResponse
-      type: object
     InternalServerError:
       properties:
         errors:
@@ -356,6 +331,11 @@ components:
           type: array
       title: InternalServerError
       type: object
+    FeltID:
+      example: luCHyMruTQ6ozGk3gPJfEB
+      format: felt_id
+      title: FeltID
+      type: string
     UploadLayerParams:
       properties:
         hints:
@@ -383,6 +363,108 @@ components:
       required:
       - name
       title: UploadLayerParams
+      type: object
+    UnauthorizedError:
+      properties:
+        errors:
+          items:
+            properties:
+              detail:
+                type: string
+              source:
+                properties:
+                  header:
+                    enum:
+                    - authorization
+                    type: string
+                type: object
+              title:
+                type: string
+            type: object
+          type: array
+      title: UnauthorizedError
+      type: object
+    LayerMetadata:
+      additionalProperties: false
+      properties:
+        attribution_text:
+          type:
+          - string
+          - 'null'
+        attribution_url:
+          type:
+          - string
+          - 'null'
+        description:
+          type:
+          - string
+          - 'null'
+        license:
+          type:
+          - string
+          - 'null'
+        source_abbreviation:
+          type:
+          - string
+          - 'null'
+        source_name:
+          type:
+          - string
+          - 'null'
+        source_url:
+          type:
+          - string
+          - 'null'
+        updated_at:
+          example: '2025-03-24'
+          format: date
+          type:
+          - string
+          - 'null'
+      title: LayerMetadata
+      type: object
+    UploadResponse:
+      properties:
+        layer_group_id:
+          $ref: '#/components/schemas/FeltID'
+        layer_id:
+          description: The ID of the layer created by this upload. If multiple layers are included in the upload, this is the ID of the first layer in the layer group.
+          example: luCHyMruTQ6ozGk3gPJfEB
+          format: felt_id
+          type: string
+        presigned_attributes:
+          description: If provided, the presigned attributes to attach to the post request
+          type:
+          - object
+          - 'null'
+        type:
+          enum:
+          - upload_response
+          type: string
+        url:
+          description: If provided, the URL to post the file to
+          type:
+          - string
+          - 'null'
+      title: UploadResponse
+      type: object
+    NotFoundError:
+      properties:
+        errors:
+          items:
+            properties:
+              detail:
+                type: string
+              source:
+                properties:
+                  parameter:
+                    type: string
+                type: object
+              title:
+                type: string
+            type: object
+          type: array
+      title: NotFoundError
       type: object
     UploadInterpretationHint:
       oneOf:
@@ -677,50 +759,6 @@ components:
         title: UploadInterpretationHint-AttributeHint-H3
         type: object
       title: UploadInterpretationHint
-    FeltID:
-      example: luCHyMruTQ6ozGk3gPJfEB
-      format: felt_id
-      title: FeltID
-      type: string
-    UnauthorizedError:
-      properties:
-        errors:
-          items:
-            properties:
-              detail:
-                type: string
-              source:
-                properties:
-                  header:
-                    enum:
-                    - authorization
-                    type: string
-                type: object
-              title:
-                type: string
-            type: object
-          type: array
-      title: UnauthorizedError
-      type: object
-    AddSourceLayerAccepted:
-      additionalProperties: false
-      properties:
-        links:
-          additionalProperties: false
-          properties:
-            layer_group:
-              example: https://felt.com/api/v2/maps/V0dnOMOuTd9B9BOsL9C0UjmqC/layer_groups/KFFhKAbvS4anD3wxtwNEpD
-              type: string
-            self:
-              example: https://felt.com/api/v2/maps/V0dnOMOuTd9B9BOsL9C0UjmqC
-              type: string
-          type: object
-        status:
-          enum:
-          - accepted
-          type: string
-      title: AddSourceLayerAccepted
-      type: object
     AddSourceLayerParams:
       oneOf:
       - properties:
@@ -767,62 +805,24 @@ components:
         type: object
       title: AddSourceLayerParams
       type: object
-    LayerMetadata:
+    AddSourceLayerAccepted:
       additionalProperties: false
       properties:
-        attribution_text:
-          type:
-          - string
-          - 'null'
-        attribution_url:
-          type:
-          - string
-          - 'null'
-        description:
-          type:
-          - string
-          - 'null'
-        license:
-          type:
-          - string
-          - 'null'
-        source_abbreviation:
-          type:
-          - string
-          - 'null'
-        source_name:
-          type:
-          - string
-          - 'null'
-        source_url:
-          type:
-          - string
-          - 'null'
-        updated_at:
-          example: '2025-03-24'
-          format: date
-          type:
-          - string
-          - 'null'
-      title: LayerMetadata
-      type: object
-    NotFoundError:
-      properties:
-        errors:
-          items:
-            properties:
-              detail:
-                type: string
-              source:
-                properties:
-                  parameter:
-                    type: string
-                type: object
-              title:
-                type: string
-            type: object
-          type: array
-      title: NotFoundError
+        links:
+          additionalProperties: false
+          properties:
+            layer_group:
+              example: https://felt.com/api/v2/maps/V0dnOMOuTd9B9BOsL9C0UjmqC/layer_groups/KFFhKAbvS4anD3wxtwNEpD
+              type: string
+            self:
+              example: https://felt.com/api/v2/maps/V0dnOMOuTd9B9BOsL9C0UjmqC
+              type: string
+          type: object
+        status:
+          enum:
+          - accepted
+          type: string
+      title: AddSourceLayerAccepted
       type: object
   securitySchemes:
     bearerAuth:

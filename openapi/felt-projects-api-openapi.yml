@@ -327,31 +327,6 @@ paths:
       - Projects
 components:
   schemas:
-    ProjectCreateParams:
-      additionalProperties: false
-      properties:
-        max_inherited_permission:
-          description: The maximum permission level workspace members inherit on team-visible projects. Only applicable when visibility is "workspace".
-          enum:
-          - view_only
-          - view_and_contribute
-          - view_and_edit
-          example: view_only
-          type: string
-        name:
-          description: The name to be used for the Project
-          type: string
-        visibility:
-          description: Either viewable by all members of the workspace, or private to users who are invited.
-          enum:
-          - workspace
-          - private
-          type: string
-      required:
-      - name
-      - visibility
-      title: ProjectCreateParams
-      type: object
     JsonErrorResponse:
       properties:
         errors:
@@ -403,6 +378,31 @@ components:
           type: string
       title: ProjectUpdateParams
       type: object
+    ProjectCreateParams:
+      additionalProperties: false
+      properties:
+        max_inherited_permission:
+          description: The maximum permission level workspace members inherit on team-visible projects. Only applicable when visibility is "workspace".
+          enum:
+          - view_only
+          - view_and_contribute
+          - view_and_edit
+          example: view_only
+          type: string
+        name:
+          description: The name to be used for the Project
+          type: string
+        visibility:
+          description: Either viewable by all members of the workspace, or private to users who are invited.
+          enum:
+          - workspace
+          - private
+          type: string
+      required:
+      - name
+      - visibility
+      title: ProjectCreateParams
+      type: object
     InternalServerError:
       properties:
         errors:
@@ -420,111 +420,6 @@ components:
             type: object
           type: array
       title: InternalServerError
-      type: object
-    FeltID:
-      example: luCHyMruTQ6ozGk3gPJfEB
-      format: felt_id
-      title: FeltID
-      type: string
-    ProjectReference:
-      additionalProperties: false
-      properties:
-        id:
-          $ref: '#/components/schemas/FeltID'
-        links:
-          properties:
-            self:
-              example: https://felt.com/api/v2/projects/V0dnOMOuTd9B9BOsL9C0UjmqC
-              type: string
-          type: object
-        max_inherited_permission:
-          description: The maximum permission level workspace members inherit on team-visible projects.
-          enum:
-          - view_only
-          - view_and_contribute
-          - view_and_edit
-          example: view_only
-          type: string
-        name:
-          type: string
-        type:
-          enum:
-          - project_reference
-          type: string
-        visibility:
-          enum:
-          - workspace
-          - private
-          type: string
-      required:
-      - id
-      - type
-      - name
-      - visibility
-      - max_inherited_permission
-      title: ProjectReference
-      type: object
-    UnauthorizedError:
-      properties:
-        errors:
-          items:
-            properties:
-              detail:
-                type: string
-              source:
-                properties:
-                  header:
-                    enum:
-                    - authorization
-                    type: string
-                type: object
-              title:
-                type: string
-            type: object
-          type: array
-      title: UnauthorizedError
-      type: object
-    ProjectReferenceList:
-      items:
-        $ref: '#/components/schemas/ProjectReference'
-      title: ProjectReferenceList
-      type: array
-    Project:
-      additionalProperties: false
-      properties:
-        id:
-          $ref: '#/components/schemas/FeltID'
-        maps:
-          items:
-            $ref: '#/components/schemas/MapReference'
-          type: array
-        max_inherited_permission:
-          description: The maximum permission level workspace members inherit on team-visible projects.
-          enum:
-          - view_only
-          - view_and_contribute
-          - view_and_edit
-          example: view_only
-          type: string
-        name:
-          type: string
-        type:
-          enum:
-          - project
-          type: string
-        visibility:
-          enum:
-          - workspace
-          - private
-          type: string
-      required:
-      - id
-      - type
-      - name
-      - visibility
-      - max_inherited_permission
-      - maps
-      title: Project
       type: object
     MapReference:
       additionalProperties: false
@@ -585,6 +480,69 @@ components:
       - public_access
       title: MapReference
       type: object
+    FeltID:
+      example: luCHyMruTQ6ozGk3gPJfEB
+      format: felt_id
+      title: FeltID
+      type: string
+    UnauthorizedError:
+      properties:
+        errors:
+          items:
+            properties:
+              detail:
+                type: string
+              source:
+                properties:
+                  header:
+                    enum:
+                    - authorization
+                    type: string
+                type: object
+              title:
+                type: string
+            type: object
+          type: array
+      title: UnauthorizedError
+      type: object
+    ProjectReference:
+      additionalProperties: false
+      properties:
+        id:
+          $ref: '#/components/schemas/FeltID'
+        links:
+          properties:
+            self:
+              example: https://felt.com/api/v2/projects/V0dnOMOuTd9B9BOsL9C0UjmqC
+              type: string
+          type: object
+        max_inherited_permission:
+          description: The maximum permission level workspace members inherit on team-visible projects.
+          enum:
+          - view_only
+          - view_and_contribute
+          - view_and_edit
+          example: view_only
+          type: string
+        name:
+          type: string
+        type:
+          enum:
+          - project_reference
+          type: string
+        visibility:
+          enum:
+          - workspace
+          - private
+          type: string
+      required:
+      - id
+      - type
+      - name
+      - visibility
+      - max_inherited_permission
+      title: ProjectReference
+      type: object
     NotFoundError:
       properties:
         errors:
@@ -603,6 +561,48 @@ components:
           type: array
       title: NotFoundError
       type: object
+    Project:
+      additionalProperties: false
+      properties:
+        id:
+          $ref: '#/components/schemas/FeltID'
+        maps:
+          items:
+            $ref: '#/components/schemas/MapReference'
+          type: array
+        max_inherited_permission:
+          description: The maximum permission level workspace members inherit on team-visible projects.
+          enum:
+          - view_only
+          - view_and_contribute
+          - view_and_edit
+          example: view_only
+          type: string
+        name:
+          type: string
+        type:
+          enum:
+          - project
+          type: string
+        visibility:
+          enum:
+          - workspace
+          - private
+          type: string
+      required:
+      - id
+      - type
+      - name
+      - visibility
+      - max_inherited_permission
+      - maps
+      title: Project
+      type: object
+    ProjectReferenceList:
+      items:
+        $ref: '#/components/schemas/ProjectReference'
+      title: ProjectReferenceList
+      type: array
   securitySchemes:
     bearerAuth:
       bearerFormat: YOUR_API_KEY
