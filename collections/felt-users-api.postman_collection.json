@@ -1,392 +1,398 @@
 {
+  "info": {
+    "_postman_id": "eb5196da-39c4-4633-be7f-4f2692c07c75",
+    "name": "Felt Users API",
+    "description": "Felt REST API v2.0",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T20:08:23.000Z",
+    "updatedAt": "2026-10-21T20:08:23.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-eb5196da-39c4-4633-be7f-4f2692c07c75"
+  },
   "item": [
     {
-      "id": "4b3e64ca-4da1-4d41-bb7d-0bd6c21c1637",
-      "name": "Users",
-      "description": {
-        "content": "Users represent the people in your workspace.\n\nWith these APIs, you can retrieve user profile information.\n",
-        "type": "text/plain"
-      },
+      "name": "api",
       "item": [
         {
-          "id": "fb941bac-eab3-4f26-b922-83dc1ee1449b",
-          "name": "Get current user",
-          "request": {
-            "name": "Get current user",
-            "description": {
-              "content": "Retrieve profile information and settings for the authenticated user.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "api",
-                "v2",
-                "user"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": {
-              "type": "bearer",
-              "bearer": [
-                {
-                  "key": "token",
-                  "value": "{{bearerToken}}"
-                }
-              ]
-            }
-          },
-          "response": [
+          "name": "v2",
+          "item": [
             {
-              "id": "f335fe0e-976d-42b3-8905-dc8c3b9a57c6",
-              "name": "User",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v2",
-                    "user"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
+              "name": "user",
+              "item": [
                 {
-                  "key": "Content-Type",
-                  "value": "application/json"
+                  "name": "Get current user",
+                  "id": "1c54e522-7016-4bac-92e2-3da812ff3e72",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "{{bearerToken}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/v2/user",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "v2",
+                        "user"
+                      ]
+                    },
+                    "description": "Retrieve profile information and settings for the authenticated user."
+                  },
+                  "response": [
+                    {
+                      "id": "7b0b6b1f-747b-4be9-881e-5272898ef755",
+                      "name": "User",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/user",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "user"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"email\": \"<string>\",\n  \"id\": \"<string>\",\n  \"name\": \"<string>\"\n}",
+                      "createdAt": "2026-10-21T20:08:24.000Z",
+                      "updatedAt": "2026-10-21T20:08:24.000Z",
+                      "uid": "35240-7b0b6b1f-747b-4be9-881e-5272898ef755"
+                    },
+                    {
+                      "id": "c7bea77f-ad20-4f4d-a14e-a123e190b72f",
+                      "name": "UnauthorizedError",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/user",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "user"
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"errors\": [\n    {\n      \"detail\": \"<string>\",\n      \"source\": {\n        \"header\": \"authorization\"\n      },\n      \"title\": \"<string>\"\n    },\n    {\n      \"detail\": \"<string>\",\n      \"source\": {\n        \"header\": \"authorization\"\n      },\n      \"title\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-10-21T20:08:24.000Z",
+                      "updatedAt": "2026-10-21T20:08:24.000Z",
+                      "uid": "35240-c7bea77f-ad20-4f4d-a14e-a123e190b72f"
+                    },
+                    {
+                      "id": "384a579c-62ba-4524-ad5f-5d23733e4e9b",
+                      "name": "UnauthorizedError",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/user",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "user"
+                          ]
+                        }
+                      },
+                      "status": "Forbidden",
+                      "code": 403,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"errors\": [\n    {\n      \"detail\": \"<string>\",\n      \"source\": {\n        \"header\": \"authorization\"\n      },\n      \"title\": \"<string>\"\n    },\n    {\n      \"detail\": \"<string>\",\n      \"source\": {\n        \"header\": \"authorization\"\n      },\n      \"title\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-10-21T20:08:24.000Z",
+                      "updatedAt": "2026-10-21T20:08:24.000Z",
+                      "uid": "35240-384a579c-62ba-4524-ad5f-5d23733e4e9b"
+                    },
+                    {
+                      "id": "220ad06d-dd87-40d3-a674-841db4f427b9",
+                      "name": "NotFoundError",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/user",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "user"
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"errors\": [\n    {\n      \"detail\": \"<string>\",\n      \"source\": {\n        \"parameter\": \"<string>\"\n      },\n      \"title\": \"<string>\"\n    },\n    {\n      \"detail\": \"<string>\",\n      \"source\": {\n        \"parameter\": \"<string>\"\n      },\n      \"title\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-10-21T20:08:24.000Z",
+                      "updatedAt": "2026-10-21T20:08:24.000Z",
+                      "uid": "35240-220ad06d-dd87-40d3-a674-841db4f427b9"
+                    },
+                    {
+                      "id": "9376aca7-1dbb-4b4c-8efa-36793c9d3aeb",
+                      "name": "Unprocessable Entity",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/user",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "user"
+                          ]
+                        }
+                      },
+                      "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+                      "code": 422,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"errors\": [\n    {\n      \"title\": \"<string>\",\n      \"source\": {\n        \"pointer\": \"<string>\"\n      },\n      \"detail\": \"<string>\"\n    },\n    {\n      \"title\": \"<string>\",\n      \"source\": {\n        \"pointer\": \"<string>\"\n      },\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-10-21T20:08:24.000Z",
+                      "updatedAt": "2026-10-21T20:08:24.000Z",
+                      "uid": "35240-9376aca7-1dbb-4b4c-8efa-36793c9d3aeb"
+                    },
+                    {
+                      "id": "804de5e8-7031-4a89-80ed-e5e39c86ba38",
+                      "name": "Unprocessable Entity",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/user",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "user"
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"errors\": [\n    {\n      \"title\": \"<string>\",\n      \"source\": {\n        \"pointer\": \"<string>\"\n      },\n      \"detail\": \"<string>\"\n    },\n    {\n      \"title\": \"<string>\",\n      \"source\": {\n        \"pointer\": \"<string>\"\n      },\n      \"detail\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-10-21T20:08:24.000Z",
+                      "updatedAt": "2026-10-21T20:08:24.000Z",
+                      "uid": "35240-804de5e8-7031-4a89-80ed-e5e39c86ba38"
+                    },
+                    {
+                      "id": "352da8b2-2535-495b-97e9-bdd736849dcd",
+                      "name": "InternalServerError",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v2/user",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v2",
+                            "user"
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"errors\": [\n    {\n      \"detail\": \"<string>\",\n      \"source\": {\n        \"parameter\": \"<string>\"\n      },\n      \"title\": \"<string>\"\n    },\n    {\n      \"detail\": \"<string>\",\n      \"source\": {\n        \"parameter\": \"<string>\"\n      },\n      \"title\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-10-21T20:08:24.000Z",
+                      "updatedAt": "2026-10-21T20:08:24.000Z",
+                      "uid": "35240-352da8b2-2535-495b-97e9-bdd736849dcd"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T20:08:24.000Z",
+                  "updatedAt": "2026-10-21T20:08:24.000Z",
+                  "uid": "35240-1c54e522-7016-4bac-92e2-3da812ff3e72"
                 }
               ],
-              "body": "{\n  \"email\": \"string\",\n  \"id\": \"luCHyMruTQ6ozGk3gPJfEB\",\n  \"name\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "6689acbd-411a-4ed5-b914-20ea7be37a9c",
-              "name": "UnauthorizedError",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v2",
-                    "user"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errors\": [\n    {\n      \"detail\": \"string\",\n      \"source\": {\n        \"header\": \"authorization\"\n      },\n      \"title\": \"string\"\n    },\n    {\n      \"detail\": \"string\",\n      \"source\": {\n        \"header\": \"authorization\"\n      },\n      \"title\": \"string\"\n    }\n  ]\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "faa3424d-992d-4e0f-a2a4-47fd7a9d7855",
-              "name": "UnauthorizedError",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v2",
-                    "user"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Forbidden",
-              "code": 403,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errors\": [\n    {\n      \"detail\": \"string\",\n      \"source\": {\n        \"header\": \"authorization\"\n      },\n      \"title\": \"string\"\n    },\n    {\n      \"detail\": \"string\",\n      \"source\": {\n        \"header\": \"authorization\"\n      },\n      \"title\": \"string\"\n    }\n  ]\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "168b7a12-d111-470c-aacf-629727752a29",
-              "name": "NotFoundError",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v2",
-                    "user"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errors\": [\n    {\n      \"detail\": \"string\",\n      \"source\": {\n        \"parameter\": \"string\"\n      },\n      \"title\": \"string\"\n    },\n    {\n      \"detail\": \"string\",\n      \"source\": {\n        \"parameter\": \"string\"\n      },\n      \"title\": \"string\"\n    }\n  ]\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "34f5802b-ee17-482c-8120-55b2b661682a",
-              "name": "Unprocessable Entity",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v2",
-                    "user"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
-              "code": 422,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errors\": [\n    {\n      \"title\": \"Invalid value\",\n      \"source\": {\n        \"pointer\": \"/data/attributes/petName\"\n      },\n      \"detail\": \"null value where string expected\"\n    },\n    {\n      \"title\": \"Invalid value\",\n      \"source\": {\n        \"pointer\": \"/data/attributes/petName\"\n      },\n      \"detail\": \"null value where string expected\"\n    }\n  ]\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "4cd45f2e-1d71-47d3-9477-2086114eea15",
-              "name": "Unprocessable Entity",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v2",
-                    "user"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Too Many Requests",
-              "code": 429,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errors\": [\n    {\n      \"title\": \"Invalid value\",\n      \"source\": {\n        \"pointer\": \"/data/attributes/petName\"\n      },\n      \"detail\": \"null value where string expected\"\n    },\n    {\n      \"title\": \"Invalid value\",\n      \"source\": {\n        \"pointer\": \"/data/attributes/petName\"\n      },\n      \"detail\": \"null value where string expected\"\n    }\n  ]\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "ce63745c-64bc-446c-92b2-e42854026fa4",
-              "name": "InternalServerError",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "api",
-                    "v2",
-                    "user"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Internal Server Error",
-              "code": 500,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"errors\": [\n    {\n      \"detail\": \"string\",\n      \"source\": {\n        \"parameter\": \"string\"\n      },\n      \"title\": \"string\"\n    },\n    {\n      \"detail\": \"string\",\n      \"source\": {\n        \"parameter\": \"string\"\n      },\n      \"title\": \"string\"\n    }\n  ]\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
+              "id": "5cc6069a-ce32-4d36-aab8-d7c0c5a84212",
+              "createdAt": "2026-10-21T20:08:24.000Z",
+              "updatedAt": "2026-10-21T20:08:24.000Z",
+              "uid": "35240-5cc6069a-ce32-4d36-aab8-d7c0c5a84212"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "1bf7b395-aa1b-4be4-86d6-320cecaf6247",
+          "createdAt": "2026-10-21T20:08:24.000Z",
+          "updatedAt": "2026-10-21T20:08:24.000Z",
+          "uid": "35240-1bf7b395-aa1b-4be4-86d6-320cecaf6247"
         }
       ],
-      "event": []
+      "id": "71651e60-2c31-42cb-a105-6a5e979c0cc5",
+      "createdAt": "2026-10-21T20:08:24.000Z",
+      "updatedAt": "2026-10-21T20:08:24.000Z",
+      "uid": "35240-71651e60-2c31-42cb-a105-6a5e979c0cc5"
     }
   ],
-  "event": [],
   "variable": [
     {
-      "type": "string",
-      "value": "https://felt.com",
-      "key": "baseUrl"
+      "key": "baseUrl",
+      "value": "https://felt.com"
     }
-  ],
-  "info": {
-    "_postman_id": "0a3b4cad-ea0f-4dee-94d9-2ee72b3e1709",
-    "name": "Felt Comments Users API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "Felt REST API v2.0",
-      "type": "text/plain"
-    }
-  }
+  ]
 }
