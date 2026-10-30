@@ -1,4 +1,4 @@
-# Felt (felt)
+# Felt
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -64,55 +64,185 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Felt is a collaborative mapping platform with a REST API for creating and managing maps, layers, elements, and sharing settings programmatically. The Enterprise-tier REST API and JavaScript SDK enable developers to build custom mapping applications, automate geospatial workflows, embed maps, and integrate with data pipelines using Bearer token authentication against the `https://felt.com/api/v2` base URL.
+Felt is a collaborative mapping platform with a REST API for creating and managing maps, layers, elements, and sharing settings programmatically. The Enterprise-tier REST API and JavaScript SDK enable developers to build custom mapping applications, automate geospatial workflows, embed maps, and integrate with data pipelines using Bearer token authentication against the https://felt.com/api/v2 base URL.
 
-APIs.json: https://raw.githubusercontent.com/api-evangelist/felt/refs/heads/main/apis.yml
+**Areas:** Maps · GIS · Geospatial · Collaborative · Mapping · Layers · Embeddings
 
-Naftiko: https://github.com/naftiko/fleet?utm_source=api-evangelist&utm_medium=readme&utm_campaign=felt-api-evangelist&utm_content=repo
+## Felt on APIs.io
 
-## Tags
+Everything profiled for Felt is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/felt/](https://apis.io/providers/felt/)** — or go straight to one of the APIs or properties below.
 
-Maps, GIS, Geospatial, Collaborative, Mapping, Layers, Embedding
+### APIs (13)
 
-## APIs
+- [Felt JavaScript SDK](https://apis.io/apis/felt/felt-javascript-sdk/) — JavaScript SDK for embedding, controlling, and extending Felt maps in external web applications. Supports two integration modes: Extensions (custom code…
+- [Felt Python SDK](https://apis.io/apis/felt/felt-python-sdk/) — Official Python client for the Felt REST API providing convenient wrappers for map creation, file and DataFrame uploads, layer styling and refreshing, and…
+- [Felt Comments API](https://apis.io/apis/felt/felt-comments-api/) — Comments bring conversations to mapping. With these APIs, you can export, resolve, and delete map comments and collaboration threads.
+- [Felt Elements API](https://apis.io/apis/felt/felt-elements-api/) — Elements enable you to annotate maps with custom shapes, text, and markers. With these APIs, you can create, update, and delete map elements.
+- [Felt Embed Tokens API](https://apis.io/apis/felt/felt-embed-tokens-api/) — Embed tokens enable safely sharing your private maps. With these APIs, you can generate secure tokens for embedding maps.
+- [Felt Layer Exports API](https://apis.io/apis/felt/felt-layer-exports-api/) — With these APIs, you can export data to CSV, GeoJSON, and other formats.
+- [Felt Layer Library API](https://apis.io/apis/felt/felt-layer-library-api/) — With these APIs, you can publish your layers to your workspace library.
+- [Felt Layer Uploads API](https://apis.io/apis/felt/felt-layer-uploads-api/) — With these APIs, you can upload your data to create new layers.
+- [Felt Layers API](https://apis.io/apis/felt/felt-layers-api/) — Layers enable you to visualize, style and interact with your spatial data. With these APIs, you can upload data, manage layer styling, publish and refresh…
+- [Felt Maps API](https://apis.io/apis/felt/felt-maps-api/) — Maps are the centerpiece of Felt. With these APIs, you can create, retrieve, update, delete, move, and duplicate maps programmatically.
+- [Felt Projects API](https://apis.io/apis/felt/felt-projects-api/) — Projects help you organize maps and manage team permissions. With these APIs, you can manage the projects in your workspace.
+- [Felt Sources API](https://apis.io/apis/felt/felt-sources-api/) — Sources connect your databases to Felt. With these APIs, you can configure data source connections, credentials, and sync settings to create live maps.
+- [Felt Users API](https://apis.io/apis/felt/felt-users-api/) — Users represent the people in your workspace. With these APIs, you can retrieve user profile information.
 
-| Name | Description |
-|------|-------------|
-| Felt REST API | REST API for programmatically creating and managing maps, layers, layer groups, elements/annotations, embed tokens, and workspace projects. Base URL: `https://felt.com/api/v2`. Authentication via Bearer token. |
-| Felt JavaScript SDK | JavaScript SDK for embedding, controlling, and extending Felt maps in external web applications. Supports Element API, Draw API, and live layer support. |
-| Felt Python SDK | Official Python client for the Felt REST API providing wrappers for map creation, file and DataFrame uploads, layer styling and refreshing, and element management. |
+### Published properties
 
-## Plans, Rate Limits, and FinOps
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-| Resource | Path |
-|----------|------|
-| Plans and Pricing | [plans/felt-plans-pricing.yml](plans/felt-plans-pricing.yml) |
-| Rate Limits | [rate-limits/felt-rate-limits.yml](rate-limits/felt-rate-limits.yml) |
-| FinOps | [finops/felt-finops.yml](finops/felt-finops.yml) |
+#### MCP servers (1)
 
-Felt uses a flat-rate annual contract model with three tiers: Personal (free), Professional (team use, no API access), and Enterprise (custom pricing, full API + SDK access). No auto-billed overages — Felt contacts customers when usage caps are approached.
+Model Context Protocol servers that expose the API to agents.
 
-## Timestamps
+- [felt](https://apis.io/servers/felt/felt/)
 
-| Field | Value |
-|-------|-------|
-| Created | 2026-06-12 |
-| Modified | 2026-06-12 |
+#### Agentic access (1)
 
-## Common
+Which operations an agent can call, which act, and which need a human in the loop.
 
-| Type | URL |
-|------|-----|
-| Website | https://felt.com |
-| Documentation | https://developers.felt.com/ |
-| GitHub | https://github.com/felt |
-| LinkedIn | https://www.linkedin.com/company/feltmaps |
-| Blog | https://felt.com/blog |
-| Pricing | https://felt.com/pricing |
-| X | https://x.com/felt |
+- [Felt Agentic Access](https://apis.io/agentic-access/felt/felt-agentic-access/)
 
-## Maintainers
+#### JSON Schema (7)
 
-| Name | Email |
-|------|-------|
-| Kin Lane | kin@apievangelist.com |
+The data models the API reads and writes.
+
+- [EmbedToken](https://apis.io/schemas/felt/felt-embedtoken/)
+- [Layer](https://apis.io/schemas/felt/felt-layer/)
+- [LayerGroup](https://apis.io/schemas/felt/felt-layergroup/)
+- [Map](https://apis.io/schemas/felt/felt-map/)
+- [Project](https://apis.io/schemas/felt/felt-project/)
+- [Source](https://apis.io/schemas/felt/felt-source/)
+- [User](https://apis.io/schemas/felt/felt-user/)
+
+#### JSON-LD (1)
+
+Linked-data contexts for the provider's vocabulary.
+
+- [Felt Context](https://apis.io/jsonld/felt/felt-context/)
+
+#### Vocabulary (1)
+
+The provider's domain terms, defined.
+
+- [Felt API Vocabulary](https://apis.io/vocabularies/felt/felt-vocabulary/)
+
+#### Examples (1)
+
+Example requests and responses.
+
+- [Felt Api Examples](https://apis.io/examples/felt/felt-api-examples/)
+
+#### Collections (11)
+
+Postman and Open Collection request collections.
+
+- [Felt Comments API](https://apis.io/collections/felt/open-felt-comments-api/)
+- [Felt Comments Elements API](https://apis.io/collections/felt/open-felt-elements-api/)
+- [Felt Comments Embed Tokens API](https://apis.io/collections/felt/open-felt-embed-tokens-api/)
+- [Felt Comments Layer Exports API](https://apis.io/collections/felt/open-felt-layer-exports-api/)
+- [Felt Comments Layer Library API](https://apis.io/collections/felt/open-felt-layer-library-api/)
+- [Felt Comments Layer Uploads API](https://apis.io/collections/felt/open-felt-layer-uploads-api/)
+- [Felt Comments Layers API](https://apis.io/collections/felt/open-felt-layers-api/)
+- [Felt Comments Maps API](https://apis.io/collections/felt/open-felt-maps-api/)
+- [Felt Comments Projects API](https://apis.io/collections/felt/open-felt-projects-api/)
+- [Felt Comments Sources API](https://apis.io/collections/felt/open-felt-sources-api/)
+- [Felt Comments Users API](https://apis.io/collections/felt/open-felt-users-api/)
+
+#### Governance rules (1)
+
+Spectral rulesets for the provider's contracts.
+
+- [Felt — jsonschema rules](https://apis.io/rules/felt/felt-jsonschema-spectral-rules/)
+
+#### Security (4)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Felt Authentication](https://apis.io/security/felt/felt-authentication/)
+- [Felt Domain Security](https://apis.io/security/felt/felt-domain-security/)
+- [Felt Trust Center](https://apis.io/security/felt/felt-trust-center/)
+- [Felt Vulnerability Disclosure](https://apis.io/security/felt/felt-vulnerability-disclosure/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Felt Plans Pricing](https://apis.io/plans/felt/felt-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Felt Rate Limits](https://apis.io/rate-limits/felt/felt-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Felt Finops](https://apis.io/finops/felt/felt-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://felt.com)
+- [Documentation](https://developers.felt.com/)
+- [Pricing](https://felt.com/pricing)
+- [Blog](https://felt.com/blog)
+
+## API Evangelist rating
+
+**Kin Score 43.1** — developing · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 60.0 |
+| Contract quality | 65.7 |
+| Contract governance | 23.5 |
+| Operational transparency | 23.7 |
+| Developer ergonomics | 32.1 |
+| Access clarity | 26.3 |
+
+**Agent readiness 37.2** — agent-ready
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | verified |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | verified |
+| OpenAPI Examples | documented (partial credit) |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | verified |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | — |
+| Operation Distinctiveness | distinct |
+
+**Regulatory alignment 25.5** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/felt/](https://apis.io/providers/felt/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Felt: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/felt/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
